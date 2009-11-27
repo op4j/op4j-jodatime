@@ -81,6 +81,9 @@ public final class ToPeriod {
 	public static final FromDateFieldList fromDateFieldList(final PeriodType periodType) {
 		return new FromDateFieldList(periodType);
 	}
+	public static final FromDateFieldList fromDateFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new FromDateFieldList(periodType, chronology);
+	}
 	public static final FromDateFieldArray fromDateFieldArray() {
 		return FROM_DATE_FIELD_ARRAY;
 	}	
@@ -89,6 +92,9 @@ public final class ToPeriod {
 	}	
 	public static final FromDateFieldArray fromDateFieldArray(final PeriodType periodType) {
 		return new FromDateFieldArray(periodType);
+	}
+	public static final FromDateFieldArray fromDateFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new FromDateFieldArray(periodType, chronology);
 	}
 	//
 	
@@ -101,6 +107,9 @@ public final class ToPeriod {
 	}	
 	public static final FromTimestampFieldList fromTimestampFieldList(final PeriodType periodType) {
 		return new FromTimestampFieldList(periodType);
+	}
+	public static final FromTimestampFieldList fromTimestampFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new FromTimestampFieldList(periodType, chronology);
 	}
 	public static final FromTimestampFieldArray fromTimestampFieldArray() {
 		return FROM_TIMESTAMP_FIELD_ARRAY;
@@ -165,6 +174,9 @@ public final class ToPeriod {
 	public static final FromCalendarFieldList fromCalendarFieldList(final PeriodType periodType) {
 		return new FromCalendarFieldList(periodType);
 	}
+	public static final FromCalendarFieldList fromCalendarFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new FromCalendarFieldList(periodType, chronology);
+	}
 	public static final FromCalendarFieldArray fromCalendarFieldArray() {
 		return FROM_CALENDAR_FIELD_ARRAY;
 	}	
@@ -173,6 +185,9 @@ public final class ToPeriod {
 	}	
 	public static final FromCalendarFieldArray fromCalendarFieldArray(final PeriodType periodType) {
 		return new FromCalendarFieldArray(periodType);
+	}
+	public static final FromCalendarFieldArray fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new FromCalendarFieldArray(periodType, chronology);
 	}
 	//
 	
@@ -186,6 +201,9 @@ public final class ToPeriod {
 	public static final FromDateTimeFieldList fromDateTimeFieldList(final PeriodType periodType) {
 		return new FromDateTimeFieldList(periodType);
 	}
+	public static final FromDateTimeFieldList fromDateTimeFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new FromDateTimeFieldList(periodType, chronology);
+	}
 	public static final FromDateTimeFieldArray fromDateTimeFieldArray() {
 		return FROM_DATETIME_FIELD_ARRAY;
 	}	
@@ -194,6 +212,9 @@ public final class ToPeriod {
 	}	
 	public static final FromDateTimeFieldArray fromDateTimeFieldArray(final PeriodType periodType) {
 		return new FromDateTimeFieldArray(periodType);
+	}
+	public static final FromDateTimeFieldArray fromDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new FromDateTimeFieldArray(periodType, chronology);
 	}
 	//
 	
@@ -225,24 +246,49 @@ public final class ToPeriod {
 	}
 	
 	
-	
-	public static final class FromDateFieldList implements IFunc<Period, List<Date>> {
+	private static abstract class BaseToPeriod<T> implements IFunc<Period, T> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
+		Chronology chronology = null;
+		PeriodType periodType = null;
 		
+		public BaseToPeriod() {
+			super();			
+		}
+
+		public BaseToPeriod(Chronology chronology) {
+			super();
+			this.chronology = chronology;
+		}
+
+		public BaseToPeriod(PeriodType periodType) {
+			super();
+			this.periodType = periodType;
+		}
+
+		public BaseToPeriod(PeriodType periodType, Chronology chronology) {
+			super();
+			this.chronology = chronology;
+			this.periodType = periodType;
+		}
+		
+	}
+	
+	public static final class FromDateFieldList extends BaseToPeriod<List<Date>> {
+
 		public FromDateFieldList() {
 			super();			
 		}		
 		
 		public FromDateFieldList(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);					
 		}
 		
 		public FromDateFieldList(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromDateFieldList(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -250,28 +296,41 @@ public final class ToPeriod {
 		}
 
 		public Period execute(final List<Date> dates) throws Exception {
-			//TODO Check size is two
-			return null;
+			if (dates.size() != 2 ) {
+				throw new FunctionExecutionException(
+						"Timestamp arguments list for Period conversion should of sizes " +
+						"2. Size " + dates.size() + " is not valid.");
+			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(dates.get(0).getTime(), dates.get(1).getTime(), 
+						this.periodType, this.chronology);
+			}
+			if (this.periodType != null) {
+				return new Period(dates.get(0).getTime(), dates.get(1).getTime(), this.periodType);
+			}
+			if (this.chronology != null) {
+				return new Period(dates.get(0).getTime(), dates.get(1).getTime(), this.chronology);
+			}
+			return new Period(dates.get(0).getTime(), dates.get(1).getTime());
 		}		
 	}	
 	
-	public static final class FromDateFieldArray implements IFunc<Period, Date[]> {
+	public static final class FromDateFieldArray extends BaseToPeriod<Date[]> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromDateFieldArray() {
 			super();			
 		}		
 		
 		public FromDateFieldArray(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromDateFieldArray(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromDateFieldArray(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -279,92 +338,125 @@ public final class ToPeriod {
 		}
 
 		public Period execute(final Date[] dates) throws Exception {
-			//TODO Check size is two
-			return null;
+			if (dates.length != 2 ) {
+				throw new FunctionExecutionException(
+						"Timestamp arguments array for Period conversion should of sizes " +
+						"2. Size " + dates.length + " is not valid.");
+			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(dates[0].getTime(), dates[1].getTime(), 
+						this.periodType, this.chronology);
+			}
+			if (this.periodType != null) {
+				return new Period(dates[0].getTime(), dates[1].getTime(), this.periodType);
+			}
+			if (this.chronology != null) {
+				return new Period(dates[0].getTime(), dates[1].getTime(), this.chronology);
+			}
+			return new Period(dates[0].getTime(), dates[1].getTime());
 		}		
 	}	
 	
-	public static final class FromTimestampFieldList implements IFunc<Period, List<Timestamp>> {
+	public static final class FromTimestampFieldList extends BaseToPeriod<List<Timestamp>> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromTimestampFieldList() {
 			super();			
 		}		
 		
 		public FromTimestampFieldList(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromTimestampFieldList(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromTimestampFieldList(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
 			return Types.forClass(Period.class);
 		}
 
-		public Period execute(final List<Timestamp> dates) throws Exception {
-			//TODO Check size is two
-			return null;
+		public Period execute(final List<Timestamp> timestamps) throws Exception {
+			if (timestamps.size() != 2 ) {
+				throw new FunctionExecutionException(
+						"Timestamp arguments list for Period conversion should of sizes " +
+						"2. Size " + timestamps.size() + " is not valid.");
+			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime(), 
+						this.periodType, this.chronology);
+			}
+			if (this.periodType != null) {
+				return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime(), this.periodType);
+			}
+			if (this.chronology != null) {
+				return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime(), this.chronology);
+			}
+			return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime());
 		}		
 	}	
 	
-	public static final class FromTimestampFieldArray implements IFunc<Period, Timestamp[]> {
+	public static final class FromTimestampFieldArray extends BaseToPeriod<Timestamp[]> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromTimestampFieldArray() {
 			super();			
 		}		
 		
 		public FromTimestampFieldArray(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromTimestampFieldArray(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromTimestampFieldArray(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
 			return Types.forClass(Period.class);
 		}
 
-		public Period execute(final Timestamp[] dates) throws Exception {
-			//TODO Check size is two
-			return null;
+		public Period execute(final Timestamp[] timestamps) throws Exception {
+			if (timestamps.length != 2 ) {
+				throw new FunctionExecutionException(
+						"Timestamp arguments array for Period conversion should of sizes " +
+						"2. Size " + timestamps.length + " is not valid.");
+			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(timestamps[0].getTime(), timestamps[1].getTime(), 
+						this.periodType, this.chronology);
+			}
+			if (this.periodType != null) {
+				return new Period(timestamps[0].getTime(), timestamps[1].getTime(), this.periodType);
+			}
+			if (this.chronology != null) {
+				return new Period(timestamps[0].getTime(), timestamps[1].getTime(), this.chronology);
+			}
+			return new Period(timestamps[0].getTime(), timestamps[1].getTime());
 		}		
 	}	
 	
-	public static final class FromLong implements IFunc<Period, Long> {
+	public static final class FromLong extends BaseToPeriod<Long> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromLong() {
 			super();			
 		}		
 		
 		public FromLong(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromLong(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
 		}
 		
 		public FromLong(PeriodType periodType, Chronology chronology) {
-			super();	
-			this.periodType = periodType;
-			this.chronology = chronology;
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -372,16 +464,21 @@ public final class ToPeriod {
 		}
 
 		public Period execute(final Long theLong) throws Exception {
-			//TODO Check size is two
-			return null;
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(theLong, this.periodType, this.chronology);
+			}
+			if (this.periodType != null) {
+				return new Period(theLong, this.periodType);
+			}
+			if (this.chronology != null) {
+				return new Period(theLong, this.chronology);
+			}
+			return new Period(theLong);
 		}		
 	}	
 	
-	public static final class FromLongFieldList implements IFunc<Period, List<Long>> {
+	public static final class FromLongFieldList extends BaseToPeriod<List<Long>> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromLongFieldList() {
 			super();			
 		}		
@@ -397,9 +494,7 @@ public final class ToPeriod {
 		}
 		
 		public FromLongFieldList(PeriodType periodType, Chronology chronology) {
-			super();		
-			this.periodType = periodType;
-			this.chronology = chronology;
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -426,11 +521,8 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromLongFieldArray implements IFunc<Period, Long[]> {
+	public static final class FromLongFieldArray extends BaseToPeriod<Long[]> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromLongFieldArray() {
 			super();			
 		}		
@@ -446,9 +538,7 @@ public final class ToPeriod {
 		}
 		
 		public FromLongFieldArray(PeriodType periodType, Chronology chronology) {
-			super();		
-			this.periodType = periodType;
-			this.chronology = chronology;
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -475,23 +565,22 @@ public final class ToPeriod {
 		}		
 	}	
 	 
-	public static final class FromCalendarFieldList implements IFunc<Period, List<Calendar>> {
+	public static final class FromCalendarFieldList extends BaseToPeriod<List<Calendar>> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromCalendarFieldList() {
 			super();			
 		}		
 		
 		public FromCalendarFieldList(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromCalendarFieldList(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromCalendarFieldList(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -504,6 +593,10 @@ public final class ToPeriod {
 						"Calendar arguments list for Period conversion should of sizes " +
 						"2. Size " + calendars.size() + " is not valid.");
 			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(calendars.get(0).getTimeInMillis(), calendars.get(1).getTimeInMillis(), 
+						this.periodType, this.chronology);
+			}
 			if (this.periodType != null) {
 				return new Period(calendars.get(0).getTimeInMillis(), calendars.get(1).getTimeInMillis(), this.periodType);
 			}
@@ -514,23 +607,22 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromCalendarFieldArray implements IFunc<Period, Calendar[]> {
+	public static final class FromCalendarFieldArray extends BaseToPeriod<Calendar[]> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromCalendarFieldArray() {
 			super();			
 		}		
 		
 		public FromCalendarFieldArray(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromCalendarFieldArray(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromCalendarFieldArray(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -543,6 +635,10 @@ public final class ToPeriod {
 						"Calendar arguments array for Period conversion should of sizes " +
 						"2. Size " + calendars.length + " is not valid.");
 			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(calendars[0].getTimeInMillis(), calendars[1].getTimeInMillis(), 
+						this.periodType, this.chronology);
+			}
 			if (this.periodType != null) {
 				return new Period(calendars[0].getTimeInMillis(), calendars[1].getTimeInMillis(), this.periodType);
 			}
@@ -553,23 +649,22 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromDateTimeFieldList implements IFunc<Period, List<DateTime>> {
+	public static final class FromDateTimeFieldList extends BaseToPeriod<List<DateTime>> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromDateTimeFieldList() {
 			super();			
 		}		
 		
 		public FromDateTimeFieldList(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromDateTimeFieldList(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromDateTimeFieldList(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -582,6 +677,9 @@ public final class ToPeriod {
 						"DateTime arguments list for Period conversion should of sizes " +
 						"2. Size " + dateTimes.size() + " is not valid.");
 			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(dateTimes.get(0).getMillis(), dateTimes.get(1).getMillis(), this.periodType, this.chronology);
+			}
 			if (this.periodType != null) {
 				return new Period(dateTimes.get(0), dateTimes.get(1), this.periodType);
 			}
@@ -592,23 +690,22 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromDateTimeFieldArray implements IFunc<Period, DateTime[]> {
+	public static final class FromDateTimeFieldArray extends BaseToPeriod<DateTime[]> {
 
-		private Chronology chronology = null;
-		private PeriodType periodType = null;
-		
 		public FromDateTimeFieldArray() {
 			super();			
 		}		
 		
 		public FromDateTimeFieldArray(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public FromDateTimeFieldArray(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
+		}
+		
+		public FromDateTimeFieldArray(PeriodType periodType, Chronology chronology) {
+			super(periodType, chronology);
 		}
 		
 		public Type<? super Period> getResultType() {
@@ -621,6 +718,9 @@ public final class ToPeriod {
 						"DateTime arguments array for Period conversion should of sizes " +
 						"2. Size " + dateTimes.length + " is not valid.");
 			}
+			if (this.periodType != null && this.chronology != null) {
+				return new Period(dateTimes[0].getMillis(), dateTimes[1].getMillis(), this.periodType, this.chronology);
+			}
 			if (this.periodType != null) {
 				return new Period(dateTimes[0], dateTimes[1], this.periodType);
 			}
@@ -631,17 +731,14 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromIntegerFieldList implements IFunc<Period, List<Integer>> {
+	public static final class FromIntegerFieldList extends BaseToPeriod<List<Integer>> {
 
-		private PeriodType periodType = null;
-		
 		public FromIntegerFieldList() {
 			super();			
 		}	
 		
 		public FromIntegerFieldList(PeriodType periodType) {
-			super();			
-			this.periodType = periodType;
+			super(periodType);
 		}	
 		
 		
@@ -675,17 +772,14 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromIntegerFieldArray implements IFunc<Period, Integer[]> {
+	public static final class FromIntegerFieldArray extends BaseToPeriod<Integer[]> {
 
-		private PeriodType periodType = null;
-		
 		public FromIntegerFieldArray() {
 			super();			
 		}		
 		
 		public FromIntegerFieldArray(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
 		}	
 		
 		public Type<? super Period> getResultType() {
@@ -718,17 +812,14 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromStringFieldList implements IFunc<Period, List<String>> {
+	public static final class FromStringFieldList extends BaseToPeriod<List<String>> {
 
-		private PeriodType periodType = null;
-		
 		public FromStringFieldList() {
 			super();			
 		}	
 		
 		public FromStringFieldList(PeriodType periodType) {
-			super();			
-			this.periodType = periodType;
+			super(periodType);
 		}	
 		
 		
@@ -762,17 +853,14 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromStringFieldArray implements IFunc<Period, String[]> {
+	public static final class FromStringFieldArray extends BaseToPeriod<String[]> {
 
-		private PeriodType periodType = null;
-		
 		public FromStringFieldArray() {
 			super();			
 		}		
 		
 		public FromStringFieldArray(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
 		}	
 		
 		public Type<? super Period> getResultType() {
