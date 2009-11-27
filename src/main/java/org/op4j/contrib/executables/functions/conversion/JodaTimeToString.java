@@ -132,6 +132,16 @@ public final class JodaTimeToString {
 			}
 		}
 		
+		/* 
+		 * It converts the given LocalTime into an String by means of the given pattern or style.
+		 * A chronology can also be used
+		 * 
+		 * If a formatter is passed, it will be used instead of the
+		 * pattern or style
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public String execute(final BaseDateTime baseDateTime) throws Exception {
 			switch (this.conversionType) {
 				case FROM_FORMATTER:

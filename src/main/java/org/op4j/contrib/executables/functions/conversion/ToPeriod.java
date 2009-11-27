@@ -295,6 +295,13 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * The given java.util.Date targets will be used as the start and end instants of the Period
+		 * returned
+		 *  
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final List<Date> dates) throws Exception {
 			if (dates.size() != 2 ) {
 				throw new FunctionExecutionException(
@@ -337,6 +344,13 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * The given java.util.Date targets will be used as the start and end instants of the Period
+		 * returned
+		 *  
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final Date[] dates) throws Exception {
 			if (dates.length != 2 ) {
 				throw new FunctionExecutionException(
@@ -379,6 +393,13 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * The given java.sql.Timestamp target elements will be used as the start and end
+		 * instants of the Period returned
+		 *                 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final List<Timestamp> timestamps) throws Exception {
 			if (timestamps.size() != 2 ) {
 				throw new FunctionExecutionException(
@@ -421,6 +442,13 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * The given java.sql.Timestamp target elements will be used as the start and end
+		 * instants of the Period returned
+		 *                 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final Timestamp[] timestamps) throws Exception {
 			if (timestamps.length != 2 ) {
 				throw new FunctionExecutionException(
@@ -463,6 +491,12 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * It returns a Period with the given Duration in milliseconds
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final Long theLong) throws Exception {
 			if (this.periodType != null && this.chronology != null) {
 				return new Period(theLong, this.periodType, this.chronology);
@@ -501,6 +535,13 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * The given long targets representing the time in millis will be used as the start
+		 * and end instants of the Period returned
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final List<Long> longs) throws Exception {
 			if (longs.size() != 2 ) {
 				throw new FunctionExecutionException(
@@ -545,6 +586,13 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * The given long targets representing the time in millis will be used as the start
+		 * and end instants of the Period returned
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final Long[] longs) throws Exception {
 			if (longs.length != 2 ) {
 				throw new FunctionExecutionException(
@@ -587,6 +635,12 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * It creates a Period with the given Calendar targets as the start and end of it
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final List<Calendar> calendars) throws Exception {
 			if (calendars.size() != 2 ) {
 				throw new FunctionExecutionException(
@@ -629,6 +683,12 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * It creates a Period with the given Calendar targets as the start and end of it
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final Calendar[] calendars) throws Exception {
 			if (calendars.length != 2 ) {
 				throw new FunctionExecutionException(
@@ -671,6 +731,12 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * It creates a Period with the given DateTime targets as the start and end of it
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final List<DateTime> dateTimes) throws Exception {
 			if (dateTimes.size() != 2 ) {
 				throw new FunctionExecutionException(
@@ -712,6 +778,12 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * It creates a Period with the given DateTime targets as the start and end of it
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final DateTime[] dateTimes) throws Exception {
 			if (dateTimes.length != 2 ) {
 				throw new FunctionExecutionException(
@@ -746,6 +818,14 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * A Period is created either:
+		 * - from the given hours, minutes, seconds and milliseconds
+		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final List<Integer> integers) throws Exception {
 			if (integers.size() != 4 && // hours, minutes, seconds, milliseconds
 					integers.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
@@ -786,6 +866,14 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * A Period is created either:
+		 * - from the given hours, minutes, seconds and milliseconds
+		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final Integer[] integers) throws Exception {
 			if (integers.length != 4 && // hours, minutes, seconds, milliseconds
 					integers.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
@@ -827,6 +915,14 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * A Period is created either:
+		 * - from the given hours, minutes, seconds and milliseconds
+		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final List<String> strings) throws Exception {
 			if (strings.size() != 4 && // hours, minutes, seconds, milliseconds
 					strings.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
@@ -867,6 +963,14 @@ public final class ToPeriod {
 			return Types.forClass(Period.class);
 		}
 
+		/* 
+		 * A Period is created either:
+		 * - from the given hours, minutes, seconds and milliseconds
+		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
 		public Period execute(final String[] strings) throws Exception {
 			if (strings.length != 4 && // hours, minutes, seconds, milliseconds
 					strings.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
