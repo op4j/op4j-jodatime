@@ -28,9 +28,9 @@ import java.util.List;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
-import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
+import org.joda.time.base.BaseDateTime;
 import org.op4j.exceptions.FunctionExecutionException;
 import org.op4j.executables.functions.IFunc;
 
@@ -44,7 +44,7 @@ import org.op4j.executables.functions.IFunc;
 public final class ToPeriod {
 
 	private static final FromDateFieldList FROM_DATE_FIELD_LIST = new FromDateFieldList();
-	private static final FromDateFieldArray FROM_DATE_FIELD_ARRAY = new FromDateFieldArray();
+//	private static final FromDateFieldArray FROM_DATE_FIELD_ARRAY = new FromDateFieldArray();
 	
 	private static final FromTimestampFieldList FROM_TIMESTAMP_FIELD_LIST = new FromTimestampFieldList();
 	private static final FromTimestampFieldArray FROM_TIMESTAMP_FIELD_ARRAY = new FromTimestampFieldArray();
@@ -55,10 +55,10 @@ public final class ToPeriod {
 	private static final FromLongFieldArray FROM_LONG_FIELD_ARRAY = new FromLongFieldArray();
 	
 	private static final FromCalendarFieldList FROM_CALENDAR_FIELD_LIST = new FromCalendarFieldList();
-	private static final FromCalendarFieldArray FROM_CALENDAR_FIELD_ARRAY = new FromCalendarFieldArray();
+//	private static final FromCalendarFieldArray FROM_CALENDAR_FIELD_ARRAY = new FromCalendarFieldArray();
 	
-	private static final FromDateTimeFieldList FROM_DATETIME_FIELD_LIST = new FromDateTimeFieldList();
-	private static final FromDateTimeFieldArray FROM_DATETIME_FIELD_ARRAY = new FromDateTimeFieldArray();
+	private static final FromBaseDateTimeFieldList FROM_BASEDATETIME_FIELD_LIST = new FromBaseDateTimeFieldList();
+//	private static final FromBaseDateTimeFieldArray FROM_BASEDATETIME_FIELD_ARRAY = new FromBaseDateTimeFieldArray();
 	
 	private static final FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
 	private static final FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
@@ -84,17 +84,18 @@ public final class ToPeriod {
 	public static final FromDateFieldList fromDateFieldList(final PeriodType periodType, final Chronology chronology) {
 		return new FromDateFieldList(periodType, chronology);
 	}
-	public static final FromDateFieldArray fromDateFieldArray() {
-		return FROM_DATE_FIELD_ARRAY;
+	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray() {
+//		return FROM_DATE_FIELD_ARRAY;
+		return new FromDateFieldArray<T>();
 	}	
-	public static final FromDateFieldArray fromDateFieldArray(final Chronology chronology) {
-		return new FromDateFieldArray(chronology);
+	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(final Chronology chronology) {
+		return new FromDateFieldArray<T>(chronology);
 	}	
-	public static final FromDateFieldArray fromDateFieldArray(final PeriodType periodType) {
-		return new FromDateFieldArray(periodType);
+	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(final PeriodType periodType) {
+		return new FromDateFieldArray<T>(periodType);
 	}
-	public static final FromDateFieldArray fromDateFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromDateFieldArray(periodType, chronology);
+	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new FromDateFieldArray<T>(periodType, chronology);
 	}
 	//
 	
@@ -119,6 +120,9 @@ public final class ToPeriod {
 	}	
 	public static final FromTimestampFieldArray fromTimestampFieldArray(final PeriodType periodType) {
 		return new FromTimestampFieldArray(periodType);
+	}
+	public static final FromTimestampFieldArray fromTimestampFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new FromTimestampFieldArray(periodType, chronology);
 	}
 	//
 	
@@ -177,44 +181,46 @@ public final class ToPeriod {
 	public static final FromCalendarFieldList fromCalendarFieldList(final PeriodType periodType, final Chronology chronology) {
 		return new FromCalendarFieldList(periodType, chronology);
 	}
-	public static final FromCalendarFieldArray fromCalendarFieldArray() {
-		return FROM_CALENDAR_FIELD_ARRAY;
+	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray() {
+//		return FROM_CALENDAR_FIELD_ARRAY;
+		return new FromCalendarFieldArray<T>();
 	}	
-	public static final FromCalendarFieldArray fromCalendarFieldArray(final Chronology chronology) {
-		return new FromCalendarFieldArray(chronology);
+	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(final Chronology chronology) {
+		return new FromCalendarFieldArray<T>(chronology);
 	}	
-	public static final FromCalendarFieldArray fromCalendarFieldArray(final PeriodType periodType) {
-		return new FromCalendarFieldArray(periodType);
+	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(final PeriodType periodType) {
+		return new FromCalendarFieldArray<T>(periodType);
 	}
-	public static final FromCalendarFieldArray fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromCalendarFieldArray(periodType, chronology);
+	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new FromCalendarFieldArray<T>(periodType, chronology);
 	}
 	//
 	
 	// Conversion from two datetime objects
-	public static final FromDateTimeFieldList fromDateTimeFieldList() {
-		return FROM_DATETIME_FIELD_LIST;
+	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList() {
+		return FROM_BASEDATETIME_FIELD_LIST;
 	}	
-	public static final FromDateTimeFieldList fromDateTimeFieldList(final Chronology chronology) {
-		return new FromDateTimeFieldList(chronology);
+	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(final Chronology chronology) {
+		return new FromBaseDateTimeFieldList(chronology);
 	}	
-	public static final FromDateTimeFieldList fromDateTimeFieldList(final PeriodType periodType) {
-		return new FromDateTimeFieldList(periodType);
+	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(final PeriodType periodType) {
+		return new FromBaseDateTimeFieldList(periodType);
 	}
-	public static final FromDateTimeFieldList fromDateTimeFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new FromDateTimeFieldList(periodType, chronology);
+	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new FromBaseDateTimeFieldList(periodType, chronology);
 	}
-	public static final FromDateTimeFieldArray fromDateTimeFieldArray() {
-		return FROM_DATETIME_FIELD_ARRAY;
+	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray() {
+//		return FROM_BASEDATETIME_FIELD_ARRAY;
+		return new FromBaseDateTimeFieldArray<T>();
 	}	
-	public static final FromDateTimeFieldArray fromDateTimeFieldArray(final Chronology chronology) {
-		return new FromDateTimeFieldArray(chronology);
+	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(final Chronology chronology) {
+		return new FromBaseDateTimeFieldArray<T>(chronology);
 	}	
-	public static final FromDateTimeFieldArray fromDateTimeFieldArray(final PeriodType periodType) {
-		return new FromDateTimeFieldArray(periodType);
+	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(final PeriodType periodType) {
+		return new FromBaseDateTimeFieldArray<T>(periodType);
 	}
-	public static final FromDateTimeFieldArray fromDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromDateTimeFieldArray(periodType, chronology);
+	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new FromBaseDateTimeFieldArray<T>(periodType, chronology);
 	}
 	//
 	
@@ -273,7 +279,7 @@ public final class ToPeriod {
 		
 	}
 	
-	public static final class FromDateFieldList extends BaseToPeriod<List<Date>> {
+	public static final class FromDateFieldList extends BaseToPeriod<List<? extends Date>> {
 
 		public FromDateFieldList() {
 			super();			
@@ -302,7 +308,7 @@ public final class ToPeriod {
 		 * (non-Javadoc)
 		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
 		 */
-		public Period execute(final List<Date> dates) throws Exception {
+		public Period execute(final List<? extends Date> dates) throws Exception {
 			if (dates.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments list for Period conversion should of sizes " +
@@ -322,7 +328,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromDateFieldArray extends BaseToPeriod<Date[]> {
+	public static final class FromDateFieldArray<T extends Date> extends BaseToPeriod<T[]> {
 
 		public FromDateFieldArray() {
 			super();			
@@ -351,7 +357,7 @@ public final class ToPeriod {
 		 * (non-Javadoc)
 		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
 		 */
-		public Period execute(final Date[] dates) throws Exception {
+		public Period execute(final T[] dates) throws Exception {
 			if (dates.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments array for Period conversion should of sizes " +
@@ -499,15 +505,15 @@ public final class ToPeriod {
 		 */
 		public Period execute(final Long theLong) throws Exception {
 			if (this.periodType != null && this.chronology != null) {
-				return new Period(theLong, this.periodType, this.chronology);
+				return new Period(theLong.longValue(), this.periodType, this.chronology);
 			}
 			if (this.periodType != null) {
-				return new Period(theLong, this.periodType);
+				return new Period(theLong.longValue(), this.periodType);
 			}
 			if (this.chronology != null) {
-				return new Period(theLong, this.chronology);
+				return new Period(theLong.longValue(), this.chronology);
 			}
-			return new Period(theLong);
+			return new Period(theLong.longValue());
 		}		
 	}	
 	
@@ -613,7 +619,7 @@ public final class ToPeriod {
 		}		
 	}	
 	 
-	public static final class FromCalendarFieldList extends BaseToPeriod<List<Calendar>> {
+	public static final class FromCalendarFieldList extends BaseToPeriod<List<? extends Calendar>> {
 
 		public FromCalendarFieldList() {
 			super();			
@@ -641,7 +647,7 @@ public final class ToPeriod {
 		 * (non-Javadoc)
 		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
 		 */
-		public Period execute(final List<Calendar> calendars) throws Exception {
+		public Period execute(final List<? extends Calendar> calendars) throws Exception {
 			if (calendars.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments list for Period conversion should of sizes " +
@@ -661,7 +667,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromCalendarFieldArray extends BaseToPeriod<Calendar[]> {
+	public static final class FromCalendarFieldArray<T extends Calendar> extends BaseToPeriod<T[]> {
 
 		public FromCalendarFieldArray() {
 			super();			
@@ -689,7 +695,7 @@ public final class ToPeriod {
 		 * (non-Javadoc)
 		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
 		 */
-		public Period execute(final Calendar[] calendars) throws Exception {
+		public Period execute(final T[] calendars) throws Exception {
 			if (calendars.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments array for Period conversion should of sizes " +
@@ -709,21 +715,21 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromDateTimeFieldList extends BaseToPeriod<List<DateTime>> {
+	public static final class FromBaseDateTimeFieldList extends BaseToPeriod<List<? extends BaseDateTime>> {
 
-		public FromDateTimeFieldList() {
+		public FromBaseDateTimeFieldList() {
 			super();			
 		}		
 		
-		public FromDateTimeFieldList(Chronology chronology) {
+		public FromBaseDateTimeFieldList(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromDateTimeFieldList(PeriodType periodType) {
+		public FromBaseDateTimeFieldList(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromDateTimeFieldList(PeriodType periodType, Chronology chronology) {
+		public FromBaseDateTimeFieldList(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -737,7 +743,7 @@ public final class ToPeriod {
 		 * (non-Javadoc)
 		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
 		 */
-		public Period execute(final List<DateTime> dateTimes) throws Exception {
+		public Period execute(final List<? extends BaseDateTime> dateTimes) throws Exception {
 			if (dateTimes.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"DateTime arguments list for Period conversion should of sizes " +
@@ -756,21 +762,21 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromDateTimeFieldArray extends BaseToPeriod<DateTime[]> {
+	public static final class FromBaseDateTimeFieldArray<T extends BaseDateTime> extends BaseToPeriod<T[]> {
 
-		public FromDateTimeFieldArray() {
+		public FromBaseDateTimeFieldArray() {
 			super();			
 		}		
 		
-		public FromDateTimeFieldArray(Chronology chronology) {
+		public FromBaseDateTimeFieldArray(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromDateTimeFieldArray(PeriodType periodType) {
+		public FromBaseDateTimeFieldArray(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromDateTimeFieldArray(PeriodType periodType, Chronology chronology) {
+		public FromBaseDateTimeFieldArray(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -784,7 +790,7 @@ public final class ToPeriod {
 		 * (non-Javadoc)
 		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
 		 */
-		public Period execute(final DateTime[] dateTimes) throws Exception {
+		public Period execute(final T[] dateTimes) throws Exception {
 			if (dateTimes.length != 2 ) {
 				throw new FunctionExecutionException(
 						"DateTime arguments array for Period conversion should of sizes " +
