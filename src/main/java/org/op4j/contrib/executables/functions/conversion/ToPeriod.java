@@ -271,6 +271,9 @@ public final class ToPeriod {
 			this.periodType = periodType;
 		}
 		
+		public Type<? super Period> getResultType() {
+			return Types.forClass(Period.class);
+		}
 	}
 	
 	public static final class FromDateFieldList extends BaseToPeriod<List<? extends Date>> {
@@ -291,10 +294,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * The given java.util.Date targets will be used as the start and end instants of the Period
 		 * returned
@@ -340,10 +339,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * The given java.util.Date targets will be used as the start and end instants of the Period
 		 * returned
@@ -389,10 +384,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * The given java.sql.Timestamp target elements will be used as the start and end
 		 * instants of the Period returned
@@ -438,10 +429,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * The given java.sql.Timestamp target elements will be used as the start and end
 		 * instants of the Period returned
@@ -487,10 +474,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * It returns a Period with the given Duration in milliseconds
 		 * 
@@ -531,10 +514,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * The given long targets representing the time in millis will be used as the start
 		 * and end instants of the Period returned
@@ -582,10 +561,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * The given long targets representing the time in millis will be used as the start
 		 * and end instants of the Period returned
@@ -631,10 +606,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * It creates a Period with the given Calendar targets as the start and end of it
 		 * 
@@ -679,10 +650,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * It creates a Period with the given Calendar targets as the start and end of it
 		 * 
@@ -727,10 +694,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * It creates a Period with the given DateTime targets as the start and end of it
 		 * 
@@ -774,10 +737,6 @@ public final class ToPeriod {
 			super(periodType, chronology);
 		}
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * It creates a Period with the given DateTime targets as the start and end of it
 		 * 
@@ -813,11 +772,6 @@ public final class ToPeriod {
 			super(periodType);
 		}	
 		
-		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * A Period is created either:
 		 * - from the given hours, minutes, seconds and milliseconds
@@ -866,10 +820,6 @@ public final class ToPeriod {
 			super(periodType);
 		}	
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * A Period is created either:
 		 * - from the given hours, minutes, seconds and milliseconds
@@ -918,11 +868,6 @@ public final class ToPeriod {
 			super(periodType);
 		}	
 		
-		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * A Period is created either:
 		 * - from the given hours, minutes, seconds and milliseconds
@@ -971,10 +916,6 @@ public final class ToPeriod {
 			super(periodType);
 		}	
 		
-		public Type<? super Period> getResultType() {
-			return Types.forClass(Period.class);
-		}
-
 		/* 
 		 * A Period is created either:
 		 * - from the given hours, minutes, seconds and milliseconds
