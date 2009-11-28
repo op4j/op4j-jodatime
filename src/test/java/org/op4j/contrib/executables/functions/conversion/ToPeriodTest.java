@@ -2,7 +2,6 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
@@ -10,6 +9,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.joda.time.DateMidnight;
+import org.joda.time.DateTime;
+import org.joda.time.DurationFieldType;
+import org.joda.time.MutableDateTime;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.chrono.BuddhistChronology;
@@ -478,82 +481,231 @@ public class ToPeriodTest {
 
 	@Test
 	public void testFromBaseDateTimeFieldList() {
-		fail("Not yet implemented");
+		DateTime first = new DateTime();
+		DateTime second = new DateTime();
+		second.plusWeeks(10);
+		Period period = Op.on(Arrays.asList(first, second))
+			.exec(ToPeriod.fromBaseDateTimeFieldList())
+			.get();
+	
+		assertEquals(period,
+				new Period(first, second));
 	}
 
 	@Test
 	public void testFromBaseDateTimeFieldListChronology() {
-		fail("Not yet implemented");
+		DateMidnight first = new DateMidnight();
+		DateMidnight second = new DateMidnight();
+		second.plusWeeks(10);
+		Period period = Op.on(Arrays.asList(first, second))
+			.exec(ToPeriod.fromBaseDateTimeFieldList(BuddhistChronology.getInstance()))
+			.get();
+	
+		assertEquals(period,
+				new Period(first.getMillis(), second.getMillis(), BuddhistChronology.getInstance()));
 	}
 
 	@Test
 	public void testFromBaseDateTimeFieldListPeriodType() {
-		fail("Not yet implemented");
+		DateMidnight first = new DateMidnight();
+		DateMidnight second = new DateMidnight();
+		second.plusWeeks(10);
+		Period period = Op.on(Arrays.asList(first, second))
+			.exec(ToPeriod.fromBaseDateTimeFieldList(PeriodType.minutes()))
+			.get();
+	
+		assertEquals(period,
+				new Period(first.getMillis(), second.getMillis(), PeriodType.minutes()));
 	}
 
 	@Test
 	public void testFromBaseDateTimeFieldListPeriodTypeChronology() {
-		fail("Not yet implemented");
+		MutableDateTime first = new MutableDateTime();
+		MutableDateTime second = new MutableDateTime();
+		second.addWeeks(10);
+		Period period = Op.on(Arrays.asList(first, second))
+			.exec(ToPeriod.fromBaseDateTimeFieldList(PeriodType.minutes(), BuddhistChronology.getInstance()))
+			.get();
+	
+		assertEquals(period,
+				new Period(first.getMillis(), second.getMillis(), PeriodType.minutes(), BuddhistChronology.getInstance()));
 	}
 
 	@Test
 	public void testFromBaseDateTimeFieldArray() {
-		fail("Not yet implemented");
+		DateTime first = new DateTime();
+		DateTime second = new DateTime();
+		second.plusWeeks(10);
+		Period period = Op.on(new DateTime[] {first, second})
+			.exec(ToPeriod.fromBaseDateTimeFieldArray())
+			.get();
+	
+		assertEquals(period,
+				new Period(first, second));
 	}
 
 	@Test
 	public void testFromBaseDateTimeFieldArrayChronology() {
-		fail("Not yet implemented");
+		DateMidnight first = new DateMidnight();
+		DateMidnight second = new DateMidnight();
+		second.plusWeeks(10);
+		Period period = Op.on(new DateMidnight[] {first, second})
+			.exec(ToPeriod.fromBaseDateTimeFieldArray(BuddhistChronology.getInstance()))
+			.get();
+	
+		assertEquals(period,
+				new Period(first.getMillis(), second.getMillis(), BuddhistChronology.getInstance()));
 	}
 
 	@Test
 	public void testFromBaseDateTimeFieldArrayPeriodType() {
-		fail("Not yet implemented");
+		DateMidnight first = new DateMidnight();
+		DateMidnight second = new DateMidnight();
+		second.plusWeeks(10);
+		Period period = Op.on(new DateMidnight[] {first, second})
+			.exec(ToPeriod.fromBaseDateTimeFieldArray(PeriodType.minutes()))
+			.get();
+	
+		assertEquals(period,
+				new Period(first.getMillis(), second.getMillis(), PeriodType.minutes()));
 	}
 
 	@Test
 	public void testFromBaseDateTimeFieldArrayPeriodTypeChronology() {
-		fail("Not yet implemented");
+		MutableDateTime first = new MutableDateTime();
+		MutableDateTime second = new MutableDateTime();
+		second.addWeeks(10);
+		Period period = Op.on(new MutableDateTime[] {first, second})
+			.exec(ToPeriod.fromBaseDateTimeFieldArray(PeriodType.minutes(), BuddhistChronology.getInstance()))
+			.get();
+	
+		assertEquals(period,
+				new Period(first.getMillis(), second.getMillis(), PeriodType.minutes(), BuddhistChronology.getInstance()));
 	}
 
 	@Test
 	public void testFromIntegerFieldList() {
-		fail("Not yet implemented");
+		Integer hours = Integer.valueOf(3);
+		Integer minutes = Integer.valueOf(30);
+		Integer secs = Integer.valueOf(13);
+		Integer millis = Integer.valueOf(22);
+		
+		Period period = Op.on(Arrays.asList(hours, minutes, secs, millis))
+			.exec(ToPeriod.fromIntegerFieldList())
+			.get();
+	
+		assertEquals(period,
+				new Period(hours.intValue(), minutes.intValue(), secs.intValue(), millis.intValue()));
 	}
 
 	@Test
 	public void testFromIntegerFieldListPeriodType() {
-		fail("Not yet implemented");
+		Integer hours = Integer.valueOf(3);
+		Integer minutes = Integer.valueOf(30);
+		
+		Period period = Op.on(Arrays.asList(hours, minutes, Integer.valueOf(0), Integer.valueOf(0)))
+			.exec(ToPeriod.fromIntegerFieldList(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+					DurationFieldType.minutes()})))
+			.get();
+	
+		assertEquals(period,
+				new Period(0, 0, 0, 0, hours.intValue(), minutes.intValue(), 0, 0,
+						PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+								DurationFieldType.minutes()})));
 	}
 
 	@Test
 	public void testFromIntegerFieldArray() {
-		fail("Not yet implemented");
+		Integer hours = Integer.valueOf(3);
+		Integer minutes = Integer.valueOf(30);
+		Integer secs = Integer.valueOf(13);
+		Integer millis = Integer.valueOf(22);
+		
+		Period period = Op.on(new Integer[] {hours, minutes, secs, millis})
+			.exec(ToPeriod.fromIntegerFieldArray())
+			.get();
+	
+		assertEquals(period,
+				new Period(hours.intValue(), minutes.intValue(), secs.intValue(), millis.intValue()));
 	}
 
 	@Test
 	public void testFromIntegerFieldArrayPeriodType() {
-		fail("Not yet implemented");
+		Integer hours = Integer.valueOf(3);
+		Integer minutes = Integer.valueOf(30);
+		
+		Period period = Op.on(new Integer[] {hours, minutes, Integer.valueOf(0), Integer.valueOf(0)})
+			.exec(ToPeriod.fromIntegerFieldArray(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+					DurationFieldType.minutes()})))
+			.get();
+	
+		assertEquals(period,
+				new Period(0, 0, 0, 0, hours.intValue(), minutes.intValue(), 0, 0,
+						PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+								DurationFieldType.minutes()})));
 	}
 
 	@Test
 	public void testFromStringFieldList() {
-		fail("Not yet implemented");
+		String hours = "3";
+		String minutes = "30";
+		String secs = "13";
+		String millis = "22";
+		
+		Period period = Op.on(Arrays.asList(hours, minutes, secs, millis))
+			.exec(ToPeriod.fromStringFieldList())
+			.get();
+	
+		assertEquals(period,
+				new Period(Integer.parseInt(hours), Integer.parseInt(minutes), Integer.parseInt(secs), Integer.parseInt(millis)));
 	}
 
 	@Test
 	public void testFromStringFieldListPeriodType() {
-		fail("Not yet implemented");
+		String hours = "3";
+		String minutes = "30";
+		
+		Period period = Op.on(Arrays.asList(hours, minutes, "0", "0"))
+			.exec(ToPeriod.fromStringFieldList(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+					DurationFieldType.minutes()})))
+			.get();
+	
+		assertEquals(period,
+				new Period(0, 0, 0, 0, Integer.parseInt(hours), Integer.parseInt(minutes), 0, 0,
+						PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+								DurationFieldType.minutes()})));
 	}
 
 	@Test
 	public void testFromStringFieldArray() {
-		fail("Not yet implemented");
+		String hours = "3";
+		String minutes = "30";
+		String secs = "13";
+		String millis = "22";
+		
+		Period period = Op.on(new String[] {hours, minutes, secs, millis})
+			.exec(ToPeriod.fromStringFieldArray())
+			.get();
+	
+		assertEquals(period,
+				new Period(Integer.parseInt(hours), Integer.parseInt(minutes),
+						Integer.parseInt(secs), Integer.parseInt(millis)));
 	}
 
 	@Test
 	public void testFromStringFieldArrayPeriodType() {
-		fail("Not yet implemented");
+		String hours = "3";
+		String minutes = "30";
+		
+		Period period = Op.on(new String[] {hours, minutes, "0", "0"})
+			.exec(ToPeriod.fromStringFieldArray(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+					DurationFieldType.minutes()})))
+			.get();
+	
+		assertEquals(period,
+				new Period(0, 0, 0, 0, Integer.parseInt(hours), Integer.parseInt(minutes), 0, 0,
+						PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+								DurationFieldType.minutes()})));
 	}
 
 }

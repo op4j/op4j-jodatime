@@ -10,6 +10,7 @@ import java.util.Locale;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
+import org.joda.time.LocalTime;
 import org.joda.time.chrono.BuddhistChronology;
 import org.joda.time.chrono.GregorianChronology;
 import org.joda.time.format.DateTimeFormat;
@@ -87,4 +88,66 @@ public class JodaTimeToStringTest {
 				DateTimeFormat.fullDateTime()),
 				result.get(0));		
 	}
+	
+	@Test
+	public void testFromLocalTimeFormatTypeString() {
+		List<LocalTime> targets = new ArrayList<LocalTime>();
+		targets.add(new LocalTime());
+		List<String> result = Op.onList(targets).forEach().exec(JodaTimeToString.fromLocalTime(FormatType.PATTERN, 
+				"yyyy-MM-DD_HH:mm:ss:SS")).get();
+		
+		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS"),
+				result.get(0));
+	}
+
+	@Test
+	public void testFromLocalTimeFormatTypeStringLocale() {
+		List<LocalTime> targets = new ArrayList<LocalTime>();
+		targets.add(new LocalTime());
+		List<String> result = Op.onList(targets).forEach().exec(JodaTimeToString
+				.fromLocalTime(FormatType.PATTERN, "yyyy-MM-DD_HH:mm:ss:SS", Locale.UK)).get();	
+		
+		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS", Locale.UK),
+				result.get(0));
+	}
+
+	@Test
+	public void testFromLocalTimeFormatTypeStringChronology() {
+		List<LocalTime> targets = new ArrayList<LocalTime>();
+		targets.add(new LocalTime());
+		List<String> result = Op.onList(targets).forEach().exec(JodaTimeToString
+				.fromLocalTime(FormatType.STYLE, "MM", BuddhistChronology.getInstance())).get();	
+		
+		assertEquals(targets.get(0).toString(
+				DateTimeFormat.forStyle("MM").withChronology(BuddhistChronology.getInstance())),
+				result.get(0));
+	}
+
+	@Test
+	public void testFromLocalTimeFormatTypeStringString() {
+		List<LocalTime> targets = new ArrayList<LocalTime>();
+		targets.add(new LocalTime());
+		List<String> result = Op.onList(targets).forEach().exec(JodaTimeToString
+				.fromLocalTime(FormatType.STYLE, "MM", Locale.UK.toString())).get();	
+		
+		assertEquals(targets.get(0).toString(
+				DateTimeFormat.forStyle("MM").withLocale(Locale.UK)),
+				result.get(0));
+		assertFalse(StringUtils.equals(
+				targets.get(0).toString(DateTimeFormat.forStyle("ML").withLocale(Locale.UK)),
+				result.get(0)));
+	}
+
+	@Test
+	public void testFromLocalTimeDateTimeFormatter() {
+		List<LocalTime> targets = new ArrayList<LocalTime>();
+		targets.add(new LocalTime());
+		List<String> result = Op.onList(targets).forEach().exec(JodaTimeToString
+				.fromLocalTime(DateTimeFormat.fullDateTime())).get();	
+		
+		assertEquals(targets.get(0).toString(
+				DateTimeFormat.fullDateTime()),
+				result.get(0));		
+	}
+	
 }

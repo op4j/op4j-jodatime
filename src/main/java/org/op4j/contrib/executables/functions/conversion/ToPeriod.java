@@ -44,7 +44,6 @@ import org.op4j.executables.functions.IFunc;
 public final class ToPeriod {
 
 	private static final FromDateFieldList FROM_DATE_FIELD_LIST = new FromDateFieldList();
-//	private static final FromDateFieldArray FROM_DATE_FIELD_ARRAY = new FromDateFieldArray();
 	
 	private static final FromTimestampFieldList FROM_TIMESTAMP_FIELD_LIST = new FromTimestampFieldList();
 	private static final FromTimestampFieldArray FROM_TIMESTAMP_FIELD_ARRAY = new FromTimestampFieldArray();
@@ -55,10 +54,8 @@ public final class ToPeriod {
 	private static final FromLongFieldArray FROM_LONG_FIELD_ARRAY = new FromLongFieldArray();
 	
 	private static final FromCalendarFieldList FROM_CALENDAR_FIELD_LIST = new FromCalendarFieldList();
-//	private static final FromCalendarFieldArray FROM_CALENDAR_FIELD_ARRAY = new FromCalendarFieldArray();
 	
 	private static final FromBaseDateTimeFieldList FROM_BASEDATETIME_FIELD_LIST = new FromBaseDateTimeFieldList();
-//	private static final FromBaseDateTimeFieldArray FROM_BASEDATETIME_FIELD_ARRAY = new FromBaseDateTimeFieldArray();
 	
 	private static final FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
 	private static final FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
@@ -85,7 +82,6 @@ public final class ToPeriod {
 		return new FromDateFieldList(periodType, chronology);
 	}
 	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray() {
-//		return FROM_DATE_FIELD_ARRAY;
 		return new FromDateFieldArray<T>();
 	}	
 	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(final Chronology chronology) {
@@ -182,7 +178,6 @@ public final class ToPeriod {
 		return new FromCalendarFieldList(periodType, chronology);
 	}
 	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray() {
-//		return FROM_CALENDAR_FIELD_ARRAY;
 		return new FromCalendarFieldArray<T>();
 	}	
 	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(final Chronology chronology) {
@@ -210,7 +205,6 @@ public final class ToPeriod {
 		return new FromBaseDateTimeFieldList(periodType, chronology);
 	}
 	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray() {
-//		return FROM_BASEDATETIME_FIELD_ARRAY;
 		return new FromBaseDateTimeFieldArray<T>();
 	}	
 	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(final Chronology chronology) {
@@ -842,6 +836,10 @@ public final class ToPeriod {
 			}
 			
 			if (integers.size() == 4) {
+				if (this.periodType != null) {
+					return new Period(0, 0, 0, 0, integers.get(0).intValue(), integers.get(1).intValue(), 
+							integers.get(2).intValue(), integers.get(3).intValue(), this.periodType);
+				}
 				return new Period(integers.get(0).intValue(), integers.get(1).intValue(), 
 						integers.get(2).intValue(), integers.get(3).intValue());
 			} 
@@ -890,6 +888,10 @@ public final class ToPeriod {
 	        }
 			
 			if (integers.length == 4) {
+				if (this.periodType != null) {
+					return new Period(0, 0, 0, 0, integers[0].intValue(), integers[1].intValue(), 
+							integers[2].intValue(), integers[3].intValue(), this.periodType);
+				}
 				return new Period(integers[0].intValue(), integers[1].intValue(), 
 						integers[2].intValue(), integers[3].intValue());
 			} 
@@ -939,6 +941,10 @@ public final class ToPeriod {
 			}
 			
 			if (strings.size() == 4) {
+				if (this.periodType != null) {
+					return new Period(0, 0, 0, 0, Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
+							Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)), this.periodType);
+				}
 				return new Period(Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
 						Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)));
 			} 
@@ -987,6 +993,10 @@ public final class ToPeriod {
 	        }
 			
 			if (strings.length == 4) {
+				if (this.periodType != null) {
+					return new Period(0, 0, 0, 0, Integer.parseInt(strings[0]), Integer.parseInt(strings[1]), 
+							Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), this.periodType);
+				}
 				return new Period(Integer.parseInt(strings[0]), Integer.parseInt(strings[1]), 
 						Integer.parseInt(strings[2]), Integer.parseInt(strings[3]));
 			} 

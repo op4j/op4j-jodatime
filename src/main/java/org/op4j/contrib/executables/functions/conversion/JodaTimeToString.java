@@ -26,6 +26,7 @@ import org.apache.commons.lang.LocaleUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
+import org.joda.time.LocalTime;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -63,6 +64,26 @@ public final class JodaTimeToString {
 	
 	public static final FromBaseDateTime fromBaseDateTime(final DateTimeFormatter formatter) {
 		return new FromBaseDateTime(formatter);
+	}
+
+	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format) {
+		return new FromLocalTime(formatType, format);
+	}
+	
+	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final Locale locale) {
+		return new FromLocalTime(formatType, format, locale);
+	}
+	
+	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final Chronology chronology) {
+		return new FromLocalTime(formatType, format, chronology);
+	}
+	
+	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final String locale) {
+		return new FromLocalTime(formatType, format, locale);
+	}
+	
+	public static final FromLocalTime fromLocalTime(final DateTimeFormatter formatter) {
+		return new FromLocalTime(formatter);
 	}
 	
 	public static enum FormatType {
@@ -133,7 +154,7 @@ public final class JodaTimeToString {
 		}
 		
 		/* 
-		 * It converts the given LocalTime into an String by means of the given pattern or style.
+		 * It converts the given BaseDateTime into an String by means of the given pattern or style.
 		 * A chronology can also be used
 		 * 
 		 * If a formatter is passed, it will be used instead of the
@@ -163,5 +184,100 @@ public final class JodaTimeToString {
 					return baseDateTime.toString(f);					
 			}			
 		}		
-	}	
+	}
+	
+	public static final class FromLocalTime implements IFunc<String, LocalTime> {
+
+		private ConversionType conversionType;
+		
+		private DateTimeFormatter formatter = null;
+		private String pattern = null;
+		private String style = null;
+		private Locale locale = null;
+		private Chronology chronology = null;
+		
+		private static enum ConversionType {
+			FROM_PATTERN,
+			FROM_STYLE,
+			FROM_FORMATTER
+		}
+		
+		public FromLocalTime(DateTimeFormatter formatter) {
+			super();
+			this.formatter = formatter;
+			this.conversionType = ConversionType.FROM_FORMATTER;
+		}
+		
+		public FromLocalTime(FormatType formatType, String format) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+		}
+		
+		public FromLocalTime(FormatType formatType, String format, Chronology chronology) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+			this.chronology = chronology;
+		}
+		
+		public FromLocalTime(FormatType formatType, String format, Locale locale) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+			this.locale = locale;
+		}
+		
+		public FromLocalTime(FormatType formatType, String format, String locale) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+			this.locale = LocaleUtils.toLocale(locale);
+		}
+		
+		public Type<? super String> getResultType() {
+			return Types.STRING;
+		}
+
+		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
+			switch (formatType) {
+				case PATTERN:
+					this.pattern = format;
+					this.conversionType = ConversionType.FROM_PATTERN;
+					break;
+				case STYLE:
+					this.style = format;
+					this.conversionType = ConversionType.FROM_STYLE;
+					break;				
+			}
+		}
+		
+		/* 
+		 * It converts the given LocalTime into an String by means of the given pattern or style.
+		 * A chronology can also be used
+		 * 
+		 * If a formatter is passed, it will be used instead of the
+		 * pattern or style
+		 * 
+		 * (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
+		public String execute(final LocalTime localTime) throws Exception {
+			switch (this.conversionType) {
+				case FROM_FORMATTER:
+					return localTime.toString(this.formatter);					
+				default:
+					// Either pattern or style
+					DateTimeFormatter f = null;
+					if (ConversionType.FROM_PATTERN.equals(this.conversionType)) {
+						f = DateTimeFormat.forPattern(this.pattern);
+					} else {
+						f = DateTimeFormat.forStyle(this.style);
+					}
+					if (this.locale != null) {
+						f = f.withLocale(this.locale);
+					}
+					if (this.chronology != null) {
+						f = f.withChronology(this.chronology);
+					}
+					return localTime.toString(f);					
+			}			
+		}		
+	}
 }
