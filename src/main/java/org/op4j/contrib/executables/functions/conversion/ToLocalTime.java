@@ -31,6 +31,7 @@ import org.apache.commons.lang.StringUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
+import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
@@ -174,12 +175,7 @@ public final class ToLocalTime {
 	}
 	//
 	
-	
-	
-	
-	
-	
-	
+		
 	private static abstract class BaseToLocalTime<T> implements IFunc<LocalTime, T> {
 
 		DateTimeZone dateTimeZone = null;
@@ -211,9 +207,9 @@ public final class ToLocalTime {
 		
 		
 		/**
-		 * It converts the given String into a LocalTime using the given pattern parameter. If
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter. If
 		 * the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a Locale must be used instead
+		 * accepting a {@link Locale} must be used instead
 		 *                 
 		 * @param pattern
 		 */
@@ -223,9 +219,9 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * It converts the given String into a LocalTime using the given pattern parameter and with the given
-		 * DateTimeZone. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a Locale must be used instead
+		 * It converts the given String into a {@link LocalTime} using the given pattern parameter and with the given
+		 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
+		 * accepting a {@link Locale} must be used instead
 		 *                 
 		 * @param pattern
 		 * @param dateTimeZone
@@ -236,9 +232,9 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * It converts the given String into a LocalTime using the given pattern parameter and with the given
-		 * Chronology. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a Locale must be used instead
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter and with the given
+		 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
+		 * accepting a {@link Locale} must be used instead
 		 * 		                
 		 * @param pattern
 		 * @param chronology
@@ -249,7 +245,7 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * It converts the given String into a LocalTime using the given pattern and Locale parameters
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -261,7 +257,7 @@ public final class ToLocalTime {
 		}
 		
 		/**
-		 * It converts the given String into a LocalTime using the given pattern and Locale parameters
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -273,8 +269,8 @@ public final class ToLocalTime {
 		}
 		
 		/**
-		 * It converts the given String into a LocalTime using the given pattern and Locale parameters.
-		 * The DateTime is configured with the given DateTimeZone
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 		 *                 
 		 * @param pattern
 		 * @param locale
@@ -287,8 +283,8 @@ public final class ToLocalTime {
 		}
 		
 		/**
-		 * It converts the given String into a LocalTime using the given pattern and Locale parameters.
-		 * The DateTime is configured with the given DateTimeZone
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -301,8 +297,8 @@ public final class ToLocalTime {
 		}
 		
 		/**
-		 * It converts the given String into a LocalTime using the given pattern and Locale parameters.
-		 * The DateTime will be created with the given Chronology
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} will be created with the given {@link Chronology}
 		 *                 
 		 * @param pattern
 		 * @param locale
@@ -315,8 +311,8 @@ public final class ToLocalTime {
 		}
 		
 		/**
-		 * It converts the given String into a LocalTime using the given pattern and Locale parameters.
-		 * The DateTime will be created with the given Chronology
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} will be created with the given {@link Chronology}
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -358,14 +354,14 @@ public final class ToLocalTime {
 	public static final class FromDate<T extends Date> extends BaseToLocalTime<T> {
 
 		/**
-		 * The given {@link Date} is converted into a LocalTime
+		 * The given {@link Date} is converted into a {@link LocalTime}
 		 */
 		public FromDate() {
 			super();			
 		}
 
 		/**
-		 * The given {@link Date} is converted into a LocalTime configured with the given DateTimeZone
+		 * The given {@link Date} is converted into a {@link LocalTime} configured with the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -374,7 +370,7 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * The given {@link Date} is converted into a LocalTime with the given Chronology
+		 * The given {@link Date} is converted into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -399,14 +395,14 @@ public final class ToLocalTime {
 	public static final class FromTimestamp extends BaseToLocalTime<Timestamp> {
 
 		/**
-		 * The given {@link Timestamp} is converted into a LocalTime
+		 * The given {@link Timestamp} is converted into a {@link LocalTime}
 		 */
 		public FromTimestamp() {
 			super();			
 		}
 
 		/**
-		 * The given {@link Timestamp} is converted into a LocalTime in the given DateTimeZone
+		 * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -415,7 +411,7 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * The given {@link Timestamp} is converted into a LocalTime with the given Chronology
+		 * The given {@link Timestamp} is converted into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -438,14 +434,14 @@ public final class ToLocalTime {
 	public static final class FromLong extends BaseToLocalTime<Long> {
 
 		/**
-		 * The given long representing the time in millis is converted into a LocalTime
+		 * The given long representing the time in millis is converted into a {@link LocalTime}
 		 */
 		public FromLong() {
 			super();			
 		}
 
 		/**
-		 * The given long representing the time in millis is converted into a LocalTime in the given DateTimeZone
+		 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -454,7 +450,7 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * The given long representing the time in millis is converted into a LocalTime with the given Chronology
+		 * The given long representing the time in millis is converted into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -477,7 +473,7 @@ public final class ToLocalTime {
 	public static final class FromIntegerFieldList extends BaseToLocalTime<List<Integer>> {
 
 		/**
-		 * A LocalTime is created from the given integer list.
+		 * A {@link LocalTime} is created from the given integer list.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
 		public FromIntegerFieldList() {
@@ -485,9 +481,9 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * A LocalTime is created from the given integer list.
+		 * A {@link LocalTime} is created from the given integer list.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given Chronology
+		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
 		 */
@@ -519,7 +515,7 @@ public final class ToLocalTime {
 	public static final class FromIntegerFieldArray extends BaseToLocalTime<Integer[]> {
 
 		/**
-		 * A LocalTime is created from the given integer array.
+		 * A {@link LocalTime} is created from the given integer array.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
 		
@@ -528,9 +524,9 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * A LocalTime is created from the given integer array.
+		 * A {@link LocalTime} is created from the given integer array.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given Chronology
+		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
 		 */
@@ -565,7 +561,7 @@ public final class ToLocalTime {
 	public static final class FromStringFieldList extends BaseToLocalTime<List<String>> {
 
 		/**
-		 * A LocalTime is created from the given string list.
+		 * A {@link LocalTime} is created from the given string list.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
 		public FromStringFieldList() {
@@ -573,9 +569,9 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * A LocalTime is created from the given string list.
+		 * A {@link LocalTime} is created from the given string list.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given Chronology
+		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
 		 */
@@ -609,7 +605,7 @@ public final class ToLocalTime {
 	public static final class FromStringFieldArray extends BaseToLocalTime<String[]> {
 
 		/**
-		 * A LocalTime is created from the given string array.
+		 * A {@link LocalTime} is created from the given string array.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
 		public FromStringFieldArray() {
@@ -617,9 +613,9 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * A LocalTime is created from the given string array.
+		 * A {@link LocalTime} is created from the given string array.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given Chronology
+		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
 		 */
@@ -651,14 +647,14 @@ public final class ToLocalTime {
 	public static final class FromCalendar<T extends Calendar> extends BaseToLocalTime<T> {
 
 		/**
-		 * It converts a Calendar into a LocalTime
+		 * It converts a {@link Calendar} into a {@link LocalTime}
 		 */
 		public FromCalendar() {
 			super();			
 		}
 
 		/**
-		 * It converts a Calendar into a LocalTime in the given DateTimeZone
+		 * It converts a {@link Calendar} into a {@link LocalTime} in the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -667,7 +663,7 @@ public final class ToLocalTime {
 		}
 
 		/**
-		 * It converts a Calendar into a LocalTime with the given Chronology
+		 * It converts a {@link Calendar} into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
