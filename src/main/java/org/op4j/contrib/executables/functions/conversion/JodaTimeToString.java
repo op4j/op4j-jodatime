@@ -26,6 +26,7 @@ import org.apache.commons.lang.LocaleUtils;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
+import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -46,6 +47,7 @@ public final class JodaTimeToString {
 		super();
 	}
 	
+	// From BaseDateTime
 	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format) {
 		return new FromBaseDateTime(formatType, format);
 	}
@@ -65,7 +67,9 @@ public final class JodaTimeToString {
 	public static final FromBaseDateTime fromBaseDateTime(final DateTimeFormatter formatter) {
 		return new FromBaseDateTime(formatter);
 	}
-
+	//
+	
+	// From LocalTime
 	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format) {
 		return new FromLocalTime(formatType, format);
 	}
@@ -85,6 +89,29 @@ public final class JodaTimeToString {
 	public static final FromLocalTime fromLocalTime(final DateTimeFormatter formatter) {
 		return new FromLocalTime(formatter);
 	}
+	//
+	
+	// From LocalDate
+	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format) {
+		return new FromLocalDate(formatType, format);
+	}
+	
+	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
+		return new FromLocalDate(formatType, format, locale);
+	}
+	
+	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
+		return new FromLocalDate(formatType, format, chronology);
+	}
+	
+	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final String locale) {
+		return new FromLocalDate(formatType, format, locale);
+	}
+	
+	public static final FromLocalDate fromLocalDate(final DateTimeFormatter formatter) {
+		return new FromLocalDate(formatter);
+	}
+	//
 	
 	public static enum FormatType {
 		PATTERN,
@@ -277,6 +304,131 @@ public final class JodaTimeToString {
 						f = f.withChronology(this.chronology);
 					}
 					return localTime.toString(f);					
+			}			
+		}		
+	}
+	
+	public static final class FromLocalDate implements IFunc<String, LocalDate> {
+
+		private ConversionType conversionType;
+		
+		private DateTimeFormatter formatter = null;
+		private String pattern = null;
+		private String style = null;
+		private Locale locale = null;
+		private Chronology chronology = null;
+		
+		private static enum ConversionType {
+			FROM_PATTERN,
+			FROM_STYLE,
+			FROM_FORMATTER
+		}
+		
+		/**
+		 * It converts the given LocalDate into an String by means of the given DateTimeFormatter
+		 * 
+		 * @param formatter
+		 */
+		public FromLocalDate(DateTimeFormatter formatter) {
+			super();
+			this.formatter = formatter;
+			this.conversionType = ConversionType.FROM_FORMATTER;
+		}
+		
+		/**
+		 * It converts the given LocalDate into an String by means of the given pattern
+		 * or style (depending on the formatType value)
+		 * 
+		 * @param formatType
+		 * @param format
+		 */
+		public FromLocalDate(FormatType formatType, String format) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+		}
+		
+		/**
+		 * It converts the given LocalDate into an String by means of the given pattern
+		 * or style (depending on the formatType value) with the given chronology
+		 * 
+		 * @param formatType
+		 * @param format
+		 * @param chronology
+		 */
+		public FromLocalDate(FormatType formatType, String format, Chronology chronology) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+			this.chronology = chronology;
+		}
+		
+		
+		/**
+		 * It converts the given LocalDate into an String by means of the given pattern
+		 * or style (depending on the formatType value) with the given locale
+		 * 
+		 * @param formatType
+		 * @param format
+		 * @param locale
+		 */
+		public FromLocalDate(FormatType formatType, String format, Locale locale) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+			this.locale = locale;
+		}
+		
+		/**
+		 * It converts the given LocalDate into an String by means of the given pattern
+		 * or style (depending on the formatType value) with the given locale
+		 * 
+		 * @param formatType
+		 * @param format
+		 * @param locale
+		 */
+		public FromLocalDate(FormatType formatType, String format, String locale) {
+			super();			
+			setPatternStyleAndConversionType(formatType, format);
+			this.locale = LocaleUtils.toLocale(locale);
+		}
+		
+		public Type<? super String> getResultType() {
+			return Types.STRING;
+		}
+
+		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
+			switch (formatType) {
+				case PATTERN:
+					this.pattern = format;
+					this.conversionType = ConversionType.FROM_PATTERN;
+					break;
+				case STYLE:
+					this.style = format;
+					this.conversionType = ConversionType.FROM_STYLE;
+					break;				
+			}
+		}
+		
+		/* (non-Javadoc)
+		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 */
+		public String execute(final LocalDate LocalDate) throws Exception {
+			switch (this.conversionType) {
+				case FROM_FORMATTER:
+					return LocalDate.toString(this.formatter);					
+				default:
+					// Either pattern or style
+					DateTimeFormatter f = null;
+					if (ConversionType.FROM_PATTERN.equals(this.conversionType)) {
+						f = DateTimeFormat.forPattern(this.pattern);
+					} else {
+						f = DateTimeFormat.forStyle(this.style);
+					}
+					if (this.locale != null) {
+						f = f.withLocale(this.locale);
+					}
+					if (this.chronology != null) {
+						f = f.withChronology(this.chronology);
+					}
+					return LocalDate.toString(f);					
 			}			
 		}		
 	}
