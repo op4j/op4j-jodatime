@@ -1,3 +1,4 @@
-    - Add conversions to tests
+    - ToPeriod: check fromIntegerFieldXXX methods
+    - Check javadoc
 
   
