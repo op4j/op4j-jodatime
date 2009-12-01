@@ -31,7 +31,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.converters.IConverter;
 
 /**
  * 
@@ -118,7 +118,7 @@ public final class JodaTimeToString {
 		STYLE			
 	}
 	
-	public static final class FromBaseDateTime implements IFunc<String, BaseDateTime> {
+	public static final class FromBaseDateTime implements IConverter<String, BaseDateTime> {
 
 		private ConversionType conversionType;
 		
@@ -213,7 +213,7 @@ public final class JodaTimeToString {
 		}		
 	}
 	
-	public static final class FromLocalTime implements IFunc<String, LocalTime> {
+	public static final class FromLocalTime implements IConverter<String, LocalTime> {
 
 		private ConversionType conversionType;
 		
@@ -308,7 +308,7 @@ public final class JodaTimeToString {
 		}		
 	}
 	
-	public static final class FromLocalDate implements IFunc<String, LocalDate> {
+	public static final class FromLocalDate implements IConverter<String, LocalDate> {
 
 		private ConversionType conversionType;
 		

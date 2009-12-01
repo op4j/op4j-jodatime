@@ -37,7 +37,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.converters.IConverter;
 
 /**
  * 
@@ -176,7 +176,7 @@ public final class ToLocalTime {
 	//
 	
 		
-	private static abstract class BaseToLocalTime<T> implements IFunc<LocalTime, T> {
+	private static abstract class BaseToLocalTime<T> implements IConverter<LocalTime, T> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;

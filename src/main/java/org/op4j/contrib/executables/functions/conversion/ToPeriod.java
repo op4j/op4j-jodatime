@@ -32,7 +32,7 @@ import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.converters.IConverter;
 
 /**
  * 
@@ -246,7 +246,7 @@ public final class ToPeriod {
 	}
 	
 	
-	private static abstract class BaseToPeriod<T> implements IFunc<Period, T> {
+	private static abstract class BaseToPeriod<T> implements IConverter<Period, T> {
 
 		Chronology chronology = null;
 		PeriodType periodType = null;

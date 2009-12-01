@@ -38,7 +38,7 @@ import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.executables.functions.IFunc;
+import org.op4j.functions.converters.IConverter;
 
 /**
  * 
@@ -283,7 +283,7 @@ public final class ToInterval {
 	
 	
 	
-	private static abstract class BaseToInterval<T> implements IFunc<Interval, T> {
+	private static abstract class BaseToInterval<T> implements IConverter<Interval, T> {
 
 		Chronology chronology = null;
 		DateTimeZone dateTimeZone = null;
