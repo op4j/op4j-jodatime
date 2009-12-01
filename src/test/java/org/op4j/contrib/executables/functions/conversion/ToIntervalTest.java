@@ -88,12 +88,40 @@ public class ToIntervalTest {
 
 	@Test
 	public void testFromStringFieldListStringDateTimeZone() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/02/2000", "05/09/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/mm/yyyy", DateTimeZone.getDefault())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
+			.withZone(DateTimeZone.getDefault());
+		assertEquals(result, new Interval(f.parseDateTime("09/02/2000").getMillis(), 
+				f.parseDateTime("05/09/2001").getMillis(), DateTimeZone.getDefault()));
+
+		try {
+			Op.on(Arrays.asList("09/02/2000", "05/09/2001", "05/09/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/mm/yyyy", DateTimeZone.getDefault()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldListStringChronology() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/02/2000", "05/09/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
+			.withChronology(BuddhistChronology.getInstance());
+		assertEquals(result, new Interval(f.parseDateTime("09/02/2000").getMillis(),
+				f.parseDateTime("05/09/2001").getMillis(), BuddhistChronology.getInstance()));
+
+		try {
+			Op.on(Arrays.asList("09/02/2000", "05/09/2001", "05/09/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/mm/yyyy", BuddhistChronology.getInstance()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
@@ -192,12 +220,40 @@ public class ToIntervalTest {
 
 	@Test
 	public void testFromStringFieldArrayStringDateTimeZone() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/02/2000", "05/09/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy", DateTimeZone.getDefault())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
+			.withZone(DateTimeZone.getDefault());
+		assertEquals(result, new Interval(f.parseDateTime("09/02/2000").getMillis(), 
+				f.parseDateTime("05/09/2001").getMillis(), DateTimeZone.getDefault()));
+
+		try {
+			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy", DateTimeZone.getDefault()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldArrayStringChronology() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/02/2000", "05/09/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
+			.withChronology(BuddhistChronology.getInstance());
+		assertEquals(result, new Interval(f.parseDateTime("09/02/2000").getMillis(), 
+				f.parseDateTime("05/09/2001").getMillis(), BuddhistChronology.getInstance()));
+
+		try {
+			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy", BuddhistChronology.getInstance()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test

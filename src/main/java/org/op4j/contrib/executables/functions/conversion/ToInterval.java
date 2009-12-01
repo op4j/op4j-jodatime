@@ -591,8 +591,18 @@ public final class ToInterval {
 				default:
 					// PATTERN_LOCALE_DATETIMEZONE
 					dateTimeFormatter = DateTimeFormat.forPattern(this.pattern)
-					.withLocale(this.locale).withZone(this.dateTimeZone);
+						.withLocale(this.locale).withZone(this.dateTimeZone);
 					break;		
+			}
+			if (this.chronology != null) {
+				return new Interval(dateTimeFormatter.parseDateTime(object.get(0)).getMillis(), 
+						dateTimeFormatter.parseDateTime(object.get(1)).getMillis(),
+						this.chronology);	
+			}
+			if (this.dateTimeZone != null) {
+				return new Interval(dateTimeFormatter.parseDateTime(object.get(0)).getMillis(), 
+						dateTimeFormatter.parseDateTime(object.get(1)).getMillis(),
+						this.dateTimeZone);	
 			}
 			return new Interval(dateTimeFormatter.parseDateTime(object.get(0)).getMillis(), 
 					dateTimeFormatter.parseDateTime(object.get(1)).getMillis());	
@@ -788,7 +798,17 @@ public final class ToInterval {
 				}
 			} 
 			
-
+			if (object.length != 2 ) {
+				throw new FunctionExecutionException(
+						"String arguments array for Interval conversion should of sizes " +
+						"2 (start and end of the interval)" +
+						"6 (year, month, day, year, month, day), " +
+						"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
+						"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
+						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond), " +
+						". Size " + object.length + " is not valid.");
+			}
+			
 			if (this.locale == null && StringUtils.contains(this.pattern, "MMM")) {
 				throw new FunctionExecutionException("The use of MMM, MMMM, EEE or EEEE as part of the date pattern "
 						+ "requires a Locale");
@@ -817,6 +837,16 @@ public final class ToInterval {
 					dateTimeFormatter = DateTimeFormat.forPattern(this.pattern)
 					.withLocale(this.locale).withZone(this.dateTimeZone);
 					break;		
+			}
+			if (this.chronology != null) {
+				return new Interval(dateTimeFormatter.parseDateTime(object[0]).getMillis(), 
+						dateTimeFormatter.parseDateTime(object[1]).getMillis(),
+						this.chronology);	
+			}
+			if (this.dateTimeZone != null) {
+				return new Interval(dateTimeFormatter.parseDateTime(object[0]).getMillis(), 
+						dateTimeFormatter.parseDateTime(object[1]).getMillis(),
+						this.dateTimeZone);	
 			}
 			return new Interval(dateTimeFormatter.parseDateTime(object[0]).getMillis(), 
 					dateTimeFormatter.parseDateTime(object[1]).getMillis());	
