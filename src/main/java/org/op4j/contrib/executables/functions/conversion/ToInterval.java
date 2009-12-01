@@ -476,6 +476,7 @@ public final class ToInterval {
 						&& object.size() != 14) {
 					throw new FunctionExecutionException(
 							"String arguments list for Interval conversion should of sizes " +
+							"2 (start and end of the interval)" +
 							"6 (year, month, day, year, month, day), " +
 							"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
 							"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
@@ -553,6 +554,17 @@ public final class ToInterval {
 			} 
 			
 
+			if (object.size() != 2 ) {
+				throw new FunctionExecutionException(
+						"String arguments list for Interval conversion should of sizes " +
+						"2 (start and end of the interval)" +
+						"6 (year, month, day, year, month, day), " +
+						"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
+						"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
+						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond), " +
+						". Size " + object.size() + " is not valid.");
+			}
+			
 			if (this.locale == null && StringUtils.contains(this.pattern, "MMM")) {
 				throw new FunctionExecutionException("The use of MMM, MMMM, EEE or EEEE as part of the date pattern "
 						+ "requires a Locale");

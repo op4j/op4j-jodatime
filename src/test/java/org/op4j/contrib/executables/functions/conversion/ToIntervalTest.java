@@ -14,6 +14,8 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.Interval;
 import org.joda.time.chrono.BuddhistChronology;
 import org.joda.time.chrono.GJChronology;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
@@ -69,7 +71,19 @@ public class ToIntervalTest {
 
 	@Test
 	public void testFromStringFieldListString() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/02/2000", "05/09/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/mm/yyyy")).get();
+		
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy");
+		assertEquals(result, new Interval(f.parseDateTime("09/02/2000"), f.parseDateTime("05/09/2001")));
+		
+		try {
+			Op.on(Arrays.asList("09/02/2000", "05/09/2001", "05/09/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/mm/yyyy"));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
@@ -161,7 +175,19 @@ public class ToIntervalTest {
 
 	@Test
 	public void testFromStringFieldArrayString() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/02/2000", "05/09/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy")).get();
+	
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy");
+		assertEquals(result, new Interval(f.parseDateTime("09/02/2000"), f.parseDateTime("05/09/2001")));
+
+		try {
+			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy"));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
