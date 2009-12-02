@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
@@ -14,6 +15,7 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.Interval;
 import org.joda.time.chrono.BuddhistChronology;
 import org.joda.time.chrono.GJChronology;
+import org.joda.time.chrono.JulianChronology;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
@@ -126,32 +128,116 @@ public class ToIntervalTest {
 
 	@Test
 	public void testFromStringFieldListStringLocale() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK)).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK);
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis()));
+
+		try {
+			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldListStringString() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK.toString())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK);
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis()));
+
+		try {
+			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK.toString()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldListStringLocaleDateTimeZone() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis(), DateTimeZone.getDefault()));
+
+		try {
+			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldListStringStringDateTimeZone() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis(), DateTimeZone.getDefault()));
+
+		try {
+			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldListStringLocaleChronology() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis(), JulianChronology.getInstance()));
+
+		try {
+			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldListStringStringChronology() {
-		fail("Not yet implemented");
+		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
+			.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis(), JulianChronology.getInstance()));
+
+		try {
+			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
+				.exec(ToInterval.fromStringFieldList("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance()));
+			fail("fromStringFieldList should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
@@ -195,7 +281,7 @@ public class ToIntervalTest {
 			Op.on(new String[] {"1977", "5", "2", "23", "12", "2", "34",
 					"1980", "8", "5", "12", "12", "12"})
 				.exec(ToInterval.fromStringFieldArray(BuddhistChronology.getInstance()));
-			fail("fromStringFieldList should not accept list of size 13");
+			fail("fromStringFieldArray should not accept list of size 13");
 		} catch (ExecutionException e) {
 			// Do nothing
 		}
@@ -212,7 +298,7 @@ public class ToIntervalTest {
 		try {
 			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
 				.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy"));
-			fail("fromStringFieldList should not accept a pattern and list of size 3");
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
 		}		
@@ -231,7 +317,7 @@ public class ToIntervalTest {
 		try {
 			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
 				.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy", DateTimeZone.getDefault()));
-			fail("fromStringFieldList should not accept a pattern and list of size 3");
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
 		}		
@@ -250,7 +336,7 @@ public class ToIntervalTest {
 		try {
 			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
 				.exec(ToInterval.fromStringFieldArray("dd/mm/yyyy", BuddhistChronology.getInstance()));
-			fail("fromStringFieldList should not accept a pattern and list of size 3");
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
 		}		
@@ -258,32 +344,116 @@ public class ToIntervalTest {
 
 	@Test
 	public void testFromStringFieldArrayStringLocale() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK)).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK);
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis()));
+
+		try {
+			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK));
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldArrayStringString() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK);
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis()));
+
+		try {
+			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString()));
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldArrayStringLocaleDateTimeZone() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis()));
+
+		try {
+			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault()));
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldArrayStringStringDateTimeZone() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis()));
+
+		try {
+			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault()));
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldArrayStringLocaleChronology() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis(), JulianChronology.getInstance()));
+
+		try {
+			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance()));
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
 	public void testFromStringFieldArrayStringStringChronology() {
-		fail("Not yet implemented");
+		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
+			.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
+
+		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
+			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
+		assertEquals(result, new Interval(f.parseDateTime("09/February/2000").getMillis(), 
+				f.parseDateTime("05/March/2001").getMillis(), JulianChronology.getInstance()));
+
+		try {
+			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
+				.exec(ToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance()));
+			fail("fromStringFieldArray should not accept a pattern and list of size 3");
+		} catch (ExecutionException e) {
+			// Do nothing
+		}		
 	}
 
 	@Test
