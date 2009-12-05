@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
@@ -257,16 +258,26 @@ public final class ToPeriod {
 
 		public BaseToPeriod(Chronology chronology) {
 			super();
+			
+			Validate.notNull(chronology, "chronology can't be null");
+			
 			this.chronology = chronology;
 		}
 
 		public BaseToPeriod(PeriodType periodType) {
 			super();
+			
+			Validate.notNull(periodType, "periodType can't be null");
+			
 			this.periodType = periodType;
 		}
 
 		public BaseToPeriod(PeriodType periodType, Chronology chronology) {
 			super();
+			
+			Validate.notNull(periodType, "periodType can't be null");
+			Validate.notNull(chronology, "chronology can't be null");
+			
 			this.chronology = chronology;
 			this.periodType = periodType;
 		}

@@ -23,6 +23,7 @@ package org.op4j.contrib.executables.functions.conversion;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
@@ -136,29 +137,42 @@ public final class JodaTimeToString {
 		
 		public FromBaseDateTime(DateTimeFormatter formatter) {
 			super();
+			
+			Validate.notNull(formatter, "formatter can't be null");
+			
 			this.formatter = formatter;
 			this.conversionType = ConversionType.FROM_FORMATTER;
 		}
 		
 		public FromBaseDateTime(FormatType formatType, String format) {
-			super();			
+			super();		
+			
 			setPatternStyleAndConversionType(formatType, format);
 		}
 		
 		public FromBaseDateTime(FormatType formatType, String format, Chronology chronology) {
 			super();			
+			
+			Validate.notNull(chronology, "chronology can't be null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.chronology = chronology;
 		}
 		
 		public FromBaseDateTime(FormatType formatType, String format, Locale locale) {
 			super();			
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.locale = locale;
 		}
 		
 		public FromBaseDateTime(FormatType formatType, String format, String locale) {
-			super();			
+			super();	
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.locale = LocaleUtils.toLocale(locale);
 		}
@@ -168,6 +182,10 @@ public final class JodaTimeToString {
 		}
 
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
+			
+			Validate.notNull(formatType, "formatType can't be null");
+			Validate.notEmpty(format, "format can't be neither empty nor null");
+			
 			switch (formatType) {
 				case PATTERN:
 					this.pattern = format;
@@ -231,6 +249,9 @@ public final class JodaTimeToString {
 		
 		public FromLocalTime(DateTimeFormatter formatter) {
 			super();
+			
+			Validate.notNull(formatter, "formatter can't be null");
+			
 			this.formatter = formatter;
 			this.conversionType = ConversionType.FROM_FORMATTER;
 		}
@@ -242,18 +263,27 @@ public final class JodaTimeToString {
 		
 		public FromLocalTime(FormatType formatType, String format, Chronology chronology) {
 			super();			
+			
+			Validate.notNull(chronology, "chronology can't be null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.chronology = chronology;
 		}
 		
 		public FromLocalTime(FormatType formatType, String format, Locale locale) {
 			super();			
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.locale = locale;
 		}
 		
 		public FromLocalTime(FormatType formatType, String format, String locale) {
 			super();			
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.locale = LocaleUtils.toLocale(locale);
 		}
@@ -263,6 +293,10 @@ public final class JodaTimeToString {
 		}
 
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
+			
+			Validate.notNull(formatType, "formatType can't be null");
+			Validate.notEmpty(format, "format can't be neither empty nor null");
+			
 			switch (formatType) {
 				case PATTERN:
 					this.pattern = format;
@@ -331,6 +365,9 @@ public final class JodaTimeToString {
 		 */
 		public FromLocalDate(DateTimeFormatter formatter) {
 			super();
+			
+			Validate.notNull(formatter, "formatter can't be null");
+			
 			this.formatter = formatter;
 			this.conversionType = ConversionType.FROM_FORMATTER;
 		}
@@ -356,7 +393,10 @@ public final class JodaTimeToString {
 		 * @param chronology
 		 */
 		public FromLocalDate(FormatType formatType, String format, Chronology chronology) {
-			super();			
+			super();		
+			
+			Validate.notNull(chronology, "chronology can't be null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.chronology = chronology;
 		}
@@ -371,7 +411,10 @@ public final class JodaTimeToString {
 		 * @param locale
 		 */
 		public FromLocalDate(FormatType formatType, String format, Locale locale) {
-			super();			
+			super();	
+			
+			Validate.notNull(locale, "locale can't be null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.locale = locale;
 		}
@@ -385,7 +428,10 @@ public final class JodaTimeToString {
 		 * @param locale
 		 */
 		public FromLocalDate(FormatType formatType, String format, String locale) {
-			super();			
+			super();	
+			
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			setPatternStyleAndConversionType(formatType, format);
 			this.locale = LocaleUtils.toLocale(locale);
 		}
@@ -395,6 +441,10 @@ public final class JodaTimeToString {
 		}
 
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
+			
+			Validate.notNull(formatType, "formatType can't be null");
+			Validate.notEmpty(format, "format can't be neither empty nor null");
+						
 			switch (formatType) {
 				case PATTERN:
 					this.pattern = format;

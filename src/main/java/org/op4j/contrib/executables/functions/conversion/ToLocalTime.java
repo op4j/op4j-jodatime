@@ -28,6 +28,7 @@ import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
@@ -187,11 +188,17 @@ public final class ToLocalTime {
 
 		public BaseToLocalTime(DateTimeZone dateTimeZone) {
 			super();
+			
+			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
+			
 			this.dateTimeZone = dateTimeZone;
 		}
 
 		public BaseToLocalTime(Chronology chronology) {
 			super();
+			
+			Validate.notNull(chronology, "chronology can't be null");
+			
 			this.chronology = chronology;
 		}
 
@@ -215,6 +222,9 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 		}
 
@@ -228,6 +238,9 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 		}
 
@@ -241,6 +254,9 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 		}
 
@@ -252,6 +268,10 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, Locale locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 		}
@@ -264,6 +284,10 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, String locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 		}
@@ -278,6 +302,10 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 		}
@@ -292,6 +320,10 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 		}
@@ -306,6 +338,10 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 		}
@@ -320,6 +356,10 @@ public final class ToLocalTime {
 		 */
 		public FromString(String pattern, String locale, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 		}

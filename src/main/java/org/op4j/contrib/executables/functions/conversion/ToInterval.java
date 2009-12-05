@@ -28,6 +28,7 @@ import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
@@ -294,11 +295,17 @@ public final class ToInterval {
 
 		public BaseToInterval(Chronology chronology) {
 			super();
+			
+			Validate.notNull(chronology, "chronology can't be null");
+			
 			this.chronology = chronology;
 		}
 
 		public BaseToInterval(DateTimeZone dateTimeZone) {
 			super();
+			
+			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
+						
 			this.dateTimeZone = dateTimeZone;
 		}
 
@@ -339,6 +346,9 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern) {
 			super();	
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN;
 		}	
@@ -353,6 +363,9 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_DATETIMEZONE;
 		}	
@@ -367,6 +380,9 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_CHRONOLOGY;
 		}
@@ -380,6 +396,10 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, Locale locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 			this.conversionType = ConversionType.PATTERN_LOCALE;
@@ -394,6 +414,10 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, String locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 			this.conversionType = ConversionType.PATTERN_LOCALE;
@@ -409,6 +433,10 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
@@ -424,6 +452,10 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
@@ -439,6 +471,10 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+						
 			this.pattern = pattern;
 			this.locale = locale;
 			this.conversionType = ConversionType.PATTERN_LOCALE_CHRONOLOGY;
@@ -454,6 +490,10 @@ public final class ToInterval {
 		 */
 		public FromStringFieldList(String pattern, String locale, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 			this.conversionType = ConversionType.PATTERN_LOCALE_CHRONOLOGY;
@@ -635,6 +675,9 @@ public final class ToInterval {
 		
 		public FromStringFieldArray(String pattern) {
 			super();	
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN;
 		}	
@@ -651,18 +694,28 @@ public final class ToInterval {
 				
 		public FromStringFieldArray(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_DATETIMEZONE;
 		}	
 		
 		public FromStringFieldArray(String pattern, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_CHRONOLOGY;
 		}
 		
 		public FromStringFieldArray(String pattern, Locale locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 			this.conversionType = ConversionType.PATTERN_LOCALE;
@@ -670,6 +723,10 @@ public final class ToInterval {
 		
 		public FromStringFieldArray(String pattern, String locale) {
 			super();
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 			this.conversionType = ConversionType.PATTERN_LOCALE;
@@ -677,6 +734,10 @@ public final class ToInterval {
 		
 		public FromStringFieldArray(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
@@ -684,6 +745,10 @@ public final class ToInterval {
 		
 		public FromStringFieldArray(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
@@ -691,6 +756,10 @@ public final class ToInterval {
 		
 		public FromStringFieldArray(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notNull(locale, "locale can't be null");
+			
 			this.pattern = pattern;
 			this.locale = locale;
 			this.conversionType = ConversionType.PATTERN_LOCALE_CHRONOLOGY;
@@ -698,6 +767,10 @@ public final class ToInterval {
 		
 		public FromStringFieldArray(String pattern, String locale, Chronology chronology) {
 			super(chronology);
+			
+			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
+			Validate.notEmpty(locale, "locale can't be neither empty nor null");
+			
 			this.pattern = pattern;
 			this.locale = LocaleUtils.toLocale(locale);
 			this.conversionType = ConversionType.PATTERN_LOCALE_CHRONOLOGY;
@@ -1081,8 +1154,7 @@ public final class ToInterval {
 		 * {@link Chronology}
 		 */
 		public FromLongFieldList(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		/**
@@ -1091,8 +1163,7 @@ public final class ToInterval {
 		 * {@link DateTimeZone}
 		 */
 		public FromLongFieldList(DateTimeZone dateTimeZone) {
-			super();		
-			this.dateTimeZone = dateTimeZone;
+			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
@@ -1132,8 +1203,7 @@ public final class ToInterval {
 		 * {@link Chronology}
 		 */
 		public FromLongFieldArray(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		/**
@@ -1142,8 +1212,7 @@ public final class ToInterval {
 		 * {@link DateTimeZone}
 		 */
 		public FromLongFieldArray(DateTimeZone dateTimeZone) {
-			super();		
-			this.dateTimeZone = dateTimeZone;
+			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
