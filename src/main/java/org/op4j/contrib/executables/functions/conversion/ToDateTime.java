@@ -47,8 +47,6 @@ import org.op4j.functions.converters.IConverter;
  */
 public final class ToDateTime {
 
-	//TODO Replace with valid code
-	
 	private ToDateTime() {
 		super();
 	}
