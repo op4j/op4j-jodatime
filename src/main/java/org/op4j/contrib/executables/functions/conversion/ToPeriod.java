@@ -33,7 +33,7 @@ import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -247,7 +247,7 @@ public final class ToPeriod {
 	}
 	
 	
-	private static abstract class BaseToPeriod<T> implements IConverter<Period, T> {
+	private static abstract class BaseToPeriod<T> extends AbstractNullAsNullConverter<Period, T> {
 
 		Chronology chronology = null;
 		PeriodType periodType = null;
@@ -310,9 +310,10 @@ public final class ToPeriod {
 		 * returned
 		 *  
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final List<? extends Date> dates) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final List<? extends Date> dates) throws Exception {
 			if (dates.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments list for Period conversion should of sizes " +
@@ -355,9 +356,10 @@ public final class ToPeriod {
 		 * returned
 		 *  
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final T[] dates) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final T[] dates) throws Exception {
 			if (dates.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments array for Period conversion should of sizes " +
@@ -400,9 +402,10 @@ public final class ToPeriod {
 		 * instants of the Period returned
 		 *                 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final List<Timestamp> timestamps) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final List<Timestamp> timestamps) throws Exception {
 			if (timestamps.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments list for Period conversion should of sizes " +
@@ -445,9 +448,10 @@ public final class ToPeriod {
 		 * instants of the Period returned
 		 *                 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final Timestamp[] timestamps) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final Timestamp[] timestamps) throws Exception {
 			if (timestamps.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments array for Period conversion should of sizes " +
@@ -489,9 +493,10 @@ public final class ToPeriod {
 		 * It returns a Period with the given Duration in milliseconds
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final Long theLong) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final Long theLong) throws Exception {
 			if (this.periodType != null && this.chronology != null) {
 				return new Period(theLong.longValue(), this.periodType, this.chronology);
 			}
@@ -530,9 +535,10 @@ public final class ToPeriod {
 		 * and end instants of the Period returned
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final List<Long> longs) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final List<Long> longs) throws Exception {
 			if (longs.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Long arguments list for Period conversion should of sizes " +
@@ -577,9 +583,10 @@ public final class ToPeriod {
 		 * and end instants of the Period returned
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final Long[] longs) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final Long[] longs) throws Exception {
 			if (longs.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Long arguments array for Period conversion should of sizes " +
@@ -621,9 +628,10 @@ public final class ToPeriod {
 		 * It creates a Period with the given Calendar targets as the start and end of it
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final List<? extends Calendar> calendars) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final List<? extends Calendar> calendars) throws Exception {
 			if (calendars.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments list for Period conversion should of sizes " +
@@ -665,9 +673,10 @@ public final class ToPeriod {
 		 * It creates a Period with the given Calendar targets as the start and end of it
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final T[] calendars) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final T[] calendars) throws Exception {
 			if (calendars.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments array for Period conversion should of sizes " +
@@ -709,9 +718,10 @@ public final class ToPeriod {
 		 * It creates a Period with the given DateTime targets as the start and end of it
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final List<? extends BaseDateTime> dateTimes) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final List<? extends BaseDateTime> dateTimes) throws Exception {
 			if (dateTimes.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"DateTime arguments list for Period conversion should of sizes " +
@@ -752,9 +762,10 @@ public final class ToPeriod {
 		 * It creates a Period with the given DateTime targets as the start and end of it
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final T[] dateTimes) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final T[] dateTimes) throws Exception {
 			if (dateTimes.length != 2 ) {
 				throw new FunctionExecutionException(
 						"DateTime arguments array for Period conversion should of sizes " +
@@ -789,9 +800,10 @@ public final class ToPeriod {
 		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final List<Integer> integers) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final List<Integer> integers) throws Exception {
 			if (integers.size() != 4 && // hours, minutes, seconds, milliseconds
 					integers.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(
@@ -837,9 +849,10 @@ public final class ToPeriod {
 		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final Integer[] integers) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final Integer[] integers) throws Exception {
 			if (integers.length != 4 && // hours, minutes, seconds, milliseconds
 					integers.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(
@@ -885,9 +898,10 @@ public final class ToPeriod {
 		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final List<String> strings) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final List<String> strings) throws Exception {
 			if (strings.size() != 4 && // hours, minutes, seconds, milliseconds
 					strings.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(
@@ -933,9 +947,10 @@ public final class ToPeriod {
 		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public Period execute(final String[] strings) throws Exception {
+		@Override
+		public Period nullAsNullExecute(final String[] strings) throws Exception {
 			if (strings.length != 4 && // hours, minutes, seconds, milliseconds
 					strings.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(

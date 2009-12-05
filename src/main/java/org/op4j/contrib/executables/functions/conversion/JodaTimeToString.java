@@ -32,7 +32,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -119,7 +119,7 @@ public final class JodaTimeToString {
 		STYLE			
 	}
 	
-	public static final class FromBaseDateTime implements IConverter<String, BaseDateTime> {
+	public static final class FromBaseDateTime extends AbstractNullAsNullConverter<String, BaseDateTime> {
 
 		private ConversionType conversionType;
 		
@@ -206,9 +206,10 @@ public final class JodaTimeToString {
 		 * pattern or style
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public String execute(final BaseDateTime baseDateTime) throws Exception {
+		@Override
+		public String nullAsNullExecute(final BaseDateTime baseDateTime) throws Exception {
 			switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return baseDateTime.toString(this.formatter);					
@@ -231,7 +232,7 @@ public final class JodaTimeToString {
 		}		
 	}
 	
-	public static final class FromLocalTime implements IConverter<String, LocalTime> {
+	public static final class FromLocalTime extends AbstractNullAsNullConverter<String, LocalTime> {
 
 		private ConversionType conversionType;
 		
@@ -317,9 +318,10 @@ public final class JodaTimeToString {
 		 * pattern or style
 		 * 
 		 * (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public String execute(final LocalTime localTime) throws Exception {
+		@Override
+		public String nullAsNullExecute(final LocalTime localTime) throws Exception {
 			switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return localTime.toString(this.formatter);					
@@ -342,7 +344,7 @@ public final class JodaTimeToString {
 		}		
 	}
 	
-	public static final class FromLocalDate implements IConverter<String, LocalDate> {
+	public static final class FromLocalDate extends AbstractNullAsNullConverter<String, LocalDate> {
 
 		private ConversionType conversionType;
 		
@@ -458,9 +460,10 @@ public final class JodaTimeToString {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.executables.IExecutable#execute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
-		public String execute(final LocalDate LocalDate) throws Exception {
+		@Override
+		public String nullAsNullExecute(final LocalDate LocalDate) throws Exception {
 			switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return LocalDate.toString(this.formatter);					

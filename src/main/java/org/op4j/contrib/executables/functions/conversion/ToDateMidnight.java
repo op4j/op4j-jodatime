@@ -37,7 +37,7 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -174,7 +174,7 @@ public final class ToDateMidnight {
 	//
 	
 	
-	private static abstract class BaseToDateTime<T> implements IConverter<DateMidnight, T> {
+	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullConverter<DateMidnight, T> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;
@@ -363,7 +363,11 @@ public final class ToDateMidnight {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public DateMidnight execute(String object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(String object) throws Exception {
 			DateTimeFormatter dateTimeFormatter = null;
 		    if (this.locale == null) {
 		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
@@ -419,7 +423,11 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(T object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateMidnight(object.getTime(), this.dateTimeZone);
 			}
@@ -462,7 +470,11 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(Timestamp object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(Timestamp object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateMidnight(object.getTime(), this.dateTimeZone);
 			}
@@ -503,7 +515,11 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(Long object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(Long object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateMidnight(object.longValue(), this.dateTimeZone);
 			}
@@ -536,7 +552,8 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(List<Integer> object) throws Exception {
+		@Override
+		public DateMidnight nullAsNullExecute(List<Integer> object) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new FunctionExecutionException(
 						"Integer arguments list for DateMidnight conversion should of size " +
@@ -576,7 +593,11 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(Integer[] object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(Integer[] object) throws Exception {
 			if (object.length < 1 || object.length > 3) {
 				throw new FunctionExecutionException(
 						"Integer arguments array for DateMidnight conversion should of size " +
@@ -618,7 +639,11 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(List<String> object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(List<String> object) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new FunctionExecutionException(
 						"String arguments list for DateMidnight conversion should of size " +
@@ -660,7 +685,11 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(String[] object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(String[] object) throws Exception {
 			if (object.length < 1 || object.length > 3) {
 				throw new FunctionExecutionException(
 						"String arguments array for DateMidnight conversion should of size " +
@@ -706,7 +735,11 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
-		public DateMidnight execute(T object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateMidnight nullAsNullExecute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateMidnight(object, this.dateTimeZone);
 			}

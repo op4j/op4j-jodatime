@@ -38,7 +38,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -177,7 +177,7 @@ public final class ToLocalTime {
 	//
 	
 		
-	private static abstract class BaseToLocalTime<T> implements IConverter<LocalTime, T> {
+	private static abstract class BaseToLocalTime<T> extends AbstractNullAsNullConverter<LocalTime, T> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;
@@ -364,7 +364,11 @@ public final class ToLocalTime {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public LocalTime execute(String object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(String object) throws Exception {
 			DateTimeFormatter dateTimeFormatter = null;
 		    if (this.locale == null) {
 		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
@@ -418,7 +422,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(T object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalTime(object.getTime(), this.dateTimeZone);
 			}
@@ -459,7 +467,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(Timestamp object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(Timestamp object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalTime(object.getTime(), this.dateTimeZone);
 			}
@@ -498,7 +510,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(Long object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(Long object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalTime(object.longValue(), this.dateTimeZone);
 			}
@@ -531,7 +547,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(List<Integer> object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(List<Integer> object) throws Exception {
 			if (object.size() > 4) {
 				throw new FunctionExecutionException(
 						"Integer arguments list for LocalTime conversion should of size " +
@@ -574,7 +594,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(Integer[] object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(Integer[] object) throws Exception {
 			if (object.length > 4) {
 				throw new FunctionExecutionException(
 						"Integer arguments array for LocalTime conversion should of size " +
@@ -619,7 +643,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(List<String> object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(List<String> object) throws Exception {
 			if (object.size() > 4) {
 				throw new FunctionExecutionException(
 						"String arguments list for LocalTime conversion should of size " +
@@ -663,7 +691,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(String[] object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(String[] object) throws Exception {
 			if (object.length > 4) {
 				throw new FunctionExecutionException(
 						"String arguments array for LocalTime conversion should of size " +
@@ -711,7 +743,11 @@ public final class ToLocalTime {
 			super(chronology);
 		}
 		
-		public LocalTime execute(T object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public LocalTime nullAsNullExecute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalTime(object, this.dateTimeZone);
 			}

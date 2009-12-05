@@ -37,7 +37,7 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
-import org.op4j.functions.converters.IConverter;
+import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -174,7 +174,7 @@ public final class ToDateTime {
 	//
 	
 	
-	private static abstract class BaseToDateTime<T> implements IConverter<DateTime, T> {
+	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullConverter<DateTime, T> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;
@@ -363,7 +363,11 @@ public final class ToDateTime {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public DateTime execute(String object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(String object) throws Exception {
 			DateTimeFormatter dateTimeFormatter = null;
 		    if (this.locale == null) {
 		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
@@ -419,7 +423,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(T object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateTime(object.getTime(), this.dateTimeZone);
 			}
@@ -462,7 +470,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(Timestamp object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(Timestamp object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateTime(object.getTime(), this.dateTimeZone);
 			}
@@ -503,7 +515,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(Long object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(Long object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateTime(object.longValue(), this.dateTimeZone);
 			}
@@ -536,7 +552,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(List<Integer> object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(List<Integer> object) throws Exception {
 			if (object.size() < 4 || object.size() > 7) {
 				throw new FunctionExecutionException(
 						"Integer arguments list for DateTime conversion should of size " +
@@ -580,7 +600,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(Integer[] object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(Integer[] object) throws Exception {
 			if (object.length < 4 || object.length > 7) {
 				throw new FunctionExecutionException(
 						"Integer arguments array for DateTime conversion should of size " +
@@ -626,7 +650,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(List<String> object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(List<String> object) throws Exception {
 			if (object.size() < 4 || object.size() > 7) {
 				throw new FunctionExecutionException(
 						"String arguments list for DateTime conversion should of size " +
@@ -674,7 +702,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(String[] object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(String[] object) throws Exception {
 			if (object.length < 4 || object.length > 7) {
 				throw new FunctionExecutionException(
 						"String arguments array for DateTime conversion should of size " +
@@ -726,7 +758,11 @@ public final class ToDateTime {
 			super(chronology);
 		}
 		
-		public DateTime execute(T object) throws Exception {
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
+		@Override
+		public DateTime nullAsNullExecute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new DateTime(object, this.dateTimeZone);
 			}
