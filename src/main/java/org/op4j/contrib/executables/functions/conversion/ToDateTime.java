@@ -33,7 +33,6 @@ import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
@@ -46,11 +45,11 @@ import org.op4j.functions.converters.IConverter;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class ToLocalDate {
+public final class ToDateTime {
 
+	//TODO Replace with valid code
 	
-	
-	private ToLocalDate() {
+	private ToDateTime() {
 		super();
 	}
 		
@@ -176,38 +175,38 @@ public final class ToLocalDate {
 	//
 	
 	
-	private static abstract class BaseToLocalDate<T> implements IConverter<LocalDate, T> {
+	private static abstract class BaseToDateTime<T> implements IConverter<DateTime, T> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;
 		
-		public BaseToLocalDate() {
+		public BaseToDateTime() {
 			super();			
 		}
 
-		public BaseToLocalDate(DateTimeZone dateTimeZone) {
+		public BaseToDateTime(DateTimeZone dateTimeZone) {
 			super();
 			this.dateTimeZone = dateTimeZone;
 		}
 
-		public BaseToLocalDate(Chronology chronology) {
+		public BaseToDateTime(Chronology chronology) {
 			super();
 			this.chronology = chronology;
 		}
 
-		public Type<LocalDate> getResultType() {
-			return Types.forClass(LocalDate.class);
+		public Type<DateTime> getResultType() {
+			return Types.forClass(DateTime.class);
 		}
 	}
 	
-	public static final class FromString extends BaseToLocalDate<String> {
+	public static final class FromString extends BaseToDateTime<String> {
 
 		private String pattern;
 		private Locale locale;
 		
 		
 		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern parameter. If
+		 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter. If
 		 * the pattern includes either, the name of the month or day of week, a conversion
 		 * accepting a {@link Locale} must be used instead
 		 *                 
@@ -219,7 +218,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern parameter and with the given
+		 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter and with the given
 		 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
 		 * accepting a {@link Locale} must be used instead
 		 *                 
@@ -232,7 +231,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern parameter and with the given
+		 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter and with the given
 		 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
 		 * accepting a {@link Locale} must be used instead
 		 * 		                
@@ -245,7 +244,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and
+		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and
 		 * {@link Locale} parameters
 		 * 
 		 * @param pattern
@@ -258,7 +257,7 @@ public final class ToLocalDate {
 		}
 		
 		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and
+		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and
 		 * {@link Locale} parameters
 		 * 
 		 * @param pattern
@@ -271,7 +270,7 @@ public final class ToLocalDate {
 		}
 		
 		/**
-		 * It converts the given String into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
+		 * It converts the given String into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 		 *                 
 		 * @param pattern
@@ -285,7 +284,7 @@ public final class ToLocalDate {
 		}
 		
 		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
+		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 		 * 
 		 * @param pattern
@@ -299,7 +298,7 @@ public final class ToLocalDate {
 		}
 		
 		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
+		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 		 * The {@link DateTime} will be created with the given {@link Chronology}
 		 *                 
 		 * @param pattern
@@ -313,7 +312,7 @@ public final class ToLocalDate {
 		}
 		
 		/**
-		 * It converts the given String into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
+		 * It converts the given String into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 		 * The {@link DateTime} will be created with the given {@link Chronology}
 		 * 
 		 * @param pattern
@@ -326,7 +325,7 @@ public final class ToLocalDate {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public LocalDate execute(String object) throws Exception {
+		public DateTime execute(String object) throws Exception {
 			DateTimeFormatter dateTimeFormatter = null;
 		    if (this.locale == null) {
 		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
@@ -338,14 +337,14 @@ public final class ToLocalDate {
 		        dateTimeFormatter = DateTimeFormat.forPattern(this.pattern).withLocale(this.locale);
 		    }
 		    
-		    LocalDate result = new LocalDate();
+		    DateTime result = new DateTime();
 		    if (this.dateTimeZone != null) {	    	
 		    	dateTimeFormatter = dateTimeFormatter.withZone(this.dateTimeZone);
 		    }
 		    if (this.chronology != null) {
 		    	dateTimeFormatter = dateTimeFormatter.withChronology(this.chronology);
 		    }
-			result = dateTimeFormatter.parseDateTime(object).toLocalDate();
+			result = dateTimeFormatter.parseDateTime(object).toDateTime();
 			
 			return result;		
 		}
@@ -353,17 +352,17 @@ public final class ToLocalDate {
 		
 	}	
 	
-	public static final class FromDate<T extends Date> extends BaseToLocalDate<T> {
+	public static final class FromDate<T extends Date> extends BaseToDateTime<T> {
 
 		/**
-		 * The given {@link Date} is converted into a {@link LocalDate}
+		 * The given {@link Date} is converted into a {@link DateTime}
 		 */
 		public FromDate() {
 			super();			
 		}
 
 		/**
-		 * The given {@link Date} is converted into a {@link LocalDate} configured with the given
+		 * The given {@link Date} is converted into a {@link DateTime} configured with the given
 		 * {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
@@ -373,7 +372,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * The given {@link Date} is converted into a {@link LocalDate} with the given
+		 * The given {@link Date} is converted into a {@link DateTime} with the given
 		 * {@link Chronology}
 		 * 
 		 * @param chronology
@@ -382,31 +381,31 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(T object) throws Exception {
+		public DateTime execute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new LocalDate(object.getTime(), this.dateTimeZone);
+				return new DateTime(object.getTime(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new LocalDate(object.getTime(), this.chronology);
+				return new DateTime(object.getTime(), this.chronology);
 			}
 			
-			return new LocalDate(object.getTime());
+			return new DateTime(object.getTime());
 		}
 		
 		
 	}	
 	
-	public static final class FromTimestamp extends BaseToLocalDate<Timestamp> {
+	public static final class FromTimestamp extends BaseToDateTime<Timestamp> {
 
 		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalDate}
+		 * The given {@link Timestamp} is converted into a {@link DateTime}
 		 */
 		public FromTimestamp() {
 			super();			
 		}
 
 		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalDate} in the given
+		 * The given {@link Timestamp} is converted into a {@link DateTime} in the given
 		 * {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
@@ -416,7 +415,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalDate} with the given
+		 * The given {@link Timestamp} is converted into a {@link DateTime} with the given
 		 * {@link Chronology}
 		 * 
 		 * @param chronology
@@ -425,29 +424,29 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(Timestamp object) throws Exception {
+		public DateTime execute(Timestamp object) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new LocalDate(object.getTime(), this.dateTimeZone);
+				return new DateTime(object.getTime(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new LocalDate(object.getTime(), this.chronology);
+				return new DateTime(object.getTime(), this.chronology);
 			}
 			
-			return new LocalDate(object.getTime());
+			return new DateTime(object.getTime());
 		}
 	}	
 	
-	public static final class FromLong extends BaseToLocalDate<Long> {
+	public static final class FromLong extends BaseToDateTime<Long> {
 
 		/**
-		 * The given long representing the time in millis is converted into a {@link LocalDate}
+		 * The given long representing the time in millis is converted into a {@link DateTime}
 		 */
 		public FromLong() {
 			super();			
 		}
 
 		/**
-		 * The given long representing the time in millis is converted into a {@link LocalDate} in the given
+		 * The given long representing the time in millis is converted into a {@link DateTime} in the given
 		 * {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
@@ -457,7 +456,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * The given long representing the time in millis is converted into a {@link LocalDate} with the given
+		 * The given long representing the time in millis is converted into a {@link DateTime} with the given
 		 * {@link Chronology}
 		 * 
 		 * @param chronology
@@ -466,22 +465,22 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(Long object) throws Exception {
+		public DateTime execute(Long object) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new LocalDate(object.longValue(), this.dateTimeZone);
+				return new DateTime(object.longValue(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new LocalDate(object.longValue(), this.chronology);
+				return new DateTime(object.longValue(), this.chronology);
 			}
 			
-			return new LocalDate(object.longValue());
+			return new DateTime(object.longValue());
 		}
 	}	
 	
-	public static final class FromIntegerFieldList extends BaseToLocalDate<List<Integer>> {
+	public static final class FromIntegerFieldList extends BaseToDateTime<List<Integer>> {
 
 		/**
-		 * A {@link LocalDate} is created from the given integer list.
+		 * A {@link DateTime} is created from the given integer list.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 		 */
 		public FromIntegerFieldList() {
@@ -489,7 +488,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * A {@link LocalDate} is created from the given integer list.
+		 * A {@link DateTime} is created from the given integer list.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 		 * The result will be created with the given {@link Chronology}
 		 *                 
@@ -499,28 +498,32 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(List<Integer> object) throws Exception {
-			if (object.size() < 1 || object.size() > 3) {
+		public DateTime execute(List<Integer> object) throws Exception {
+			if (object.size() < 4 || object.size() > 7) {
 				throw new FunctionExecutionException(
-						"Integer arguments list for LocalDate conversion should of size " +
-						"between 1 and 3. Size " + object.size() + " is not valid.");
+						"Integer arguments list for DateTime conversion should of size " +
+						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.size() + " is not valid.");
 			}			
 			
 			int year = object.get(0).intValue();
-			int month = (object.size() >= 2) ? object.get(1).intValue() : 1;
-			int day = (object.size() >= 3) ? object.get(2).intValue() : 1;
+			int month = object.get(1).intValue();
+			int day = object.get(2).intValue();
+			int hour = object.get(3).intValue();
+			int minute = (object.size() >= 5) ? object.get(4).intValue() : 0;
+			int second = (object.size() >= 6) ? object.get(5).intValue() : 0;
+			int milli = (object.size() >= 7) ? object.get(6).intValue() : 0;
 			
 			if (this.chronology != null) {
-	        	return new LocalDate(year, month, day, this.chronology);
+	        	return new DateTime(year, month, day, hour, minute, second, milli, this.chronology);
 	        }
-			return new LocalDate(year, month, day);
+			return new DateTime(year, month, day,  hour, minute, second, milli);
 		}
 	}	
 	
-	public static final class FromIntegerFieldArray extends BaseToLocalDate<Integer[]> {
+	public static final class FromIntegerFieldArray extends BaseToDateTime<Integer[]> {
 
 		/**
-		 * A {@link LocalDate} is created from the given integer array.
+		 * A {@link DateTime} is created from the given integer array.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 		 */
 		
@@ -529,7 +532,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * A {@link LocalDate} is created from the given integer array.
+		 * A {@link DateTime} is created from the given integer array.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 		 * The result will be created with the given {@link Chronology}
 		 *                 
@@ -539,31 +542,35 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(Integer[] object) throws Exception {
-			if (object.length < 1 || object.length > 3) {
+		public DateTime execute(Integer[] object) throws Exception {
+			if (object.length < 4 || object.length > 7) {
 				throw new FunctionExecutionException(
-						"Integer arguments array for LocalDate conversion should of size " +
-						"between 1 and 3. Size " + object.length + " is not valid.");
-			}			
+						"Integer arguments array for DateTime conversion should of size " +
+						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.length + " is not valid.");
+			}		
 			
 			int year = object[0].intValue();
-			int month = (object.length >= 2) ? object[1].intValue() : 1;
-			int day = (object.length >= 3) ? object[2].intValue() : 1;
+			int month = object[1].intValue();
+			int day = object[2].intValue();
+			int hour = object[3].intValue();
+			int minute = (object.length >= 5) ? object[4].intValue() : 0;
+			int second = (object.length >= 6) ? object[5].intValue() : 0;
+			int milli = (object.length >= 7) ? object[6].intValue() : 0;
 			
 			if (this.chronology != null) {
-	        	return new LocalDate(year, month, day, this.chronology);
+	        	return new DateTime(year, month, day, hour, minute, second, milli, this.chronology);
 	        }
-			return new LocalDate(year, month, day);
+			return new DateTime(year, month, day, hour, minute, second, milli);
 		}
 		
 	}	
 	
 	
 	
-	public static final class FromStringFieldList extends BaseToLocalDate<List<String>> {
+	public static final class FromStringFieldList extends BaseToDateTime<List<String>> {
 
 		/**
-		 * A {@link LocalDate} is created from the given string list.
+		 * A {@link DateTime} is created from the given string list.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 		 */
 		public FromStringFieldList() {
@@ -571,7 +578,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * A {@link LocalDate} is created from the given string list.
+		 * A {@link DateTime} is created from the given string list.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 		 * The result will be created with the given {@link Chronology}
 		 *                 
@@ -581,31 +588,37 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(List<String> object) throws Exception {
-			if (object.size() < 1 || object.size() > 3) {
+		public DateTime execute(List<String> object) throws Exception {
+			if (object.size() < 4 || object.size() > 7) {
 				throw new FunctionExecutionException(
-						"String arguments list for LocalDate conversion should of size " +
-						"between 1 and 3. Size " + object.size() + " is not valid.");
+						"String arguments list for DateTime conversion should of size " +
+						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.size() + " is not valid.");
 			}			
 			
 			String year = object.get(0);
-			String month = (object.size() >= 2) ? object.get(1) : "1";
-			String day = (object.size() >= 3) ? object.get(2) : "1";
+			String month = object.get(1);
+			String day = object.get(2);
+			String hour = object.get(3);
+			String minute = (object.size() >= 5) ? object.get(4) : "0";
+			String second = (object.size() >= 6) ? object.get(5) : "0";
+			String milli = (object.size() >= 7) ? object.get(6) : "0";
 			
 			if (this.chronology != null) {
-	        	return new LocalDate(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
+	        	return new DateTime(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
+	        			Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli),
 	        			this.chronology);
 	        }
-			return new LocalDate(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+			return new DateTime(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day),
+					Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli));
 		}
 		
 		
 	}	
 	
-	public static final class FromStringFieldArray extends BaseToLocalDate<String[]> {
+	public static final class FromStringFieldArray extends BaseToDateTime<String[]> {
 
 		/**
-		 * A {@link LocalDate} is created from the given string array.
+		 * A {@link DateTime} is created from the given string array.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 		 */
 		public FromStringFieldArray() {
@@ -613,7 +626,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * A {@link LocalDate} is created from the given string array.
+		 * A {@link DateTime} is created from the given string array.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 		 * The result will be created with the given {@link Chronology}
 		 *                 
@@ -623,36 +636,42 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(String[] object) throws Exception {
-			if (object.length < 1 || object.length > 3) {
+		public DateTime execute(String[] object) throws Exception {
+			if (object.length < 4 || object.length > 7) {
 				throw new FunctionExecutionException(
-						"String arguments array for LocalDate conversion should of size " +
-						"between 1 and 3. Size " + object.length + " is not valid.");
+						"String arguments array for DateTime conversion should of size " +
+						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.length + " is not valid.");
 			}			
 			
 			String year = object[0];
-			String month = (object.length >= 2) ? object[1] : "1";
-			String day = (object.length >= 3) ? object[2] : "1";
+			String month = object[1];
+			String day = object[2];
+			String hour = object[3];
+			String minute = (object.length >= 5) ? object[4] : "0";
+			String second = (object.length >= 6) ? object[5] : "0";
+			String milli = (object.length >= 7) ? object[6] : "0";
 			
 			if (this.chronology != null) {
-	        	return new LocalDate(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day), 
+	        	return new DateTime(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day), 
+	        			Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli),
 	        			this.chronology);
 	        }
-			return new LocalDate(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day));
+			return new DateTime(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
+					Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli));
 		}
 	}	
 	
-	public static final class FromCalendar<T extends Calendar> extends BaseToLocalDate<T> {
+	public static final class FromCalendar<T extends Calendar> extends BaseToDateTime<T> {
 
 		/**
-		 * It converts a {@link Calendar} into a {@link LocalDate}
+		 * It converts a {@link Calendar} into a {@link DateTime}
 		 */
 		public FromCalendar() {
 			super();			
 		}
 
 		/**
-		 * It converts a {@link Calendar} into a {@link LocalDate} in the given {@link DateTimeZone}
+		 * It converts a {@link Calendar} into a {@link DateTime} in the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -661,7 +680,7 @@ public final class ToLocalDate {
 		}
 
 		/**
-		 * It converts a {@link Calendar} into a {@link LocalDate} with the given {@link Chronology}
+		 * It converts a {@link Calendar} into a {@link DateTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -669,14 +688,14 @@ public final class ToLocalDate {
 			super(chronology);
 		}
 		
-		public LocalDate execute(T object) throws Exception {
+		public DateTime execute(T object) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new LocalDate(object, this.dateTimeZone);
+				return new DateTime(object, this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new LocalDate(object, this.chronology);
+				return new DateTime(object, this.chronology);
 			}
-			return new LocalDate(object);
+			return new DateTime(object);
 		}
 	}	
 }
