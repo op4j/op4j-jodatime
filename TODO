@@ -1,3 +1,5 @@
+    - Rename "JodaTimeToString" -> "JodaToString"
+    - From JodaX to JodaY
     - ToPeriod: check fromIntegerFieldXXX methods
     - Check javadoc
 	- min and max number of elements when creating localtime, datetime, ..
