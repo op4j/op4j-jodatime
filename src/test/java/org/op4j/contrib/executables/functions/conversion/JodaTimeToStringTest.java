@@ -1,11 +1,10 @@
 package org.op4j.contrib.executables.functions.conversion;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import junit.framework.TestCase;
 
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateMidnight;
@@ -19,7 +18,7 @@ import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.contrib.executables.functions.conversion.JodaTimeToString.FormatType;
 
-public class JodaTimeToStringTest {
+public class JodaTimeToStringTest extends TestCase {
 
 	@Test
 	public void testFromBaseDateTimeFormatTypeString() {
@@ -59,6 +58,14 @@ public class JodaTimeToStringTest {
 		assertFalse(StringUtils.equals(
 				targets.get(0).toString(DateTimeFormat.forStyle("MM").withChronology(GregorianChronology.getInstance())),
 				result.get(0)));
+		
+		try {
+			Op.onList(targets).forEach().exec(JodaTimeToString
+				.fromBaseDateTime(null, "MM", BuddhistChronology.getInstance()));
+			fail("conversion can't be done if formatType is null");
+		} catch (IllegalArgumentException e) {
+			// Do nothing
+		}
 	}
 
 	@Test
@@ -110,6 +117,14 @@ public class JodaTimeToStringTest {
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS", Locale.UK),
 				result.get(0));
+		
+		try {
+			Op.onList(targets).forEach().exec(JodaTimeToString
+					.fromLocalTime(FormatType.PATTERN, null, Locale.UK));
+			fail("conversion can't be done if pattern is null");
+		} catch (IllegalArgumentException e) {
+			// Do nothing
+		}
 	}
 
 	@Test
@@ -137,6 +152,14 @@ public class JodaTimeToStringTest {
 		assertFalse(StringUtils.equals(
 				targets.get(0).toString(DateTimeFormat.forStyle("ML").withLocale(Locale.UK)),
 				result.get(0)));
+		
+		try {
+			Op.onList(targets).forEach().exec(JodaTimeToString
+					.fromLocalTime(FormatType.STYLE, "MM", ""));
+			fail("conversion can't be done if locale is empty");
+		} catch (IllegalArgumentException e) {
+			// Do nothing
+		}
 	}
 
 	@Test

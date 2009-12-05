@@ -1,12 +1,12 @@
 package org.op4j.contrib.executables.functions.conversion;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import junit.framework.TestCase;
 
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalTime;
@@ -17,7 +17,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
 
-public class ToLocalTimeTest {
+public class ToLocalTimeTest extends TestCase {
 
 	@Test
 	public void testFromStringString() {

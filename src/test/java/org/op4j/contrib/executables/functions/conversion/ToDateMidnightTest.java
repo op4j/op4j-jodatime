@@ -1,13 +1,12 @@
 package org.op4j.contrib.executables.functions.conversion;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import junit.framework.TestCase;
 
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTimeZone;
@@ -19,7 +18,7 @@ import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
 
-public class ToDateMidnightTest {
+public class ToDateMidnightTest extends TestCase {
 
 	@Test
 	public void testFromStringString() {
@@ -61,6 +60,14 @@ public class ToDateMidnightTest {
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
 				.parseDateTime(asStr).toDateMidnight());
+		
+		try {
+			Op.on(asStr).exec(ToDateMidnight.fromString(null,
+					Locale.CANADA));
+			fail("conversion can't be done if pattern is empty");
+		} catch (IllegalArgumentException e) {
+			// Do nothing
+		}
 	}
 
 	@Test
@@ -246,7 +253,7 @@ public class ToDateMidnightTest {
 			.get();
 	
 		assertEquals(result,
-				new DateMidnight(year.intValue(), month.intValue(), day.intValue()));
+				new DateMidnight(year.intValue(), month.intValue(), day.intValue()));		
 	}
 
 	@Test

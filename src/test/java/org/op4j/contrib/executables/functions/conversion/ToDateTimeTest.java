@@ -1,12 +1,12 @@
 package org.op4j.contrib.executables.functions.conversion;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import junit.framework.TestCase;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -17,7 +17,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
 
-public class ToDateTimeTest {
+public class ToDateTimeTest extends TestCase {
 
 	@Test
 	public void testFromStringString() {
@@ -106,6 +106,14 @@ public class ToDateTimeTest {
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
 				.withChronology(BuddhistChronology.getInstance())
 				.parseDateTime(asStr));
+		
+		try {
+			Op.on(asStr).exec(ToDateTime.fromString("",
+					Locale.CANADA, BuddhistChronology.getInstance()));
+			fail("conversion can't be done if pattern is empty");
+		} catch (IllegalArgumentException e) {
+			// Do nothing
+		}
 	}
 
 	@Test

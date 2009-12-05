@@ -1,13 +1,12 @@
 package org.op4j.contrib.executables.functions.conversion;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import junit.framework.TestCase;
 
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
@@ -22,7 +21,7 @@ import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
 
-public class ToIntervalTest {
+public class ToIntervalTest extends TestCase {
 
 	@Test
 	public void testFromStringFieldList() {

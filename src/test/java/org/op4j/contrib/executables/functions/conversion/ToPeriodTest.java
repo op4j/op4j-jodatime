@@ -1,13 +1,12 @@
 package org.op4j.contrib.executables.functions.conversion;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import junit.framework.TestCase;
 
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
@@ -21,7 +20,7 @@ import org.joda.time.chrono.GregorianChronology;
 import org.junit.Test;
 import org.op4j.Op;
 
-public class ToPeriodTest {
+public class ToPeriodTest extends TestCase {
 
 	@Test
 	public void testFromDateFieldList() {
