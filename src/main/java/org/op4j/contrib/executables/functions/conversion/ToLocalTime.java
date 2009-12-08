@@ -552,13 +552,13 @@ public final class ToLocalTime {
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(List<Integer> object) throws Exception {
-			if (object.size() > 4) {
+			if (object.size() < 1 || object.size() > 4) {
 				throw new FunctionExecutionException(
-						"Integer arguments list for LocalTime conversion should of size " +
-						"<= 4. Size " + object.size() + " is not valid.");
+						"Integer arguments list for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.size() + " is not valid.");
 			}			
 			
-			int hour = (object.size() >= 1) ? object.get(0).intValue() : 0;
+			int hour = object.get(0).intValue();
 			int minute = (object.size() >= 2) ? object.get(1).intValue() : 0;
 			int second = (object.size() >= 3) ? object.get(2).intValue() : 0;
 			int milli = (object.size() >= 4) ? object.get(3).intValue() : 0;
@@ -599,13 +599,13 @@ public final class ToLocalTime {
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(Integer[] object) throws Exception {
-			if (object.length > 4) {
+			if (object.length < 1 || object.length > 4) {
 				throw new FunctionExecutionException(
-						"Integer arguments array for LocalTime conversion should of size " +
-						"<= 4. Size " + object.length + " is not valid.");
+						"Integer arguments array for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.length + " is not valid.");
 			}			
 			
-			int hour = (object.length >= 1) ? object[0].intValue() : 0;
+			int hour = object[0].intValue();
 			int minute = (object.length >= 2) ? object[1].intValue() : 0;
 			int second = (object.length >= 3) ? object[2].intValue() : 0;
 			int milli = (object.length >= 4) ? object[3].intValue() : 0;
@@ -648,13 +648,13 @@ public final class ToLocalTime {
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(List<String> object) throws Exception {
-			if (object.size() > 4) {
+			if (object.size() < 1 || object.size() > 4) {
 				throw new FunctionExecutionException(
-						"String arguments list for LocalTime conversion should of size " +
-						"<= 4. Size " + object.size() + " is not valid.");
+						"String arguments list for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.size() + " is not valid.");
 			}			
 			
-			String hour = (object.size() >= 1) ? object.get(0) : "0";
+			String hour = object.get(0);
 			String minute = (object.size() >= 2) ? object.get(1) : "0";
 			String second = (object.size() >= 3) ? object.get(2) : "0";
 			String milli = (object.size() >= 4) ? object.get(3) : "0";
@@ -696,13 +696,13 @@ public final class ToLocalTime {
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(String[] object) throws Exception {
-			if (object.length > 4) {
+			if (object.length < 1 || object.length > 4) {
 				throw new FunctionExecutionException(
-						"String arguments array for LocalTime conversion should of size " +
-						"<= 4. Size " + object.length + " is not valid.");
+						"String arguments array for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.length + " is not valid.");
 			}			
 			
-			String hour = (object.length >= 1) ? object[0] : "0";
+			String hour = object[0];
 			String minute = (object.length >= 2) ? object[1] : "0";
 			String second = (object.length >= 3) ? object[2] : "0";
 			String milli = (object.length >= 4) ? object[3] : "0";
