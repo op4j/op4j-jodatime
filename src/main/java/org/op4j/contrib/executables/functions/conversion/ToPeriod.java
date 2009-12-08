@@ -29,6 +29,7 @@ import org.apache.commons.lang.Validate;
 import org.javaruntype.type.Type;
 import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
+import org.joda.time.DurationFieldType;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
@@ -316,7 +317,7 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final List<? extends Date> dates) throws Exception {
 			if (dates.size() != 2 ) {
 				throw new FunctionExecutionException(
-						"Timestamp arguments list for Period conversion should of sizes " +
+						"Date arguments list for Period conversion should have size " +
 						"2. Size " + dates.size() + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
@@ -362,7 +363,7 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final T[] dates) throws Exception {
 			if (dates.length != 2 ) {
 				throw new FunctionExecutionException(
-						"Timestamp arguments array for Period conversion should of sizes " +
+						"Date arguments array for Period conversion should have size " +
 						"2. Size " + dates.length + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
@@ -541,7 +542,7 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final List<Long> longs) throws Exception {
 			if (longs.size() != 2 ) {
 				throw new FunctionExecutionException(
-						"Long arguments list for Period conversion should of sizes " +
+						"Long arguments list for Period conversion should have size " +
 						"2. Size " + longs.size() + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
@@ -589,7 +590,7 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final Long[] longs) throws Exception {
 			if (longs.length != 2 ) {
 				throw new FunctionExecutionException(
-						"Long arguments array for Period conversion should of sizes " +
+						"Long arguments array for Period conversion should have size " +
 						"2. Size " + longs.length + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
@@ -634,7 +635,7 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final List<? extends Calendar> calendars) throws Exception {
 			if (calendars.size() != 2 ) {
 				throw new FunctionExecutionException(
-						"Calendar arguments list for Period conversion should of sizes " +
+						"Calendar arguments list for Period conversion should have size " +
 						"2. Size " + calendars.size() + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
@@ -679,7 +680,7 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final T[] calendars) throws Exception {
 			if (calendars.length != 2 ) {
 				throw new FunctionExecutionException(
-						"Calendar arguments array for Period conversion should of sizes " +
+						"Calendar arguments array for Period conversion should have size " +
 						"2. Size " + calendars.length + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
@@ -724,11 +725,12 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final List<? extends BaseDateTime> dateTimes) throws Exception {
 			if (dateTimes.size() != 2 ) {
 				throw new FunctionExecutionException(
-						"DateTime arguments list for Period conversion should of sizes " +
+						"DateTime arguments list for Period conversion should have size " +
 						"2. Size " + dateTimes.size() + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
-				return new Period(dateTimes.get(0).getMillis(), dateTimes.get(1).getMillis(), this.periodType, this.chronology);
+				return new Period(dateTimes.get(0).getMillis(), dateTimes.get(1).getMillis(), 
+						this.periodType, this.chronology);
 			}
 			if (this.periodType != null) {
 				return new Period(dateTimes.get(0), dateTimes.get(1), this.periodType);
@@ -768,7 +770,7 @@ public final class ToPeriod {
 		public Period nullAsNullExecute(final T[] dateTimes) throws Exception {
 			if (dateTimes.length != 2 ) {
 				throw new FunctionExecutionException(
-						"DateTime arguments array for Period conversion should of sizes " +
+						"DateTime arguments array for Period conversion should have size " +
 						"2. Size " + dateTimes.length + " is not valid.");
 			}
 			if (this.periodType != null && this.chronology != null) {
@@ -804,32 +806,75 @@ public final class ToPeriod {
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<Integer> integers) throws Exception {
+			
+			if (this.periodType != null) {
+				// Check list size is consistent with periodType
+				if (integers.size() != this.periodType.size()) { 
+					throw new FunctionExecutionException(
+							"Integer arguments list for Period conversion with the periodType " +
+							this.periodType.getName() + " should have size " + this.periodType.size() +
+							". Size " + integers.size() + " is not valid.");
+				}				
+				
+				int currentIndex = 0;
+				int years = 0;
+				int months = 0;
+				int weeks = 0;
+				int days = 0;
+				int hours = 0;
+				int minutes = 0;
+				int seconds = 0;
+				int millis = 0;
+				if (this.periodType.isSupported(DurationFieldType.years())) {
+					years = integers.get(currentIndex++).intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.months())) {
+					months = integers.get(currentIndex++).intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.weeks())) {
+					weeks = integers.get(currentIndex++).intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.days())) {
+					days = integers.get(currentIndex++).intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.hours())) {
+					hours = integers.get(currentIndex++).intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.minutes())) {
+					minutes = integers.get(currentIndex++).intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.seconds())) {
+					seconds = integers.get(currentIndex++).intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.millis())) {
+					millis = integers.get(currentIndex++).intValue();					
+				}				
+				
+				return new Period(years, months, weeks, days, hours, minutes, seconds, millis, this.periodType);
+			} 			
+			
+			// When periodType is null, only two types of data are allowed: 
+			// (hours, minutes, seconds, milliseconds)
+			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (integers.size() != 4 && // hours, minutes, seconds, milliseconds
 					integers.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(
-						"Integer arguments list for Period conversion should of sizes " +
+						"Integer arguments list for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + integers.size() + " is not valid.");
 			}
-			
+
+			// hours, minutes, seconds, milliseconds
 			if (integers.size() == 4) {
-				if (this.periodType != null) {
-					return new Period(0, 0, 0, 0, integers.get(0).intValue(), integers.get(1).intValue(), 
-							integers.get(2).intValue(), integers.get(3).intValue(), this.periodType);
-				}
 				return new Period(integers.get(0).intValue(), integers.get(1).intValue(), 
 						integers.get(2).intValue(), integers.get(3).intValue());
 			} 
-			if (this.periodType != null) {
-				return new Period(integers.get(0).intValue(), integers.get(1).intValue(), 
-						integers.get(2).intValue(), integers.get(3).intValue(),
-						integers.get(4).intValue(), integers.get(5).intValue(),
-						integers.get(6).intValue(), integers.get(7).intValue(), this.periodType);
-			}
+			
+			// years, months, weeks, days, hours, minutes, seconds and milliseconds
 			return new Period(integers.get(0).intValue(), integers.get(1).intValue(), 
 					integers.get(2).intValue(), integers.get(3).intValue(),
 					integers.get(4).intValue(), integers.get(5).intValue(),
-					integers.get(6).intValue(), integers.get(7).intValue());	
+					integers.get(6).intValue(), integers.get(7).intValue());
 		}		
 	}	
 	
@@ -853,28 +898,70 @@ public final class ToPeriod {
 		 */
 		@Override
 		public Period nullAsNullExecute(final Integer[] integers) throws Exception {
+			if (this.periodType != null) {
+				// Check list size is consistent with periodType
+				if (integers.length != this.periodType.size()) { 
+					throw new FunctionExecutionException(
+							"Integer arguments array for Period conversion with the periodType " +
+							this.periodType.getName() + " should have size " + this.periodType.size() +
+							". Size " + integers.length + " is not valid.");
+				}				
+				
+				int currentIndex = 0;
+				int years = 0;
+				int months = 0;
+				int weeks = 0;
+				int days = 0;
+				int hours = 0;
+				int minutes = 0;
+				int seconds = 0;
+				int millis = 0;
+				if (this.periodType.isSupported(DurationFieldType.years())) {
+					years = integers[currentIndex++].intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.months())) {
+					months = integers[currentIndex++].intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.weeks())) {
+					weeks = integers[currentIndex++].intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.days())) {
+					days = integers[currentIndex++].intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.hours())) {
+					hours = integers[currentIndex++].intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.minutes())) {
+					minutes = integers[currentIndex++].intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.seconds())) {
+					seconds = integers[currentIndex++].intValue();					
+				}
+				if (this.periodType.isSupported(DurationFieldType.millis())) {
+					millis = integers[currentIndex++].intValue();					
+				}				
+				
+				return new Period(years, months, weeks, days, hours, minutes, seconds, millis, this.periodType);
+			} 			
+			
+			// When periodType is null, only two types of data are allowed: 
+			// (hours, minutes, seconds, milliseconds)
+			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (integers.length != 4 && // hours, minutes, seconds, milliseconds
 					integers.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(
-						"Integer arguments array for Period conversion should of sizes " +
+						"Integer arguments array for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + integers.length + " is not valid.");
-	        }
-			
+			}
+
+			// hours, minutes, seconds, milliseconds
 			if (integers.length == 4) {
-				if (this.periodType != null) {
-					return new Period(0, 0, 0, 0, integers[0].intValue(), integers[1].intValue(), 
-							integers[2].intValue(), integers[3].intValue(), this.periodType);
-				}
 				return new Period(integers[0].intValue(), integers[1].intValue(), 
 						integers[2].intValue(), integers[3].intValue());
 			} 
-			if (this.periodType != null) {
-				return new Period(integers[0].intValue(), integers[1].intValue(), 
-						integers[2].intValue(), integers[3].intValue(),
-						integers[4].intValue(), integers[5].intValue(),
-						integers[6].intValue(), integers[7].intValue(), this.periodType);
-			}
+			
+			// years, months, weeks, days, hours, minutes, seconds and milliseconds
 			return new Period(integers[0].intValue(), integers[1].intValue(), 
 					integers[2].intValue(), integers[3].intValue(),
 					integers[4].intValue(), integers[5].intValue(),
@@ -902,32 +989,74 @@ public final class ToPeriod {
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<String> strings) throws Exception {
+			if (this.periodType != null) {
+				// Check list size is consistent with periodType
+				if (strings.size() != this.periodType.size()) { 
+					throw new FunctionExecutionException(
+							"String arguments list for Period conversion with the periodType " +
+							this.periodType.getName() + " should have size " + this.periodType.size() +
+							". Size " + strings.size() + " is not valid.");
+				}				
+				
+				int currentIndex = 0;
+				int years = 0;
+				int months = 0;
+				int weeks = 0;
+				int days = 0;
+				int hours = 0;
+				int minutes = 0;
+				int seconds = 0;
+				int millis = 0;
+				if (this.periodType.isSupported(DurationFieldType.years())) {
+					years = Integer.parseInt(strings.get(currentIndex++));					
+				}
+				if (this.periodType.isSupported(DurationFieldType.months())) {
+					months = Integer.parseInt(strings.get(currentIndex++));					
+				}
+				if (this.periodType.isSupported(DurationFieldType.weeks())) {
+					weeks = Integer.parseInt(strings.get(currentIndex++));					
+				}
+				if (this.periodType.isSupported(DurationFieldType.days())) {
+					days = Integer.parseInt(strings.get(currentIndex++));					
+				}
+				if (this.periodType.isSupported(DurationFieldType.hours())) {
+					hours = Integer.parseInt(strings.get(currentIndex++));					
+				}
+				if (this.periodType.isSupported(DurationFieldType.minutes())) {
+					minutes = Integer.parseInt(strings.get(currentIndex++));					
+				}
+				if (this.periodType.isSupported(DurationFieldType.seconds())) {
+					seconds = Integer.parseInt(strings.get(currentIndex++));					
+				}
+				if (this.periodType.isSupported(DurationFieldType.millis())) {
+					millis = Integer.parseInt(strings.get(currentIndex++));					
+				}				
+				
+				return new Period(years, months, weeks, days, hours, minutes, seconds, millis, this.periodType);
+			} 			
+			
+			// When periodType is null, only two types of data are allowed: 
+			// (hours, minutes, seconds, milliseconds)
+			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (strings.size() != 4 && // hours, minutes, seconds, milliseconds
 					strings.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(
-						"String arguments list for Period conversion should of sizes " +
+						"String arguments list for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + strings.size() + " is not valid.");
 			}
-			
+
+			// hours, minutes, seconds, milliseconds
 			if (strings.size() == 4) {
-				if (this.periodType != null) {
-					return new Period(0, 0, 0, 0, Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
-							Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)), this.periodType);
-				}
 				return new Period(Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
 						Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)));
 			} 
-			if (this.periodType != null) {
-				return new Period(Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
-						Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)),
-						Integer.parseInt(strings.get(4)), Integer.parseInt(strings.get(5)),
-						Integer.parseInt(strings.get(6)), Integer.parseInt(strings.get(7)), this.periodType);
-			}
+			
+			// years, months, weeks, days, hours, minutes, seconds and milliseconds
 			return new Period(Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
 					Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)),
 					Integer.parseInt(strings.get(4)), Integer.parseInt(strings.get(5)),
-					Integer.parseInt(strings.get(6)), Integer.parseInt(strings.get(7)));	
+					Integer.parseInt(strings.get(6)), Integer.parseInt(strings.get(7)));
 		}		
 	}	
 	
@@ -951,32 +1080,74 @@ public final class ToPeriod {
 		 */
 		@Override
 		public Period nullAsNullExecute(final String[] strings) throws Exception {
+			if (this.periodType != null) {
+				// Check list size is consistent with periodType
+				if (strings.length != this.periodType.size()) { 
+					throw new FunctionExecutionException(
+							"String arguments array for Period conversion with the periodType " +
+							this.periodType.getName() + " should have size " + this.periodType.size() +
+							". Size " + strings.length + " is not valid.");
+				}				
+				
+				int currentIndex = 0;
+				int years = 0;
+				int months = 0;
+				int weeks = 0;
+				int days = 0;
+				int hours = 0;
+				int minutes = 0;
+				int seconds = 0;
+				int millis = 0;
+				if (this.periodType.isSupported(DurationFieldType.years())) {
+					years = Integer.parseInt(strings[currentIndex++]);					
+				}
+				if (this.periodType.isSupported(DurationFieldType.months())) {
+					months = Integer.parseInt(strings[currentIndex++]);					
+				}
+				if (this.periodType.isSupported(DurationFieldType.weeks())) {
+					weeks = Integer.parseInt(strings[currentIndex++]);					
+				}
+				if (this.periodType.isSupported(DurationFieldType.days())) {
+					days = Integer.parseInt(strings[currentIndex++]);					
+				}
+				if (this.periodType.isSupported(DurationFieldType.hours())) {
+					hours = Integer.parseInt(strings[currentIndex++]);					
+				}
+				if (this.periodType.isSupported(DurationFieldType.minutes())) {
+					minutes = Integer.parseInt(strings[currentIndex++]);					
+				}
+				if (this.periodType.isSupported(DurationFieldType.seconds())) {
+					seconds = Integer.parseInt(strings[currentIndex++]);					
+				}
+				if (this.periodType.isSupported(DurationFieldType.millis())) {
+					millis = Integer.parseInt(strings[currentIndex++]);					
+				}				
+				
+				return new Period(years, months, weeks, days, hours, minutes, seconds, millis, this.periodType);
+			} 			
+			
+			// When periodType is null, only two types of data are allowed: 
+			// (hours, minutes, seconds, milliseconds)
+			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (strings.length != 4 && // hours, minutes, seconds, milliseconds
 					strings.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
 				throw new FunctionExecutionException(
-						"String arguments array for Period conversion should of sizes " +
+						"String arguments array for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + strings.length + " is not valid.");
-	        }
-			
+			}
+
+			// hours, minutes, seconds, milliseconds
 			if (strings.length == 4) {
-				if (this.periodType != null) {
-					return new Period(0, 0, 0, 0, Integer.parseInt(strings[0]), Integer.parseInt(strings[1]), 
-							Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), this.periodType);
-				}
 				return new Period(Integer.parseInt(strings[0]), Integer.parseInt(strings[1]), 
 						Integer.parseInt(strings[2]), Integer.parseInt(strings[3]));
 			} 
-			if (this.periodType != null) {
-				return new Period(Integer.parseInt(strings[0]), Integer.parseInt(strings[1]), 
-						Integer.parseInt(strings[2]), Integer.parseInt(strings[3]),
-						Integer.parseInt(strings[4]), Integer.parseInt(strings[5]),
-						Integer.parseInt(strings[6]), Integer.parseInt(strings[7]), this.periodType);
-			}
+			
+			// years, months, weeks, days, hours, minutes, seconds and milliseconds
 			return new Period(Integer.parseInt(strings[0]), Integer.parseInt(strings[1]), 
 					Integer.parseInt(strings[2]), Integer.parseInt(strings[3]),
 					Integer.parseInt(strings[4]), Integer.parseInt(strings[5]),
-					Integer.parseInt(strings[6]), Integer.parseInt(strings[7]));			
+					Integer.parseInt(strings[6]), Integer.parseInt(strings[7]));
 		}		
 	}	
 }

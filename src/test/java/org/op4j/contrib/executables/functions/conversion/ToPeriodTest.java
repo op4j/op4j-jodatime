@@ -602,7 +602,7 @@ public class ToPeriodTest extends TestCase {
 		Integer hours = Integer.valueOf(3);
 		Integer minutes = Integer.valueOf(30);
 		
-		Period period = Op.on(Arrays.asList(hours, minutes, Integer.valueOf(0), Integer.valueOf(0)))
+		Period period = Op.on(Arrays.asList(hours, minutes))
 			.exec(ToPeriod.fromIntegerFieldList(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
@@ -633,7 +633,7 @@ public class ToPeriodTest extends TestCase {
 		Integer hours = Integer.valueOf(3);
 		Integer minutes = Integer.valueOf(30);
 		
-		Period period = Op.on(new Integer[] {hours, minutes, Integer.valueOf(0), Integer.valueOf(0)})
+		Period period = Op.on(new Integer[] {hours, minutes})
 			.exec(ToPeriod.fromIntegerFieldArray(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
@@ -664,7 +664,7 @@ public class ToPeriodTest extends TestCase {
 		String hours = "3";
 		String minutes = "30";
 		
-		Period period = Op.on(Arrays.asList(hours, minutes, "0", "0"))
+		Period period = Op.on(Arrays.asList(hours, minutes))
 			.exec(ToPeriod.fromStringFieldList(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
@@ -696,7 +696,7 @@ public class ToPeriodTest extends TestCase {
 		String hours = "3";
 		String minutes = "30";
 		
-		Period period = Op.on(new String[] {hours, minutes, "0", "0"})
+		Period period = Op.on(new String[] {hours, minutes})
 			.exec(ToPeriod.fromStringFieldArray(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
