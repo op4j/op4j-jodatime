@@ -9,7 +9,7 @@ public class AllTests {
 		TestSuite suite = new TestSuite(
 				"Test for org.op4j.contrib.executables.functions.conversion");
 		//$JUnit-BEGIN$
-		suite.addTestSuite(JodaTimeToStringTest.class);
+		suite.addTestSuite(JodaToStringTest.class);
 		suite.addTestSuite(ToDateMidnightTest.class);
 		suite.addTestSuite(ToDateTimeTest.class);
 		suite.addTestSuite(ToIntervalTest.class);
