@@ -517,11 +517,11 @@ public final class ToInterval {
 						&& object.size() != 14) {
 					throw new FunctionExecutionException(
 							"String arguments list for Interval conversion should of sizes " +
-							"2 (start and end of the interval)" +
+							"2 (start and end of the interval), " +
 							"6 (year, month, day, year, month, day), " +
 							"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
 							"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
-							"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond), " +
+							"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond)" +
 							". Size " + object.size() + " is not valid.");
 				}
 				
@@ -598,11 +598,11 @@ public final class ToInterval {
 			if (object.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"String arguments list for Interval conversion should of sizes " +
-						"2 (start and end of the interval)" +
+						"2 (start and end of the interval), " +
 						"6 (year, month, day, year, month, day), " +
 						"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
 						"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
-						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond), " +
+						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond)" +
 						". Size " + object.size() + " is not valid.");
 			}
 			
@@ -627,7 +627,7 @@ public final class ToInterval {
 					break;	
 				case PATTERN_LOCALE_CHRONOLOGY:
 					dateTimeFormatter = DateTimeFormat.forPattern(this.pattern)
-					.withLocale(this.locale).withChronology(this.chronology);
+						.withLocale(this.locale).withChronology(this.chronology);
 					break;	
 				default:
 					// PATTERN_LOCALE_DATETIMEZONE
@@ -800,7 +800,7 @@ public final class ToInterval {
 							"6 (year, month, day, year, month, day), " +
 							"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
 							"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
-							"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond), " +
+							"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond)" +
 							". Size " + object.length + " is not valid.");
 				}
 				
@@ -876,11 +876,11 @@ public final class ToInterval {
 			if (object.length != 2 ) {
 				throw new FunctionExecutionException(
 						"String arguments array for Interval conversion should of sizes " +
-						"2 (start and end of the interval)" +
+						"2 (start and end of the interval), " +
 						"6 (year, month, day, year, month, day), " +
 						"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
 						"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
-						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond), " +
+						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond)" +
 						". Size " + object.length + " is not valid.");
 			}
 			
@@ -1383,8 +1383,8 @@ public final class ToInterval {
 						"6 (year, month, day, year, month, day), " +
 						"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
 						"12 (year, month, day, hour, minute, second, year, month, day, hour, minute, second), " +
-						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond), " +
-						". length " + object.length + " is not valid.");
+						"14 (year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond)" +
+						". Size " + object.length + " is not valid.");
 			}
 
 			int year1 = object[0].intValue();

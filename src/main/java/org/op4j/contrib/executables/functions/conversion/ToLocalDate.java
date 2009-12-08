@@ -562,7 +562,7 @@ public final class ToLocalDate {
 		public LocalDate nullAsNullExecute(List<Integer> object) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new FunctionExecutionException(
-						"Integer arguments list for LocalDate conversion should of size " +
+						"Integer arguments list for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.size() + " is not valid.");
 			}			
 			
@@ -606,7 +606,7 @@ public final class ToLocalDate {
 		public LocalDate nullAsNullExecute(Integer[] object) throws Exception {
 			if (object.length < 1 || object.length > 3) {
 				throw new FunctionExecutionException(
-						"Integer arguments array for LocalDate conversion should of size " +
+						"Integer arguments array for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.length + " is not valid.");
 			}			
 			
@@ -652,7 +652,7 @@ public final class ToLocalDate {
 		public LocalDate nullAsNullExecute(List<String> object) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new FunctionExecutionException(
-						"String arguments list for LocalDate conversion should of size " +
+						"String arguments list for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.size() + " is not valid.");
 			}			
 			
@@ -698,7 +698,7 @@ public final class ToLocalDate {
 		public LocalDate nullAsNullExecute(String[] object) throws Exception {
 			if (object.length < 1 || object.length > 3) {
 				throw new FunctionExecutionException(
-						"String arguments array for LocalDate conversion should of size " +
+						"String arguments array for LocalDate conversion should a size " +
 						"between 1 and 3. Size " + object.length + " is not valid.");
 			}			
 			
