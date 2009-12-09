@@ -71,9 +71,19 @@ public final class ToPeriod {
 	}
 	
 	// Conversion from two date objects
+	/**
+	 * @return the {@link Period} created from the {@link Date} target elements given as the start
+	 * and end of such {@link Period}
+	 */
 	public static final FromDateFieldList fromDateFieldList() {
 		return FROM_DATE_FIELD_LIST;
 	}	
+	/**
+	 * @param chronology {@link Chronology} the {@link Period} is being created with
+	 * 
+	 * @return the {@link Period} created from the {@link Date} target elements given as the start
+	 * and end of such {@link Period}
+	 */
 	public static final FromDateFieldList fromDateFieldList(final Chronology chronology) {
 		return new FromDateFieldList(chronology);
 	}	
@@ -125,48 +135,136 @@ public final class ToPeriod {
 	//
 	
 	// Conversion from Long
+	/**
+	 * @return a Period with the given Duration in milliseconds
+	 */
 	public static final FromLong fromLong() {
 		return FROM_LONG;
 	}
+	/**
+	 * @param chronology the {@link Chronology} the returned {@link Period} will
+	 * be created with
+	 * 
+	 * @return a Period with the given Duration in milliseconds
+	 */
 	public static final FromLong fromLong(final Chronology chronology) {
 		return new FromLong(chronology);
 	}
+	/**
+	 * @param periodType the {@link PeriodType} the returned {@link Period} will
+	 * be created with
+	 * 
+	 * @return a Period with the given Duration in milliseconds
+	 */
 	public static final FromLong fromLong(final PeriodType periodType) {
 		return new FromLong(periodType);
 	}
+	/**
+	 * @param periodType the {@link PeriodType} the returned {@link Period} will
+	 * be created with
+	 * @param chronology the {@link Chronology} the returned {@link Period} will
+	 * be created with
+	 * 
+	 * @return a Period with the given Duration in milliseconds
+	 */
 	public static final FromLong fromLong(final PeriodType periodType, final Chronology chronology) {
 		return new FromLong(periodType, chronology);
 	}
 	//
 	
 	// Conversion from two long objects
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 *  
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldList fromLongFieldList() {
 		return FROM_LONG_FIELD_LIST;
 	}	
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 * 
+	 * @param chronology {@link Chronology} the {@link Period} will be created with
+	 * 
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldList fromLongFieldList(final Chronology chronology) {
 		return new FromLongFieldList(chronology);
 	}	
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 * 
+	 * @param periodType {@link PeriodType} the {@link Period} will be created with
+	 * 
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldList fromLongFieldList(final PeriodType periodType) {
 		return new FromLongFieldList(periodType);
 	}
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 * 
+	 * @param periodType {@link PeriodType} the {@link Period} will be created with
+	 * @param chronology {@link Chronology} the {@link Period} will be created with
+	 * 
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldList fromLongFieldList(final PeriodType periodType, final Chronology chronology) {
 		return new FromLongFieldList(periodType, chronology);
 	}
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 *  
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldArray fromLongFieldArray() {
 		return FROM_LONG_FIELD_ARRAY;
 	}	
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 * 
+	 * @param chronology {@link Chronology} the {@link Period} will be created with
+	 * 
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldArray fromLongFieldArray(final Chronology chronology) {
 		return new FromLongFieldArray(chronology);
 	}	
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 * 
+	 * @param periodType {@link PeriodType} the {@link Period} will be created with
+	 * 
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldArray fromLongFieldArray(final PeriodType periodType) {
 		return new FromLongFieldArray(periodType);
 	}
+	/**
+	 * The given long targets representing the time in millis will be used as the start
+	 * and end instants of the Period returned 
+	 * 
+	 * @param periodType {@link PeriodType} the {@link Period} will be created with
+	 * @param chronology {@link Chronology} the {@link Period} will be created with
+	 * 
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromLongFieldArray fromLongFieldArray(final PeriodType periodType, final Chronology chronology) {
 		return new FromLongFieldArray(periodType, chronology);
 	}
 	//
 	
 	// Conversion from two calendar objects
+	/**
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final FromCalendarFieldList fromCalendarFieldList() {
 		return FROM_CALENDAR_FIELD_LIST;
 	}	
@@ -179,6 +277,9 @@ public final class ToPeriod {
 	public static final FromCalendarFieldList fromCalendarFieldList(final PeriodType periodType, final Chronology chronology) {
 		return new FromCalendarFieldList(periodType, chronology);
 	}
+	/**
+	 * @return the {@link Period} represented by the given start and end instants
+	 */
 	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray() {
 		return new FromCalendarFieldArray<T>();
 	}	
@@ -194,6 +295,10 @@ public final class ToPeriod {
 	//
 	
 	// Conversion from two datetime objects
+	/**
+	 * @return the {@link Period} represented by the given start and end 
+	 * {@link BaseDateTime} elements
+	 */
 	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList() {
 		return FROM_BASEDATETIME_FIELD_LIST;
 	}	
@@ -206,6 +311,10 @@ public final class ToPeriod {
 	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(final PeriodType periodType, final Chronology chronology) {
 		return new FromBaseDateTimeFieldList(periodType, chronology);
 	}
+	/**
+	 * @return the {@link Period} represented by the given start and end 
+	 * {@link BaseDateTime} elements
+	 */
 	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray() {
 		return new FromBaseDateTimeFieldArray<T>();
 	}	
@@ -220,6 +329,15 @@ public final class ToPeriod {
 	}
 	//
 	
+	/**
+	 * A Period is created either:
+	 * <ul>	  
+	 * <li>From a set of {@link Integer} representing the hours, minutes, seconds and milliseconds</li>
+	 * <li>From a set of {@link Integer} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
+	 * </ul>
+	 * 
+	 * @return the {@link Period}
+	 */
 	public static final FromIntegerFieldList fromIntegerFieldList() {
 		return FROM_INTEGER_FIELD_LIST;
 	}
@@ -233,7 +351,15 @@ public final class ToPeriod {
 		return new FromIntegerFieldArray(periodType);
 	}
 	
-	
+	/**
+	 * A Period is created either:
+	 * <ul>	  
+	 * <li>From a set of {@link String} representing the hours, minutes, seconds and milliseconds</li>
+	 * <li>From a set of {@link String} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
+	 * </ul>
+	 * 
+	 * @return the {@link Period}
+	 */
 	public static final FromStringFieldList fromStringFieldList() {
 		return FROM_STRING_FIELD_LIST;
 	}
