@@ -83,30 +83,100 @@ public final class ToInterval {
 	public static final FromStringFieldList fromStringFieldList(Chronology chronology) {
 		return new FromStringFieldList(chronology);
 	}
+	/**
+	 * It creates an {@link Interval} using the target {@link String} elements as the start and end. The given pattern
+	 * will be used to create the {@link DateTime} objects from the given {@link String} elements. If
+	 * the pattern includes either, the name of the month or day of week, a conversion
+	 * accepting a {@link Locale} must be used instead
+	 *                 
+	 * @param pattern
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern) {
 		return new FromStringFieldList(pattern);
 	}
+	/**
+	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
+	 * and with the given {@link DateTimeZone}. If the pattern includes either, the name of the month or
+	 * day of week, a conversion accepting a {@link Locale} must be used instead
+	 *                 
+	 * @param pattern
+	 * @param dateTimeZone
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, DateTimeZone dateTimeZone) {
 		return new FromStringFieldList(pattern, dateTimeZone);
 	}
+	/**
+	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
+	 * and with the given {@link Chronology}. If the pattern includes either, the name of the month or
+	 * day of week, a conversion accepting a {@link Locale} must be used instead
+	 * 
+	 * @param pattern
+	 * @param chronology
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, Chronology chronology) {
 		return new FromStringFieldList(pattern, chronology);
 	}
+	/**
+	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * and {@link Locale} parameters
+	 * 
+	 * @param pattern
+	 * @param locale
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, Locale locale) {
 		return new FromStringFieldList(pattern, locale);
 	}
+	/**
+	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * and {@link Locale} parameters
+	 * 
+	 * @param pattern
+	 * @param locale
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, String locale) {
 		return new FromStringFieldList(pattern, locale);
 	}	
+	/**
+	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
+	 * 
+	 * @param pattern
+	 * @param locale
+	 * @param dateTimeZone
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new FromStringFieldList(pattern, locale, dateTimeZone);
 	}
+	/**
+	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
+	 * 
+	 * @param pattern
+	 * @param locale
+	 * @param dateTimeZone
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new FromStringFieldList(pattern, locale, dateTimeZone);
 	}	
+	/**
+	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
+	 * 
+	 * @param pattern
+	 * @param locale
+	 * @param chronology
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, Locale locale, Chronology chronology) {
 		return new FromStringFieldList(pattern, locale, chronology);
 	}
+	/**
+	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
+	 *
+	 * @param pattern
+	 * @param locale
+	 * @param chronology
+	 */
 	public static final FromStringFieldList fromStringFieldList(String pattern, String locale, Chronology chronology) {
 		return new FromStringFieldList(pattern, locale, chronology);
 	}	
@@ -150,66 +220,150 @@ public final class ToInterval {
 	//
 	
 	// From Date list or array
+	/**
+	 * It creates an {@link Interval} from the given {@link Date} elements  
+	 */
 	public static final FromDateFieldList fromDateFieldList() {
 		return FROM_DATE_FIELD_LIST;
 	}
+	/**
+	 * 
+	 * It creates an {@link Interval} from the given {@link Date}  elements.
+	 * The {@link Interval} will be created with the given {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
+	 */
 	public static final FromDateFieldList fromDateFieldList(DateTimeZone dateTimeZone) {
 		return new FromDateFieldList(dateTimeZone);
 	}
+	/**
+	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 * The {@link Interval} will be created with the given {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final FromDateFieldList fromDateFieldList(Chronology chronology) {
 		return new FromDateFieldList(chronology);
 	}
 	
+	/**
+	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 */
 	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray() {
 		return new FromDateFieldArray<T>();
 	}
+	/**
+	 * 
+	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 * The {@link Interval} will be created with the given {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
+	 */
 	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(DateTimeZone dateTimeZone) {
 		return new FromDateFieldArray<T>(dateTimeZone);
 	}
+	/**
+	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 * The {@link Interval} will be created with the given {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(Chronology chronology) {
 		return new FromDateFieldArray<T>(chronology);
 	}
 	//
 	
 	// From Timestamp list or array
+	/**
+	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * of the {@link Interval} returned
+	 */
 	public static final FromTimestampFieldList fromTimestampFieldList() {
 		return FROM_TIMESTAMP_FIELD_LIST;
 	}
+	/**
+	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * of the {@link Interval} returned with the given {@link DateTimeZone}
+	 */	
 	public static final FromTimestampFieldList fromTimestampFieldList(DateTimeZone dateTimeZone) {
 		return new FromTimestampFieldList(dateTimeZone);
 	}
+	/**
+	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * of the {@link Interval} returned with the given {@link Chronology}
+	 */
 	public static final FromTimestampFieldList fromTimestampFieldList(Chronology chronology) {
 		return new FromTimestampFieldList(chronology);
 	}
 	
+	/**
+	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * of the {@link Interval} returned
+	 */
 	public static final FromTimestampFieldArray fromTimestampFieldArray() {
 		return FROM_TIMESTAMP_FIELD_ARRAY;
 	}
+	/**
+	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * of the {@link Interval} returned with the given {@link DateTimeZone}
+	 */	
 	public static final FromTimestampFieldArray fromTimestampFieldArray(DateTimeZone dateTimeZone) {
 		return new FromTimestampFieldArray(dateTimeZone);
 	}
+	/**
+	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * of the {@link Interval} returned with the given {@link Chronology}
+	 */
 	public static final FromTimestampFieldArray fromTimestampFieldArray(Chronology chronology) {
 		return new FromTimestampFieldArray(chronology);
 	}
 	//
 	
 	// From Long list or array
+	/**
+	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * and end of the {@link Interval} returned
+	 */
 	public static final FromLongFieldList fromLongFieldList() {
 		return FROM_LONG_FIELD_LIST;
 	}
+	/**
+	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * {@link DateTimeZone}
+	 */
 	public static final FromLongFieldList fromLongFieldList(DateTimeZone dateTimeZone) {
 		return new FromLongFieldList(dateTimeZone);
 	}
+	/**
+	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * {@link Chronology}
+	 */
 	public static final FromLongFieldList fromLongFieldList(Chronology chronology) {
 		return new FromLongFieldList(chronology);
 	}
 	
+	/**
+	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * and end of the {@link Interval} returned
+	 */
 	public static final FromLongFieldArray fromLongFieldArray() {
 		return FROM_LONG_FIELD_ARRAY;
 	}
+	/**
+	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * {@link DateTimeZone}
+	 */
 	public static final FromLongFieldArray fromLongFieldArray(DateTimeZone dateTimeZone) {
 		return new FromLongFieldArray(dateTimeZone);
 	}
+	/**
+	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * {@link Chronology}
+	 */
 	public static final FromLongFieldArray fromLongFieldArray(Chronology chronology) {
 		return new FromLongFieldArray(chronology);
 	}
@@ -239,22 +393,54 @@ public final class ToInterval {
 	//
 	
 	// From Calendar list or array
+	/**
+	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
+	 * and end of the interval
+	 */
 	public static final FromCalendarFieldList fromCalendarFieldList() {
 		return FROM_CALENDAR_FIELD_LIST;
 	}
+	/**
+	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * Such an interval will be created in the given DateTimeZone
+	 *                 
+	 * @param dateTimeZone
+	 */
 	public static final FromCalendarFieldList fromCalendarFieldList(DateTimeZone dateTimeZone) {
 		return new FromCalendarFieldList(dateTimeZone);
 	}
+	/**
+	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * The interval will be created with the given {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final FromCalendarFieldList fromCalendarFieldList(Chronology chronology) {
 		return new FromCalendarFieldList(chronology);
 	}
 	
+	/**
+	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
+	 * and end of the interval
+	 */
 	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray() {
 		return new FromCalendarFieldArray<T>();
 	}
+	/**
+	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * Such an interval will be created in the given DateTimeZone
+	 *                 
+	 * @param dateTimeZone
+	 */
 	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(DateTimeZone dateTimeZone) {
 		return new FromCalendarFieldArray<T>(dateTimeZone);
 	}
+	/**
+	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * The interval will be created with the given {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(Chronology chronology) {
 		return new FromCalendarFieldArray<T>(chronology);
 	}
@@ -944,15 +1130,14 @@ public final class ToInterval {
 	public static final class FromDateFieldList extends BaseToInterval<List<? extends Date>> {
 
 		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern and {@link Locale} parameters.
-		 * 
+		 * It creates an {@link Interval} from the given {@link Date} elements  
 		 */
 		public FromDateFieldList() {
 			super();			
 		}		
 		
 		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern and {@link Locale} parameters.
+		 * It creates an {@link Interval} from the given {@link Date} elements.
 		 * The {@link Interval} will be created with the given {@link Chronology}
 		 * 
 		 * @param chronology
@@ -963,7 +1148,7 @@ public final class ToInterval {
 		
 		/**
 		 * 
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern and {@link Locale} parameters.
+		 * It creates an {@link Interval} from the given {@link Date}  elements.
 		 * The {@link Interval} will be created with the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
@@ -997,16 +1182,14 @@ public final class ToInterval {
 	public static final class FromDateFieldArray<T extends Date> extends BaseToInterval<T[]> {
 
 		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the 
-		 * given pattern and {@link Locale} parameters.
-		 * 
+		 * It creates an {@link Interval} from the given {@link Date} elements.
 		 */
 		public FromDateFieldArray() {
 			super();			
 		}		
 		
 		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern and {@link Locale} parameters.
+		 * It creates an {@link Interval} from the given {@link Date} elements.
 		 * The {@link Interval} will be created with the given {@link Chronology}
 		 * 
 		 * @param chronology
@@ -1017,7 +1200,7 @@ public final class ToInterval {
 		
 		/**
 		 * 
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern and {@link Locale} parameters.
+		 * It creates an {@link Interval} from the given {@link Date} elements.
 		 * The {@link Interval} will be created with the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
