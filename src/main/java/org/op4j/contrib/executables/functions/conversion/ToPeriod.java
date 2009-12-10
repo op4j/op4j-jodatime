@@ -34,6 +34,7 @@ import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
 import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
@@ -440,7 +441,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<? extends Date> dates) throws Exception {
+		public Period nullAsNullExecute(final List<? extends Date> dates, ExecCtx ctx) throws Exception {
 			if (dates.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Date arguments list for Period conversion should have size " +
@@ -486,7 +487,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final T[] dates) throws Exception {
+		public Period nullAsNullExecute(final T[] dates, ExecCtx ctx) throws Exception {
 			if (dates.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Date arguments array for Period conversion should have size " +
@@ -532,7 +533,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<Timestamp> timestamps) throws Exception {
+		public Period nullAsNullExecute(final List<Timestamp> timestamps, ExecCtx ctx) throws Exception {
 			if (timestamps.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments list for Period conversion should of sizes " +
@@ -578,7 +579,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final Timestamp[] timestamps) throws Exception {
+		public Period nullAsNullExecute(final Timestamp[] timestamps, ExecCtx ctx) throws Exception {
 			if (timestamps.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments array for Period conversion should of sizes " +
@@ -623,7 +624,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final Long theLong) throws Exception {
+		public Period nullAsNullExecute(final Long theLong, ExecCtx ctx) throws Exception {
 			if (this.periodType != null && this.chronology != null) {
 				return new Period(theLong.longValue(), this.periodType, this.chronology);
 			}
@@ -665,7 +666,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<Long> longs) throws Exception {
+		public Period nullAsNullExecute(final List<Long> longs, ExecCtx ctx) throws Exception {
 			if (longs.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Long arguments list for Period conversion should have size " +
@@ -713,7 +714,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final Long[] longs) throws Exception {
+		public Period nullAsNullExecute(final Long[] longs, ExecCtx ctx) throws Exception {
 			if (longs.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Long arguments array for Period conversion should have size " +
@@ -758,7 +759,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<? extends Calendar> calendars) throws Exception {
+		public Period nullAsNullExecute(final List<? extends Calendar> calendars, ExecCtx ctx) throws Exception {
 			if (calendars.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments list for Period conversion should have size " +
@@ -803,7 +804,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final T[] calendars) throws Exception {
+		public Period nullAsNullExecute(final T[] calendars, ExecCtx ctx) throws Exception {
 			if (calendars.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments array for Period conversion should have size " +
@@ -848,7 +849,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<? extends BaseDateTime> dateTimes) throws Exception {
+		public Period nullAsNullExecute(final List<? extends BaseDateTime> dateTimes, ExecCtx ctx) throws Exception {
 			if (dateTimes.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"DateTime arguments list for Period conversion should have size " +
@@ -893,7 +894,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final T[] dateTimes) throws Exception {
+		public Period nullAsNullExecute(final T[] dateTimes, ExecCtx ctx) throws Exception {
 			if (dateTimes.length != 2 ) {
 				throw new FunctionExecutionException(
 						"DateTime arguments array for Period conversion should have size " +
@@ -931,7 +932,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<Integer> integers) throws Exception {
+		public Period nullAsNullExecute(final List<Integer> integers, ExecCtx ctx) throws Exception {
 			
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
@@ -1023,7 +1024,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final Integer[] integers) throws Exception {
+		public Period nullAsNullExecute(final Integer[] integers, ExecCtx ctx) throws Exception {
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (integers.length != this.periodType.size()) { 
@@ -1114,7 +1115,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<String> strings) throws Exception {
+		public Period nullAsNullExecute(final List<String> strings, ExecCtx ctx) throws Exception {
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (strings.size() != this.periodType.size()) { 
@@ -1205,7 +1206,7 @@ public final class ToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Period nullAsNullExecute(final String[] strings) throws Exception {
+		public Period nullAsNullExecute(final String[] strings, ExecCtx ctx) throws Exception {
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (strings.length != this.periodType.size()) { 

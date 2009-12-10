@@ -38,6 +38,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
@@ -541,7 +542,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(String object) throws Exception {
+		public LocalDate nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
 			DateTimeFormatter dateTimeFormatter = null;
 		    if (this.locale == null) {
 		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
@@ -601,7 +602,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(T object) throws Exception {
+		public LocalDate nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalDate(object.getTime(), this.dateTimeZone);
 			}
@@ -648,7 +649,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(Timestamp object) throws Exception {
+		public LocalDate nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalDate(object.getTime(), this.dateTimeZone);
 			}
@@ -693,7 +694,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(Long object) throws Exception {
+		public LocalDate nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalDate(object.longValue(), this.dateTimeZone);
 			}
@@ -730,7 +731,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(List<Integer> object) throws Exception {
+		public LocalDate nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new FunctionExecutionException(
 						"Integer arguments list for LocalDate conversion should hava a size " +
@@ -773,7 +774,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(Integer[] object) throws Exception {
+		public LocalDate nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
 			if (object.length < 1 || object.length > 3) {
 				throw new FunctionExecutionException(
 						"Integer arguments array for LocalDate conversion should hava a size " +
@@ -819,7 +820,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(List<String> object) throws Exception {
+		public LocalDate nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new FunctionExecutionException(
 						"String arguments list for LocalDate conversion should hava a size " +
@@ -865,7 +866,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(String[] object) throws Exception {
+		public LocalDate nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
 			if (object.length < 1 || object.length > 3) {
 				throw new FunctionExecutionException(
 						"String arguments array for LocalDate conversion should a size " +
@@ -915,7 +916,7 @@ public final class ToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(T object) throws Exception {
+		public LocalDate nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
 				return new LocalDate(object, this.dateTimeZone);
 			}

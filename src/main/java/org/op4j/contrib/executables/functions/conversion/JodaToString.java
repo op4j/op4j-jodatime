@@ -32,6 +32,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
@@ -209,7 +210,7 @@ public final class JodaToString {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public String nullAsNullExecute(final BaseDateTime baseDateTime) throws Exception {
+		public String nullAsNullExecute(final BaseDateTime baseDateTime, ExecCtx ctx) throws Exception {
 			switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return baseDateTime.toString(this.formatter);					
@@ -321,7 +322,7 @@ public final class JodaToString {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public String nullAsNullExecute(final LocalTime localTime) throws Exception {
+		public String nullAsNullExecute(final LocalTime localTime, ExecCtx ctx) throws Exception {
 			switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return localTime.toString(this.formatter);					
@@ -463,7 +464,7 @@ public final class JodaToString {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public String nullAsNullExecute(final LocalDate LocalDate) throws Exception {
+		public String nullAsNullExecute(final LocalDate LocalDate, ExecCtx ctx) throws Exception {
 			switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return LocalDate.toString(this.formatter);					

@@ -39,6 +39,7 @@ import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.functions.ExecCtx;
 import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
@@ -689,7 +690,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<String> object) throws Exception {
+		public Interval nullAsNullExecute(final List<String> object, ExecCtx ctx) throws Exception {
 			if ((ConversionType.NO_PARAM.compareTo(this.conversionType) == 0)
 					|| (ConversionType.CHRONOLOGY.compareTo(this.conversionType) == 0)
 					|| (ConversionType.DATETIMEZONE.compareTo(this.conversionType) == 0)) {
@@ -967,7 +968,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final String[] object) throws Exception {
+		public Interval nullAsNullExecute(final String[] object, ExecCtx ctx) throws Exception {
 			
 			
 			if ((ConversionType.NO_PARAM.compareTo(this.conversionType) == 0)
@@ -1161,7 +1162,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<? extends Date> object) throws Exception {			
+		public Interval nullAsNullExecute(final List<? extends Date> object, ExecCtx ctx) throws Exception {			
 			if (object.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Date arguments list for Interval conversion should have size 2. " +
@@ -1213,7 +1214,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final T[] object) throws Exception {
+		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Date arguments array for Interval conversion should have size 2. " +
@@ -1261,7 +1262,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<Timestamp> object) throws Exception {
+		public Interval nullAsNullExecute(final List<Timestamp> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments list for Interval conversion should have size 2. " +
@@ -1309,7 +1310,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final Timestamp[] object) throws Exception {
+		public Interval nullAsNullExecute(final Timestamp[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Timestamp arguments array for Interval conversion should have size 2. " +
@@ -1359,7 +1360,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<Long> object) throws Exception {
+		public Interval nullAsNullExecute(final List<Long> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Long arguments list for Interval conversion should have size 2. " +
@@ -1409,7 +1410,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final Long[] object) throws Exception {
+		public Interval nullAsNullExecute(final Long[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Long arguments array for Interval conversion should have size 2. " +
@@ -1445,7 +1446,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<Integer> object) throws Exception {
+		public Interval nullAsNullExecute(final List<Integer> object, ExecCtx ctx) throws Exception {
 			
 			//Size 6 (year, month, day)
 			//Size 10 (year, month, day, hour, minute)
@@ -1552,7 +1553,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final Integer[] object) throws Exception {
+		public Interval nullAsNullExecute(final Integer[] object, ExecCtx ctx) throws Exception {
 			//length 6 (year, month, day)
 			//length 10 (year, month, day, hour, minute)
 			//length 12 (year, month, day, hour, minute, second)
@@ -1674,7 +1675,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<? extends Calendar> object) throws Exception {
+		public Interval nullAsNullExecute(final List<? extends Calendar> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments list for Interval conversion should have size 2. " +
@@ -1726,7 +1727,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final T[] object) throws Exception {
+		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
 				throw new FunctionExecutionException(
 						"Calendar arguments array for Interval conversion should have size 2. " +
@@ -1762,7 +1763,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<? extends BaseDateTime> object) throws Exception {
+		public Interval nullAsNullExecute(final List<? extends BaseDateTime> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new FunctionExecutionException(
 						"BaseDateTime arguments list for Interval conversion should have size 2. " +
@@ -1798,7 +1799,7 @@ public final class ToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final T[] object) throws Exception {
+		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
 				throw new FunctionExecutionException(
 						"BaseDateTime arguments array for Interval conversion should have size 2. " +
