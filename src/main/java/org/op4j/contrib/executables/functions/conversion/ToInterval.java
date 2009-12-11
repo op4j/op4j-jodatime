@@ -75,6 +75,18 @@ public final class ToInterval {
 	
 	
 	//From String list or array
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 				
+	 * @return
+	 */
 	public static final FromStringFieldList fromStringFieldList() {
 		return FROM_STRING_FIELD_LIST;
 	}
@@ -182,6 +194,18 @@ public final class ToInterval {
 		return new FromStringFieldList(pattern, locale, chronology);
 	}	
 	
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 				
+	 * @return
+	 */
 	public static final FromStringFieldArray fromStringFieldArray() {
 		return FROM_STRING_FIELD_ARRAY;
 	}
@@ -508,6 +532,17 @@ public final class ToInterval {
 		private String pattern = null;
 		private Locale locale = null;
 		
+		/**
+		 * It converts the given {@link String} elements into an interval. 
+		 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+		 * <ul>
+		 * <li>year, month, day, year, month, day</li>
+		 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+		 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+		 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+		 * </ul>
+		 * 		
+		 */
 		public FromStringFieldList() {
 			super();
 			this.conversionType = ConversionType.NO_PARAM;
