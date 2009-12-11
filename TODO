@@ -1,12 +1,6 @@
-    - From JodaX to JodaY
-    - Check javadoc
-    
-    
-    
-    
-- min and max number of elements when creating localtime, datetime, ..
-- use of chronology and datetimezone
 
-	ToLocalTime -> ok
-	ToPeriod -> ok
+   
+    
+    
+
   
