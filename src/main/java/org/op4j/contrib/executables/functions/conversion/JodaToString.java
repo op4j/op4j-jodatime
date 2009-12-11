@@ -50,66 +50,168 @@ public final class JodaToString {
 	}
 	
 	// From BaseDateTime
+	/**
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
+	 * 		 
+	 * @param formatType
+	 * @param format
+	 * @return
+	 */
 	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format) {
 		return new FromBaseDateTime(formatType, format);
 	}
 	
+	/**
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
+	 * 		 
+	 * @param formatType
+	 * @param format
+	 * @param locale locale to be used with the given pattern
+	 * @return
+	 */
 	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format, final Locale locale) {
 		return new FromBaseDateTime(formatType, format, locale);
 	}
 	
+	/**
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * 
+	 * @param formatType
+	 * @param format
+	 * @param chronology
+	 * @return
+	 */
 	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format, final Chronology chronology) {
 		return new FromBaseDateTime(formatType, format, chronology);
 	}
-	
+	/**
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
+	 * 		 
+	 * @param formatType
+	 * @param format
+	 * @param locale locale to be used with the given pattern
+	 * @return
+	 */
 	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format, final String locale) {
 		return new FromBaseDateTime(formatType, format, locale);
 	}
-	
+	/**
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * 
+	 * @param formatter
+	 */
 	public static final FromBaseDateTime fromBaseDateTime(final DateTimeFormatter formatter) {
 		return new FromBaseDateTime(formatter);
 	}
 	//
 	
 	// From LocalTime
+	/**
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 *  
+	 * @param formatType
+	 * @param format
+	 * @return
+	 */
 	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format) {
 		return new FromLocalTime(formatType, format);
 	}
 	
+	/**
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 *  
+	 * @param formatType
+	 * @param format
+	 * @param locale locale to be used with the pattern
+	 * @return
+	 */
 	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final Locale locale) {
 		return new FromLocalTime(formatType, format, locale);
 	}
 	
+	/**
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 * 
+	 * @param formatType
+	 * @param format
+	 * @param chronology
+	 * @return
+	 */
 	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final Chronology chronology) {
 		return new FromLocalTime(formatType, format, chronology);
 	}
 	
+	/**
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 * 
+	 * @param formatType
+	 * @param format
+	 * @param locale locale to be used with the pattern
+	 * @return
+	 */
 	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final String locale) {
 		return new FromLocalTime(formatType, format, locale);
 	}
-	
+	/**
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * 
+	 * @param formatter
+	 */
 	public static final FromLocalTime fromLocalTime(final DateTimeFormatter formatter) {
 		return new FromLocalTime(formatter);
 	}
 	//
 	
 	// From LocalDate
+	/**
+	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * or style (depending on the formatType value)
+	 * 
+	 * @param formatType
+	 * @param format
+	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format) {
 		return new FromLocalDate(formatType, format);
 	}
-	
+	/**
+	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * or style (depending on the formatType value) with the given {@link Locale}
+	 * 
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
 		return new FromLocalDate(formatType, format, locale);
 	}
-	
+	/**
+	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * or style (depending on the formatType value) with the given {@link Chronology}
+	 * 
+	 * @param formatType
+	 * @param format
+	 * @param chronology
+	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
 		return new FromLocalDate(formatType, format, chronology);
 	}
-	
+	/**
+	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * or style (depending on the formatType value) with the given {@link Locale}
+	 * 
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final String locale) {
 		return new FromLocalDate(formatType, format, locale);
 	}
 	
+	/**
+	 * It converts the given {@link LocalDate} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * 
+	 * @param formatter
+	 */
 	public static final FromLocalDate fromLocalDate(final DateTimeFormatter formatter) {
 		return new FromLocalDate(formatter);
 	}
@@ -199,8 +301,8 @@ public final class JodaToString {
 			}
 		}
 		
-		/* 
-		 * It converts the given BaseDateTime into an String by means of the given pattern or style.
+		/**
+		 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
 		 * A chronology can also be used
 		 * 
 		 * If a formatter is passed, it will be used instead of the
@@ -311,8 +413,8 @@ public final class JodaToString {
 			}
 		}
 		
-		/* 
-		 * It converts the given LocalTime into an String by means of the given pattern or style.
+		/** 
+		 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
 		 * A chronology can also be used
 		 * 
 		 * If a formatter is passed, it will be used instead of the
@@ -362,7 +464,7 @@ public final class JodaToString {
 		}
 		
 		/**
-		 * It converts the given LocalDate into an String by means of the given DateTimeFormatter
+		 * It converts the given {@link LocalDate} into a {@link String} by means of the given {@link DateTimeFormatter}
 		 * 
 		 * @param formatter
 		 */
@@ -376,7 +478,7 @@ public final class JodaToString {
 		}
 		
 		/**
-		 * It converts the given LocalDate into an String by means of the given pattern
+		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
 		 * or style (depending on the formatType value)
 		 * 
 		 * @param formatType
@@ -388,8 +490,8 @@ public final class JodaToString {
 		}
 		
 		/**
-		 * It converts the given LocalDate into an String by means of the given pattern
-		 * or style (depending on the formatType value) with the given chronology
+		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+		 * or style (depending on the formatType value) with the given {@link Chronology}
 		 * 
 		 * @param formatType
 		 * @param format
@@ -406,8 +508,8 @@ public final class JodaToString {
 		
 		
 		/**
-		 * It converts the given LocalDate into an String by means of the given pattern
-		 * or style (depending on the formatType value) with the given locale
+		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+		 * or style (depending on the formatType value) with the given {@link Locale}
 		 * 
 		 * @param formatType
 		 * @param format
@@ -423,8 +525,8 @@ public final class JodaToString {
 		}
 		
 		/**
-		 * It converts the given LocalDate into an String by means of the given pattern
-		 * or style (depending on the formatType value) with the given locale
+		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+		 * or style (depending on the formatType value) with the given {@link Locale}
 		 * 
 		 * @param formatType
 		 * @param format
