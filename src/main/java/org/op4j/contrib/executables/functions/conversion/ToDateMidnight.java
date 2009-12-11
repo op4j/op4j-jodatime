@@ -54,30 +54,99 @@ public final class ToDateMidnight {
 	}
 		
 	// From String
+	/**
+	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter. If
+	 * the pattern includes either, the name of the month or day of week, a conversion
+	 * accepting a {@link Locale} must be used instead
+	 *                 
+	 * @param pattern
+	 */
 	public static final FromString fromString(String pattern) {
 		return new FromString(pattern);
 	}	
+	/**
+	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+	 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
+	 * accepting a {@link Locale} must be used instead
+	 *                 
+	 * @param pattern
+	 * @param dateTimeZone
+	 */
 	public static final FromString fromString(String pattern, DateTimeZone dateTimeZone) {
 		return new FromString(pattern, dateTimeZone);
 	}	
+	/**
+	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+	 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
+	 * accepting a {@link Locale} must be used instead
+	 * 		                
+	 * @param pattern
+	 * @param chronology
+	 */
 	public static final FromString fromString(String pattern, Chronology chronology) {
 		return new FromString(pattern, chronology);
 	}	
+	/**
+	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
+	 * {@link Locale} parameters
+	 * 
+	 * @param pattern
+	 * @param locale
+	 */
 	public static final FromString fromString(String pattern, Locale locale) {
 		return new FromString(pattern, locale);
 	}
+	/**
+	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
+	 * {@link Locale} parameters
+	 * 
+	 * @param pattern
+	 * @param locale
+	 */
 	public static final FromString fromString(String pattern, String locale) {
 		return new FromString(pattern, locale);
 	}
+	/**
+	 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
+	 *                 
+	 * @param pattern
+	 * @param locale
+	 * @param dateTimeZone
+	 */
 	public static final FromString fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new FromString(pattern, locale, dateTimeZone);
 	}
+	/**
+	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
+	 * 
+	 * @param pattern
+	 * @param locale
+	 * @param dateTimeZone
+	 */
 	public static final FromString fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new FromString(pattern, locale, dateTimeZone);
 	}
+	/**
+	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateMidnight} will be created with the given {@link Chronology}
+	 *                 
+	 * @param pattern
+	 * @param locale
+	 * @param chronology
+	 */
 	public static final FromString fromString(String pattern, Locale locale, Chronology chronology) {
 		return new FromString(pattern, locale, chronology);
 	}
+	/**
+	 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateMidnight} will be created with the given {@link Chronology}
+	 * 
+	 * @param pattern
+	 * @param locale
+	 * @param chronology
+	 */
 	public static final FromString fromString(String pattern, String locale, Chronology chronology) {
 		return new FromString(pattern, locale, chronology);
 	}
@@ -85,12 +154,27 @@ public final class ToDateMidnight {
 	
 	
 	// From Date
+	/**
+	 * The given {@link Date} is converted into a {@link DateMidnight}
+	 */
 	public static final <T extends Date> FromDate<T> fromDate() {
 		return new FromDate<T>();
 	}
+	/**
+	 * The given {@link Date} is converted into a {@link DateMidnight} configured with the given
+	 * {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
+	 */
 	public static final <T extends Date> FromDate<T> fromDate(DateTimeZone dateTimeZone) {
 		return new FromDate<T>(dateTimeZone);
 	}
+	/**
+	 * The given {@link Date} is converted into a {@link DateMidnight} with the given
+	 * {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final <T extends Date> FromDate<T> fromDate(Chronology chronology) {
 		return new FromDate<T>(chronology);
 	}
@@ -98,12 +182,27 @@ public final class ToDateMidnight {
 	
 	
 	// From Date
+	/**
+	 * The given {@link Timestamp} is converted into a {@link DateMidnight}
+	 */
 	public static final FromTimestamp fromTimestamp() {
 		return new FromTimestamp();
 	}
+	/**
+	 * The given {@link Timestamp} is converted into a {@link DateMidnight} in the given
+	 * {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
+	 */
 	public static final FromTimestamp fromTimestamp(DateTimeZone dateTimeZone) {
 		return new FromTimestamp(dateTimeZone);
 	}
+	/**
+	 * The given {@link Timestamp} is converted into a {@link DateMidnight} with the given
+	 * {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final FromTimestamp fromTimestamp(Chronology chronology) {
 		return new FromTimestamp(chronology);
 	}
@@ -111,21 +210,47 @@ public final class ToDateMidnight {
 		
 	
 	// Conversion from Long
+	/**
+	 * The given long representing the time in millis is converted into a {@link DateMidnight}
+	 */
 	public static final FromLong fromLong() {
 		return new FromLong();
 	}
+	/**
+	 * The given long representing the time in millis is converted into a {@link DateMidnight} in the given
+	 * {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
+	 */
 	public static final FromLong fromLong(DateTimeZone dateTimeZone) {
 		return new FromLong(dateTimeZone);
 	}
+	/**
+	 * The given long representing the time in millis is converted into a {@link DateMidnight} with the given
+	 * {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final FromLong fromLong(Chronology chronology) {
 		return new FromLong(chronology);
 	}
 	//
 	
 	// Conversion from Integer list
+	/**
+	 * A {@link DateMidnight} is created from the given integer list.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 */
 	public static final FromIntegerFieldList fromIntegerFieldList() {
 		return new  FromIntegerFieldList();
 	}
+	/**
+	 * A {@link DateMidnight} is created from the given integer list.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * The result will be created with the given {@link Chronology}
+	 *                 
+	 * @param chronology
+	 */
 	public static final FromIntegerFieldList fromIntegerFieldList(Chronology chronology) {
 		return new  FromIntegerFieldList(chronology);
 	}
@@ -133,9 +258,20 @@ public final class ToDateMidnight {
 	
 	
 	// Conversion from Integer array
+	/**
+	 * A {@link DateMidnight} is created from the given integer array.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray() {
 		return new  FromIntegerFieldArray();
 	}
+	/**
+	 * A {@link DateMidnight} is created from the given integer array.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * The result will be created with the given {@link Chronology}
+	 *                 
+	 * @param chronology
+	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray(Chronology chronology) {
 		return new  FromIntegerFieldArray(chronology);
 	}
@@ -143,9 +279,20 @@ public final class ToDateMidnight {
 	
 	
 	// Conversion from String list
+	/**
+	 * A {@link DateMidnight} is created from the given string list.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 */
 	public static final FromStringFieldList fromStringFieldList() {
 		return new  FromStringFieldList();
 	}
+	/**
+	 * A {@link DateMidnight} is created from the given string list.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * The result will be created with the given {@link Chronology}
+	 *                 
+	 * @param chronology
+	 */
 	public static final FromStringFieldList fromStringFieldList(Chronology chronology) {
 		return new  FromStringFieldList(chronology);
 	}
@@ -153,9 +300,20 @@ public final class ToDateMidnight {
 	
 	
 	// Conversion from String array
+	/**
+	 * A {@link DateMidnight} is created from the given string array.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 */
 	public static final FromStringFieldArray fromStringFieldArray() {
 		return new  FromStringFieldArray();
 	}
+	/**
+	 * A {@link DateMidnight} is created from the given string array.
+	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * The result will be created with the given {@link Chronology}
+	 *                 
+	 * @param chronology
+	 */
 	public static final FromStringFieldArray fromStringFieldArray(Chronology chronology) {
 		return new  FromStringFieldArray(chronology);
 	}
@@ -163,12 +321,25 @@ public final class ToDateMidnight {
 	
 	
 	// Conversion from Calendar
+	/**
+	 * It converts a {@link Calendar} into a {@link DateMidnight}
+	 */
 	public static final <T extends Calendar> FromCalendar<T> fromCalendar() {
 		return new FromCalendar<T>();
 	}
+	/**
+	 * It converts a {@link Calendar} into a {@link DateMidnight} in the given {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
+	 */
 	public static final <T extends Calendar> FromCalendar<T> fromCalendar(DateTimeZone dateTimeZone) {
 		return new FromCalendar<T>(dateTimeZone);
 	}
+	/**
+	 * It converts a {@link Calendar} into a {@link DateMidnight} with the given {@link Chronology}
+	 * 
+	 * @param chronology
+	 */
 	public static final <T extends Calendar> FromCalendar<T> fromCalendar(Chronology chronology) {
 		return new FromCalendar<T>(chronology);
 	}
@@ -577,8 +748,7 @@ public final class ToDateMidnight {
 		/**
 		 * A {@link DateMidnight} is created from the given integer array.
 		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
-		
+		 */		
 		public FromIntegerFieldArray() {
 			super();			
 		}
