@@ -410,7 +410,7 @@ public final class ToPeriod {
 			this.periodType = periodType;
 		}
 		
-		public Type<? super Period> getResultType() {
+		public Type<? extends Period> getResultType(Type<? extends T> targetType) {
 			return Types.forClass(Period.class);
 		}
 	}

@@ -371,7 +371,8 @@ public final class ToDateMidnight {
 			this.chronology = chronology;
 		}
 
-		public Type<DateMidnight> getResultType() {
+		public Type<? extends DateMidnight> getResultType(
+				Type<? extends T> targetType) {
 			return Types.forClass(DateMidnight.class);
 		}
 	}
@@ -562,7 +563,6 @@ public final class ToDateMidnight {
 			
 			return result;		
 		}
-		
 		
 	}	
 	

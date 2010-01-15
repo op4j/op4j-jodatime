@@ -280,10 +280,11 @@ public final class JodaToString {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public Type<? super String> getResultType() {
+		public Type<? extends String> getResultType(
+				Type<? extends BaseDateTime> targetType) {
 			return Types.STRING;
-		}
-
+		}	
+		
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
 			
 			Validate.notNull(formatType, "formatType can't be null");
@@ -392,9 +393,10 @@ public final class JodaToString {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public Type<? super String> getResultType() {
+		public Type<? extends String> getResultType(
+				Type<? extends LocalTime> targetType) {
 			return Types.STRING;
-		}
+		}	
 
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
 			
@@ -444,7 +446,7 @@ public final class JodaToString {
 					}
 					return localTime.toString(f);					
 			}			
-		}		
+		}
 	}
 	
 	public static final class FromLocalDate extends AbstractNullAsNullConverter<String, LocalDate> {
@@ -541,7 +543,8 @@ public final class JodaToString {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public Type<? super String> getResultType() {
+		public Type<? extends String> getResultType(
+				Type<? extends LocalDate> targetType) {
 			return Types.STRING;
 		}
 
@@ -586,6 +589,6 @@ public final class JodaToString {
 					}
 					return LocalDate.toString(f);					
 			}			
-		}		
+		}
 	}
 }

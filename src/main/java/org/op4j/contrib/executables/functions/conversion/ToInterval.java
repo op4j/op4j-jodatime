@@ -520,7 +520,8 @@ public final class ToInterval {
 			this.dateTimeZone = dateTimeZone;
 		}
 
-		public Type<? super Interval> getResultType() {
+		public Type<? extends Interval> getResultType(
+				Type<? extends T> targetType) {
 			return Types.forClass(Interval.class);
 		}
 	}

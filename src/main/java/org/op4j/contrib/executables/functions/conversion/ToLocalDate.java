@@ -374,7 +374,8 @@ public final class ToLocalDate {
 			this.chronology = chronology;
 		}
 
-		public Type<LocalDate> getResultType() {
+		public Type<? extends LocalDate> getResultType(
+				Type<? extends T> targetType) {
 			return Types.forClass(LocalDate.class);
 		}
 	}

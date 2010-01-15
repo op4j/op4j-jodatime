@@ -373,7 +373,8 @@ public final class ToDateTime {
 			this.chronology = chronology;
 		}
 
-		public Type<DateTime> getResultType() {
+		public Type<? extends DateTime> getResultType(
+				Type<? extends T> targetType) {
 			return Types.forClass(DateTime.class);
 		}
 	}
