@@ -50,6 +50,12 @@ import org.op4j.functions.converters.AbstractNullAsNullConverter;
  */
 public final class ToLocalTime {
 
+	private static FromTimestamp FROM_TIMESTAMP = new FromTimestamp();
+	private static FromLong FROM_LONG = new FromLong();
+	private static FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
+	private static FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
+	private static FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
+	private static FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
 	
 	
 	private ToLocalTime() {
@@ -186,7 +192,7 @@ public final class ToLocalTime {
 	 * The given {@link Timestamp} is converted into a {@link LocalTime}
 	 */
 	public static final FromTimestamp fromTimestamp() {
-		return new FromTimestamp();
+		return FROM_TIMESTAMP;
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
@@ -212,7 +218,7 @@ public final class ToLocalTime {
 	 * The given long representing the time in millis is converted into a {@link LocalTime}
 	 */
 	public static final FromLong fromLong() {
-		return new FromLong();
+		return FROM_LONG;
 	}
 	/**
 	 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
@@ -238,7 +244,7 @@ public final class ToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromIntegerFieldList fromIntegerFieldList() {
-		return new  FromIntegerFieldList();
+		return FROM_INTEGER_FIELD_LIST;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link Integer} list.
@@ -248,7 +254,7 @@ public final class ToLocalTime {
 	 * @param chronology
 	 */
 	public static final FromIntegerFieldList fromIntegerFieldList(Chronology chronology) {
-		return new  FromIntegerFieldList(chronology);
+		return new FromIntegerFieldList(chronology);
 	}
 	//
 	
@@ -259,7 +265,7 @@ public final class ToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray() {
-		return new  FromIntegerFieldArray();
+		return FROM_INTEGER_FIELD_ARRAY;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link Integer} array.
@@ -269,7 +275,7 @@ public final class ToLocalTime {
 	 * @param chronology
 	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray(Chronology chronology) {
-		return new  FromIntegerFieldArray(chronology);
+		return new FromIntegerFieldArray(chronology);
 	}
 	//
 	
@@ -280,7 +286,7 @@ public final class ToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromStringFieldList fromStringFieldList() {
-		return new  FromStringFieldList();
+		return FROM_STRING_FIELD_LIST;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link String} list.
@@ -290,7 +296,7 @@ public final class ToLocalTime {
 	 * @param chronology
 	 */
 	public static final FromStringFieldList fromStringFieldList(Chronology chronology) {
-		return new  FromStringFieldList(chronology);
+		return new FromStringFieldList(chronology);
 	}
 	//
 	
@@ -301,7 +307,7 @@ public final class ToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromStringFieldArray fromStringFieldArray() {
-		return new  FromStringFieldArray();
+		return FROM_STRING_FIELD_ARRAY;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link String} array.
@@ -311,7 +317,7 @@ public final class ToLocalTime {
 	 * @param chronology
 	 */
 	public static final FromStringFieldArray fromStringFieldArray(Chronology chronology) {
-		return new  FromStringFieldArray(chronology);
+		return new FromStringFieldArray(chronology);
 	}
 	//
 	
