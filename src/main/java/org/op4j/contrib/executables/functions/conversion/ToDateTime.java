@@ -49,6 +49,13 @@ import org.op4j.functions.converters.AbstractNullAsNullConverter;
  */
 public final class ToDateTime {
 
+	private static FromTimestamp FROM_TIMESTAMP = new FromTimestamp();
+	private static FromLong FROM_LONG = new FromLong();
+	private static FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
+	private static FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
+	private static FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
+	private static FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
+	
 	private ToDateTime() {
 		super();
 	}
@@ -188,7 +195,7 @@ public final class ToDateTime {
 	 * The given {@link Timestamp} is converted into a {@link DateTime}
 	 */
 	public static final FromTimestamp fromTimestamp() {
-		return new FromTimestamp();
+		return FROM_TIMESTAMP;
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link DateTime} in the given
@@ -216,7 +223,7 @@ public final class ToDateTime {
 	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime}
 	 */
 	public static final FromLong fromLong() {
-		return new FromLong();
+		return FROM_LONG;
 	}
 	/**
 	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} in the given
@@ -244,7 +251,7 @@ public final class ToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromIntegerFieldList fromIntegerFieldList() {
-		return new  FromIntegerFieldList();
+		return FROM_INTEGER_FIELD_LIST;
 	}
 	/**
 	 * A {@link DateTime} is created from the given integer list.
@@ -265,7 +272,7 @@ public final class ToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray() {
-		return new  FromIntegerFieldArray();
+		return FROM_INTEGER_FIELD_ARRAY;
 	}
 	/**
 	 * A {@link DateTime} is created from the given integer array.
@@ -286,7 +293,7 @@ public final class ToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromStringFieldList fromStringFieldList() {
-		return new  FromStringFieldList();
+		return FROM_STRING_FIELD_LIST;
 	}
 	/**
 	 * A {@link DateTime} is created from the given {@link String} list.
@@ -307,7 +314,7 @@ public final class ToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromStringFieldArray fromStringFieldArray() {
-		return new  FromStringFieldArray();
+		return FROM_STRING_FIELD_ARRAY;
 	}
 	/**
 	 * A {@link DateTime} is created from the given {@link String} array.
