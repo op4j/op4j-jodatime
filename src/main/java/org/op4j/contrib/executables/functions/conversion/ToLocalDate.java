@@ -50,6 +50,12 @@ import org.op4j.functions.converters.AbstractNullAsNullConverter;
  */
 public final class ToLocalDate {
 
+	private static FromTimestamp FROM_TIMESTAMP = new FromTimestamp();
+	private static FromLong FROM_LONG = new FromLong();
+	private static FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
+	private static FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
+	private static FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
+	private static FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
 	
 	
 	private ToLocalDate() {
@@ -189,7 +195,7 @@ public final class ToLocalDate {
 	 * The given {@link Timestamp} is converted into a {@link LocalDate}
 	 */
 	public static final FromTimestamp fromTimestamp() {
-		return new FromTimestamp();
+		return FROM_TIMESTAMP;
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link LocalDate} in the given
@@ -217,7 +223,7 @@ public final class ToLocalDate {
 	 * The given long representing the time in millis is converted into a {@link LocalDate}
 	 */
 	public static final FromLong fromLong() {
-		return new FromLong();
+		return FROM_LONG;
 	}
 	/**
 	 * The given long representing the time in millis is converted into a {@link LocalDate} in the given
@@ -245,7 +251,7 @@ public final class ToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromIntegerFieldList fromIntegerFieldList() {
-		return new  FromIntegerFieldList();
+		return FROM_INTEGER_FIELD_LIST;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given integer list.
@@ -255,7 +261,7 @@ public final class ToLocalDate {
 	 * @param chronology
 	 */
 	public static final FromIntegerFieldList fromIntegerFieldList(Chronology chronology) {
-		return new  FromIntegerFieldList(chronology);
+		return new FromIntegerFieldList(chronology);
 	}
 	//
 	
@@ -266,7 +272,7 @@ public final class ToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray() {
-		return new  FromIntegerFieldArray();
+		return FROM_INTEGER_FIELD_ARRAY;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given integer array.
@@ -276,7 +282,7 @@ public final class ToLocalDate {
 	 * @param chronology
 	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray(Chronology chronology) {
-		return new  FromIntegerFieldArray(chronology);
+		return new FromIntegerFieldArray(chronology);
 	}
 	//
 	
@@ -287,7 +293,7 @@ public final class ToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromStringFieldList fromStringFieldList() {
-		return new  FromStringFieldList();
+		return FROM_STRING_FIELD_LIST;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given string list.
@@ -297,7 +303,7 @@ public final class ToLocalDate {
 	 * @param chronology
 	 */
 	public static final FromStringFieldList fromStringFieldList(Chronology chronology) {
-		return new  FromStringFieldList(chronology);
+		return new FromStringFieldList(chronology);
 	}
 	//
 	
@@ -308,7 +314,7 @@ public final class ToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final FromStringFieldArray fromStringFieldArray() {
-		return new  FromStringFieldArray();
+		return FROM_STRING_FIELD_ARRAY;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given string array.
