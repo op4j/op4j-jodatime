@@ -32,8 +32,8 @@ import org.joda.time.LocalTime;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
-import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -222,7 +222,7 @@ public final class JodaToString {
 		STYLE			
 	}
 	
-	public static final class FromBaseDateTime extends AbstractNullAsNullConverter<String, BaseDateTime> {
+	public static final class FromBaseDateTime extends AbstractNullAsNullFunction<String, BaseDateTime> {
 
 		private ConversionType conversionType;
 		
@@ -336,7 +336,7 @@ public final class JodaToString {
 		}		
 	}
 	
-	public static final class FromLocalTime extends AbstractNullAsNullConverter<String, LocalTime> {
+	public static final class FromLocalTime extends AbstractNullAsNullFunction<String, LocalTime> {
 
 		private ConversionType conversionType;
 		
@@ -449,7 +449,7 @@ public final class JodaToString {
 		}
 	}
 	
-	public static final class FromLocalDate extends AbstractNullAsNullConverter<String, LocalDate> {
+	public static final class FromLocalDate extends AbstractNullAsNullFunction<String, LocalDate> {
 
 		private ConversionType conversionType;
 		
