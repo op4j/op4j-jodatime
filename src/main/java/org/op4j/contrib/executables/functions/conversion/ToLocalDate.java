@@ -29,17 +29,15 @@ import java.util.Locale;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.exceptions.ExecutionException;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
-import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -355,7 +353,7 @@ public final class ToLocalDate {
 	//
 	
 	
-	private static abstract class BaseToLocalDate<T> extends AbstractNullAsNullConverter<LocalDate, T> {
+	private static abstract class BaseToLocalDate<T> extends AbstractNullAsNullFunction<LocalDate, T> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;
@@ -378,11 +376,6 @@ public final class ToLocalDate {
 			Validate.notNull(chronology, "chronology can't be null");
 			
 			this.chronology = chronology;
-		}
-
-		public Type<? extends LocalDate> getResultType(
-				Type<? extends T> targetType) {
-			return Types.forClass(LocalDate.class);
 		}
 	}
 	
@@ -553,7 +546,7 @@ public final class ToLocalDate {
 			DateTimeFormatter dateTimeFormatter = null;
 		    if (this.locale == null) {
 		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
-		        	throw new FunctionExecutionException(
+		        	throw new ExecutionException(
 							"The use of MMM, MMMM, EEE or EEEE as part of the date pattern requires a Locale");
 	            }
 		        dateTimeFormatter = DateTimeFormat.forPattern(this.pattern);        
@@ -740,7 +733,7 @@ public final class ToLocalDate {
 		@Override
 		public LocalDate nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Integer arguments list for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.size() + " is not valid.");
 			}			
@@ -783,7 +776,7 @@ public final class ToLocalDate {
 		@Override
 		public LocalDate nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
 			if (object.length < 1 || object.length > 3) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Integer arguments array for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.length + " is not valid.");
 			}			
@@ -829,7 +822,7 @@ public final class ToLocalDate {
 		@Override
 		public LocalDate nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"String arguments list for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.size() + " is not valid.");
 			}			
@@ -875,7 +868,7 @@ public final class ToLocalDate {
 		@Override
 		public LocalDate nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
 			if (object.length < 1 || object.length > 3) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"String arguments array for LocalDate conversion should a size " +
 						"between 1 and 3. Size " + object.length + " is not valid.");
 			}			

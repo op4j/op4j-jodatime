@@ -29,8 +29,6 @@ import java.util.Locale;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -38,9 +36,9 @@ import org.joda.time.Interval;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.exceptions.ExecutionException;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
-import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -495,7 +493,7 @@ public final class ToInterval {
 	
 	
 	
-	private static abstract class BaseToInterval<T> extends AbstractNullAsNullConverter<Interval, T> {
+	private static abstract class BaseToInterval<T> extends AbstractNullAsNullFunction<Interval, T> {
 
 		Chronology chronology = null;
 		DateTimeZone dateTimeZone = null;
@@ -518,11 +516,6 @@ public final class ToInterval {
 			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
 						
 			this.dateTimeZone = dateTimeZone;
-		}
-
-		public Type<? extends Interval> getResultType(
-				Type<? extends T> targetType) {
-			return Types.forClass(Interval.class);
 		}
 	}
 	
@@ -738,7 +731,7 @@ public final class ToInterval {
 						&& object.size() != 10 
 						&& object.size() != 12 
 						&& object.size() != 14) {
-					throw new FunctionExecutionException(
+					throw new ExecutionException(
 							"String arguments list for Interval conversion should of sizes " +
 							"2 (start and end of the interval), " +
 							"6 (year, month, day, year, month, day), " +
@@ -819,7 +812,7 @@ public final class ToInterval {
 			
 
 			if (object.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"String arguments list for Interval conversion should of sizes " +
 						"2 (start and end of the interval), " +
 						"6 (year, month, day, year, month, day), " +
@@ -830,7 +823,7 @@ public final class ToInterval {
 			}
 			
 			if (this.locale == null && StringUtils.contains(this.pattern, "MMM")) {
-				throw new FunctionExecutionException("The use of MMM, MMMM, EEE or EEEE as part of the date pattern "
+				throw new ExecutionException("The use of MMM, MMMM, EEE or EEEE as part of the date pattern "
 						+ "requires a Locale");
 			}
 
@@ -1018,7 +1011,7 @@ public final class ToInterval {
 						&& object.length != 10 
 						&& object.length != 12 
 						&& object.length != 14) {
-					throw new FunctionExecutionException(
+					throw new ExecutionException(
 							"String arguments array for Interval conversion should of sizes " +
 							"6 (year, month, day, year, month, day), " +
 							"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
@@ -1097,7 +1090,7 @@ public final class ToInterval {
 			} 
 			
 			if (object.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"String arguments array for Interval conversion should of sizes " +
 						"2 (start and end of the interval), " +
 						"6 (year, month, day, year, month, day), " +
@@ -1108,7 +1101,7 @@ public final class ToInterval {
 			}
 			
 			if (this.locale == null && StringUtils.contains(this.pattern, "MMM")) {
-				throw new FunctionExecutionException("The use of MMM, MMMM, EEE or EEEE as part of the date pattern "
+				throw new ExecutionException("The use of MMM, MMMM, EEE or EEEE as part of the date pattern "
 						+ "requires a Locale");
 			}
 
@@ -1200,7 +1193,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final List<? extends Date> object, ExecCtx ctx) throws Exception {			
 			if (object.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Date arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
@@ -1252,7 +1245,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Date arguments array for Interval conversion should have size 2. " +
 						"Size " + object.length + " is not valid.");
 			}
@@ -1300,7 +1293,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final List<Timestamp> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Timestamp arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
@@ -1348,7 +1341,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final Timestamp[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Timestamp arguments array for Interval conversion should have size 2. " +
 						"Size " + object.length + " is not valid.");
 			}
@@ -1398,7 +1391,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final List<Long> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Long arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
@@ -1448,7 +1441,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final Long[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Long arguments array for Interval conversion should have size 2. " +
 						"Size " + object.length + " is not valid.");
 			}
@@ -1492,7 +1485,7 @@ public final class ToInterval {
 					&& object.size() != 10 
 					&& object.size() != 12 
 					&& object.size() != 14) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Integer arguments list for Interval conversion should of sizes " +
 						"6 (year, month, day, year, month, day), " +
 						"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
@@ -1598,7 +1591,7 @@ public final class ToInterval {
 					&& object.length != 10 
 					&& object.length != 12 
 					&& object.length != 14) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Integer arguments array for Interval conversion should of lengths " +
 						"6 (year, month, day, year, month, day), " +
 						"10 (year, month, day, hour, minute, year, month, day, hour, minute), " +
@@ -1713,7 +1706,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final List<? extends Calendar> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Calendar arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
@@ -1765,7 +1758,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Calendar arguments array for Interval conversion should have size 2. " +
 						"Size " + object.length + " is not valid.");
 			}
@@ -1801,7 +1794,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final List<? extends BaseDateTime> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"BaseDateTime arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
@@ -1837,7 +1830,7 @@ public final class ToInterval {
 		@Override
 		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
 			if (object.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"BaseDateTime arguments array for Interval conversion should have size 2. " +
 						"Size " + object.length + " is not valid.");
 			}

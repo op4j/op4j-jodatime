@@ -26,16 +26,14 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
 import org.joda.time.DurationFieldType;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
-import org.op4j.exceptions.FunctionExecutionException;
+import org.op4j.exceptions.ExecutionException;
+import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
-import org.op4j.functions.converters.AbstractNullAsNullConverter;
 
 /**
  * 
@@ -375,7 +373,7 @@ public final class ToPeriod {
 	}
 	
 	
-	private static abstract class BaseToPeriod<T> extends AbstractNullAsNullConverter<Period, T> {
+	private static abstract class BaseToPeriod<T> extends AbstractNullAsNullFunction<Period, T> {
 
 		Chronology chronology = null;
 		PeriodType periodType = null;
@@ -409,10 +407,6 @@ public final class ToPeriod {
 			this.chronology = chronology;
 			this.periodType = periodType;
 		}
-		
-		public Type<? extends Period> getResultType(Type<? extends T> targetType) {
-			return Types.forClass(Period.class);
-		}
 	}
 	
 	public static final class FromDateFieldList extends BaseToPeriod<List<? extends Date>> {
@@ -443,7 +437,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final List<? extends Date> dates, ExecCtx ctx) throws Exception {
 			if (dates.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Date arguments list for Period conversion should have size " +
 						"2. Size " + dates.size() + " is not valid.");
 			}
@@ -489,7 +483,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final T[] dates, ExecCtx ctx) throws Exception {
 			if (dates.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Date arguments array for Period conversion should have size " +
 						"2. Size " + dates.length + " is not valid.");
 			}
@@ -535,7 +529,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final List<Timestamp> timestamps, ExecCtx ctx) throws Exception {
 			if (timestamps.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Timestamp arguments list for Period conversion should of sizes " +
 						"2. Size " + timestamps.size() + " is not valid.");
 			}
@@ -581,7 +575,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final Timestamp[] timestamps, ExecCtx ctx) throws Exception {
 			if (timestamps.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Timestamp arguments array for Period conversion should of sizes " +
 						"2. Size " + timestamps.length + " is not valid.");
 			}
@@ -668,7 +662,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final List<Long> longs, ExecCtx ctx) throws Exception {
 			if (longs.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Long arguments list for Period conversion should have size " +
 						"2. Size " + longs.size() + " is not valid.");
 			}
@@ -716,7 +710,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final Long[] longs, ExecCtx ctx) throws Exception {
 			if (longs.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Long arguments array for Period conversion should have size " +
 						"2. Size " + longs.length + " is not valid.");
 			}
@@ -761,7 +755,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final List<? extends Calendar> calendars, ExecCtx ctx) throws Exception {
 			if (calendars.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Calendar arguments list for Period conversion should have size " +
 						"2. Size " + calendars.size() + " is not valid.");
 			}
@@ -806,7 +800,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final T[] calendars, ExecCtx ctx) throws Exception {
 			if (calendars.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Calendar arguments array for Period conversion should have size " +
 						"2. Size " + calendars.length + " is not valid.");
 			}
@@ -851,7 +845,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final List<? extends BaseDateTime> dateTimes, ExecCtx ctx) throws Exception {
 			if (dateTimes.size() != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"DateTime arguments list for Period conversion should have size " +
 						"2. Size " + dateTimes.size() + " is not valid.");
 			}
@@ -896,7 +890,7 @@ public final class ToPeriod {
 		@Override
 		public Period nullAsNullExecute(final T[] dateTimes, ExecCtx ctx) throws Exception {
 			if (dateTimes.length != 2 ) {
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"DateTime arguments array for Period conversion should have size " +
 						"2. Size " + dateTimes.length + " is not valid.");
 			}
@@ -937,7 +931,7 @@ public final class ToPeriod {
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (integers.size() != this.periodType.size()) { 
-					throw new FunctionExecutionException(
+					throw new ExecutionException(
 							"Integer arguments list for Period conversion with the periodType " +
 							this.periodType.getName() + " should have size " + this.periodType.size() +
 							". Size " + integers.size() + " is not valid.");
@@ -985,7 +979,7 @@ public final class ToPeriod {
 			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (integers.size() != 4 && // hours, minutes, seconds, milliseconds
 					integers.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Integer arguments list for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + integers.size() + " is not valid.");
@@ -1028,7 +1022,7 @@ public final class ToPeriod {
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (integers.length != this.periodType.size()) { 
-					throw new FunctionExecutionException(
+					throw new ExecutionException(
 							"Integer arguments array for Period conversion with the periodType " +
 							this.periodType.getName() + " should have size " + this.periodType.size() +
 							". Size " + integers.length + " is not valid.");
@@ -1076,7 +1070,7 @@ public final class ToPeriod {
 			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (integers.length != 4 && // hours, minutes, seconds, milliseconds
 					integers.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"Integer arguments array for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + integers.length + " is not valid.");
@@ -1119,7 +1113,7 @@ public final class ToPeriod {
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (strings.size() != this.periodType.size()) { 
-					throw new FunctionExecutionException(
+					throw new ExecutionException(
 							"String arguments list for Period conversion with the periodType " +
 							this.periodType.getName() + " should have size " + this.periodType.size() +
 							". Size " + strings.size() + " is not valid.");
@@ -1167,7 +1161,7 @@ public final class ToPeriod {
 			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (strings.size() != 4 && // hours, minutes, seconds, milliseconds
 					strings.size() != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"String arguments list for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + strings.size() + " is not valid.");
@@ -1210,7 +1204,7 @@ public final class ToPeriod {
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (strings.length != this.periodType.size()) { 
-					throw new FunctionExecutionException(
+					throw new ExecutionException(
 							"String arguments array for Period conversion with the periodType " +
 							this.periodType.getName() + " should have size " + this.periodType.size() +
 							". Size " + strings.length + " is not valid.");
@@ -1258,7 +1252,7 @@ public final class ToPeriod {
 			// (years, months, weeks, days, hours, minutes, seconds and milliseconds)
 			if (strings.length != 4 && // hours, minutes, seconds, milliseconds
 					strings.length != 8) { // years, months, weeks, days, hours, minutes, seconds and milliseconds
-				throw new FunctionExecutionException(
+				throw new ExecutionException(
 						"String arguments array for Period conversion without a PeriodType should of sizes " +
 						"4 (hours, minutes, seconds, milliseconds), 8 (years, months, weeks, days, hours, minutes, seconds and milliseconds). " +
 						"Size " + strings.length + " is not valid.");
