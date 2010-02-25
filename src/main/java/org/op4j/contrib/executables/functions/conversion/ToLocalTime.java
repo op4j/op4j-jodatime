@@ -346,7 +346,7 @@ public final class ToLocalTime {
 	//
 	
 		
-	private static abstract class BaseToLocalTime<T> extends AbstractNullAsNullFunction<LocalTime, T> {
+	private static abstract class BaseToLocalTime<T> extends AbstractNullAsNullFunction<T, LocalTime> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;

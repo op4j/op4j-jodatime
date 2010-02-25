@@ -493,7 +493,7 @@ public final class ToInterval {
 	
 	
 	
-	private static abstract class BaseToInterval<T> extends AbstractNullAsNullFunction<Interval, T> {
+	private static abstract class BaseToInterval<T> extends AbstractNullAsNullFunction<T, Interval> {
 
 		Chronology chronology = null;
 		DateTimeZone dateTimeZone = null;

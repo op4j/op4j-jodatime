@@ -353,7 +353,7 @@ public final class ToLocalDate {
 	//
 	
 	
-	private static abstract class BaseToLocalDate<T> extends AbstractNullAsNullFunction<LocalDate, T> {
+	private static abstract class BaseToLocalDate<T> extends AbstractNullAsNullFunction<T, LocalDate> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;

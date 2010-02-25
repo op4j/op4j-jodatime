@@ -351,7 +351,7 @@ public final class ToDateMidnight {
 	//
 	
 	
-	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<DateMidnight, T> {
+	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<T, DateMidnight> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;

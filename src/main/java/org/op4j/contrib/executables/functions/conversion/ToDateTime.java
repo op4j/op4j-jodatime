@@ -353,7 +353,7 @@ public final class ToDateTime {
 	//
 	
 	
-	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<DateTime, T> {
+	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<T, DateTime> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;

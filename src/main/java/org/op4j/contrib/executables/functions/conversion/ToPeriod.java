@@ -373,7 +373,7 @@ public final class ToPeriod {
 	}
 	
 	
-	private static abstract class BaseToPeriod<T> extends AbstractNullAsNullFunction<Period, T> {
+	private static abstract class BaseToPeriod<T> extends AbstractNullAsNullFunction<T, Period> {
 
 		Chronology chronology = null;
 		PeriodType periodType = null;
