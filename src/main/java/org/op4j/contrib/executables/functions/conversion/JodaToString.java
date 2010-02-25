@@ -222,7 +222,7 @@ public final class JodaToString {
 		STYLE			
 	}
 	
-	public static final class FromBaseDateTime extends AbstractNullAsNullFunction<String, BaseDateTime> {
+	public static final class FromBaseDateTime extends AbstractNullAsNullFunction<BaseDateTime, String> {
 
 		private ConversionType conversionType;
 		
@@ -336,7 +336,7 @@ public final class JodaToString {
 		}		
 	}
 	
-	public static final class FromLocalTime extends AbstractNullAsNullFunction<String, LocalTime> {
+	public static final class FromLocalTime extends AbstractNullAsNullFunction<LocalTime, String> {
 
 		private ConversionType conversionType;
 		
@@ -449,7 +449,7 @@ public final class JodaToString {
 		}
 	}
 	
-	public static final class FromLocalDate extends AbstractNullAsNullFunction<String, LocalDate> {
+	public static final class FromLocalDate extends AbstractNullAsNullFunction<LocalDate, String> {
 
 		private ConversionType conversionType;
 		
