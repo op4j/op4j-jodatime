@@ -46,13 +46,13 @@ import org.op4j.functions.ExecCtx;
  *
  */
 public final class FnToDateMidnight {
-
-	private final static TimestampToDateMidnight FROM_TIMESTAMP = new TimestampToDateMidnight();
-	private final static LongToDateMidnight FROM_LONG = new LongToDateMidnight();
-	private final static IntegerFieldListToDateMidnight FROM_INTEGER_FIELD_LIST = new IntegerFieldListToDateMidnight();
-	private final static IntegerFieldArrayToDateMidnight FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToDateMidnight();
-	private final static StringFieldListToDateMidnight FROM_STRING_FIELD_LIST = new StringFieldListToDateMidnight();
-	private final static StringFieldArrayToDateMidnight FROM_STRING_FIELD_ARRAY = new StringFieldArrayToDateMidnight();
+	
+	private final static TimestampToDateMidnight TIMESTAMP_TO_DATE_MIDNIGHT = new TimestampToDateMidnight();
+	private final static LongToDateMidnight LONG_TO_DATE_MIDNIGHT = new LongToDateMidnight();
+	private final static IntegerFieldListToDateMidnight INTEGER_FIELD_LIST_TO_DATE_MIDNIGHT = new IntegerFieldListToDateMidnight();
+	private final static IntegerFieldArrayToDateMidnight INTEGER_FIELD_ARRAY_TO_DATE_MIDNIGHT = new IntegerFieldArrayToDateMidnight();
+	private final static StringFieldListToDateMidnight STRING_FIELD_LIST_TO_DATE_MIDNIGHT = new StringFieldListToDateMidnight();
+	private final static StringFieldArrayToDateMidnight STRING_FIELD_ARRAY_TO_DATE_MIDNIGHT = new StringFieldArrayToDateMidnight();
 	
 	private FnToDateMidnight() {
 		super();
@@ -191,7 +191,7 @@ public final class FnToDateMidnight {
 	 * The given {@link Timestamp} is converted into a {@link DateMidnight}
 	 */
 	public static final TimestampToDateMidnight fromTimestamp() {
-		return FROM_TIMESTAMP;
+		return TIMESTAMP_TO_DATE_MIDNIGHT;
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link DateMidnight} in the given
@@ -219,7 +219,7 @@ public final class FnToDateMidnight {
 	 * The given long representing the time in millis is converted into a {@link DateMidnight}
 	 */
 	public static final LongToDateMidnight fromLong() {
-		return FROM_LONG;
+		return LONG_TO_DATE_MIDNIGHT;
 	}
 	/**
 	 * The given long representing the time in millis is converted into a {@link DateMidnight} in the given
@@ -247,7 +247,7 @@ public final class FnToDateMidnight {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldListToDateMidnight fromIntegerFieldList() {
-		return FROM_INTEGER_FIELD_LIST;
+		return INTEGER_FIELD_LIST_TO_DATE_MIDNIGHT;
 	}
 	/**
 	 * A {@link DateMidnight} is created from the given integer list.
@@ -268,7 +268,7 @@ public final class FnToDateMidnight {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldArrayToDateMidnight fromIntegerFieldArray() {
-		return FROM_INTEGER_FIELD_ARRAY;
+		return INTEGER_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
 	 * A {@link DateMidnight} is created from the given integer array.
@@ -289,7 +289,7 @@ public final class FnToDateMidnight {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldListToDateMidnight fromStringFieldList() {
-		return FROM_STRING_FIELD_LIST;
+		return STRING_FIELD_LIST_TO_DATE_MIDNIGHT;
 	}
 	/**
 	 * A {@link DateMidnight} is created from the given string list.
@@ -310,7 +310,7 @@ public final class FnToDateMidnight {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldArrayToDateMidnight fromStringFieldArray() {
-		return FROM_STRING_FIELD_ARRAY;
+		return STRING_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
 	 * A {@link DateMidnight} is created from the given string array.
@@ -353,11 +353,13 @@ public final class FnToDateMidnight {
 	
 	static abstract class BaseToDateMidnight<T> extends AbstractNullAsNullFunction<T, DateMidnight> {
 
-		DateTimeZone dateTimeZone = null;
-		Chronology chronology = null;
+		final DateTimeZone dateTimeZone;
+		final Chronology chronology;
 		
 		public BaseToDateMidnight() {
-			super();			
+			super();	
+			this.dateTimeZone = null;
+			this.chronology = null;
 		}
 
 		public BaseToDateMidnight(DateTimeZone dateTimeZone) {
@@ -366,6 +368,7 @@ public final class FnToDateMidnight {
 			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
 			
 			this.dateTimeZone = dateTimeZone;
+			this.chronology = null;
 		}
 
 		public BaseToDateMidnight(Chronology chronology) {
@@ -373,70 +376,44 @@ public final class FnToDateMidnight {
 			
 			Validate.notNull(chronology, "chronology can't be null");
 						
+			this.dateTimeZone = null;
 			this.chronology = chronology;
 		}
 	}
 	
 	static final class StringToDateMidnight extends BaseToDateMidnight<String> {
 
-		private String pattern;
-		private Locale locale;
+		private final String pattern;
+		private final Locale locale;
 		
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter. If
-		 * the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 */
 		public StringToDateMidnight(String pattern) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
-		 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 * @param dateTimeZone
-		 */
 		public StringToDateMidnight(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
-		 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 * 		                
-		 * @param pattern
-		 * @param chronology
-		 */
 		public StringToDateMidnight(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 						
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
-		 * {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToDateMidnight(String pattern, Locale locale) {
 			super();
 			
@@ -447,13 +424,6 @@ public final class FnToDateMidnight {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
-		 * {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToDateMidnight(String pattern, String locale) {
 			super();
 			
@@ -464,14 +434,6 @@ public final class FnToDateMidnight {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToDateMidnight(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -482,14 +444,6 @@ public final class FnToDateMidnight {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToDateMidnight(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -500,14 +454,6 @@ public final class FnToDateMidnight {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} will be created with the given {@link Chronology}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringToDateMidnight(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
@@ -517,15 +463,7 @@ public final class FnToDateMidnight {
 			this.pattern = pattern;
 			this.locale = locale;
 		}
-		
-		/**
-		 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} will be created with the given {@link Chronology}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
+
 		public StringToDateMidnight(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
@@ -537,7 +475,7 @@ public final class FnToDateMidnight {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
@@ -568,35 +506,20 @@ public final class FnToDateMidnight {
 	
 	static final class DateToDateMidnight<T extends Date> extends BaseToDateMidnight<T> {
 
-		/**
-		 * The given {@link Date} is converted into a {@link DateMidnight}
-		 */
 		public DateToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link DateMidnight} configured with the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public DateToDateMidnight(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link DateMidnight} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public DateToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
@@ -615,35 +538,20 @@ public final class FnToDateMidnight {
 	
 	static final class TimestampToDateMidnight extends BaseToDateMidnight<Timestamp> {
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link DateMidnight}
-		 */
 		public TimestampToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link DateMidnight} in the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public TimestampToDateMidnight(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link DateMidnight} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public TimestampToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
@@ -660,35 +568,20 @@ public final class FnToDateMidnight {
 	
 	static final class LongToDateMidnight extends BaseToDateMidnight<Long> {
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link DateMidnight}
-		 */
 		public LongToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link DateMidnight} in the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public LongToDateMidnight(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link DateMidnight} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public LongToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
@@ -705,25 +598,17 @@ public final class FnToDateMidnight {
 	
 	static final class IntegerFieldListToDateMidnight extends BaseToDateMidnight<List<Integer>> {
 
-		/**
-		 * A {@link DateMidnight} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public IntegerFieldListToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateMidnight} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldListToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
+		 */
 		@Override
 		public DateMidnight nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
@@ -745,27 +630,16 @@ public final class FnToDateMidnight {
 	
 	static final class IntegerFieldArrayToDateMidnight extends BaseToDateMidnight<Integer[]> {
 
-		/**
-		 * A {@link DateMidnight} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */		
 		public IntegerFieldArrayToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateMidnight} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldArrayToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
@@ -791,27 +665,16 @@ public final class FnToDateMidnight {
 	
 	static final class StringFieldListToDateMidnight extends BaseToDateMidnight<List<String>> {
 
-		/**
-		 * A {@link DateMidnight} is created from the given string list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public StringFieldListToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateMidnight} is created from the given string list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldListToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
@@ -837,27 +700,16 @@ public final class FnToDateMidnight {
 	
 	static final class StringFieldArrayToDateMidnight extends BaseToDateMidnight<String[]> {
 
-		/**
-		 * A {@link DateMidnight} is created from the given string array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public StringFieldArrayToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateMidnight} is created from the given string array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldArrayToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
@@ -881,33 +733,20 @@ public final class FnToDateMidnight {
 	
 	static final class CalendarToDateMidnight<T extends Calendar> extends BaseToDateMidnight<T> {
 
-		/**
-		 * It converts a {@link Calendar} into a {@link DateMidnight}
-		 */
 		public CalendarToDateMidnight() {
 			super();			
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link DateMidnight} in the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public CalendarToDateMidnight(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link DateMidnight} with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public CalendarToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateMidnight nullAsNullExecute(T object, ExecCtx ctx) throws Exception {

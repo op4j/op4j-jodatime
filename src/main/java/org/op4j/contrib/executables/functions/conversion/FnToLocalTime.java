@@ -47,13 +47,13 @@ import org.op4j.functions.ExecCtx;
  *
  */
 public final class FnToLocalTime {
-
-	private final static TimestampToLocalTime FROM_TIMESTAMP = new TimestampToLocalTime();
-	private final static LongToLocalTime FROM_LONG = new LongToLocalTime();
-	private final static IntegerFieldListToLocalTime FROM_INTEGER_FIELD_LIST = new IntegerFieldListToLocalTime();
-	private final static IntegerFieldArrayToLocalTime FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToLocalTime();
-	private final static StringFieldListToLocalTime FROM_STRING_FIELD_LIST = new StringFieldListToLocalTime();
-	private final static StringFieldArrayToLocalTime FROM_STRING_FIELD_ARRAY = new StringFieldArrayToLocalTime();
+	
+	private final static TimestampToLocalTime TIMESTAMP_TO_LOCAL_TIME = new TimestampToLocalTime();
+	private final static LongToLocalTime LONG_TO_LOCAL_TIME = new LongToLocalTime();
+	private final static IntegerFieldListToLocalTime INTEGER_FIELD_LIST_TO_LOCAL_TIME = new IntegerFieldListToLocalTime();
+	private final static IntegerFieldArrayToLocalTime INTEGER_FIELD_ARRAY_TO_LOCAL_TIME = new IntegerFieldArrayToLocalTime();
+	private final static StringFieldListToLocalTime STRING_FIELD_LIST_TO_LOCAL_TIME = new StringFieldListToLocalTime();
+	private final static StringFieldArrayToLocalTime STRING_FIELD_ARRAY_TO_LOCAL_TIME = new StringFieldArrayToLocalTime();
 	
 	
 	private FnToLocalTime() {
@@ -190,7 +190,7 @@ public final class FnToLocalTime {
 	 * The given {@link Timestamp} is converted into a {@link LocalTime}
 	 */
 	public static final TimestampToLocalTime fromTimestamp() {
-		return FROM_TIMESTAMP;
+		return TIMESTAMP_TO_LOCAL_TIME;
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
@@ -216,7 +216,7 @@ public final class FnToLocalTime {
 	 * The given long representing the time in millis is converted into a {@link LocalTime}
 	 */
 	public static final LongToLocalTime fromLong() {
-		return FROM_LONG;
+		return LONG_TO_LOCAL_TIME;
 	}
 	/**
 	 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
@@ -242,7 +242,7 @@ public final class FnToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final IntegerFieldListToLocalTime fromIntegerFieldList() {
-		return FROM_INTEGER_FIELD_LIST;
+		return INTEGER_FIELD_LIST_TO_LOCAL_TIME;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link Integer} list.
@@ -263,7 +263,7 @@ public final class FnToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final IntegerFieldArrayToLocalTime fromIntegerFieldArray() {
-		return FROM_INTEGER_FIELD_ARRAY;
+		return INTEGER_FIELD_ARRAY_TO_LOCAL_TIME;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link Integer} array.
@@ -284,7 +284,7 @@ public final class FnToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final StringFieldListToLocalTime fromStringFieldList() {
-		return FROM_STRING_FIELD_LIST;
+		return STRING_FIELD_LIST_TO_LOCAL_TIME;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link String} list.
@@ -305,7 +305,7 @@ public final class FnToLocalTime {
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final StringFieldArrayToLocalTime fromStringFieldArray() {
-		return FROM_STRING_FIELD_ARRAY;
+		return STRING_FIELD_ARRAY_TO_LOCAL_TIME;
 	}
 	/**
 	 * A {@link LocalTime} is created from the given {@link String} array.
@@ -348,11 +348,14 @@ public final class FnToLocalTime {
 		
 	private static abstract class BaseToLocalTime<T> extends AbstractNullAsNullFunction<T, LocalTime> {
 
-		DateTimeZone dateTimeZone = null;
-		Chronology chronology = null;
+		final DateTimeZone dateTimeZone;
+		final Chronology chronology;
 		
 		public BaseToLocalTime() {
-			super();			
+			super();
+			
+			this.dateTimeZone = null;
+			this.chronology = null;
 		}
 
 		public BaseToLocalTime(DateTimeZone dateTimeZone) {
@@ -361,6 +364,7 @@ public final class FnToLocalTime {
 			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
 			
 			this.dateTimeZone = dateTimeZone;
+			this.chronology = null;
 		}
 
 		public BaseToLocalTime(Chronology chronology) {
@@ -368,69 +372,44 @@ public final class FnToLocalTime {
 			
 			Validate.notNull(chronology, "chronology can't be null");
 			
+			this.dateTimeZone = null;
 			this.chronology = chronology;
 		}
 	}
 	
 	static final class StringToLocalTime extends BaseToLocalTime<String> {
 
-		private String pattern;
-		private Locale locale;
+		private final String pattern;
+		private final Locale locale;
 		
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter. If
-		 * the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 */
 		public StringToLocalTime(String pattern) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given String into a {@link LocalTime} using the given pattern parameter and with the given
-		 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 * @param dateTimeZone
-		 */
 		public StringToLocalTime(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter and with the given
-		 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 * 		                
-		 * @param pattern
-		 * @param chronology
-		 */
 		public StringToLocalTime(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToLocalTime(String pattern, Locale locale) {
 			super();
 			
@@ -441,12 +420,6 @@ public final class FnToLocalTime {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToLocalTime(String pattern, String locale) {
 			super();
 			
@@ -457,14 +430,6 @@ public final class FnToLocalTime {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToLocalTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -475,14 +440,6 @@ public final class FnToLocalTime {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToLocalTime(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -493,14 +450,6 @@ public final class FnToLocalTime {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} will be created with the given {@link Chronology}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringToLocalTime(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
@@ -511,14 +460,6 @@ public final class FnToLocalTime {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} will be created with the given {@link Chronology}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringToLocalTime(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
@@ -530,7 +471,7 @@ public final class FnToLocalTime {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
@@ -562,33 +503,20 @@ public final class FnToLocalTime {
 	
 	static final class DateToLocalTime<T extends Date> extends BaseToLocalTime<T> {
 
-		/**
-		 * The given {@link Date} is converted into a {@link LocalTime}
-		 */
 		public DateToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link LocalTime} configured with the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public DateToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link LocalTime} with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public DateToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
@@ -601,39 +529,24 @@ public final class FnToLocalTime {
 			
 			return new LocalTime(object.getTime());
 		}
-		
-		
 	}	
 	
 	static final class TimestampToLocalTime extends BaseToLocalTime<Timestamp> {
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalTime}
-		 */
 		public TimestampToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public TimestampToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalTime} with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public TimestampToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
@@ -650,33 +563,20 @@ public final class FnToLocalTime {
 	
 	static final class LongToLocalTime extends BaseToLocalTime<Long> {
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link LocalTime}
-		 */
 		public LongToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public LongToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link LocalTime} with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public LongToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
@@ -693,27 +593,16 @@ public final class FnToLocalTime {
 	
 	static final class IntegerFieldListToLocalTime extends BaseToLocalTime<List<Integer>> {
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link Integer} list.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
-		 */
 		public IntegerFieldListToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link Integer} list.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldListToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
@@ -739,27 +628,16 @@ public final class FnToLocalTime {
 	
 	static final class IntegerFieldArrayToLocalTime extends BaseToLocalTime<Integer[]> {
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link Integer} array.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
-		 */
 		public IntegerFieldArrayToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link Integer} array.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldArrayToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
@@ -788,27 +666,16 @@ public final class FnToLocalTime {
 	
 	static final class StringFieldListToLocalTime extends BaseToLocalTime<List<String>> {
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link String} list.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
-		 */
 		public StringFieldListToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link String} list.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldListToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
@@ -836,27 +703,16 @@ public final class FnToLocalTime {
 	
 	static final class StringFieldArrayToLocalTime extends BaseToLocalTime<String[]> {
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link String} array.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
-		 */
 		public StringFieldArrayToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalTime} is created from the given {@link String} array.
-		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldArrayToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
@@ -882,33 +738,20 @@ public final class FnToLocalTime {
 	
 	static final class CalendarToLocalTime<T extends Calendar> extends BaseToLocalTime<T> {
 
-		/**
-		 * It converts a {@link Calendar} into a {@link LocalTime}
-		 */
 		public CalendarToLocalTime() {
 			super();			
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link LocalTime} in the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public CalendarToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link LocalTime} with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public CalendarToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {

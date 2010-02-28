@@ -46,13 +46,13 @@ import org.op4j.functions.ExecCtx;
  *
  */
 public final class FnToDateTime {
-
-	private final static TimestampToDateTime FROM_TIMESTAMP = new TimestampToDateTime();
-	private final static LongToDateTime FROM_LONG = new LongToDateTime();
-	private final static IntegerFieldListToDateTime FROM_INTEGER_FIELD_LIST = new IntegerFieldListToDateTime();
-	private final static IntegerFieldArrayToDateTime FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToDateTime();
-	private final static StringFieldListToDateTime FROM_STRING_FIELD_LIST = new StringFieldListToDateTime();
-	private final static StringFieldArrayToDateTime FROM_STRING_FIELD_ARRAY = new StringFieldArrayToDateTime();
+	
+	private final static TimestampToDateTime TIMESTAMP_TO_DATE_TIME = new TimestampToDateTime();
+	private final static LongToDateTime LONG_TO_DATE_TIME = new LongToDateTime();
+	private final static IntegerFieldListToDateTime INTEGER_FIELD_LIST_TO_DATE_TIME = new IntegerFieldListToDateTime();
+	private final static IntegerFieldArrayToDateTime INTEGER_FIELD_ARRAY_TO_DATE_TIME = new IntegerFieldArrayToDateTime();
+	private final static StringFieldListToDateTime STRING_FIELD_LIST_TO_DATE_TIME = new StringFieldListToDateTime();
+	private final static StringFieldArrayToDateTime STRING_FIELD_ARRAY_TO_DATE_TIME = new StringFieldArrayToDateTime();
 	
 	private FnToDateTime() {
 		super();
@@ -193,7 +193,7 @@ public final class FnToDateTime {
 	 * The given {@link Timestamp} is converted into a {@link DateTime}
 	 */
 	public static final TimestampToDateTime fromTimestamp() {
-		return FROM_TIMESTAMP;
+		return TIMESTAMP_TO_DATE_TIME;
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link DateTime} in the given
@@ -221,7 +221,7 @@ public final class FnToDateTime {
 	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime}
 	 */
 	public static final LongToDateTime fromLong() {
-		return FROM_LONG;
+		return LONG_TO_DATE_TIME;
 	}
 	/**
 	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} in the given
@@ -249,7 +249,7 @@ public final class FnToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldListToDateTime fromIntegerFieldList() {
-		return FROM_INTEGER_FIELD_LIST;
+		return INTEGER_FIELD_LIST_TO_DATE_TIME;
 	}
 	/**
 	 * A {@link DateTime} is created from the given integer list.
@@ -270,7 +270,7 @@ public final class FnToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldArrayToDateTime fromIntegerFieldArray() {
-		return FROM_INTEGER_FIELD_ARRAY;
+		return INTEGER_FIELD_ARRAY_TO_DATE_TIME;
 	}
 	/**
 	 * A {@link DateTime} is created from the given integer array.
@@ -291,7 +291,7 @@ public final class FnToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldListToDateTime fromStringFieldList() {
-		return FROM_STRING_FIELD_LIST;
+		return STRING_FIELD_LIST_TO_DATE_TIME;
 	}
 	/**
 	 * A {@link DateTime} is created from the given {@link String} list.
@@ -312,7 +312,7 @@ public final class FnToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldArrayToDateTime fromStringFieldArray() {
-		return FROM_STRING_FIELD_ARRAY;
+		return STRING_FIELD_ARRAY_TO_DATE_TIME;
 	}
 	/**
 	 * A {@link DateTime} is created from the given {@link String} array.
@@ -355,11 +355,13 @@ public final class FnToDateTime {
 	
 	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<T, DateTime> {
 
-		DateTimeZone dateTimeZone = null;
-		Chronology chronology = null;
+		final DateTimeZone dateTimeZone;
+		final Chronology chronology;
 		
 		public BaseToDateTime() {
-			super();			
+			super();		
+			this.dateTimeZone = null;
+			this.chronology = null;
 		}
 
 		public BaseToDateTime(DateTimeZone dateTimeZone) {
@@ -368,6 +370,7 @@ public final class FnToDateTime {
 			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
 			
 			this.dateTimeZone = dateTimeZone;
+			this.chronology = null;
 		}
 
 		public BaseToDateTime(Chronology chronology) {
@@ -375,70 +378,44 @@ public final class FnToDateTime {
 			
 			Validate.notNull(chronology, "chronology can't be null");
 			
+			this.dateTimeZone = null;
 			this.chronology = chronology;
 		}
 	}
 	
 	static final class StringToDateTime extends BaseToDateTime<String> {
 
-		private String pattern;
-		private Locale locale;
+		private final String pattern;
+		private final Locale locale;
 		
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter. If
-		 * the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 */
 		public StringToDateTime(String pattern) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter and with the given
-		 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 * @param dateTimeZone
-		 */
 		public StringToDateTime(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter and with the given
-		 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 * 		                
-		 * @param pattern
-		 * @param chronology
-		 */
 		public StringToDateTime(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and
-		 * {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToDateTime(String pattern, Locale locale) {
 			super();
 			
@@ -449,13 +426,6 @@ public final class FnToDateTime {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and
-		 * {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToDateTime(String pattern, String locale) {
 			super();
 			
@@ -466,14 +436,6 @@ public final class FnToDateTime {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given String into a {@link DateTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToDateTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -484,14 +446,6 @@ public final class FnToDateTime {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToDateTime(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -502,14 +456,6 @@ public final class FnToDateTime {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} will be created with the given {@link Chronology}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringToDateTime(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
@@ -520,14 +466,6 @@ public final class FnToDateTime {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given String into a {@link DateTime} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} will be created with the given {@link Chronology}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringToDateTime(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
@@ -539,7 +477,7 @@ public final class FnToDateTime {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
@@ -571,35 +509,20 @@ public final class FnToDateTime {
 	
 	static final class DateToDateTime<T extends Date> extends BaseToDateTime<T> {
 
-		/**
-		 * The given {@link Date} is converted into a {@link DateTime}
-		 */
 		public DateToDateTime() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link DateTime} configured with the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public DateToDateTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link DateTime} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public DateToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
@@ -618,35 +541,20 @@ public final class FnToDateTime {
 	
 	static final class TimestampToDateTime extends BaseToDateTime<Timestamp> {
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link DateTime}
-		 */
 		public TimestampToDateTime() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link DateTime} in the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public TimestampToDateTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link DateTime} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public TimestampToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
@@ -663,35 +571,20 @@ public final class FnToDateTime {
 	
 	static final class LongToDateTime extends BaseToDateTime<Long> {
 
-		/**
-		 * The given {@link Long} representing the time in millis is converted into a {@link DateTime}
-		 */
 		public LongToDateTime() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} in the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public LongToDateTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public LongToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
@@ -708,27 +601,16 @@ public final class FnToDateTime {
 	
 	static final class IntegerFieldListToDateTime extends BaseToDateTime<List<Integer>> {
 
-		/**
-		 * A {@link DateTime} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public IntegerFieldListToDateTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateTime} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldListToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
@@ -755,27 +637,16 @@ public final class FnToDateTime {
 	
 	static final class IntegerFieldArrayToDateTime extends BaseToDateTime<Integer[]> {
 
-		/**
-		 * A {@link DateTime} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public IntegerFieldArrayToDateTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateTime} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldArrayToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
@@ -805,27 +676,16 @@ public final class FnToDateTime {
 	
 	static final class StringFieldListToDateTime extends BaseToDateTime<List<String>> {
 
-		/**
-		 * A {@link DateTime} is created from the given {@link String} list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public StringFieldListToDateTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateTime} is created from the given {@link String} list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldListToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
@@ -851,33 +711,20 @@ public final class FnToDateTime {
 			return new DateTime(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day),
 					Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli));
 		}
-		
-		
 	}	
 	
 	static final class StringFieldArrayToDateTime extends BaseToDateTime<String[]> {
 
-		/**
-		 * A {@link DateTime} is created from the given {@link String} array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public StringFieldArrayToDateTime() {
 			super();			
 		}
 
-		/**
-		 * A {@link DateTime} is created from the given {@link String} array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldArrayToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
@@ -907,33 +754,20 @@ public final class FnToDateTime {
 	
 	static final class CalendarToDateTime<T extends Calendar> extends BaseToDateTime<T> {
 
-		/**
-		 * It converts a {@link Calendar} into a {@link DateTime}
-		 */
 		public CalendarToDateTime() {
 			super();			
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link DateTime} in the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public CalendarToDateTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link DateTime} with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public CalendarToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public DateTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {

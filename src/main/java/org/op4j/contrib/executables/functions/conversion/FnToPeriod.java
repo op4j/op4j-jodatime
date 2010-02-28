@@ -43,26 +43,26 @@ import org.op4j.functions.ExecCtx;
  *
  */
 public final class FnToPeriod {
-
-	private static final DateFieldListToPeriod FROM_DATE_FIELD_LIST = new DateFieldListToPeriod();
 	
-	private static final TimestampFieldListToPeriod FROM_TIMESTAMP_FIELD_LIST = new TimestampFieldListToPeriod();
-	private static final TimestampFieldArrayToPeriod FROM_TIMESTAMP_FIELD_ARRAY = new TimestampFieldArrayToPeriod();
+	private static final DateFieldListToPeriod DATE_FIELD_LIST_TO_PERIOD = new DateFieldListToPeriod();
 	
-	private static final LongToPeriod FROM_LONG = new LongToPeriod();
+	private static final TimestampFieldListToPeriod TIMESTAMP_FIELD_LIST_TO_PERIOD = new TimestampFieldListToPeriod();
+	private static final TimestampFieldArrayToPeriod TIMESTAMP_FIELD_ARRAY_TO_PERIOD = new TimestampFieldArrayToPeriod();
 	
-	private static final LongFieldListToPeriod FROM_LONG_FIELD_LIST = new LongFieldListToPeriod();
-	private static final LongFieldArrayToPeriod FROM_LONG_FIELD_ARRAY = new LongFieldArrayToPeriod();
+	private static final LongToPeriod LONG_TO_PERIOD = new LongToPeriod();
 	
-	private static final CalendarFieldListToPeriod FROM_CALENDAR_FIELD_LIST = new CalendarFieldListToPeriod();
+	private static final LongFieldListToPeriod LONG_FIELD_LIST_TO_PERIOD = new LongFieldListToPeriod();
+	private static final LongFieldArrayToPeriod LONG_FIELD_ARRAY_TO_PERIOD = new LongFieldArrayToPeriod();
 	
-	private static final BaseDateTimeFieldListToPeriod FROM_BASEDATETIME_FIELD_LIST = new BaseDateTimeFieldListToPeriod();
+	private static final CalendarFieldListToPeriod CALENDAR_FIELD_LIST_TO_PERIOD = new CalendarFieldListToPeriod();
 	
-	private static final IntegerFieldListToPeriod FROM_INTEGER_FIELD_LIST = new IntegerFieldListToPeriod();
-	private static final IntegerFieldArrayToPeriod FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToPeriod();
+	private static final BaseDateTimeFieldListToPeriod BASE_DATE_TIME_FIELD_LIST_TO_PERIOD = new BaseDateTimeFieldListToPeriod();
 	
-	private static final StringFieldListToPeriod FROM_STRING_FIELD_LIST = new StringFieldListToPeriod();
-	private static final StringFieldArrayToPeriod FROM_STRING_FIELD_ARRAY = new StringFieldArrayToPeriod();
+	private static final IntegerFieldListToPeriod INTEGER_FIELD_LIST_TO_PERIOD = new IntegerFieldListToPeriod();
+	private static final IntegerFieldArrayToPeriod INTEGER_FIELD_ARRAY_TO_PERIOD = new IntegerFieldArrayToPeriod();
+	
+	private static final StringFieldListToPeriod STRING_FIELD_LIST_TO_PERIOD = new StringFieldListToPeriod();
+	private static final StringFieldArrayToPeriod STRING_FIELD_ARRAY_TO_PERIOD = new StringFieldArrayToPeriod();
 	
 	
 	private FnToPeriod() {
@@ -75,7 +75,7 @@ public final class FnToPeriod {
 	 * and end of such {@link Period}
 	 */
 	public static final DateFieldListToPeriod fromDateFieldList() {
-		return FROM_DATE_FIELD_LIST;
+		return DATE_FIELD_LIST_TO_PERIOD;
 	}	
 	/**
 	 * @param chronology {@link Chronology} the {@link Period} is being created with
@@ -108,7 +108,7 @@ public final class FnToPeriod {
 	
 	// Conversion from two timestamp objects
 	public static final TimestampFieldListToPeriod fromTimestampFieldList() {
-		return FROM_TIMESTAMP_FIELD_LIST;
+		return TIMESTAMP_FIELD_LIST_TO_PERIOD;
 	}	
 	public static final TimestampFieldListToPeriod fromTimestampFieldList(final Chronology chronology) {
 		return new TimestampFieldListToPeriod(chronology);
@@ -120,7 +120,7 @@ public final class FnToPeriod {
 		return new TimestampFieldListToPeriod(periodType, chronology);
 	}
 	public static final TimestampFieldArrayToPeriod fromTimestampFieldArray() {
-		return FROM_TIMESTAMP_FIELD_ARRAY;
+		return TIMESTAMP_FIELD_ARRAY_TO_PERIOD;
 	}	
 	public static final TimestampFieldArrayToPeriod fromTimestampFieldArray(final Chronology chronology) {
 		return new TimestampFieldArrayToPeriod(chronology);
@@ -138,7 +138,7 @@ public final class FnToPeriod {
 	 * @return a Period with the given Duration in milliseconds
 	 */
 	public static final LongToPeriod fromLong() {
-		return FROM_LONG;
+		return LONG_TO_PERIOD;
 	}
 	/**
 	 * @param chronology the {@link Chronology} the returned {@link Period} will
@@ -179,7 +179,7 @@ public final class FnToPeriod {
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
 	public static final LongFieldListToPeriod fromLongFieldList() {
-		return FROM_LONG_FIELD_LIST;
+		return LONG_FIELD_LIST_TO_PERIOD;
 	}	
 	/**
 	 * The given long targets representing the time in millis will be used as the start
@@ -222,7 +222,7 @@ public final class FnToPeriod {
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
 	public static final LongFieldArrayToPeriod fromLongFieldArray() {
-		return FROM_LONG_FIELD_ARRAY;
+		return LONG_FIELD_ARRAY_TO_PERIOD;
 	}	
 	/**
 	 * The given long targets representing the time in millis will be used as the start
@@ -265,7 +265,7 @@ public final class FnToPeriod {
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
 	public static final CalendarFieldListToPeriod fromCalendarFieldList() {
-		return FROM_CALENDAR_FIELD_LIST;
+		return CALENDAR_FIELD_LIST_TO_PERIOD;
 	}	
 	public static final CalendarFieldListToPeriod fromCalendarFieldList(final Chronology chronology) {
 		return new CalendarFieldListToPeriod(chronology);
@@ -299,7 +299,7 @@ public final class FnToPeriod {
 	 * {@link BaseDateTime} elements
 	 */
 	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList() {
-		return FROM_BASEDATETIME_FIELD_LIST;
+		return BASE_DATE_TIME_FIELD_LIST_TO_PERIOD;
 	}	
 	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList(final Chronology chronology) {
 		return new BaseDateTimeFieldListToPeriod(chronology);
@@ -338,13 +338,13 @@ public final class FnToPeriod {
 	 * @return the {@link Period}
 	 */
 	public static final IntegerFieldListToPeriod fromIntegerFieldList() {
-		return FROM_INTEGER_FIELD_LIST;
+		return INTEGER_FIELD_LIST_TO_PERIOD;
 	}
 	public static final IntegerFieldListToPeriod fromIntegerFieldList(PeriodType periodType) {
 		return new IntegerFieldListToPeriod(periodType);
 	}
 	public static final IntegerFieldArrayToPeriod fromIntegerFieldArray() {
-		return FROM_INTEGER_FIELD_ARRAY;
+		return INTEGER_FIELD_ARRAY_TO_PERIOD;
 	}
 	public static final IntegerFieldArrayToPeriod fromIntegerFieldArray(PeriodType periodType) {
 		return new IntegerFieldArrayToPeriod(periodType);
@@ -360,13 +360,13 @@ public final class FnToPeriod {
 	 * @return the {@link Period}
 	 */
 	public static final StringFieldListToPeriod fromStringFieldList() {
-		return FROM_STRING_FIELD_LIST;
+		return STRING_FIELD_LIST_TO_PERIOD;
 	}
 	public static final StringFieldListToPeriod fromStringFieldList(PeriodType periodType) {
 		return new StringFieldListToPeriod(periodType);
 	}
 	public static final StringFieldArrayToPeriod fromStringFieldArray() {
-		return FROM_STRING_FIELD_ARRAY;
+		return STRING_FIELD_ARRAY_TO_PERIOD;
 	}
 	public static final StringFieldArrayToPeriod fromStringFieldArray(PeriodType periodType) {
 		return new StringFieldArrayToPeriod(periodType);
@@ -375,11 +375,14 @@ public final class FnToPeriod {
 	
 	private static abstract class BaseToPeriod<T> extends AbstractNullAsNullFunction<T, Period> {
 
-		Chronology chronology = null;
-		PeriodType periodType = null;
+		final Chronology chronology;
+		final PeriodType periodType;
 		
 		public BaseToPeriod() {
-			super();			
+			super();	
+			
+			this.chronology = null;
+			this.periodType = null;
 		}
 
 		public BaseToPeriod(Chronology chronology) {
@@ -388,6 +391,7 @@ public final class FnToPeriod {
 			Validate.notNull(chronology, "chronology can't be null");
 			
 			this.chronology = chronology;
+			this.periodType = null;
 		}
 
 		public BaseToPeriod(PeriodType periodType) {
@@ -395,6 +399,7 @@ public final class FnToPeriod {
 			
 			Validate.notNull(periodType, "periodType can't be null");
 			
+			this.chronology = null;
 			this.periodType = periodType;
 		}
 
@@ -427,12 +432,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * The given java.util.Date targets will be used as the start and end instants of the Period
-		 * returned
-		 *  
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<? extends Date> dates, ExecCtx ctx) throws Exception {
@@ -473,12 +474,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * The given java.util.Date targets will be used as the start and end instants of the Period
-		 * returned
-		 *  
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final T[] dates, ExecCtx ctx) throws Exception {
@@ -519,12 +516,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * The given java.sql.Timestamp target elements will be used as the start and end
-		 * instants of the Period returned
-		 *                 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<Timestamp> timestamps, ExecCtx ctx) throws Exception {
@@ -565,12 +558,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * The given java.sql.Timestamp target elements will be used as the start and end
-		 * instants of the Period returned
-		 *                 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final Timestamp[] timestamps, ExecCtx ctx) throws Exception {
@@ -611,11 +600,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * It returns a Period with the given Duration in milliseconds
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final Long theLong, ExecCtx ctx) throws Exception {
@@ -639,25 +625,19 @@ public final class FnToPeriod {
 		}		
 		
 		public LongFieldListToPeriod(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);				
 		}
 		
 		public LongFieldListToPeriod(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
 		}
 		
 		public LongFieldListToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * The given long targets representing the time in millis will be used as the start
-		 * and end instants of the Period returned
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<Long> longs, ExecCtx ctx) throws Exception {
@@ -687,25 +667,19 @@ public final class FnToPeriod {
 		}		
 		
 		public LongFieldArrayToPeriod(Chronology chronology) {
-			super();		
-			this.chronology = chronology;
+			super(chronology);
 		}
 		
 		public LongFieldArrayToPeriod(PeriodType periodType) {
-			super();		
-			this.periodType = periodType;
+			super(periodType);
 		}
 		
 		public LongFieldArrayToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * The given long targets representing the time in millis will be used as the start
-		 * and end instants of the Period returned
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final Long[] longs, ExecCtx ctx) throws Exception {
@@ -746,11 +720,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * It creates a Period with the given Calendar targets as the start and end of it
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<? extends Calendar> calendars, ExecCtx ctx) throws Exception {
@@ -791,11 +762,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * It creates a Period with the given Calendar targets as the start and end of it
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final T[] calendars, ExecCtx ctx) throws Exception {
@@ -836,11 +804,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * It creates a Period with the given DateTime targets as the start and end of it
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<? extends BaseDateTime> dateTimes, ExecCtx ctx) throws Exception {
@@ -881,11 +846,8 @@ public final class FnToPeriod {
 			super(periodType, chronology);
 		}
 		
-		/* 
-		 * It creates a Period with the given DateTime targets as the start and end of it
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final T[] dateTimes, ExecCtx ctx) throws Exception {
@@ -917,13 +879,8 @@ public final class FnToPeriod {
 			super(periodType);
 		}	
 		
-		/* 
-		 * A Period is created either:
-		 * - from the given hours, minutes, seconds and milliseconds
-		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<Integer> integers, ExecCtx ctx) throws Exception {
@@ -1009,13 +966,8 @@ public final class FnToPeriod {
 			super(periodType);
 		}	
 		
-		/* 
-		 * A Period is created either:
-		 * - from the given hours, minutes, seconds and milliseconds
-		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final Integer[] integers, ExecCtx ctx) throws Exception {
@@ -1100,13 +1052,8 @@ public final class FnToPeriod {
 			super(periodType);
 		}	
 		
-		/* 
-		 * A Period is created either:
-		 * - from the given hours, minutes, seconds and milliseconds
-		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final List<String> strings, ExecCtx ctx) throws Exception {
@@ -1191,13 +1138,8 @@ public final class FnToPeriod {
 			super(periodType);
 		}	
 		
-		/* 
-		 * A Period is created either:
-		 * - from the given hours, minutes, seconds and milliseconds
-		 * - from the given years, months, weeks, days, hours, minutes, seconds and milliseconds
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Period nullAsNullExecute(final String[] strings, ExecCtx ctx) throws Exception {

@@ -47,13 +47,13 @@ import org.op4j.functions.ExecCtx;
  *
  */
 public final class FnToLocalDate {
-
-	private final static TimestampToLocalDate FROM_TIMESTAMP = new TimestampToLocalDate();
-	private final static LongToLocalDate FROM_LONG = new LongToLocalDate();
-	private final static IntegerFieldListToLocalDate FROM_INTEGER_FIELD_LIST = new IntegerFieldListToLocalDate();
-	private final static IntegerFieldArrayToLocalDate FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToLocalDate();
-	private final static StringFieldListToLocalDate FROM_STRING_FIELD_LIST = new StringFieldListToLocalDate();
-	private final static StringFieldArrayToLocalDate FROM_STRING_FIELD_ARRAY = new StringFieldArrayToLocalDate();
+	
+	private final static TimestampToLocalDate TIMESTAMP_TO_LOCAL_DATE = new TimestampToLocalDate();
+	private final static LongToLocalDate LONG_TO_LOCAL_DATE = new LongToLocalDate();
+	private final static IntegerFieldListToLocalDate INTEGER_FIELD_LIST_TO_LOCAL_DATE = new IntegerFieldListToLocalDate();
+	private final static IntegerFieldArrayToLocalDate INTEGER_FIELD_ARRAY_TO_LOCAL_DATE = new IntegerFieldArrayToLocalDate();
+	private final static StringFieldListToLocalDate STRING_FIELD_LIST_TO_LOCAL_DATE = new StringFieldListToLocalDate();
+	private final static StringFieldArrayToLocalDate STRING_FIELD_ARRAY_TO_LOCAL_DATE = new StringFieldArrayToLocalDate();
 	
 	
 	private FnToLocalDate() {
@@ -193,7 +193,7 @@ public final class FnToLocalDate {
 	 * The given {@link Timestamp} is converted into a {@link LocalDate}
 	 */
 	public static final TimestampToLocalDate fromTimestamp() {
-		return FROM_TIMESTAMP;
+		return TIMESTAMP_TO_LOCAL_DATE;
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link LocalDate} in the given
@@ -221,7 +221,7 @@ public final class FnToLocalDate {
 	 * The given long representing the time in millis is converted into a {@link LocalDate}
 	 */
 	public static final LongToLocalDate fromLong() {
-		return FROM_LONG;
+		return LONG_TO_LOCAL_DATE;
 	}
 	/**
 	 * The given long representing the time in millis is converted into a {@link LocalDate} in the given
@@ -249,7 +249,7 @@ public final class FnToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldListToLocalDate fromIntegerFieldList() {
-		return FROM_INTEGER_FIELD_LIST;
+		return INTEGER_FIELD_LIST_TO_LOCAL_DATE;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given integer list.
@@ -270,7 +270,7 @@ public final class FnToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldArrayToLocalDate fromIntegerFieldArray() {
-		return FROM_INTEGER_FIELD_ARRAY;
+		return INTEGER_FIELD_ARRAY_TO_LOCAL_DATE;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given integer array.
@@ -291,7 +291,7 @@ public final class FnToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldListToLocalDate fromStringFieldList() {
-		return FROM_STRING_FIELD_LIST;
+		return STRING_FIELD_LIST_TO_LOCAL_DATE;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given string list.
@@ -312,7 +312,7 @@ public final class FnToLocalDate {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldArrayToLocalDate fromStringFieldArray() {
-		return FROM_STRING_FIELD_ARRAY;
+		return STRING_FIELD_ARRAY_TO_LOCAL_DATE;
 	}
 	/**
 	 * A {@link LocalDate} is created from the given string array.
@@ -355,11 +355,13 @@ public final class FnToLocalDate {
 	
 	private static abstract class BaseToLocalDate<T> extends AbstractNullAsNullFunction<T, LocalDate> {
 
-		DateTimeZone dateTimeZone = null;
-		Chronology chronology = null;
+		final DateTimeZone dateTimeZone;
+		final Chronology chronology;
 		
 		public BaseToLocalDate() {
-			super();			
+			super();
+			this.dateTimeZone = null;
+			this.chronology = null;
 		}
 
 		public BaseToLocalDate(DateTimeZone dateTimeZone) {
@@ -368,6 +370,7 @@ public final class FnToLocalDate {
 			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
 			
 			this.dateTimeZone = dateTimeZone;
+			this.chronology = null;
 		}
 
 		public BaseToLocalDate(Chronology chronology) {
@@ -376,69 +379,43 @@ public final class FnToLocalDate {
 			Validate.notNull(chronology, "chronology can't be null");
 			
 			this.chronology = chronology;
+			this.dateTimeZone = null;			
 		}
 	}
 	
 	static final class StringToLocalDate extends BaseToLocalDate<String> {
 
-		private String pattern;
-		private Locale locale;
+		private final String pattern;
+		private final Locale locale;
 		
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern parameter. If
-		 * the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 */
 		public StringToLocalDate(String pattern) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern parameter and with the given
-		 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 * @param dateTimeZone
-		 */
 		public StringToLocalDate(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern parameter and with the given
-		 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 * 		                
-		 * @param pattern
-		 * @param chronology
-		 */
 		public StringToLocalDate(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
 			
 			this.pattern = pattern;
+			this.locale = null;
 		}
 
-		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and
-		 * {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToLocalDate(String pattern, Locale locale) {
 			super();
 			
@@ -449,13 +426,6 @@ public final class FnToLocalDate {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and
-		 * {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringToLocalDate(String pattern, String locale) {
 			super();
 			
@@ -466,14 +436,6 @@ public final class FnToLocalDate {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given String into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToLocalDate(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -484,14 +446,6 @@ public final class FnToLocalDate {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringToLocalDate(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -502,14 +456,6 @@ public final class FnToLocalDate {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		/**
-		 * It converts the given {@link String} into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} will be created with the given {@link Chronology}
-		 *                 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringToLocalDate(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
@@ -520,14 +466,6 @@ public final class FnToLocalDate {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given String into a {@link LocalDate} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateTime} will be created with the given {@link Chronology}
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringToLocalDate(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
@@ -539,7 +477,7 @@ public final class FnToLocalDate {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
@@ -571,35 +509,20 @@ public final class FnToLocalDate {
 	
 	static final class DateToLocalDate<T extends Date> extends BaseToLocalDate<T> {
 
-		/**
-		 * The given {@link Date} is converted into a {@link LocalDate}
-		 */
 		public DateToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link LocalDate} configured with the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public DateToLocalDate(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Date} is converted into a {@link LocalDate} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public DateToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
@@ -618,35 +541,20 @@ public final class FnToLocalDate {
 	
 	static final class TimestampToLocalDate extends BaseToLocalDate<Timestamp> {
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalDate}
-		 */
 		public TimestampToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalDate} in the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public TimestampToLocalDate(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given {@link Timestamp} is converted into a {@link LocalDate} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public TimestampToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
@@ -663,35 +571,20 @@ public final class FnToLocalDate {
 	
 	static final class LongToLocalDate extends BaseToLocalDate<Long> {
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link LocalDate}
-		 */
 		public LongToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link LocalDate} in the given
-		 * {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public LongToLocalDate(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * The given long representing the time in millis is converted into a {@link LocalDate} with the given
-		 * {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public LongToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
@@ -708,27 +601,16 @@ public final class FnToLocalDate {
 	
 	static final class IntegerFieldListToLocalDate extends BaseToLocalDate<List<Integer>> {
 
-		/**
-		 * A {@link LocalDate} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public IntegerFieldListToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalDate} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldListToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
@@ -751,27 +633,16 @@ public final class FnToLocalDate {
 	
 	static final class IntegerFieldArrayToLocalDate extends BaseToLocalDate<Integer[]> {
 
-		/**
-		 * A {@link LocalDate} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */		
 		public IntegerFieldArrayToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalDate} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public IntegerFieldArrayToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
@@ -797,27 +668,16 @@ public final class FnToLocalDate {
 	
 	static final class StringFieldListToLocalDate extends BaseToLocalDate<List<String>> {
 
-		/**
-		 * A {@link LocalDate} is created from the given string list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public StringFieldListToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalDate} is created from the given string list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldListToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
@@ -843,27 +703,16 @@ public final class FnToLocalDate {
 	
 	static final class StringFieldArrayToLocalDate extends BaseToLocalDate<String[]> {
 
-		/**
-		 * A {@link LocalDate} is created from the given string array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */
 		public StringFieldArrayToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * A {@link LocalDate} is created from the given string array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
-		 * The result will be created with the given {@link Chronology}
-		 *                 
-		 * @param chronology
-		 */
 		public StringFieldArrayToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
@@ -887,33 +736,20 @@ public final class FnToLocalDate {
 	
 	static final class CalendarToLocalDate<T extends Calendar> extends BaseToLocalDate<T> {
 
-		/**
-		 * It converts a {@link Calendar} into a {@link LocalDate}
-		 */
 		public CalendarToLocalDate() {
 			super();			
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link LocalDate} in the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public CalendarToLocalDate(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
-		/**
-		 * It converts a {@link Calendar} into a {@link LocalDate} with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public CalendarToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public LocalDate nullAsNullExecute(T object, ExecCtx ctx) throws Exception {

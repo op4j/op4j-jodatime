@@ -48,24 +48,24 @@ import org.op4j.functions.ExecCtx;
  *
  */
 public final class FnToInterval {
-
-	private static final DateFieldListToInterval FROM_DATE_FIELD_LIST = new DateFieldListToInterval();
 	
-	private static final TimestampFieldListToInterval FROM_TIMESTAMP_FIELD_LIST = new TimestampFieldListToInterval();
-	private static final TimestampFieldArrayToInterval FROM_TIMESTAMP_FIELD_ARRAY = new TimestampFieldArrayToInterval();
+	private static final DateFieldListToInterval DATE_FIELD_LIST_TO_INTERVAL = new DateFieldListToInterval();
 	
-	private static final LongFieldListToInterval FROM_LONG_FIELD_LIST = new LongFieldListToInterval();
-	private static final LongFieldArrayToInterval FROM_LONG_FIELD_ARRAY = new LongFieldArrayToInterval();
+	private static final TimestampFieldListToInterval TIMESTAMP_FIELD_LIST_TO_INTERVAL = new TimestampFieldListToInterval();
+	private static final TimestampFieldArrayToInterval TIMESTAMP_FIELD_ARRAY_TO_INTERVAL = new TimestampFieldArrayToInterval();
 	
-	private static final IntegerFieldListToInterval FROM_INTEGER_FIELD_LIST = new IntegerFieldListToInterval();
-	private static final IntegerFieldArrayToInterval FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToInterval();
+	private static final LongFieldListToInterval LONG_FIELD_LIST_TO_INTERVAL = new LongFieldListToInterval();
+	private static final LongFieldArrayToInterval LONG_FIELD_ARRAY_TO_INTERVAL = new LongFieldArrayToInterval();
 	
-	private static final CalendarFieldListToInterval FROM_CALENDAR_FIELD_LIST = new CalendarFieldListToInterval();
+	private static final IntegerFieldListToInterval INTEGER_FIELD_LIST_TO_INTERVAL = new IntegerFieldListToInterval();
+	private static final IntegerFieldArrayToInterval INTEGER_FIELD_ARRAY_TO_INTERVAL = new IntegerFieldArrayToInterval();
 	
-	private static final BaseDateTimeFieldListToInterval FROM_BASEDATETIME_FIELD_LIST = new BaseDateTimeFieldListToInterval();
+	private static final CalendarFieldListToInterval CALENDAR_FIELD_LIST_TO_INTERVAL = new CalendarFieldListToInterval();
 	
-	private static final StringFieldListToInterval FROM_STRING_FIELD_LIST = new StringFieldListToInterval();
-	private static final StringFieldArrayToInterval FROM_STRING_FIELD_ARRAY = new StringFieldArrayToInterval();
+	private static final BaseDateTimeFieldListToInterval BASE_DATE_TIME_FIELD_LIST_TO_INTERVAL = new BaseDateTimeFieldListToInterval();
+	
+	private static final StringFieldListToInterval STRING_FIELD_LIST_TO_INTERVAL = new StringFieldListToInterval();
+	private static final StringFieldArrayToInterval STRING_FIELD_ARRAY_TO_INTERVAL = new StringFieldArrayToInterval();
 	
 	private FnToInterval() {
 		super();
@@ -86,11 +86,38 @@ public final class FnToInterval {
 	 * @return
 	 */
 	public static final StringFieldListToInterval fromStringFieldList() {
-		return FROM_STRING_FIELD_LIST;
+		return STRING_FIELD_LIST_TO_INTERVAL;
 	}
+
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 
+	 * @param dateTimeZone
+	 * @return
+	 */
 	public static final StringFieldListToInterval fromStringFieldList(DateTimeZone dateTimeZone) {
 		return new StringFieldListToInterval(dateTimeZone);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 
+	 * @param chronology
+	 * @return
+	 */
 	public static final StringFieldListToInterval fromStringFieldList(Chronology chronology) {
 		return new StringFieldListToInterval(chronology);
 	}
@@ -205,38 +232,193 @@ public final class FnToInterval {
 	 * @return
 	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray() {
-		return FROM_STRING_FIELD_ARRAY;
+		return STRING_FIELD_ARRAY_TO_INTERVAL;
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param dateTimeZone
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(dateTimeZone);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param chronology
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(Chronology chronology) {
 		return new StringFieldArrayToInterval(chronology);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern) {
 		return new StringFieldArrayToInterval(pattern);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param dateTimeZone
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(pattern, dateTimeZone);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param chronology
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Chronology chronology) {
 		return new StringFieldArrayToInterval(pattern, chronology);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param locale
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Locale locale) {
 		return new StringFieldArrayToInterval(pattern, locale);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param locale
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, String locale) {
 		return new StringFieldArrayToInterval(pattern, locale);
 	}	
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param locale
+	 * @param dateTimeZone
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param locale
+	 * @param dateTimeZone
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}	
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param locale
+	 * @param chronology
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Locale locale, Chronology chronology) {
 		return new StringFieldArrayToInterval(pattern, locale, chronology);
 	}
+	/**
+	 * It converts the given {@link String} elements into an interval. 
+	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * <ul>
+	 * <li>year, month, day, year, month, day</li>
+	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+	 * </ul>
+	 * 		
+	 * @param pattern
+	 * @param locale
+	 * @param chronology
+	 * @return
+	 */
 	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, String locale, Chronology chronology) {
 		return new StringFieldArrayToInterval(pattern, locale, chronology);
 	}	
@@ -247,7 +429,7 @@ public final class FnToInterval {
 	 * It creates an {@link Interval} from the given {@link Date} elements  
 	 */
 	public static final DateFieldListToInterval fromDateFieldList() {
-		return FROM_DATE_FIELD_LIST;
+		return DATE_FIELD_LIST_TO_INTERVAL;
 	}
 	/**
 	 * 
@@ -302,11 +484,13 @@ public final class FnToInterval {
 	 * of the {@link Interval} returned
 	 */
 	public static final TimestampFieldListToInterval fromTimestampFieldList() {
-		return FROM_TIMESTAMP_FIELD_LIST;
+		return TIMESTAMP_FIELD_LIST_TO_INTERVAL;
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
 	 */	
 	public static final TimestampFieldListToInterval fromTimestampFieldList(DateTimeZone dateTimeZone) {
 		return new TimestampFieldListToInterval(dateTimeZone);
@@ -314,6 +498,8 @@ public final class FnToInterval {
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link Chronology}
+	 * 
+	 * @param chronology
 	 */
 	public static final TimestampFieldListToInterval fromTimestampFieldList(Chronology chronology) {
 		return new TimestampFieldListToInterval(chronology);
@@ -324,11 +510,13 @@ public final class FnToInterval {
 	 * of the {@link Interval} returned
 	 */
 	public static final TimestampFieldArrayToInterval fromTimestampFieldArray() {
-		return FROM_TIMESTAMP_FIELD_ARRAY;
+		return TIMESTAMP_FIELD_ARRAY_TO_INTERVAL;
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
 	 */	
 	public static final TimestampFieldArrayToInterval fromTimestampFieldArray(DateTimeZone dateTimeZone) {
 		return new TimestampFieldArrayToInterval(dateTimeZone);
@@ -336,6 +524,8 @@ public final class FnToInterval {
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link Chronology}
+	 * 
+	 * @param chronology
 	 */
 	public static final TimestampFieldArrayToInterval fromTimestampFieldArray(Chronology chronology) {
 		return new TimestampFieldArrayToInterval(chronology);
@@ -344,16 +534,18 @@ public final class FnToInterval {
 	
 	// From Long list or array
 	/**
-	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
 	 */
 	public static final LongFieldListToInterval fromLongFieldList() {
-		return FROM_LONG_FIELD_LIST;
+		return LONG_FIELD_LIST_TO_INTERVAL;
 	}
 	/**
-	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
 	 */
 	public static final LongFieldListToInterval fromLongFieldList(DateTimeZone dateTimeZone) {
 		return new LongFieldListToInterval(dateTimeZone);
@@ -362,30 +554,36 @@ public final class FnToInterval {
 	 * The given {@link Long} targets representing the time in millis will be used as the start
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link Chronology}
+	 * 
+	 * @param chronology
 	 */
 	public static final LongFieldListToInterval fromLongFieldList(Chronology chronology) {
 		return new LongFieldListToInterval(chronology);
 	}
 	
 	/**
-	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
 	 */
 	public static final LongFieldArrayToInterval fromLongFieldArray() {
-		return FROM_LONG_FIELD_ARRAY;
+		return LONG_FIELD_ARRAY_TO_INTERVAL;
 	}
 	/**
-	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link DateTimeZone}
+	 * 
+	 * @param dateTimeZone
 	 */
 	public static final LongFieldArrayToInterval fromLongFieldArray(DateTimeZone dateTimeZone) {
 		return new LongFieldArrayToInterval(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} targets representing the time in millis will be used as the start
+	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link Chronology}
+	 * 
+	 * @param chronology
 	 */
 	public static final LongFieldArrayToInterval fromLongFieldArray(Chronology chronology) {
 		return new LongFieldArrayToInterval(chronology);
@@ -395,7 +593,7 @@ public final class FnToInterval {
 	
 	// From Integer List or array
 	public static final IntegerFieldListToInterval fromIntegerFieldList() {
-		return FROM_INTEGER_FIELD_LIST;
+		return INTEGER_FIELD_LIST_TO_INTERVAL;
 	}
 	public static final IntegerFieldListToInterval fromIntegerFieldList(DateTimeZone dateTimeZone) {
 		return new IntegerFieldListToInterval(dateTimeZone);
@@ -405,7 +603,7 @@ public final class FnToInterval {
 	}
 	
 	public static final IntegerFieldArrayToInterval fromIntegerFieldArray() {
-		return FROM_INTEGER_FIELD_ARRAY;
+		return INTEGER_FIELD_ARRAY_TO_INTERVAL;
 	}
 	public static final IntegerFieldArrayToInterval fromIntegerFieldArray(DateTimeZone dateTimeZone) {
 		return new IntegerFieldArrayToInterval(dateTimeZone);
@@ -421,7 +619,7 @@ public final class FnToInterval {
 	 * and end of the interval
 	 */
 	public static final CalendarFieldListToInterval fromCalendarFieldList() {
-		return FROM_CALENDAR_FIELD_LIST;
+		return CALENDAR_FIELD_LIST_TO_INTERVAL;
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -471,7 +669,7 @@ public final class FnToInterval {
 	
 	// From BaseDateTime list or array
 	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList() {
-		return FROM_BASEDATETIME_FIELD_LIST;
+		return BASE_DATE_TIME_FIELD_LIST_TO_INTERVAL;
 	}
 	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList(DateTimeZone dateTimeZone) {
 		return new BaseDateTimeFieldListToInterval(dateTimeZone);
@@ -495,11 +693,13 @@ public final class FnToInterval {
 	
 	private static abstract class BaseToInterval<T> extends AbstractNullAsNullFunction<T, Interval> {
 
-		Chronology chronology = null;
-		DateTimeZone dateTimeZone = null;
+		final Chronology chronology;
+		final DateTimeZone dateTimeZone;
 		
 		public BaseToInterval() {
-			super();			
+			super();
+			this.chronology = null;
+			this.dateTimeZone = null;
 		}
 
 		public BaseToInterval(Chronology chronology) {
@@ -508,6 +708,7 @@ public final class FnToInterval {
 			Validate.notNull(chronology, "chronology can't be null");
 			
 			this.chronology = chronology;
+			this.dateTimeZone = null;
 		}
 
 		public BaseToInterval(DateTimeZone dateTimeZone) {
@@ -515,7 +716,8 @@ public final class FnToInterval {
 			
 			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
 						
-			this.dateTimeZone = dateTimeZone;
+			this.chronology = null;
+			this.dateTimeZone = dateTimeZone;			
 		}
 	}
 	
@@ -523,43 +725,30 @@ public final class FnToInterval {
 	static final class StringFieldListToInterval extends BaseToInterval<List<String>> {
 
 		private final ConversionType conversionType;
-		private String pattern = null;
-		private Locale locale = null;
+		private final String pattern;
+		private final Locale locale;
 		
-		/**
-		 * It converts the given {@link String} elements into an interval. 
-		 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
-		 * <ul>
-		 * <li>year, month, day, year, month, day</li>
-		 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
-		 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
-		 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
-		 * </ul>
-		 * 		
-		 */
 		public StringFieldListToInterval() {
 			super();
 			this.conversionType = ConversionType.NO_PARAM;
+			this.pattern = null;
+			this.locale = null;
 		}
 		
 		public StringFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);			
 			this.conversionType = ConversionType.DATETIMEZONE;
+			this.pattern = null;
+			this.locale = null;
 		}
 		
 		public StringFieldListToInterval(Chronology chronology) {
 			super(chronology);		
 			this.conversionType = ConversionType.CHRONOLOGY;
+			this.pattern = null;
+			this.locale = null;
 		}
 		
-		/**
-		 * It creates an {@link Interval} using the target {@link String} elements as the start and end. The given pattern
-		 * will be used to create the {@link DateTime} objects from the given {@link String} elements. If
-		 * the pattern includes either, the name of the month or day of week, a conversion
-		 * accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 */
 		public StringFieldListToInterval(String pattern) {
 			super();	
 			
@@ -567,16 +756,9 @@ public final class FnToInterval {
 			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN;
+			this.locale = null;
 		}	
 		
-		/**
-		 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
-		 * and with the given {@link DateTimeZone}. If the pattern includes either, the name of the month or
-		 * day of week, a conversion accepting a {@link Locale} must be used instead
-		 *                 
-		 * @param pattern
-		 * @param dateTimeZone
-		 */
 		public StringFieldListToInterval(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -584,16 +766,9 @@ public final class FnToInterval {
 			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_DATETIMEZONE;
+			this.locale = null;
 		}	
 		
-		/**
-		 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
-		 * and with the given {@link Chronology}. If the pattern includes either, the name of the month or
-		 * day of week, a conversion accepting a {@link Locale} must be used instead
-		 * 
-		 * @param pattern
-		 * @param chronology
-		 */
 		public StringFieldListToInterval(String pattern, Chronology chronology) {
 			super(chronology);
 			
@@ -601,15 +776,9 @@ public final class FnToInterval {
 			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_CHRONOLOGY;
+			this.locale = null;			
 		}
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-		 * and {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringFieldListToInterval(String pattern, Locale locale) {
 			super();
 			
@@ -621,13 +790,6 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE;
 		}
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-		 * and {@link Locale} parameters
-		 * 
-		 * @param pattern
-		 * @param locale
-		 */
 		public StringFieldListToInterval(String pattern, String locale) {
 			super();
 			
@@ -639,14 +801,6 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE;
 		}
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-		 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringFieldListToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -658,14 +812,6 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
 		}
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-		 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param dateTimeZone
-		 */
 		public StringFieldListToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
@@ -677,14 +823,6 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
 		}
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-		 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
-		 * 
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringFieldListToInterval(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
@@ -696,14 +834,6 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_CHRONOLOGY;
 		}
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-		 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
-		 *
-		 * @param pattern
-		 * @param locale
-		 * @param chronology
-		 */
 		public StringFieldListToInterval(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
@@ -716,7 +846,7 @@ public final class FnToInterval {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final List<String> object, ExecCtx ctx) throws Exception {
@@ -882,12 +1012,14 @@ public final class FnToInterval {
 	static final class StringFieldArrayToInterval extends BaseToInterval<String[]> {
 
 		private final ConversionType conversionType;
-		private String pattern = null;
-		private Locale locale = null;
+		private final String pattern;
+		private final Locale locale;
 		
 		public StringFieldArrayToInterval() {
 			super();		
 			this.conversionType = ConversionType.NO_PARAM;
+			this.pattern = null;
+			this.locale = null;
 		}
 		
 		public StringFieldArrayToInterval(String pattern) {
@@ -897,16 +1029,21 @@ public final class FnToInterval {
 			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN;
+			this.locale = null;
 		}	
 		
 		public StringFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);	
 			this.conversionType = ConversionType.DATETIMEZONE;
+			this.pattern = null;
+			this.locale = null;
 		}
 		
 		public StringFieldArrayToInterval(Chronology chronology) {
 			super(chronology);	
 			this.conversionType = ConversionType.CHRONOLOGY;
+			this.pattern = null;
+			this.locale = null;
 		}
 				
 		public StringFieldArrayToInterval(String pattern, DateTimeZone dateTimeZone) {
@@ -916,6 +1053,7 @@ public final class FnToInterval {
 			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_DATETIMEZONE;
+			this.locale = null;
 		}	
 		
 		public StringFieldArrayToInterval(String pattern, Chronology chronology) {
@@ -925,6 +1063,7 @@ public final class FnToInterval {
 			
 			this.pattern = pattern;
 			this.conversionType = ConversionType.PATTERN_CHRONOLOGY;
+			this.locale = null;
 		}
 		
 		public StringFieldArrayToInterval(String pattern, Locale locale) {
@@ -994,7 +1133,7 @@ public final class FnToInterval {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final String[] object, ExecCtx ctx) throws Exception {
@@ -1166,29 +1305,16 @@ public final class FnToInterval {
 			super();			
 		}		
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link Date} elements.
-		 * The {@link Interval} will be created with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public DateFieldListToInterval(Chronology chronology) {
 			super(chronology);					
 		}
 		
-		/**
-		 * 
-		 * It creates an {@link Interval} from the given {@link Date}  elements.
-		 * The {@link Interval} will be created with the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public DateFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final List<? extends Date> object, ExecCtx ctx) throws Exception {			
@@ -1211,36 +1337,20 @@ public final class FnToInterval {
 	
 	static final class DateFieldArrayToInterval<T extends Date> extends BaseToInterval<T[]> {
 
-		/**
-		 * It creates an {@link Interval} from the given {@link Date} elements.
-		 */
 		public DateFieldArrayToInterval() {
 			super();			
 		}		
 		
-		/**
-		 * It creates an {@link Interval} from the given {@link Date} elements.
-		 * The {@link Interval} will be created with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public DateFieldArrayToInterval(Chronology chronology) {
 			super(chronology);					
 		}
 		
-		/**
-		 * 
-		 * It creates an {@link Interval} from the given {@link Date} elements.
-		 * The {@link Interval} will be created with the given {@link DateTimeZone}
-		 * 
-		 * @param dateTimeZone
-		 */
 		public DateFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
@@ -1263,32 +1373,20 @@ public final class FnToInterval {
 	
 	static final class TimestampFieldListToInterval extends BaseToInterval<List<Timestamp>> {
 
-		/**
-		 * The given {@link Timestamp} target elements will be used as the start and end
-		 * of the {@link Interval} returned
-		 */
 		public TimestampFieldListToInterval() {
 			super();			
 		}		
 		
-		/**
-		 * The given {@link Timestamp} target elements will be used as the start and end
-		 * of the {@link Interval} returned with the given {@link Chronology}
-		 */
 		public TimestampFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		/**
-		 * The given {@link Timestamp} target elements will be used as the start and end
-		 * of the {@link Interval} returned with the given {@link DateTimeZone}
-		 */		
 		public TimestampFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final List<Timestamp> object, ExecCtx ctx) throws Exception {
@@ -1311,32 +1409,20 @@ public final class FnToInterval {
 	
 	static final class TimestampFieldArrayToInterval extends BaseToInterval<Timestamp[]> {
 
-		/**
-		 * The given {@link Timestamp} target elements will be used as the start and end
-		 * of the {@link Interval} returned
-		 */
 		public TimestampFieldArrayToInterval() {
 			super();			
 		}		
 		
-		/**
-		 * The given {@link Timestamp} target elements will be used as the start and end
-		 * of the {@link Interval} returned with the given {@link Chronology}
-		 */
 		public TimestampFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		/**
-		 * The given {@link Timestamp} target elements will be used as the start and end
-		 * of the {@link Interval} returned with the given {@link DateTimeZone}
-		 */	
 		public TimestampFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final Timestamp[] object, ExecCtx ctx) throws Exception {
@@ -1359,34 +1445,20 @@ public final class FnToInterval {
 	
 	static final class LongFieldListToInterval extends BaseToInterval<List<Long>> {
 
-		/**
-		 * The given {@link Long} targets representing the time in millis will be used as the start
-		 * and end of the {@link Interval} returned
-		 */
 		public LongFieldListToInterval() {
 			super();			
 		}		
 		
-		/**
-		 * The given {@link Long} targets representing the time in millis will be used as the start
-		 * and end of the {@link Interval} returned. The interval will be created with the given
-		 * {@link Chronology}
-		 */
 		public LongFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		/**
-		 * The given {@link Long} targets representing the time in millis will be used as the start
-		 * and end of the {@link Interval} returned. The interval will be created with the given
-		 * {@link DateTimeZone}
-		 */
 		public LongFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final List<Long> object, ExecCtx ctx) throws Exception {
@@ -1409,34 +1481,20 @@ public final class FnToInterval {
 	
 	static final class LongFieldArrayToInterval extends BaseToInterval<Long[]> {
 
-		/**
-		 * The given {@link Long} targets representing the time in millis will be used as the start
-		 * and end of the {@link Interval} returned
-		 */
 		public LongFieldArrayToInterval() {
 			super();			
 		}		
 		
-		/**
-		 * The given {@link Long} targets representing the time in millis will be used as the start
-		 * and end of the {@link Interval} returned. The interval will be created with the given
-		 * {@link Chronology}
-		 */
 		public LongFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		/**
-		 * The given {@link Long} targets representing the time in millis will be used as the start
-		 * and end of the {@link Interval} returned. The interval will be created with the given
-		 * {@link DateTimeZone}
-		 */
 		public LongFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final Long[] object, ExecCtx ctx) throws Exception {
@@ -1472,7 +1530,7 @@ public final class FnToInterval {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final List<Integer> object, ExecCtx ctx) throws Exception {
@@ -1579,7 +1637,7 @@ public final class FnToInterval {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final Integer[] object, ExecCtx ctx) throws Exception {
@@ -1672,36 +1730,20 @@ public final class FnToInterval {
 	
 	static final class CalendarFieldListToInterval extends BaseToInterval<List<? extends Calendar>> {
 
-		/**
-		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
-		 * and end of the interval
-		 */
 		public CalendarFieldListToInterval() {
 			super();			
 		}		
 		
-		/**
-		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-		 * The interval will be created with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public CalendarFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		/**
-		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-		 * Such an interval will be created in the given DateTimeZone
-		 *                 
-		 * @param dateTimeZone
-		 */
 		public CalendarFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final List<? extends Calendar> object, ExecCtx ctx) throws Exception {
@@ -1724,36 +1766,20 @@ public final class FnToInterval {
 	
 	static final class CalendarFieldArrayToInterval<T extends Calendar> extends BaseToInterval<T[]> {
 
-		/**
-		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
-		 * and end of the interval
-		 */
 		public CalendarFieldArrayToInterval() {
 			super();			
 		}		
 		
-		/**
-		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-		 * The interval will be created with the given {@link Chronology}
-		 * 
-		 * @param chronology
-		 */
 		public CalendarFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		/**
-		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-		 * Such an interval will be created in the given DateTimeZone
-		 *                 
-		 * @param dateTimeZone
-		 */
 		public CalendarFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
@@ -1789,7 +1815,7 @@ public final class FnToInterval {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final List<? extends BaseDateTime> object, ExecCtx ctx) throws Exception {
@@ -1825,7 +1851,7 @@ public final class FnToInterval {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public Interval nullAsNullExecute(final T[] object, ExecCtx ctx) throws Exception {
