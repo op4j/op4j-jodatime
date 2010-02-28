@@ -1,7 +1,7 @@
 /*
  * =============================================================================
  * 
- *   Copyright (c) 2008, The OP4J team (http://www.op4j.org)
+ *   Copyright (c) 2010, The OP4J team (http://www.op4j.org)
  * 
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class ToInterval {
+public final class FnToInterval {
 
 	private static final FromDateFieldList FROM_DATE_FIELD_LIST = new FromDateFieldList();
 	
@@ -67,7 +67,7 @@ public final class ToInterval {
 	private static final FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
 	private static final FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
 	
-	private ToInterval() {
+	private FnToInterval() {
 		super();
 	}
 	
@@ -520,7 +520,7 @@ public final class ToInterval {
 	}
 	
 	
-	public static final class FromStringFieldList extends BaseToInterval<List<String>> {
+	static final class FromStringFieldList extends BaseToInterval<List<String>> {
 
 		private final ConversionType conversionType;
 		private String pattern = null;
@@ -879,7 +879,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromStringFieldArray extends BaseToInterval<String[]> {
+	static final class FromStringFieldArray extends BaseToInterval<String[]> {
 
 		private final ConversionType conversionType;
 		private String pattern = null;
@@ -1157,7 +1157,7 @@ public final class ToInterval {
 		}
 	}	
 	
-	public static final class FromDateFieldList extends BaseToInterval<List<? extends Date>> {
+	static final class FromDateFieldList extends BaseToInterval<List<? extends Date>> {
 
 		/**
 		 * It creates an {@link Interval} from the given {@link Date} elements  
@@ -1209,7 +1209,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromDateFieldArray<T extends Date> extends BaseToInterval<T[]> {
+	static final class FromDateFieldArray<T extends Date> extends BaseToInterval<T[]> {
 
 		/**
 		 * It creates an {@link Interval} from the given {@link Date} elements.
@@ -1261,7 +1261,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromTimestampFieldList extends BaseToInterval<List<Timestamp>> {
+	static final class FromTimestampFieldList extends BaseToInterval<List<Timestamp>> {
 
 		/**
 		 * The given {@link Timestamp} target elements will be used as the start and end
@@ -1309,7 +1309,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromTimestampFieldArray extends BaseToInterval<Timestamp[]> {
+	static final class FromTimestampFieldArray extends BaseToInterval<Timestamp[]> {
 
 		/**
 		 * The given {@link Timestamp} target elements will be used as the start and end
@@ -1357,7 +1357,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromLongFieldList extends BaseToInterval<List<Long>> {
+	static final class FromLongFieldList extends BaseToInterval<List<Long>> {
 
 		/**
 		 * The given {@link Long} targets representing the time in millis will be used as the start
@@ -1407,7 +1407,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromLongFieldArray extends BaseToInterval<Long[]> {
+	static final class FromLongFieldArray extends BaseToInterval<Long[]> {
 
 		/**
 		 * The given {@link Long} targets representing the time in millis will be used as the start
@@ -1457,7 +1457,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromIntegerFieldList extends BaseToInterval<List<Integer>> {
+	static final class FromIntegerFieldList extends BaseToInterval<List<Integer>> {
 
 		public FromIntegerFieldList() {
 			super();			
@@ -1564,7 +1564,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromIntegerFieldArray extends BaseToInterval<Integer[]> {
+	static final class FromIntegerFieldArray extends BaseToInterval<Integer[]> {
 
 		public FromIntegerFieldArray() {
 			super();			
@@ -1670,7 +1670,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromCalendarFieldList extends BaseToInterval<List<? extends Calendar>> {
+	static final class FromCalendarFieldList extends BaseToInterval<List<? extends Calendar>> {
 
 		/**
 		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
@@ -1722,7 +1722,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromCalendarFieldArray<T extends Calendar> extends BaseToInterval<T[]> {
+	static final class FromCalendarFieldArray<T extends Calendar> extends BaseToInterval<T[]> {
 
 		/**
 		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
@@ -1774,7 +1774,7 @@ public final class ToInterval {
 		}		
 	}	
 		
-	public static final class FromBaseDateTimeFieldList extends BaseToInterval<List<? extends BaseDateTime>> {
+	static final class FromBaseDateTimeFieldList extends BaseToInterval<List<? extends BaseDateTime>> {
 
 		public FromBaseDateTimeFieldList() {
 			super();			
@@ -1810,7 +1810,7 @@ public final class ToInterval {
 		}		
 	}	
 	
-	public static final class FromBaseDateTimeFieldArray<T extends BaseDateTime> extends BaseToInterval<T[]> {
+	static final class FromBaseDateTimeFieldArray<T extends BaseDateTime> extends BaseToInterval<T[]> {
 
 		public FromBaseDateTimeFieldArray() {
 			super();			

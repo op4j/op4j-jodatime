@@ -24,7 +24,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringString() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern)).get();
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).parseDateTime(asStr).toDateMidnight());
 	}
@@ -33,7 +33,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				DateTimeZone.UTC)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withZone(DateTimeZone.UTC)
@@ -44,7 +44,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withChronology(BuddhistChronology.getInstance())
@@ -55,14 +55,14 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringLocale() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				Locale.CANADA)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
 				.parseDateTime(asStr).toDateMidnight());
 		
 		try {
-			Op.on(asStr).exec(ToDateMidnight.fromString(null,
+			Op.on(asStr).exec(FnToDateMidnight.fromString(null,
 					Locale.CANADA));
 			fail("conversion can't be done if pattern is empty");
 		} catch (IllegalArgumentException e) {
@@ -74,7 +74,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringString() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				Locale.CANADA.toString())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -85,7 +85,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringLocaleDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				Locale.CANADA, DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -97,7 +97,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringStringDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-23:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				Locale.CANADA.toString(), DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -109,7 +109,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringLocaleChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				Locale.CANADA, BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -121,7 +121,7 @@ public class ToDateMidnightTest extends TestCase {
 	public void testFromStringStringStringChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm:ss";
 		String asStr = "24/12/2000-00:03:33";
-		DateMidnight result = Op.on(asStr).exec(ToDateMidnight.fromString(pattern,
+		DateMidnight result = Op.on(asStr).exec(FnToDateMidnight.fromString(pattern,
 				Locale.CANADA.toString(), BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -132,7 +132,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromDate() {
 		Date date = new Date();
-		DateMidnight result = Op.on(date).exec(ToDateMidnight.fromDate()).get();
+		DateMidnight result = Op.on(date).exec(FnToDateMidnight.fromDate()).get();
 		
 		assertEquals(result, new DateMidnight(date));
 	}
@@ -140,7 +140,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromDateDateTimeZone() {
 		java.sql.Date date = new java.sql.Date(new Date().getTime());
-		DateMidnight result = Op.on(date).exec(ToDateMidnight.fromDate(DateTimeZone.getDefault())).get();
+		DateMidnight result = Op.on(date).exec(FnToDateMidnight.fromDate(DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateMidnight(date, DateTimeZone.getDefault()));
 	}
@@ -148,7 +148,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromDateChronology() {
 		java.sql.Date date = new java.sql.Date(new Date().getTime());
-		DateMidnight result = Op.on(date).exec(ToDateMidnight.fromDate(BuddhistChronology.getInstance())).get();
+		DateMidnight result = Op.on(date).exec(FnToDateMidnight.fromDate(BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, new DateMidnight(date, BuddhistChronology.getInstance()));
 	}
@@ -156,7 +156,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromTimestamp() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		DateMidnight result = Op.on(timestamp).exec(ToDateMidnight.fromTimestamp()).get();
+		DateMidnight result = Op.on(timestamp).exec(FnToDateMidnight.fromTimestamp()).get();
 		
 		assertEquals(result, new DateMidnight(timestamp));	
 	}
@@ -164,7 +164,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromTimestampDateTimeZone() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		DateMidnight result = Op.on(timestamp).exec(ToDateMidnight.fromTimestamp(
+		DateMidnight result = Op.on(timestamp).exec(FnToDateMidnight.fromTimestamp(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateMidnight(timestamp, DateTimeZone.getDefault()));	
@@ -173,7 +173,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromTimestampChronology() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		DateMidnight result = Op.on(timestamp).exec(ToDateMidnight.fromTimestamp(CopticChronology.getInstance())).get();
+		DateMidnight result = Op.on(timestamp).exec(FnToDateMidnight.fromTimestamp(CopticChronology.getInstance())).get();
 		
 		assertEquals(result, new DateMidnight(timestamp, CopticChronology.getInstance()));	
 	}
@@ -181,7 +181,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromLong() {
 		long dateAsLong = new Date().getTime();
-		DateMidnight result = Op.on(Long.valueOf(dateAsLong)).exec(ToDateMidnight.fromLong()).get();
+		DateMidnight result = Op.on(Long.valueOf(dateAsLong)).exec(FnToDateMidnight.fromLong()).get();
 		
 		assertEquals(result, new DateMidnight(dateAsLong));
 	}
@@ -189,7 +189,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromLongDateTimeZone() {
 		long dateAsLong = new Date().getTime();
-		DateMidnight result = Op.on(Long.valueOf(dateAsLong)).exec(ToDateMidnight.fromLong(
+		DateMidnight result = Op.on(Long.valueOf(dateAsLong)).exec(FnToDateMidnight.fromLong(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateMidnight(dateAsLong, DateTimeZone.getDefault()));
@@ -198,7 +198,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromLongChronology() {
 		long dateAsLong = new Date().getTime();
-		DateMidnight result = Op.on(Long.valueOf(dateAsLong)).exec(ToDateMidnight.fromLong(
+		DateMidnight result = Op.on(Long.valueOf(dateAsLong)).exec(FnToDateMidnight.fromLong(
 				CopticChronology.getInstance())).get();
 		
 		assertEquals(result, new DateMidnight(dateAsLong, CopticChronology.getInstance()));
@@ -211,7 +211,7 @@ public class ToDateMidnightTest extends TestCase {
 		Integer day = Integer.valueOf(8);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(ToDateMidnight.fromIntegerFieldList())
+			.exec(FnToDateMidnight.fromIntegerFieldList())
 			.get();
 	
 		assertEquals(result,
@@ -225,7 +225,7 @@ public class ToDateMidnightTest extends TestCase {
 		Integer day = Integer.valueOf(25);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(ToDateMidnight.fromIntegerFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToDateMidnight.fromIntegerFieldList(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -234,7 +234,7 @@ public class ToDateMidnightTest extends TestCase {
 		
 		try {
 			Op.on(Arrays.asList(year, month, day, Integer.valueOf(4)))
-				.exec(ToDateMidnight.fromIntegerFieldList(BuddhistChronology.getInstance()))
+				.exec(FnToDateMidnight.fromIntegerFieldList(BuddhistChronology.getInstance()))
 				.get();
 			fail("fromIntegerFieldList should not accept an integer list with more than three elements");
 		} catch (ExecutionException e) {
@@ -249,7 +249,7 @@ public class ToDateMidnightTest extends TestCase {
 		Integer day = Integer.valueOf(16);
 		
 		DateMidnight result = Op.on(new Integer[] {year, month, day})
-			.exec(ToDateMidnight.fromIntegerFieldArray())
+			.exec(FnToDateMidnight.fromIntegerFieldArray())
 			.get();
 	
 		assertEquals(result,
@@ -263,7 +263,7 @@ public class ToDateMidnightTest extends TestCase {
 		Integer day = Integer.valueOf(16);
 		
 		DateMidnight result = Op.on(new Integer[] {year, month, day})
-			.exec(ToDateMidnight.fromIntegerFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnToDateMidnight.fromIntegerFieldArray(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -277,7 +277,7 @@ public class ToDateMidnightTest extends TestCase {
 		String day = String.valueOf(16);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(ToDateMidnight.fromStringFieldList())
+			.exec(FnToDateMidnight.fromStringFieldList())
 			.get();
 	
 		assertEquals(result,
@@ -291,7 +291,7 @@ public class ToDateMidnightTest extends TestCase {
 		String day = String.valueOf(16);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(ToDateMidnight.fromStringFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToDateMidnight.fromStringFieldList(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -306,7 +306,7 @@ public class ToDateMidnightTest extends TestCase {
 		String day = String.valueOf(30);
 		
 		DateMidnight result = Op.on(new String[] {year, month, day})
-			.exec(ToDateMidnight.fromStringFieldArray())
+			.exec(FnToDateMidnight.fromStringFieldArray())
 			.get();
 	
 		assertEquals(result,
@@ -321,7 +321,7 @@ public class ToDateMidnightTest extends TestCase {
 		String day = String.valueOf(16);
 		
 		DateMidnight result = Op.on(new String[] {year, month, day})
-			.exec(ToDateMidnight.fromStringFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnToDateMidnight.fromStringFieldArray(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -333,7 +333,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromCalendar() {
 		Calendar calendar = Calendar.getInstance();
-		DateMidnight result = Op.on(calendar).exec(ToDateMidnight.fromCalendar()).get();
+		DateMidnight result = Op.on(calendar).exec(FnToDateMidnight.fromCalendar()).get();
 		
 		assertEquals(result, new DateMidnight(calendar));
 	}
@@ -341,7 +341,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromCalendarDateTimeZone() {
 		Calendar calendar = Calendar.getInstance();
-		DateMidnight result = Op.on(calendar).exec(ToDateMidnight.fromCalendar(
+		DateMidnight result = Op.on(calendar).exec(FnToDateMidnight.fromCalendar(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateMidnight(calendar, DateTimeZone.getDefault()));
@@ -350,7 +350,7 @@ public class ToDateMidnightTest extends TestCase {
 	@Test
 	public void testFromCalendarChronology() {
 		Calendar calendar = Calendar.getInstance();
-		DateMidnight result = Op.on(calendar).exec(ToDateMidnight.fromCalendar(
+		DateMidnight result = Op.on(calendar).exec(FnToDateMidnight.fromCalendar(
 				GJChronology.getInstance())).get();
 		
 		assertEquals(result, new DateMidnight(calendar, GJChronology.getInstance()));

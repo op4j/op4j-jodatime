@@ -1,7 +1,7 @@
 /*
  * =============================================================================
  * 
- *   Copyright (c) 2008, The OP4J team (http://www.op4j.org)
+ *   Copyright (c) 2010, The OP4J team (http://www.op4j.org)
  * 
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -30,8 +30,9 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.joda.time.Chronology;
-import org.joda.time.DateMidnight;
+import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.ExecutionException;
@@ -45,7 +46,7 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class ToDateMidnight {
+public final class FnToLocalTime {
 
 	private static FromTimestamp FROM_TIMESTAMP = new FromTimestamp();
 	private static FromLong FROM_LONG = new FromLong();
@@ -54,23 +55,25 @@ public final class ToDateMidnight {
 	private static FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
 	private static FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
 	
-	private ToDateMidnight() {
+	
+	private FnToLocalTime() {
 		super();
 	}
 		
 	// From String
+	
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter. If
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter. If
 	 * the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
 	 *                 
-	 * @param pattern
+	 * @param pattern 
 	 */
 	public static final FromString fromString(String pattern) {
 		return new FromString(pattern);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+	 * It converts the given String into a {@link LocalTime} using the given pattern parameter and with the given
 	 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
 	 *                 
@@ -81,7 +84,7 @@ public final class ToDateMidnight {
 		return new FromString(pattern, dateTimeZone);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter and with the given
 	 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
 	 * 		                
@@ -92,8 +95,7 @@ public final class ToDateMidnight {
 		return new FromString(pattern, chronology);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
-	 * {@link Locale} parameters
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -102,8 +104,7 @@ public final class ToDateMidnight {
 		return new FromString(pattern, locale);
 	}
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
-	 * {@link Locale} parameters
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -112,8 +113,8 @@ public final class ToDateMidnight {
 		return new FromString(pattern, locale);
 	}
 	/**
-	 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-	 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 	 *                 
 	 * @param pattern
 	 * @param locale
@@ -123,9 +124,9 @@ public final class ToDateMidnight {
 		return new FromString(pattern, locale, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-	 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
-	 * 
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
+	 *                 
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
@@ -134,8 +135,8 @@ public final class ToDateMidnight {
 		return new FromString(pattern, locale, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-	 * The {@link DateMidnight} will be created with the given {@link Chronology}
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateTime} will be created with the given {@link Chronology}
 	 *                 
 	 * @param pattern
 	 * @param locale
@@ -145,9 +146,9 @@ public final class ToDateMidnight {
 		return new FromString(pattern, locale, chronology);
 	}
 	/**
-	 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-	 * The {@link DateMidnight} will be created with the given {@link Chronology}
-	 * 
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+	 * The {@link DateTime} will be created with the given {@link Chronology}
+	 *                 
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
@@ -160,14 +161,13 @@ public final class ToDateMidnight {
 	
 	// From Date
 	/**
-	 * The given {@link Date} is converted into a {@link DateMidnight}
+	 * The given {@link Date} is converted into a {@link LocalTime}
 	 */
 	public static final <T extends Date> FromDate<T> fromDate() {
 		return new FromDate<T>();
 	}
 	/**
-	 * The given {@link Date} is converted into a {@link DateMidnight} configured with the given
-	 * {@link DateTimeZone}
+	 * The given {@link Date} is converted into a {@link LocalTime} configured with the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -175,8 +175,7 @@ public final class ToDateMidnight {
 		return new FromDate<T>(dateTimeZone);
 	}
 	/**
-	 * The given {@link Date} is converted into a {@link DateMidnight} with the given
-	 * {@link Chronology}
+	 * The given {@link Date} is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -188,14 +187,13 @@ public final class ToDateMidnight {
 	
 	// From Date
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateMidnight}
+	 * The given {@link Timestamp} is converted into a {@link LocalTime}
 	 */
 	public static final FromTimestamp fromTimestamp() {
 		return FROM_TIMESTAMP;
 	}
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateMidnight} in the given
-	 * {@link DateTimeZone}
+	 * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -203,8 +201,7 @@ public final class ToDateMidnight {
 		return new FromTimestamp(dateTimeZone);
 	}
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateMidnight} with the given
-	 * {@link Chronology}
+	 * The given {@link Timestamp} is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -216,14 +213,13 @@ public final class ToDateMidnight {
 	
 	// Conversion from Long
 	/**
-	 * The given long representing the time in millis is converted into a {@link DateMidnight}
+	 * The given long representing the time in millis is converted into a {@link LocalTime}
 	 */
 	public static final FromLong fromLong() {
 		return FROM_LONG;
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link DateMidnight} in the given
-	 * {@link DateTimeZone}
+	 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -231,8 +227,7 @@ public final class ToDateMidnight {
 		return new FromLong(dateTimeZone);
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link DateMidnight} with the given
-	 * {@link Chronology}
+	 * The given long representing the time in millis is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -243,97 +238,97 @@ public final class ToDateMidnight {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link DateMidnight} is created from the given integer list.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * A {@link LocalTime} is created from the given {@link Integer} list.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromIntegerFieldList fromIntegerFieldList() {
 		return FROM_INTEGER_FIELD_LIST;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given integer list.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * A {@link LocalTime} is created from the given {@link Integer} list.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
 	public static final FromIntegerFieldList fromIntegerFieldList(Chronology chronology) {
-		return new  FromIntegerFieldList(chronology);
+		return new FromIntegerFieldList(chronology);
 	}
 	//
 	
 	
 	// Conversion from Integer array
 	/**
-	 * A {@link DateMidnight} is created from the given integer array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * A {@link LocalTime} is created from the given {@link Integer} array.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray() {
 		return FROM_INTEGER_FIELD_ARRAY;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given integer array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * A {@link LocalTime} is created from the given {@link Integer} array.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
 	public static final FromIntegerFieldArray fromIntegerFieldArray(Chronology chronology) {
-		return new  FromIntegerFieldArray(chronology);
+		return new FromIntegerFieldArray(chronology);
 	}
 	//
 	
 	
 	// Conversion from String list
 	/**
-	 * A {@link DateMidnight} is created from the given string list.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * A {@link LocalTime} is created from the given {@link String} list.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromStringFieldList fromStringFieldList() {
 		return FROM_STRING_FIELD_LIST;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given string list.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * A {@link LocalTime} is created from the given {@link String} list.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
 	public static final FromStringFieldList fromStringFieldList(Chronology chronology) {
-		return new  FromStringFieldList(chronology);
+		return new FromStringFieldList(chronology);
 	}
 	//
 	
 	
 	// Conversion from String array
 	/**
-	 * A {@link DateMidnight} is created from the given string array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * A {@link LocalTime} is created from the given {@link String} array.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
 	public static final FromStringFieldArray fromStringFieldArray() {
 		return FROM_STRING_FIELD_ARRAY;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given string array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * A {@link LocalTime} is created from the given {@link String} array.
+	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
 	public static final FromStringFieldArray fromStringFieldArray(Chronology chronology) {
-		return new  FromStringFieldArray(chronology);
+		return new FromStringFieldArray(chronology);
 	}
 	//
 	
 	
 	// Conversion from Calendar
 	/**
-	 * It converts a {@link Calendar} into a {@link DateMidnight}
+	 * It converts a {@link Calendar} into a {@link LocalTime}
 	 */
 	public static final <T extends Calendar> FromCalendar<T> fromCalendar() {
 		return new FromCalendar<T>();
 	}
 	/**
-	 * It converts a {@link Calendar} into a {@link DateMidnight} in the given {@link DateTimeZone}
+	 * It converts a {@link Calendar} into a {@link LocalTime} in the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -341,7 +336,7 @@ public final class ToDateMidnight {
 		return new FromCalendar<T>(dateTimeZone);
 	}
 	/**
-	 * It converts a {@link Calendar} into a {@link DateMidnight} with the given {@link Chronology}
+	 * It converts a {@link Calendar} into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -350,17 +345,17 @@ public final class ToDateMidnight {
 	}
 	//
 	
-	
-	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<T, DateMidnight> {
+		
+	private static abstract class BaseToLocalTime<T> extends AbstractNullAsNullFunction<T, LocalTime> {
 
 		DateTimeZone dateTimeZone = null;
 		Chronology chronology = null;
 		
-		public BaseToDateTime() {
+		public BaseToLocalTime() {
 			super();			
 		}
 
-		public BaseToDateTime(DateTimeZone dateTimeZone) {
+		public BaseToLocalTime(DateTimeZone dateTimeZone) {
 			super();
 			
 			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
@@ -368,23 +363,23 @@ public final class ToDateMidnight {
 			this.dateTimeZone = dateTimeZone;
 		}
 
-		public BaseToDateTime(Chronology chronology) {
+		public BaseToLocalTime(Chronology chronology) {
 			super();
 			
 			Validate.notNull(chronology, "chronology can't be null");
-						
+			
 			this.chronology = chronology;
 		}
 	}
 	
-	public static final class FromString extends BaseToDateTime<String> {
+	static final class FromString extends BaseToLocalTime<String> {
 
 		private String pattern;
 		private Locale locale;
 		
 		
 		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter. If
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter. If
 		 * the pattern includes either, the name of the month or day of week, a conversion
 		 * accepting a {@link Locale} must be used instead
 		 *                 
@@ -399,7 +394,7 @@ public final class ToDateMidnight {
 		}
 
 		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+		 * It converts the given String into a {@link LocalTime} using the given pattern parameter and with the given
 		 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
 		 * accepting a {@link Locale} must be used instead
 		 *                 
@@ -415,7 +410,7 @@ public final class ToDateMidnight {
 		}
 
 		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter and with the given
 		 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
 		 * accepting a {@link Locale} must be used instead
 		 * 		                
@@ -426,13 +421,12 @@ public final class ToDateMidnight {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-						
+			
 			this.pattern = pattern;
 		}
 
 		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
-		 * {@link Locale} parameters
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -448,8 +442,7 @@ public final class ToDateMidnight {
 		}
 		
 		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
-		 * {@link Locale} parameters
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -465,8 +458,8 @@ public final class ToDateMidnight {
 		}
 		
 		/**
-		 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 		 *                 
 		 * @param pattern
 		 * @param locale
@@ -483,8 +476,8 @@ public final class ToDateMidnight {
 		}
 		
 		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -501,8 +494,8 @@ public final class ToDateMidnight {
 		}
 		
 		/**
-		 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} will be created with the given {@link Chronology}
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} will be created with the given {@link Chronology}
 		 *                 
 		 * @param pattern
 		 * @param locale
@@ -519,8 +512,8 @@ public final class ToDateMidnight {
 		}
 		
 		/**
-		 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
-		 * The {@link DateMidnight} will be created with the given {@link Chronology}
+		 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
+		 * The {@link DateTime} will be created with the given {@link Chronology}
 		 * 
 		 * @param pattern
 		 * @param locale
@@ -540,7 +533,7 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
+		public LocalTime nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
 			DateTimeFormatter dateTimeFormatter = null;
 		    if (this.locale == null) {
 		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
@@ -552,32 +545,32 @@ public final class ToDateMidnight {
 		        dateTimeFormatter = DateTimeFormat.forPattern(this.pattern).withLocale(this.locale);
 		    }
 		    
-		    DateMidnight result = new DateMidnight();
+		    LocalTime result = new LocalTime();
 		    if (this.dateTimeZone != null) {	    	
 		    	dateTimeFormatter = dateTimeFormatter.withZone(this.dateTimeZone);
 		    }
 		    if (this.chronology != null) {
 		    	dateTimeFormatter = dateTimeFormatter.withChronology(this.chronology);
 		    }
-			result = dateTimeFormatter.parseDateTime(object).toDateMidnight();
+			result = dateTimeFormatter.parseDateTime(object).toLocalTime();
 			
 			return result;		
 		}
 		
+		
 	}	
 	
-	public static final class FromDate<T extends Date> extends BaseToDateTime<T> {
+	static final class FromDate<T extends Date> extends BaseToLocalTime<T> {
 
 		/**
-		 * The given {@link Date} is converted into a {@link DateMidnight}
+		 * The given {@link Date} is converted into a {@link LocalTime}
 		 */
 		public FromDate() {
 			super();			
 		}
 
 		/**
-		 * The given {@link Date} is converted into a {@link DateMidnight} configured with the given
-		 * {@link DateTimeZone}
+		 * The given {@link Date} is converted into a {@link LocalTime} configured with the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -586,8 +579,7 @@ public final class ToDateMidnight {
 		}
 
 		/**
-		 * The given {@link Date} is converted into a {@link DateMidnight} with the given
-		 * {@link Chronology}
+		 * The given {@link Date} is converted into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -599,32 +591,31 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
+		public LocalTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new DateMidnight(object.getTime(), this.dateTimeZone);
+				return new LocalTime(object.getTime(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new DateMidnight(object.getTime(), this.chronology);
+				return new LocalTime(object.getTime(), this.chronology);
 			}
 			
-			return new DateMidnight(object.getTime());
+			return new LocalTime(object.getTime());
 		}
 		
 		
 	}	
 	
-	public static final class FromTimestamp extends BaseToDateTime<Timestamp> {
+	static final class FromTimestamp extends BaseToLocalTime<Timestamp> {
 
 		/**
-		 * The given {@link Timestamp} is converted into a {@link DateMidnight}
+		 * The given {@link Timestamp} is converted into a {@link LocalTime}
 		 */
 		public FromTimestamp() {
 			super();			
 		}
 
 		/**
-		 * The given {@link Timestamp} is converted into a {@link DateMidnight} in the given
-		 * {@link DateTimeZone}
+		 * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -633,8 +624,7 @@ public final class ToDateMidnight {
 		}
 
 		/**
-		 * The given {@link Timestamp} is converted into a {@link DateMidnight} with the given
-		 * {@link Chronology}
+		 * The given {@link Timestamp} is converted into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -646,30 +636,29 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
+		public LocalTime nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new DateMidnight(object.getTime(), this.dateTimeZone);
+				return new LocalTime(object.getTime(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new DateMidnight(object.getTime(), this.chronology);
+				return new LocalTime(object.getTime(), this.chronology);
 			}
 			
-			return new DateMidnight(object.getTime());
+			return new LocalTime(object.getTime());
 		}
 	}	
 	
-	public static final class FromLong extends BaseToDateTime<Long> {
+	static final class FromLong extends BaseToLocalTime<Long> {
 
 		/**
-		 * The given long representing the time in millis is converted into a {@link DateMidnight}
+		 * The given long representing the time in millis is converted into a {@link LocalTime}
 		 */
 		public FromLong() {
 			super();			
 		}
 
 		/**
-		 * The given long representing the time in millis is converted into a {@link DateMidnight} in the given
-		 * {@link DateTimeZone}
+		 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -678,8 +667,7 @@ public final class ToDateMidnight {
 		}
 
 		/**
-		 * The given long representing the time in millis is converted into a {@link DateMidnight} with the given
-		 * {@link Chronology}
+		 * The given long representing the time in millis is converted into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -691,31 +679,31 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
+		public LocalTime nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new DateMidnight(object.longValue(), this.dateTimeZone);
+				return new LocalTime(object.longValue(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new DateMidnight(object.longValue(), this.chronology);
+				return new LocalTime(object.longValue(), this.chronology);
 			}
 			
-			return new DateMidnight(object.longValue());
+			return new LocalTime(object.longValue());
 		}
 	}	
 	
-	public static final class FromIntegerFieldList extends BaseToDateTime<List<Integer>> {
+	static final class FromIntegerFieldList extends BaseToLocalTime<List<Integer>> {
 
 		/**
-		 * A {@link DateMidnight} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+		 * A {@link LocalTime} is created from the given {@link Integer} list.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
 		public FromIntegerFieldList() {
 			super();			
 		}
 
 		/**
-		 * A {@link DateMidnight} is created from the given integer list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+		 * A {@link LocalTime} is created from the given {@link Integer} list.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
@@ -724,38 +712,44 @@ public final class ToDateMidnight {
 			super(chronology);
 		}
 		
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 */
 		@Override
-		public DateMidnight nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
-			if (object.size() < 1 || object.size() > 3) {
+		public LocalTime nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
+			if (object.size() < 1 || object.size() > 4) {
 				throw new ExecutionException(
-						"Integer arguments list for DateMidnight conversion should of size " +
-						"between 1 and 3 (year, month, day). Size " + object.size() + " is not valid.");
+						"Integer arguments list for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.size() + " is not valid.");
 			}			
 			
-			int year = object.get(0).intValue();
-			int month = (object.size() >= 2) ? object.get(1).intValue() : 1;
-			int day = (object.size() >= 3) ? object.get(2).intValue() : 1;
+			int hour = object.get(0).intValue();
+			int minute = (object.size() >= 2) ? object.get(1).intValue() : 0;
+			int second = (object.size() >= 3) ? object.get(2).intValue() : 0;
+			int milli = (object.size() >= 4) ? object.get(3).intValue() : 0;
 			
 			if (this.chronology != null) {
-	        	return new DateMidnight(year, month, day, this.chronology);
+	        	return new LocalTime(hour, minute, second, 
+	        			milli, this.chronology);
 	        }
-			return new DateMidnight(year, month, day);
+			return new LocalTime(hour, minute, second, 
+        			milli);
 		}
 	}	
 	
-	public static final class FromIntegerFieldArray extends BaseToDateTime<Integer[]> {
+	static final class FromIntegerFieldArray extends BaseToLocalTime<Integer[]> {
 
 		/**
-		 * A {@link DateMidnight} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
-		 */		
+		 * A {@link LocalTime} is created from the given {@link Integer} array.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
+		 */
 		public FromIntegerFieldArray() {
 			super();			
 		}
 
 		/**
-		 * A {@link DateMidnight} is created from the given integer array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+		 * A {@link LocalTime} is created from the given {@link Integer} array.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
@@ -768,40 +762,43 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
-			if (object.length < 1 || object.length > 3) {
+		public LocalTime nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
+			if (object.length < 1 || object.length > 4) {
 				throw new ExecutionException(
-						"Integer arguments array for DateMidnight conversion should of size " +
-						"between 1 and 3 (year, month, day). Size " + object.length + " is not valid.");
-			}		
+						"Integer arguments array for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.length + " is not valid.");
+			}			
 			
-			int year = object[0].intValue();
-			int month = (object.length >= 2) ? object[1].intValue() : 0;
-			int day = (object.length >= 3) ? object[2].intValue() : 0;
+			int hour = object[0].intValue();
+			int minute = (object.length >= 2) ? object[1].intValue() : 0;
+			int second = (object.length >= 3) ? object[2].intValue() : 0;
+			int milli = (object.length >= 4) ? object[3].intValue() : 0;
 			
 			if (this.chronology != null) {
-	        	return new DateMidnight(year, month, day, this.chronology);
+	        	return new LocalTime(hour, minute, second, 
+	        			milli, this.chronology);
 	        }
-			return new DateMidnight(year, month, day);
+			return new LocalTime(hour, minute, second, 
+        			milli);
 		}
 		
 	}	
 	
 	
 	
-	public static final class FromStringFieldList extends BaseToDateTime<List<String>> {
+	static final class FromStringFieldList extends BaseToLocalTime<List<String>> {
 
 		/**
-		 * A {@link DateMidnight} is created from the given string list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+		 * A {@link LocalTime} is created from the given {@link String} list.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
 		public FromStringFieldList() {
 			super();			
 		}
 
 		/**
-		 * A {@link DateMidnight} is created from the given string list.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+		 * A {@link LocalTime} is created from the given {@link String} list.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
@@ -814,40 +811,42 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
-			if (object.size() < 1 || object.size() > 3) {
+		public LocalTime nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
+			if (object.size() < 1 || object.size() > 4) {
 				throw new ExecutionException(
-						"String arguments list for DateMidnight conversion should of size " +
-						"between 1 and 3 (year, month, day). Size " + object.size() + " is not valid.");
+						"String arguments list for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.size() + " is not valid.");
 			}			
 			
-			String year = object.get(0);
-			String month = (object.size() >= 2) ? object.get(1) : "0";
-			String day = (object.size() >= 3) ? object.get(2) : "0";
+			String hour = object.get(0);
+			String minute = (object.size() >= 2) ? object.get(1) : "0";
+			String second = (object.size() >= 3) ? object.get(2) : "0";
+			String milli = (object.size() >= 4) ? object.get(3) : "0";
 			
 			if (this.chronology != null) {
-	        	return new DateMidnight(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
-	        			this.chronology);
+	        	return new LocalTime(Integer.parseInt(hour),Integer.parseInt(minute), Integer.parseInt(second), 
+	        			Integer.parseInt(milli), this.chronology);
 	        }
-			return new DateMidnight(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+			return new LocalTime(Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), 
+        			Integer.parseInt(milli));
 		}
 		
 		
 	}	
 	
-	public static final class FromStringFieldArray extends BaseToDateTime<String[]> {
+	static final class FromStringFieldArray extends BaseToLocalTime<String[]> {
 
 		/**
-		 * A {@link DateMidnight} is created from the given string array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+		 * A {@link LocalTime} is created from the given {@link String} array.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
 		public FromStringFieldArray() {
 			super();			
 		}
 
 		/**
-		 * A {@link DateMidnight} is created from the given string array.
-		 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+		 * A {@link LocalTime} is created from the given {@link String} array.
+		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 		 * The result will be created with the given {@link Chronology}
 		 *                 
 		 * @param chronology
@@ -860,36 +859,38 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
-			if (object.length < 1 || object.length > 3) {
+		public LocalTime nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
+			if (object.length < 1 || object.length > 4) {
 				throw new ExecutionException(
-						"String arguments array for DateMidnight conversion should of size " +
-						"between 1 and 3 (year, month, day). Size " + object.length + " is not valid.");
+						"String arguments array for LocalTime conversion should have a size " +
+						"between 1 and 4. Size " + object.length + " is not valid.");
 			}			
 			
-			String year = object[0];
-			String month = (object.length >= 2) ? object[1] : "0";
-			String day = (object.length >= 3) ? object[2] : "0";
+			String hour = object[0];
+			String minute = (object.length >= 2) ? object[1] : "0";
+			String second = (object.length >= 3) ? object[2] : "0";
+			String milli = (object.length >= 4) ? object[3] : "0";
 			
 			if (this.chronology != null) {
-	        	return new DateMidnight(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
-	        			this.chronology);
+	        	return new LocalTime(Integer.parseInt(hour),Integer.parseInt(minute), Integer.parseInt(second), 
+	        			Integer.parseInt(milli), this.chronology);
 	        }
-			return new DateMidnight(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day));
+			return new LocalTime(Integer.parseInt(hour),Integer.parseInt(minute), Integer.parseInt(second), 
+        			Integer.parseInt(milli));
 		}
 	}	
 	
-	public static final class FromCalendar<T extends Calendar> extends BaseToDateTime<T> {
+	static final class FromCalendar<T extends Calendar> extends BaseToLocalTime<T> {
 
 		/**
-		 * It converts a {@link Calendar} into a {@link DateMidnight}
+		 * It converts a {@link Calendar} into a {@link LocalTime}
 		 */
 		public FromCalendar() {
 			super();			
 		}
 
 		/**
-		 * It converts a {@link Calendar} into a {@link DateMidnight} in the given {@link DateTimeZone}
+		 * It converts a {@link Calendar} into a {@link LocalTime} in the given {@link DateTimeZone}
 		 * 
 		 * @param dateTimeZone
 		 */
@@ -898,7 +899,7 @@ public final class ToDateMidnight {
 		}
 
 		/**
-		 * It converts a {@link Calendar} into a {@link DateMidnight} with the given {@link Chronology}
+		 * It converts a {@link Calendar} into a {@link LocalTime} with the given {@link Chronology}
 		 * 
 		 * @param chronology
 		 */
@@ -910,14 +911,14 @@ public final class ToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
+		public LocalTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
 			if (this.dateTimeZone != null) {
-				return new DateMidnight(object, this.dateTimeZone);
+				return new LocalTime(object, this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new DateMidnight(object, this.chronology);
+				return new LocalTime(object, this.chronology);
 			}
-			return new DateMidnight(object);
+			return new LocalTime(object);
 		}
 	}	
 }

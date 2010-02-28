@@ -1,7 +1,7 @@
 /*
  * =============================================================================
  * 
- *   Copyright (c) 2008, The OP4J team (http://www.op4j.org)
+ *   Copyright (c) 2010, The OP4J team (http://www.op4j.org)
  * 
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class ToPeriod {
+public final class FnToPeriod {
 
 	private static final FromDateFieldList FROM_DATE_FIELD_LIST = new FromDateFieldList();
 	
@@ -65,7 +65,7 @@ public final class ToPeriod {
 	private static final FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
 	
 	
-	private ToPeriod() {
+	private FnToPeriod() {
 		super();
 	}
 	
@@ -409,7 +409,7 @@ public final class ToPeriod {
 		}
 	}
 	
-	public static final class FromDateFieldList extends BaseToPeriod<List<? extends Date>> {
+	static final class FromDateFieldList extends BaseToPeriod<List<? extends Date>> {
 
 		public FromDateFieldList() {
 			super();			
@@ -455,7 +455,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromDateFieldArray<T extends Date> extends BaseToPeriod<T[]> {
+	static final class FromDateFieldArray<T extends Date> extends BaseToPeriod<T[]> {
 
 		public FromDateFieldArray() {
 			super();			
@@ -501,7 +501,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromTimestampFieldList extends BaseToPeriod<List<Timestamp>> {
+	static final class FromTimestampFieldList extends BaseToPeriod<List<Timestamp>> {
 
 		public FromTimestampFieldList() {
 			super();			
@@ -547,7 +547,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromTimestampFieldArray extends BaseToPeriod<Timestamp[]> {
+	static final class FromTimestampFieldArray extends BaseToPeriod<Timestamp[]> {
 
 		public FromTimestampFieldArray() {
 			super();			
@@ -593,7 +593,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromLong extends BaseToPeriod<Long> {
+	static final class FromLong extends BaseToPeriod<Long> {
 
 		public FromLong() {
 			super();			
@@ -632,7 +632,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromLongFieldList extends BaseToPeriod<List<Long>> {
+	static final class FromLongFieldList extends BaseToPeriod<List<Long>> {
 
 		public FromLongFieldList() {
 			super();			
@@ -680,7 +680,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromLongFieldArray extends BaseToPeriod<Long[]> {
+	static final class FromLongFieldArray extends BaseToPeriod<Long[]> {
 
 		public FromLongFieldArray() {
 			super();			
@@ -728,7 +728,7 @@ public final class ToPeriod {
 		}		
 	}	
 	 
-	public static final class FromCalendarFieldList extends BaseToPeriod<List<? extends Calendar>> {
+	static final class FromCalendarFieldList extends BaseToPeriod<List<? extends Calendar>> {
 
 		public FromCalendarFieldList() {
 			super();			
@@ -773,7 +773,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromCalendarFieldArray<T extends Calendar> extends BaseToPeriod<T[]> {
+	static final class FromCalendarFieldArray<T extends Calendar> extends BaseToPeriod<T[]> {
 
 		public FromCalendarFieldArray() {
 			super();			
@@ -818,7 +818,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromBaseDateTimeFieldList extends BaseToPeriod<List<? extends BaseDateTime>> {
+	static final class FromBaseDateTimeFieldList extends BaseToPeriod<List<? extends BaseDateTime>> {
 
 		public FromBaseDateTimeFieldList() {
 			super();			
@@ -863,7 +863,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromBaseDateTimeFieldArray<T extends BaseDateTime> extends BaseToPeriod<T[]> {
+	static final class FromBaseDateTimeFieldArray<T extends BaseDateTime> extends BaseToPeriod<T[]> {
 
 		public FromBaseDateTimeFieldArray() {
 			super();			
@@ -907,7 +907,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromIntegerFieldList extends BaseToPeriod<List<Integer>> {
+	static final class FromIntegerFieldList extends BaseToPeriod<List<Integer>> {
 
 		public FromIntegerFieldList() {
 			super();			
@@ -999,7 +999,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromIntegerFieldArray extends BaseToPeriod<Integer[]> {
+	static final class FromIntegerFieldArray extends BaseToPeriod<Integer[]> {
 
 		public FromIntegerFieldArray() {
 			super();			
@@ -1090,7 +1090,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromStringFieldList extends BaseToPeriod<List<String>> {
+	static final class FromStringFieldList extends BaseToPeriod<List<String>> {
 
 		public FromStringFieldList() {
 			super();			
@@ -1181,7 +1181,7 @@ public final class ToPeriod {
 		}		
 	}	
 	
-	public static final class FromStringFieldArray extends BaseToPeriod<String[]> {
+	static final class FromStringFieldArray extends BaseToPeriod<String[]> {
 
 		public FromStringFieldArray() {
 			super();			

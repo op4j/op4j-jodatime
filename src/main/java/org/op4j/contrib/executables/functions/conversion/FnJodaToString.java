@@ -1,7 +1,7 @@
 /*
  * =============================================================================
  * 
- *   Copyright (c) 2008, The OP4J team (http://www.op4j.org)
+ *   Copyright (c) 2010, The OP4J team (http://www.op4j.org)
  * 
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -24,8 +24,6 @@ import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.Validate;
-import org.javaruntype.type.Type;
-import org.javaruntype.type.Types;
 import org.joda.time.Chronology;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -42,10 +40,10 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class JodaToString {
+public final class FnJodaToString {
 
 	
-	private JodaToString() {
+	private FnJodaToString() {
 		super();
 	}
 	
@@ -53,8 +51,8 @@ public final class JodaToString {
 	/**
 	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
 	 * 		 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @return
 	 */
 	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format) {
@@ -64,9 +62,9 @@ public final class JodaToString {
 	/**
 	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
 	 * 		 
-	 * @param formatType
-	 * @param format
-	 * @param locale locale to be used with the given pattern
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param locale {@link Locale} to be used with the given pattern
 	 * @return
 	 */
 	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format, final Locale locale) {
@@ -76,8 +74,8 @@ public final class JodaToString {
 	/**
 	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
 	 * 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param chronology
 	 * @return
 	 */
@@ -109,8 +107,8 @@ public final class JodaToString {
 	/**
 	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
 	 *  
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @return
 	 */
 	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format) {
@@ -120,8 +118,8 @@ public final class JodaToString {
 	/**
 	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
 	 *  
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale locale to be used with the pattern
 	 * @return
 	 */
@@ -132,8 +130,8 @@ public final class JodaToString {
 	/**
 	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
 	 * 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param chronology
 	 * @return
 	 */
@@ -144,8 +142,8 @@ public final class JodaToString {
 	/**
 	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
 	 * 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale locale to be used with the pattern
 	 * @return
 	 */
@@ -167,8 +165,8 @@ public final class JodaToString {
 	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value)
 	 * 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format) {
 		return new FromLocalDate(formatType, format);
@@ -177,8 +175,8 @@ public final class JodaToString {
 	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value) with the given {@link Locale}
 	 * 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale
 	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
@@ -188,8 +186,8 @@ public final class JodaToString {
 	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value) with the given {@link Chronology}
 	 * 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param chronology
 	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
@@ -199,8 +197,8 @@ public final class JodaToString {
 	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value) with the given {@link Locale}
 	 * 
-	 * @param formatType
-	 * @param format
+	 * @param formatType format {@link FormatType}
+	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale
 	 */
 	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final String locale) {
@@ -222,7 +220,7 @@ public final class JodaToString {
 		STYLE			
 	}
 	
-	public static final class FromBaseDateTime extends AbstractNullAsNullFunction<BaseDateTime, String> {
+	static final class FromBaseDateTime extends AbstractNullAsNullFunction<BaseDateTime, String> {
 
 		private ConversionType conversionType;
 		
@@ -279,12 +277,7 @@ public final class JodaToString {
 			setPatternStyleAndConversionType(formatType, format);
 			this.locale = LocaleUtils.toLocale(locale);
 		}
-		
-		public Type<? extends String> getResultType(
-				Type<? extends BaseDateTime> targetType) {
-			return Types.STRING;
-		}	
-		
+				
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
 			
 			Validate.notNull(formatType, "formatType can't be null");
@@ -302,15 +295,8 @@ public final class JodaToString {
 			}
 		}
 		
-		/**
-		 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
-		 * A chronology can also be used
-		 * 
-		 * If a formatter is passed, it will be used instead of the
-		 * pattern or style
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public String nullAsNullExecute(final BaseDateTime baseDateTime, ExecCtx ctx) throws Exception {
@@ -336,7 +322,7 @@ public final class JodaToString {
 		}		
 	}
 	
-	public static final class FromLocalTime extends AbstractNullAsNullFunction<LocalTime, String> {
+	static final class FromLocalTime extends AbstractNullAsNullFunction<LocalTime, String> {
 
 		private ConversionType conversionType;
 		
@@ -393,11 +379,6 @@ public final class JodaToString {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public Type<? extends String> getResultType(
-				Type<? extends LocalTime> targetType) {
-			return Types.STRING;
-		}	
-
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
 			
 			Validate.notNull(formatType, "formatType can't be null");
@@ -415,15 +396,8 @@ public final class JodaToString {
 			}
 		}
 		
-		/** 
-		 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
-		 * A chronology can also be used
-		 * 
-		 * If a formatter is passed, it will be used instead of the
-		 * pattern or style
-		 * 
-		 * (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		/* (non-Javadoc)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public String nullAsNullExecute(final LocalTime localTime, ExecCtx ctx) throws Exception {
@@ -449,7 +423,7 @@ public final class JodaToString {
 		}
 	}
 	
-	public static final class FromLocalDate extends AbstractNullAsNullFunction<LocalDate, String> {
+	static final class FromLocalDate extends AbstractNullAsNullFunction<LocalDate, String> {
 
 		private ConversionType conversionType;
 		
@@ -465,11 +439,6 @@ public final class JodaToString {
 			FROM_FORMATTER
 		}
 		
-		/**
-		 * It converts the given {@link LocalDate} into a {@link String} by means of the given {@link DateTimeFormatter}
-		 * 
-		 * @param formatter
-		 */
 		public FromLocalDate(DateTimeFormatter formatter) {
 			super();
 			
@@ -479,26 +448,11 @@ public final class JodaToString {
 			this.conversionType = ConversionType.FROM_FORMATTER;
 		}
 		
-		/**
-		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
-		 * or style (depending on the formatType value)
-		 * 
-		 * @param formatType
-		 * @param format
-		 */
 		public FromLocalDate(FormatType formatType, String format) {
 			super();			
 			setPatternStyleAndConversionType(formatType, format);
 		}
 		
-		/**
-		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
-		 * or style (depending on the formatType value) with the given {@link Chronology}
-		 * 
-		 * @param formatType
-		 * @param format
-		 * @param chronology
-		 */
 		public FromLocalDate(FormatType formatType, String format, Chronology chronology) {
 			super();		
 			
@@ -509,14 +463,6 @@ public final class JodaToString {
 		}
 		
 		
-		/**
-		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
-		 * or style (depending on the formatType value) with the given {@link Locale}
-		 * 
-		 * @param formatType
-		 * @param format
-		 * @param locale
-		 */
 		public FromLocalDate(FormatType formatType, String format, Locale locale) {
 			super();	
 			
@@ -526,14 +472,6 @@ public final class JodaToString {
 			this.locale = locale;
 		}
 		
-		/**
-		 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
-		 * or style (depending on the formatType value) with the given {@link Locale}
-		 * 
-		 * @param formatType
-		 * @param format
-		 * @param locale
-		 */
 		public FromLocalDate(FormatType formatType, String format, String locale) {
 			super();	
 			
@@ -543,11 +481,6 @@ public final class JodaToString {
 			this.locale = LocaleUtils.toLocale(locale);
 		}
 		
-		public Type<? extends String> getResultType(
-				Type<? extends LocalDate> targetType) {
-			return Types.STRING;
-		}
-
 		private void setPatternStyleAndConversionType(FormatType formatType, String format) {
 			
 			Validate.notNull(formatType, "formatType can't be null");
@@ -566,7 +499,7 @@ public final class JodaToString {
 		}
 		
 		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunc#nullAsNullExecute(java.lang.Object)
+		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
 		public String nullAsNullExecute(final LocalDate LocalDate, ExecCtx ctx) throws Exception {

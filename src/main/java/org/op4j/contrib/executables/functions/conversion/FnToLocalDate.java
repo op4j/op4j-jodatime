@@ -1,7 +1,7 @@
 /*
  * =============================================================================
  * 
- *   Copyright (c) 2008, The OP4J team (http://www.op4j.org)
+ *   Copyright (c) 2010, The OP4J team (http://www.op4j.org)
  * 
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ import org.op4j.functions.ExecCtx;
  * @author Soraya S&aacute;nchez
  *
  */
-public final class ToLocalDate {
+public final class FnToLocalDate {
 
 	private static FromTimestamp FROM_TIMESTAMP = new FromTimestamp();
 	private static FromLong FROM_LONG = new FromLong();
@@ -56,7 +56,7 @@ public final class ToLocalDate {
 	private static FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
 	
 	
-	private ToLocalDate() {
+	private FnToLocalDate() {
 		super();
 	}
 		
@@ -379,7 +379,7 @@ public final class ToLocalDate {
 		}
 	}
 	
-	public static final class FromString extends BaseToLocalDate<String> {
+	static final class FromString extends BaseToLocalDate<String> {
 
 		private String pattern;
 		private Locale locale;
@@ -569,7 +569,7 @@ public final class ToLocalDate {
 		
 	}	
 	
-	public static final class FromDate<T extends Date> extends BaseToLocalDate<T> {
+	static final class FromDate<T extends Date> extends BaseToLocalDate<T> {
 
 		/**
 		 * The given {@link Date} is converted into a {@link LocalDate}
@@ -616,7 +616,7 @@ public final class ToLocalDate {
 		
 	}	
 	
-	public static final class FromTimestamp extends BaseToLocalDate<Timestamp> {
+	static final class FromTimestamp extends BaseToLocalDate<Timestamp> {
 
 		/**
 		 * The given {@link Timestamp} is converted into a {@link LocalDate}
@@ -661,7 +661,7 @@ public final class ToLocalDate {
 		}
 	}	
 	
-	public static final class FromLong extends BaseToLocalDate<Long> {
+	static final class FromLong extends BaseToLocalDate<Long> {
 
 		/**
 		 * The given long representing the time in millis is converted into a {@link LocalDate}
@@ -706,7 +706,7 @@ public final class ToLocalDate {
 		}
 	}	
 	
-	public static final class FromIntegerFieldList extends BaseToLocalDate<List<Integer>> {
+	static final class FromIntegerFieldList extends BaseToLocalDate<List<Integer>> {
 
 		/**
 		 * A {@link LocalDate} is created from the given integer list.
@@ -749,7 +749,7 @@ public final class ToLocalDate {
 		}
 	}	
 	
-	public static final class FromIntegerFieldArray extends BaseToLocalDate<Integer[]> {
+	static final class FromIntegerFieldArray extends BaseToLocalDate<Integer[]> {
 
 		/**
 		 * A {@link LocalDate} is created from the given integer array.
@@ -795,7 +795,7 @@ public final class ToLocalDate {
 	
 	
 	
-	public static final class FromStringFieldList extends BaseToLocalDate<List<String>> {
+	static final class FromStringFieldList extends BaseToLocalDate<List<String>> {
 
 		/**
 		 * A {@link LocalDate} is created from the given string list.
@@ -841,7 +841,7 @@ public final class ToLocalDate {
 		
 	}	
 	
-	public static final class FromStringFieldArray extends BaseToLocalDate<String[]> {
+	static final class FromStringFieldArray extends BaseToLocalDate<String[]> {
 
 		/**
 		 * A {@link LocalDate} is created from the given string array.
@@ -885,7 +885,7 @@ public final class ToLocalDate {
 		}
 	}	
 	
-	public static final class FromCalendar<T extends Calendar> extends BaseToLocalDate<T> {
+	static final class FromCalendar<T extends Calendar> extends BaseToLocalDate<T> {
 
 		/**
 		 * It converts a {@link Calendar} into a {@link LocalDate}
