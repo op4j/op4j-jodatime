@@ -44,25 +44,25 @@ import org.op4j.functions.ExecCtx;
  */
 public final class FnToPeriod {
 
-	private static final FromDateFieldList FROM_DATE_FIELD_LIST = new FromDateFieldList();
+	private static final DateFieldListToPeriod FROM_DATE_FIELD_LIST = new DateFieldListToPeriod();
 	
-	private static final FromTimestampFieldList FROM_TIMESTAMP_FIELD_LIST = new FromTimestampFieldList();
-	private static final FromTimestampFieldArray FROM_TIMESTAMP_FIELD_ARRAY = new FromTimestampFieldArray();
+	private static final TimestampFieldListToPeriod FROM_TIMESTAMP_FIELD_LIST = new TimestampFieldListToPeriod();
+	private static final TimestampFieldArrayToPeriod FROM_TIMESTAMP_FIELD_ARRAY = new TimestampFieldArrayToPeriod();
 	
-	private static final FromLong FROM_LONG = new FromLong();
+	private static final LongToPeriod FROM_LONG = new LongToPeriod();
 	
-	private static final FromLongFieldList FROM_LONG_FIELD_LIST = new FromLongFieldList();
-	private static final FromLongFieldArray FROM_LONG_FIELD_ARRAY = new FromLongFieldArray();
+	private static final LongFieldListToPeriod FROM_LONG_FIELD_LIST = new LongFieldListToPeriod();
+	private static final LongFieldArrayToPeriod FROM_LONG_FIELD_ARRAY = new LongFieldArrayToPeriod();
 	
-	private static final FromCalendarFieldList FROM_CALENDAR_FIELD_LIST = new FromCalendarFieldList();
+	private static final CalendarFieldListToPeriod FROM_CALENDAR_FIELD_LIST = new CalendarFieldListToPeriod();
 	
-	private static final FromBaseDateTimeFieldList FROM_BASEDATETIME_FIELD_LIST = new FromBaseDateTimeFieldList();
+	private static final BaseDateTimeFieldListToPeriod FROM_BASEDATETIME_FIELD_LIST = new BaseDateTimeFieldListToPeriod();
 	
-	private static final FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
-	private static final FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
+	private static final IntegerFieldListToPeriod FROM_INTEGER_FIELD_LIST = new IntegerFieldListToPeriod();
+	private static final IntegerFieldArrayToPeriod FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToPeriod();
 	
-	private static final FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
-	private static final FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
+	private static final StringFieldListToPeriod FROM_STRING_FIELD_LIST = new StringFieldListToPeriod();
+	private static final StringFieldArrayToPeriod FROM_STRING_FIELD_ARRAY = new StringFieldArrayToPeriod();
 	
 	
 	private FnToPeriod() {
@@ -74,7 +74,7 @@ public final class FnToPeriod {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final FromDateFieldList fromDateFieldList() {
+	public static final DateFieldListToPeriod fromDateFieldList() {
 		return FROM_DATE_FIELD_LIST;
 	}	
 	/**
@@ -83,53 +83,53 @@ public final class FnToPeriod {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final FromDateFieldList fromDateFieldList(final Chronology chronology) {
-		return new FromDateFieldList(chronology);
+	public static final DateFieldListToPeriod fromDateFieldList(final Chronology chronology) {
+		return new DateFieldListToPeriod(chronology);
 	}	
-	public static final FromDateFieldList fromDateFieldList(final PeriodType periodType) {
-		return new FromDateFieldList(periodType);
+	public static final DateFieldListToPeriod fromDateFieldList(final PeriodType periodType) {
+		return new DateFieldListToPeriod(periodType);
 	}
-	public static final FromDateFieldList fromDateFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new FromDateFieldList(periodType, chronology);
+	public static final DateFieldListToPeriod fromDateFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new DateFieldListToPeriod(periodType, chronology);
 	}
-	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray() {
-		return new FromDateFieldArray<T>();
+	public static final <T extends Date> DateFieldArrayToPeriod<T> fromDateFieldArray() {
+		return new DateFieldArrayToPeriod<T>();
 	}	
-	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(final Chronology chronology) {
-		return new FromDateFieldArray<T>(chronology);
+	public static final <T extends Date> DateFieldArrayToPeriod<T> fromDateFieldArray(final Chronology chronology) {
+		return new DateFieldArrayToPeriod<T>(chronology);
 	}	
-	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(final PeriodType periodType) {
-		return new FromDateFieldArray<T>(periodType);
+	public static final <T extends Date> DateFieldArrayToPeriod<T> fromDateFieldArray(final PeriodType periodType) {
+		return new DateFieldArrayToPeriod<T>(periodType);
 	}
-	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromDateFieldArray<T>(periodType, chronology);
+	public static final <T extends Date> DateFieldArrayToPeriod<T> fromDateFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new DateFieldArrayToPeriod<T>(periodType, chronology);
 	}
 	//
 	
 	// Conversion from two timestamp objects
-	public static final FromTimestampFieldList fromTimestampFieldList() {
+	public static final TimestampFieldListToPeriod fromTimestampFieldList() {
 		return FROM_TIMESTAMP_FIELD_LIST;
 	}	
-	public static final FromTimestampFieldList fromTimestampFieldList(final Chronology chronology) {
-		return new FromTimestampFieldList(chronology);
+	public static final TimestampFieldListToPeriod fromTimestampFieldList(final Chronology chronology) {
+		return new TimestampFieldListToPeriod(chronology);
 	}	
-	public static final FromTimestampFieldList fromTimestampFieldList(final PeriodType periodType) {
-		return new FromTimestampFieldList(periodType);
+	public static final TimestampFieldListToPeriod fromTimestampFieldList(final PeriodType periodType) {
+		return new TimestampFieldListToPeriod(periodType);
 	}
-	public static final FromTimestampFieldList fromTimestampFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new FromTimestampFieldList(periodType, chronology);
+	public static final TimestampFieldListToPeriod fromTimestampFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new TimestampFieldListToPeriod(periodType, chronology);
 	}
-	public static final FromTimestampFieldArray fromTimestampFieldArray() {
+	public static final TimestampFieldArrayToPeriod fromTimestampFieldArray() {
 		return FROM_TIMESTAMP_FIELD_ARRAY;
 	}	
-	public static final FromTimestampFieldArray fromTimestampFieldArray(final Chronology chronology) {
-		return new FromTimestampFieldArray(chronology);
+	public static final TimestampFieldArrayToPeriod fromTimestampFieldArray(final Chronology chronology) {
+		return new TimestampFieldArrayToPeriod(chronology);
 	}	
-	public static final FromTimestampFieldArray fromTimestampFieldArray(final PeriodType periodType) {
-		return new FromTimestampFieldArray(periodType);
+	public static final TimestampFieldArrayToPeriod fromTimestampFieldArray(final PeriodType periodType) {
+		return new TimestampFieldArrayToPeriod(periodType);
 	}
-	public static final FromTimestampFieldArray fromTimestampFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromTimestampFieldArray(periodType, chronology);
+	public static final TimestampFieldArrayToPeriod fromTimestampFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new TimestampFieldArrayToPeriod(periodType, chronology);
 	}
 	//
 	
@@ -137,7 +137,7 @@ public final class FnToPeriod {
 	/**
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final FromLong fromLong() {
+	public static final LongToPeriod fromLong() {
 		return FROM_LONG;
 	}
 	/**
@@ -146,8 +146,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final FromLong fromLong(final Chronology chronology) {
-		return new FromLong(chronology);
+	public static final LongToPeriod fromLong(final Chronology chronology) {
+		return new LongToPeriod(chronology);
 	}
 	/**
 	 * @param periodType the {@link PeriodType} the returned {@link Period} will
@@ -155,8 +155,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final FromLong fromLong(final PeriodType periodType) {
-		return new FromLong(periodType);
+	public static final LongToPeriod fromLong(final PeriodType periodType) {
+		return new LongToPeriod(periodType);
 	}
 	/**
 	 * @param periodType the {@link PeriodType} the returned {@link Period} will
@@ -166,8 +166,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final FromLong fromLong(final PeriodType periodType, final Chronology chronology) {
-		return new FromLong(periodType, chronology);
+	public static final LongToPeriod fromLong(final PeriodType periodType, final Chronology chronology) {
+		return new LongToPeriod(periodType, chronology);
 	}
 	//
 	
@@ -178,7 +178,7 @@ public final class FnToPeriod {
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldList fromLongFieldList() {
+	public static final LongFieldListToPeriod fromLongFieldList() {
 		return FROM_LONG_FIELD_LIST;
 	}	
 	/**
@@ -189,8 +189,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldList fromLongFieldList(final Chronology chronology) {
-		return new FromLongFieldList(chronology);
+	public static final LongFieldListToPeriod fromLongFieldList(final Chronology chronology) {
+		return new LongFieldListToPeriod(chronology);
 	}	
 	/**
 	 * The given long targets representing the time in millis will be used as the start
@@ -200,8 +200,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldList fromLongFieldList(final PeriodType periodType) {
-		return new FromLongFieldList(periodType);
+	public static final LongFieldListToPeriod fromLongFieldList(final PeriodType periodType) {
+		return new LongFieldListToPeriod(periodType);
 	}
 	/**
 	 * The given long targets representing the time in millis will be used as the start
@@ -212,8 +212,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldList fromLongFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new FromLongFieldList(periodType, chronology);
+	public static final LongFieldListToPeriod fromLongFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new LongFieldListToPeriod(periodType, chronology);
 	}
 	/**
 	 * The given long targets representing the time in millis will be used as the start
@@ -221,7 +221,7 @@ public final class FnToPeriod {
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldArray fromLongFieldArray() {
+	public static final LongFieldArrayToPeriod fromLongFieldArray() {
 		return FROM_LONG_FIELD_ARRAY;
 	}	
 	/**
@@ -232,8 +232,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldArray fromLongFieldArray(final Chronology chronology) {
-		return new FromLongFieldArray(chronology);
+	public static final LongFieldArrayToPeriod fromLongFieldArray(final Chronology chronology) {
+		return new LongFieldArrayToPeriod(chronology);
 	}	
 	/**
 	 * The given long targets representing the time in millis will be used as the start
@@ -243,8 +243,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldArray fromLongFieldArray(final PeriodType periodType) {
-		return new FromLongFieldArray(periodType);
+	public static final LongFieldArrayToPeriod fromLongFieldArray(final PeriodType periodType) {
+		return new LongFieldArrayToPeriod(periodType);
 	}
 	/**
 	 * The given long targets representing the time in millis will be used as the start
@@ -255,8 +255,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromLongFieldArray fromLongFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromLongFieldArray(periodType, chronology);
+	public static final LongFieldArrayToPeriod fromLongFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new LongFieldArrayToPeriod(periodType, chronology);
 	}
 	//
 	
@@ -264,32 +264,32 @@ public final class FnToPeriod {
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final FromCalendarFieldList fromCalendarFieldList() {
+	public static final CalendarFieldListToPeriod fromCalendarFieldList() {
 		return FROM_CALENDAR_FIELD_LIST;
 	}	
-	public static final FromCalendarFieldList fromCalendarFieldList(final Chronology chronology) {
-		return new FromCalendarFieldList(chronology);
+	public static final CalendarFieldListToPeriod fromCalendarFieldList(final Chronology chronology) {
+		return new CalendarFieldListToPeriod(chronology);
 	}	
-	public static final FromCalendarFieldList fromCalendarFieldList(final PeriodType periodType) {
-		return new FromCalendarFieldList(periodType);
+	public static final CalendarFieldListToPeriod fromCalendarFieldList(final PeriodType periodType) {
+		return new CalendarFieldListToPeriod(periodType);
 	}
-	public static final FromCalendarFieldList fromCalendarFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new FromCalendarFieldList(periodType, chronology);
+	public static final CalendarFieldListToPeriod fromCalendarFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new CalendarFieldListToPeriod(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray() {
-		return new FromCalendarFieldArray<T>();
+	public static final <T extends Calendar> CalendarFieldArrayToPeriod<T> fromCalendarFieldArray() {
+		return new CalendarFieldArrayToPeriod<T>();
 	}	
-	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(final Chronology chronology) {
-		return new FromCalendarFieldArray<T>(chronology);
+	public static final <T extends Calendar> CalendarFieldArrayToPeriod<T> fromCalendarFieldArray(final Chronology chronology) {
+		return new CalendarFieldArrayToPeriod<T>(chronology);
 	}	
-	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(final PeriodType periodType) {
-		return new FromCalendarFieldArray<T>(periodType);
+	public static final <T extends Calendar> CalendarFieldArrayToPeriod<T> fromCalendarFieldArray(final PeriodType periodType) {
+		return new CalendarFieldArrayToPeriod<T>(periodType);
 	}
-	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromCalendarFieldArray<T>(periodType, chronology);
+	public static final <T extends Calendar> CalendarFieldArrayToPeriod<T> fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new CalendarFieldArrayToPeriod<T>(periodType, chronology);
 	}
 	//
 	
@@ -298,33 +298,33 @@ public final class FnToPeriod {
 	 * @return the {@link Period} represented by the given start and end 
 	 * {@link BaseDateTime} elements
 	 */
-	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList() {
+	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList() {
 		return FROM_BASEDATETIME_FIELD_LIST;
 	}	
-	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(final Chronology chronology) {
-		return new FromBaseDateTimeFieldList(chronology);
+	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList(final Chronology chronology) {
+		return new BaseDateTimeFieldListToPeriod(chronology);
 	}	
-	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(final PeriodType periodType) {
-		return new FromBaseDateTimeFieldList(periodType);
+	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList(final PeriodType periodType) {
+		return new BaseDateTimeFieldListToPeriod(periodType);
 	}
-	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new FromBaseDateTimeFieldList(periodType, chronology);
+	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList(final PeriodType periodType, final Chronology chronology) {
+		return new BaseDateTimeFieldListToPeriod(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end 
 	 * {@link BaseDateTime} elements
 	 */
-	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray() {
-		return new FromBaseDateTimeFieldArray<T>();
+	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToPeriod<T> fromBaseDateTimeFieldArray() {
+		return new BaseDateTimeFieldArrayToPeriod<T>();
 	}	
-	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(final Chronology chronology) {
-		return new FromBaseDateTimeFieldArray<T>(chronology);
+	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToPeriod<T> fromBaseDateTimeFieldArray(final Chronology chronology) {
+		return new BaseDateTimeFieldArrayToPeriod<T>(chronology);
 	}	
-	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(final PeriodType periodType) {
-		return new FromBaseDateTimeFieldArray<T>(periodType);
+	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToPeriod<T> fromBaseDateTimeFieldArray(final PeriodType periodType) {
+		return new BaseDateTimeFieldArrayToPeriod<T>(periodType);
 	}
-	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {
-		return new FromBaseDateTimeFieldArray<T>(periodType, chronology);
+	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToPeriod<T> fromBaseDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {
+		return new BaseDateTimeFieldArrayToPeriod<T>(periodType, chronology);
 	}
 	//
 	
@@ -337,17 +337,17 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final FromIntegerFieldList fromIntegerFieldList() {
+	public static final IntegerFieldListToPeriod fromIntegerFieldList() {
 		return FROM_INTEGER_FIELD_LIST;
 	}
-	public static final FromIntegerFieldList fromIntegerFieldList(PeriodType periodType) {
-		return new FromIntegerFieldList(periodType);
+	public static final IntegerFieldListToPeriod fromIntegerFieldList(PeriodType periodType) {
+		return new IntegerFieldListToPeriod(periodType);
 	}
-	public static final FromIntegerFieldArray fromIntegerFieldArray() {
+	public static final IntegerFieldArrayToPeriod fromIntegerFieldArray() {
 		return FROM_INTEGER_FIELD_ARRAY;
 	}
-	public static final FromIntegerFieldArray fromIntegerFieldArray(PeriodType periodType) {
-		return new FromIntegerFieldArray(periodType);
+	public static final IntegerFieldArrayToPeriod fromIntegerFieldArray(PeriodType periodType) {
+		return new IntegerFieldArrayToPeriod(periodType);
 	}
 	
 	/**
@@ -359,17 +359,17 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final FromStringFieldList fromStringFieldList() {
+	public static final StringFieldListToPeriod fromStringFieldList() {
 		return FROM_STRING_FIELD_LIST;
 	}
-	public static final FromStringFieldList fromStringFieldList(PeriodType periodType) {
-		return new FromStringFieldList(periodType);
+	public static final StringFieldListToPeriod fromStringFieldList(PeriodType periodType) {
+		return new StringFieldListToPeriod(periodType);
 	}
-	public static final FromStringFieldArray fromStringFieldArray() {
+	public static final StringFieldArrayToPeriod fromStringFieldArray() {
 		return FROM_STRING_FIELD_ARRAY;
 	}
-	public static final FromStringFieldArray fromStringFieldArray(PeriodType periodType) {
-		return new FromStringFieldArray(periodType);
+	public static final StringFieldArrayToPeriod fromStringFieldArray(PeriodType periodType) {
+		return new StringFieldArrayToPeriod(periodType);
 	}
 	
 	
@@ -409,21 +409,21 @@ public final class FnToPeriod {
 		}
 	}
 	
-	static final class FromDateFieldList extends BaseToPeriod<List<? extends Date>> {
+	static final class DateFieldListToPeriod extends BaseToPeriod<List<? extends Date>> {
 
-		public FromDateFieldList() {
+		public DateFieldListToPeriod() {
 			super();			
 		}		
 		
-		public FromDateFieldList(Chronology chronology) {
+		public DateFieldListToPeriod(Chronology chronology) {
 			super(chronology);					
 		}
 		
-		public FromDateFieldList(PeriodType periodType) {
+		public DateFieldListToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromDateFieldList(PeriodType periodType, Chronology chronology) {
+		public DateFieldListToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -455,21 +455,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromDateFieldArray<T extends Date> extends BaseToPeriod<T[]> {
+	static final class DateFieldArrayToPeriod<T extends Date> extends BaseToPeriod<T[]> {
 
-		public FromDateFieldArray() {
+		public DateFieldArrayToPeriod() {
 			super();			
 		}		
 		
-		public FromDateFieldArray(Chronology chronology) {
+		public DateFieldArrayToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromDateFieldArray(PeriodType periodType) {
+		public DateFieldArrayToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromDateFieldArray(PeriodType periodType, Chronology chronology) {
+		public DateFieldArrayToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -501,21 +501,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromTimestampFieldList extends BaseToPeriod<List<Timestamp>> {
+	static final class TimestampFieldListToPeriod extends BaseToPeriod<List<Timestamp>> {
 
-		public FromTimestampFieldList() {
+		public TimestampFieldListToPeriod() {
 			super();			
 		}		
 		
-		public FromTimestampFieldList(Chronology chronology) {
+		public TimestampFieldListToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromTimestampFieldList(PeriodType periodType) {
+		public TimestampFieldListToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromTimestampFieldList(PeriodType periodType, Chronology chronology) {
+		public TimestampFieldListToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -547,21 +547,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromTimestampFieldArray extends BaseToPeriod<Timestamp[]> {
+	static final class TimestampFieldArrayToPeriod extends BaseToPeriod<Timestamp[]> {
 
-		public FromTimestampFieldArray() {
+		public TimestampFieldArrayToPeriod() {
 			super();			
 		}		
 		
-		public FromTimestampFieldArray(Chronology chronology) {
+		public TimestampFieldArrayToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromTimestampFieldArray(PeriodType periodType) {
+		public TimestampFieldArrayToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromTimestampFieldArray(PeriodType periodType, Chronology chronology) {
+		public TimestampFieldArrayToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -593,21 +593,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromLong extends BaseToPeriod<Long> {
+	static final class LongToPeriod extends BaseToPeriod<Long> {
 
-		public FromLong() {
+		public LongToPeriod() {
 			super();			
 		}		
 		
-		public FromLong(Chronology chronology) {
+		public LongToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromLong(PeriodType periodType) {
+		public LongToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromLong(PeriodType periodType, Chronology chronology) {
+		public LongToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -632,23 +632,23 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromLongFieldList extends BaseToPeriod<List<Long>> {
+	static final class LongFieldListToPeriod extends BaseToPeriod<List<Long>> {
 
-		public FromLongFieldList() {
+		public LongFieldListToPeriod() {
 			super();			
 		}		
 		
-		public FromLongFieldList(Chronology chronology) {
+		public LongFieldListToPeriod(Chronology chronology) {
 			super();		
 			this.chronology = chronology;
 		}
 		
-		public FromLongFieldList(PeriodType periodType) {
+		public LongFieldListToPeriod(PeriodType periodType) {
 			super();		
 			this.periodType = periodType;
 		}
 		
-		public FromLongFieldList(PeriodType periodType, Chronology chronology) {
+		public LongFieldListToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -680,23 +680,23 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromLongFieldArray extends BaseToPeriod<Long[]> {
+	static final class LongFieldArrayToPeriod extends BaseToPeriod<Long[]> {
 
-		public FromLongFieldArray() {
+		public LongFieldArrayToPeriod() {
 			super();			
 		}		
 		
-		public FromLongFieldArray(Chronology chronology) {
+		public LongFieldArrayToPeriod(Chronology chronology) {
 			super();		
 			this.chronology = chronology;
 		}
 		
-		public FromLongFieldArray(PeriodType periodType) {
+		public LongFieldArrayToPeriod(PeriodType periodType) {
 			super();		
 			this.periodType = periodType;
 		}
 		
-		public FromLongFieldArray(PeriodType periodType, Chronology chronology) {
+		public LongFieldArrayToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -728,21 +728,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	 
-	static final class FromCalendarFieldList extends BaseToPeriod<List<? extends Calendar>> {
+	static final class CalendarFieldListToPeriod extends BaseToPeriod<List<? extends Calendar>> {
 
-		public FromCalendarFieldList() {
+		public CalendarFieldListToPeriod() {
 			super();			
 		}		
 		
-		public FromCalendarFieldList(Chronology chronology) {
+		public CalendarFieldListToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromCalendarFieldList(PeriodType periodType) {
+		public CalendarFieldListToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromCalendarFieldList(PeriodType periodType, Chronology chronology) {
+		public CalendarFieldListToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -773,21 +773,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromCalendarFieldArray<T extends Calendar> extends BaseToPeriod<T[]> {
+	static final class CalendarFieldArrayToPeriod<T extends Calendar> extends BaseToPeriod<T[]> {
 
-		public FromCalendarFieldArray() {
+		public CalendarFieldArrayToPeriod() {
 			super();			
 		}		
 		
-		public FromCalendarFieldArray(Chronology chronology) {
+		public CalendarFieldArrayToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromCalendarFieldArray(PeriodType periodType) {
+		public CalendarFieldArrayToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromCalendarFieldArray(PeriodType periodType, Chronology chronology) {
+		public CalendarFieldArrayToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -818,21 +818,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromBaseDateTimeFieldList extends BaseToPeriod<List<? extends BaseDateTime>> {
+	static final class BaseDateTimeFieldListToPeriod extends BaseToPeriod<List<? extends BaseDateTime>> {
 
-		public FromBaseDateTimeFieldList() {
+		public BaseDateTimeFieldListToPeriod() {
 			super();			
 		}		
 		
-		public FromBaseDateTimeFieldList(Chronology chronology) {
+		public BaseDateTimeFieldListToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromBaseDateTimeFieldList(PeriodType periodType) {
+		public BaseDateTimeFieldListToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromBaseDateTimeFieldList(PeriodType periodType, Chronology chronology) {
+		public BaseDateTimeFieldListToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -863,21 +863,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromBaseDateTimeFieldArray<T extends BaseDateTime> extends BaseToPeriod<T[]> {
+	static final class BaseDateTimeFieldArrayToPeriod<T extends BaseDateTime> extends BaseToPeriod<T[]> {
 
-		public FromBaseDateTimeFieldArray() {
+		public BaseDateTimeFieldArrayToPeriod() {
 			super();			
 		}		
 		
-		public FromBaseDateTimeFieldArray(Chronology chronology) {
+		public BaseDateTimeFieldArrayToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromBaseDateTimeFieldArray(PeriodType periodType) {
+		public BaseDateTimeFieldArrayToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public FromBaseDateTimeFieldArray(PeriodType periodType, Chronology chronology) {
+		public BaseDateTimeFieldArrayToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -907,13 +907,13 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromIntegerFieldList extends BaseToPeriod<List<Integer>> {
+	static final class IntegerFieldListToPeriod extends BaseToPeriod<List<Integer>> {
 
-		public FromIntegerFieldList() {
+		public IntegerFieldListToPeriod() {
 			super();			
 		}	
 		
-		public FromIntegerFieldList(PeriodType periodType) {
+		public IntegerFieldListToPeriod(PeriodType periodType) {
 			super(periodType);
 		}	
 		
@@ -999,13 +999,13 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromIntegerFieldArray extends BaseToPeriod<Integer[]> {
+	static final class IntegerFieldArrayToPeriod extends BaseToPeriod<Integer[]> {
 
-		public FromIntegerFieldArray() {
+		public IntegerFieldArrayToPeriod() {
 			super();			
 		}		
 		
-		public FromIntegerFieldArray(PeriodType periodType) {
+		public IntegerFieldArrayToPeriod(PeriodType periodType) {
 			super(periodType);
 		}	
 		
@@ -1090,13 +1090,13 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromStringFieldList extends BaseToPeriod<List<String>> {
+	static final class StringFieldListToPeriod extends BaseToPeriod<List<String>> {
 
-		public FromStringFieldList() {
+		public StringFieldListToPeriod() {
 			super();			
 		}	
 		
-		public FromStringFieldList(PeriodType periodType) {
+		public StringFieldListToPeriod(PeriodType periodType) {
 			super(periodType);
 		}	
 		
@@ -1181,13 +1181,13 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class FromStringFieldArray extends BaseToPeriod<String[]> {
+	static final class StringFieldArrayToPeriod extends BaseToPeriod<String[]> {
 
-		public FromStringFieldArray() {
+		public StringFieldArrayToPeriod() {
 			super();			
 		}		
 		
-		public FromStringFieldArray(PeriodType periodType) {
+		public StringFieldArrayToPeriod(PeriodType periodType) {
 			super(periodType);
 		}	
 		

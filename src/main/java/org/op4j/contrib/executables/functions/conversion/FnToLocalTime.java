@@ -48,12 +48,12 @@ import org.op4j.functions.ExecCtx;
  */
 public final class FnToLocalTime {
 
-	private static FromTimestamp FROM_TIMESTAMP = new FromTimestamp();
-	private static FromLong FROM_LONG = new FromLong();
-	private static FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
-	private static FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
-	private static FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
-	private static FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
+	private final static TimestampToLocalTime FROM_TIMESTAMP = new TimestampToLocalTime();
+	private final static LongToLocalTime FROM_LONG = new LongToLocalTime();
+	private final static IntegerFieldListToLocalTime FROM_INTEGER_FIELD_LIST = new IntegerFieldListToLocalTime();
+	private final static IntegerFieldArrayToLocalTime FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToLocalTime();
+	private final static StringFieldListToLocalTime FROM_STRING_FIELD_LIST = new StringFieldListToLocalTime();
+	private final static StringFieldArrayToLocalTime FROM_STRING_FIELD_ARRAY = new StringFieldArrayToLocalTime();
 	
 	
 	private FnToLocalTime() {
@@ -69,8 +69,8 @@ public final class FnToLocalTime {
 	 *                 
 	 * @param pattern 
 	 */
-	public static final FromString fromString(String pattern) {
-		return new FromString(pattern);
+	public static final StringToLocalTime fromString(String pattern) {
+		return new StringToLocalTime(pattern);
 	}	
 	/**
 	 * It converts the given String into a {@link LocalTime} using the given pattern parameter and with the given
@@ -80,8 +80,8 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
-	public static final FromString fromString(String pattern, DateTimeZone dateTimeZone) {
-		return new FromString(pattern, dateTimeZone);
+	public static final StringToLocalTime fromString(String pattern, DateTimeZone dateTimeZone) {
+		return new StringToLocalTime(pattern, dateTimeZone);
 	}	
 	/**
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter and with the given
@@ -91,8 +91,8 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param chronology
 	 */
-	public static final FromString fromString(String pattern, Chronology chronology) {
-		return new FromString(pattern, chronology);
+	public static final StringToLocalTime fromString(String pattern, Chronology chronology) {
+		return new StringToLocalTime(pattern, chronology);
 	}	
 	/**
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
@@ -100,8 +100,8 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final FromString fromString(String pattern, Locale locale) {
-		return new FromString(pattern, locale);
+	public static final StringToLocalTime fromString(String pattern, Locale locale) {
+		return new StringToLocalTime(pattern, locale);
 	}
 	/**
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
@@ -109,8 +109,8 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final FromString fromString(String pattern, String locale) {
-		return new FromString(pattern, locale);
+	public static final StringToLocalTime fromString(String pattern, String locale) {
+		return new StringToLocalTime(pattern, locale);
 	}
 	/**
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
@@ -120,8 +120,8 @@ public final class FnToLocalTime {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final FromString fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return new FromString(pattern, locale, dateTimeZone);
+	public static final StringToLocalTime fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		return new StringToLocalTime(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
@@ -131,8 +131,8 @@ public final class FnToLocalTime {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final FromString fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return new FromString(pattern, locale, dateTimeZone);
+	public static final StringToLocalTime fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
+		return new StringToLocalTime(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
@@ -142,8 +142,8 @@ public final class FnToLocalTime {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final FromString fromString(String pattern, Locale locale, Chronology chronology) {
-		return new FromString(pattern, locale, chronology);
+	public static final StringToLocalTime fromString(String pattern, Locale locale, Chronology chronology) {
+		return new StringToLocalTime(pattern, locale, chronology);
 	}
 	/**
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
@@ -153,8 +153,8 @@ public final class FnToLocalTime {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final FromString fromString(String pattern, String locale, Chronology chronology) {
-		return new FromString(pattern, locale, chronology);
+	public static final StringToLocalTime fromString(String pattern, String locale, Chronology chronology) {
+		return new StringToLocalTime(pattern, locale, chronology);
 	}
 	//
 	
@@ -163,24 +163,24 @@ public final class FnToLocalTime {
 	/**
 	 * The given {@link Date} is converted into a {@link LocalTime}
 	 */
-	public static final <T extends Date> FromDate<T> fromDate() {
-		return new FromDate<T>();
+	public static final <T extends Date> DateToLocalTime<T> fromDate() {
+		return new DateToLocalTime<T>();
 	}
 	/**
 	 * The given {@link Date} is converted into a {@link LocalTime} configured with the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Date> FromDate<T> fromDate(DateTimeZone dateTimeZone) {
-		return new FromDate<T>(dateTimeZone);
+	public static final <T extends Date> DateToLocalTime<T> fromDate(DateTimeZone dateTimeZone) {
+		return new DateToLocalTime<T>(dateTimeZone);
 	}
 	/**
 	 * The given {@link Date} is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Date> FromDate<T> fromDate(Chronology chronology) {
-		return new FromDate<T>(chronology);
+	public static final <T extends Date> DateToLocalTime<T> fromDate(Chronology chronology) {
+		return new DateToLocalTime<T>(chronology);
 	}
 	//
 	
@@ -189,7 +189,7 @@ public final class FnToLocalTime {
 	/**
 	 * The given {@link Timestamp} is converted into a {@link LocalTime}
 	 */
-	public static final FromTimestamp fromTimestamp() {
+	public static final TimestampToLocalTime fromTimestamp() {
 		return FROM_TIMESTAMP;
 	}
 	/**
@@ -197,16 +197,16 @@ public final class FnToLocalTime {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final FromTimestamp fromTimestamp(DateTimeZone dateTimeZone) {
-		return new FromTimestamp(dateTimeZone);
+	public static final TimestampToLocalTime fromTimestamp(DateTimeZone dateTimeZone) {
+		return new TimestampToLocalTime(dateTimeZone);
 	}
 	/**
 	 * The given {@link Timestamp} is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
-	public static final FromTimestamp fromTimestamp(Chronology chronology) {
-		return new FromTimestamp(chronology);
+	public static final TimestampToLocalTime fromTimestamp(Chronology chronology) {
+		return new TimestampToLocalTime(chronology);
 	}
 	//
 		
@@ -215,7 +215,7 @@ public final class FnToLocalTime {
 	/**
 	 * The given long representing the time in millis is converted into a {@link LocalTime}
 	 */
-	public static final FromLong fromLong() {
+	public static final LongToLocalTime fromLong() {
 		return FROM_LONG;
 	}
 	/**
@@ -223,16 +223,16 @@ public final class FnToLocalTime {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final FromLong fromLong(DateTimeZone dateTimeZone) {
-		return new FromLong(dateTimeZone);
+	public static final LongToLocalTime fromLong(DateTimeZone dateTimeZone) {
+		return new LongToLocalTime(dateTimeZone);
 	}
 	/**
 	 * The given long representing the time in millis is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
-	public static final FromLong fromLong(Chronology chronology) {
-		return new FromLong(chronology);
+	public static final LongToLocalTime fromLong(Chronology chronology) {
+		return new LongToLocalTime(chronology);
 	}
 	//
 	
@@ -241,7 +241,7 @@ public final class FnToLocalTime {
 	 * A {@link LocalTime} is created from the given {@link Integer} list.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final FromIntegerFieldList fromIntegerFieldList() {
+	public static final IntegerFieldListToLocalTime fromIntegerFieldList() {
 		return FROM_INTEGER_FIELD_LIST;
 	}
 	/**
@@ -251,8 +251,8 @@ public final class FnToLocalTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final FromIntegerFieldList fromIntegerFieldList(Chronology chronology) {
-		return new FromIntegerFieldList(chronology);
+	public static final IntegerFieldListToLocalTime fromIntegerFieldList(Chronology chronology) {
+		return new IntegerFieldListToLocalTime(chronology);
 	}
 	//
 	
@@ -262,7 +262,7 @@ public final class FnToLocalTime {
 	 * A {@link LocalTime} is created from the given {@link Integer} array.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final FromIntegerFieldArray fromIntegerFieldArray() {
+	public static final IntegerFieldArrayToLocalTime fromIntegerFieldArray() {
 		return FROM_INTEGER_FIELD_ARRAY;
 	}
 	/**
@@ -272,8 +272,8 @@ public final class FnToLocalTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final FromIntegerFieldArray fromIntegerFieldArray(Chronology chronology) {
-		return new FromIntegerFieldArray(chronology);
+	public static final IntegerFieldArrayToLocalTime fromIntegerFieldArray(Chronology chronology) {
+		return new IntegerFieldArrayToLocalTime(chronology);
 	}
 	//
 	
@@ -283,7 +283,7 @@ public final class FnToLocalTime {
 	 * A {@link LocalTime} is created from the given {@link String} list.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final FromStringFieldList fromStringFieldList() {
+	public static final StringFieldListToLocalTime fromStringFieldList() {
 		return FROM_STRING_FIELD_LIST;
 	}
 	/**
@@ -293,8 +293,8 @@ public final class FnToLocalTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final FromStringFieldList fromStringFieldList(Chronology chronology) {
-		return new FromStringFieldList(chronology);
+	public static final StringFieldListToLocalTime fromStringFieldList(Chronology chronology) {
+		return new StringFieldListToLocalTime(chronology);
 	}
 	//
 	
@@ -304,7 +304,7 @@ public final class FnToLocalTime {
 	 * A {@link LocalTime} is created from the given {@link String} array.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final FromStringFieldArray fromStringFieldArray() {
+	public static final StringFieldArrayToLocalTime fromStringFieldArray() {
 		return FROM_STRING_FIELD_ARRAY;
 	}
 	/**
@@ -314,8 +314,8 @@ public final class FnToLocalTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final FromStringFieldArray fromStringFieldArray(Chronology chronology) {
-		return new FromStringFieldArray(chronology);
+	public static final StringFieldArrayToLocalTime fromStringFieldArray(Chronology chronology) {
+		return new StringFieldArrayToLocalTime(chronology);
 	}
 	//
 	
@@ -324,24 +324,24 @@ public final class FnToLocalTime {
 	/**
 	 * It converts a {@link Calendar} into a {@link LocalTime}
 	 */
-	public static final <T extends Calendar> FromCalendar<T> fromCalendar() {
-		return new FromCalendar<T>();
+	public static final <T extends Calendar> CalendarToLocalTime<T> fromCalendar() {
+		return new CalendarToLocalTime<T>();
 	}
 	/**
 	 * It converts a {@link Calendar} into a {@link LocalTime} in the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Calendar> FromCalendar<T> fromCalendar(DateTimeZone dateTimeZone) {
-		return new FromCalendar<T>(dateTimeZone);
+	public static final <T extends Calendar> CalendarToLocalTime<T> fromCalendar(DateTimeZone dateTimeZone) {
+		return new CalendarToLocalTime<T>(dateTimeZone);
 	}
 	/**
 	 * It converts a {@link Calendar} into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Calendar> FromCalendar<T> fromCalendar(Chronology chronology) {
-		return new FromCalendar<T>(chronology);
+	public static final <T extends Calendar> CalendarToLocalTime<T> fromCalendar(Chronology chronology) {
+		return new CalendarToLocalTime<T>(chronology);
 	}
 	//
 	
@@ -372,7 +372,7 @@ public final class FnToLocalTime {
 		}
 	}
 	
-	static final class FromString extends BaseToLocalTime<String> {
+	static final class StringToLocalTime extends BaseToLocalTime<String> {
 
 		private String pattern;
 		private Locale locale;
@@ -385,7 +385,7 @@ public final class FnToLocalTime {
 		 *                 
 		 * @param pattern
 		 */
-		public FromString(String pattern) {
+		public StringToLocalTime(String pattern) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -401,7 +401,7 @@ public final class FnToLocalTime {
 		 * @param pattern
 		 * @param dateTimeZone
 		 */
-		public FromString(String pattern, DateTimeZone dateTimeZone) {
+		public StringToLocalTime(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -417,7 +417,7 @@ public final class FnToLocalTime {
 		 * @param pattern
 		 * @param chronology
 		 */
-		public FromString(String pattern, Chronology chronology) {
+		public StringToLocalTime(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -431,7 +431,7 @@ public final class FnToLocalTime {
 		 * @param pattern
 		 * @param locale
 		 */
-		public FromString(String pattern, Locale locale) {
+		public StringToLocalTime(String pattern, Locale locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -447,7 +447,7 @@ public final class FnToLocalTime {
 		 * @param pattern
 		 * @param locale
 		 */
-		public FromString(String pattern, String locale) {
+		public StringToLocalTime(String pattern, String locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -465,7 +465,7 @@ public final class FnToLocalTime {
 		 * @param locale
 		 * @param dateTimeZone
 		 */
-		public FromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		public StringToLocalTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -483,7 +483,7 @@ public final class FnToLocalTime {
 		 * @param locale
 		 * @param dateTimeZone
 		 */
-		public FromString(String pattern, String locale, DateTimeZone dateTimeZone) {
+		public StringToLocalTime(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -501,7 +501,7 @@ public final class FnToLocalTime {
 		 * @param locale
 		 * @param chronology
 		 */
-		public FromString(String pattern, Locale locale, Chronology chronology) {
+		public StringToLocalTime(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -519,7 +519,7 @@ public final class FnToLocalTime {
 		 * @param locale
 		 * @param chronology
 		 */
-		public FromString(String pattern, String locale, Chronology chronology) {
+		public StringToLocalTime(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -560,12 +560,12 @@ public final class FnToLocalTime {
 		
 	}	
 	
-	static final class FromDate<T extends Date> extends BaseToLocalTime<T> {
+	static final class DateToLocalTime<T extends Date> extends BaseToLocalTime<T> {
 
 		/**
 		 * The given {@link Date} is converted into a {@link LocalTime}
 		 */
-		public FromDate() {
+		public DateToLocalTime() {
 			super();			
 		}
 
@@ -574,7 +574,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param dateTimeZone
 		 */
-		public FromDate(DateTimeZone dateTimeZone) {
+		public DateToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
@@ -583,7 +583,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param chronology
 		 */
-		public FromDate(Chronology chronology) {
+		public DateToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -605,12 +605,12 @@ public final class FnToLocalTime {
 		
 	}	
 	
-	static final class FromTimestamp extends BaseToLocalTime<Timestamp> {
+	static final class TimestampToLocalTime extends BaseToLocalTime<Timestamp> {
 
 		/**
 		 * The given {@link Timestamp} is converted into a {@link LocalTime}
 		 */
-		public FromTimestamp() {
+		public TimestampToLocalTime() {
 			super();			
 		}
 
@@ -619,7 +619,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param dateTimeZone
 		 */
-		public FromTimestamp(DateTimeZone dateTimeZone) {
+		public TimestampToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
@@ -628,7 +628,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param chronology
 		 */
-		public FromTimestamp(Chronology chronology) {
+		public TimestampToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -648,12 +648,12 @@ public final class FnToLocalTime {
 		}
 	}	
 	
-	static final class FromLong extends BaseToLocalTime<Long> {
+	static final class LongToLocalTime extends BaseToLocalTime<Long> {
 
 		/**
 		 * The given long representing the time in millis is converted into a {@link LocalTime}
 		 */
-		public FromLong() {
+		public LongToLocalTime() {
 			super();			
 		}
 
@@ -662,7 +662,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param dateTimeZone
 		 */
-		public FromLong(DateTimeZone dateTimeZone) {
+		public LongToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
@@ -671,7 +671,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param chronology
 		 */
-		public FromLong(Chronology chronology) {
+		public LongToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -691,13 +691,13 @@ public final class FnToLocalTime {
 		}
 	}	
 	
-	static final class FromIntegerFieldList extends BaseToLocalTime<List<Integer>> {
+	static final class IntegerFieldListToLocalTime extends BaseToLocalTime<List<Integer>> {
 
 		/**
 		 * A {@link LocalTime} is created from the given {@link Integer} list.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
-		public FromIntegerFieldList() {
+		public IntegerFieldListToLocalTime() {
 			super();			
 		}
 
@@ -708,7 +708,7 @@ public final class FnToLocalTime {
 		 *                 
 		 * @param chronology
 		 */
-		public FromIntegerFieldList(Chronology chronology) {
+		public IntegerFieldListToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -737,13 +737,13 @@ public final class FnToLocalTime {
 		}
 	}	
 	
-	static final class FromIntegerFieldArray extends BaseToLocalTime<Integer[]> {
+	static final class IntegerFieldArrayToLocalTime extends BaseToLocalTime<Integer[]> {
 
 		/**
 		 * A {@link LocalTime} is created from the given {@link Integer} array.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
-		public FromIntegerFieldArray() {
+		public IntegerFieldArrayToLocalTime() {
 			super();			
 		}
 
@@ -754,7 +754,7 @@ public final class FnToLocalTime {
 		 *                 
 		 * @param chronology
 		 */
-		public FromIntegerFieldArray(Chronology chronology) {
+		public IntegerFieldArrayToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -786,13 +786,13 @@ public final class FnToLocalTime {
 	
 	
 	
-	static final class FromStringFieldList extends BaseToLocalTime<List<String>> {
+	static final class StringFieldListToLocalTime extends BaseToLocalTime<List<String>> {
 
 		/**
 		 * A {@link LocalTime} is created from the given {@link String} list.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
-		public FromStringFieldList() {
+		public StringFieldListToLocalTime() {
 			super();			
 		}
 
@@ -803,7 +803,7 @@ public final class FnToLocalTime {
 		 *                 
 		 * @param chronology
 		 */
-		public FromStringFieldList(Chronology chronology) {
+		public StringFieldListToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -834,13 +834,13 @@ public final class FnToLocalTime {
 		
 	}	
 	
-	static final class FromStringFieldArray extends BaseToLocalTime<String[]> {
+	static final class StringFieldArrayToLocalTime extends BaseToLocalTime<String[]> {
 
 		/**
 		 * A {@link LocalTime} is created from the given {@link String} array.
 		 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 		 */
-		public FromStringFieldArray() {
+		public StringFieldArrayToLocalTime() {
 			super();			
 		}
 
@@ -851,7 +851,7 @@ public final class FnToLocalTime {
 		 *                 
 		 * @param chronology
 		 */
-		public FromStringFieldArray(Chronology chronology) {
+		public StringFieldArrayToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -880,12 +880,12 @@ public final class FnToLocalTime {
 		}
 	}	
 	
-	static final class FromCalendar<T extends Calendar> extends BaseToLocalTime<T> {
+	static final class CalendarToLocalTime<T extends Calendar> extends BaseToLocalTime<T> {
 
 		/**
 		 * It converts a {@link Calendar} into a {@link LocalTime}
 		 */
-		public FromCalendar() {
+		public CalendarToLocalTime() {
 			super();			
 		}
 
@@ -894,7 +894,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param dateTimeZone
 		 */
-		public FromCalendar(DateTimeZone dateTimeZone) {
+		public CalendarToLocalTime(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 
@@ -903,7 +903,7 @@ public final class FnToLocalTime {
 		 * 
 		 * @param chronology
 		 */
-		public FromCalendar(Chronology chronology) {
+		public CalendarToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		

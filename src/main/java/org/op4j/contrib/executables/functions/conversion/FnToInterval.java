@@ -49,23 +49,23 @@ import org.op4j.functions.ExecCtx;
  */
 public final class FnToInterval {
 
-	private static final FromDateFieldList FROM_DATE_FIELD_LIST = new FromDateFieldList();
+	private static final DateFieldListToInterval FROM_DATE_FIELD_LIST = new DateFieldListToInterval();
 	
-	private static final FromTimestampFieldList FROM_TIMESTAMP_FIELD_LIST = new FromTimestampFieldList();
-	private static final FromTimestampFieldArray FROM_TIMESTAMP_FIELD_ARRAY = new FromTimestampFieldArray();
+	private static final TimestampFieldListToInterval FROM_TIMESTAMP_FIELD_LIST = new TimestampFieldListToInterval();
+	private static final TimestampFieldArrayToInterval FROM_TIMESTAMP_FIELD_ARRAY = new TimestampFieldArrayToInterval();
 	
-	private static final FromLongFieldList FROM_LONG_FIELD_LIST = new FromLongFieldList();
-	private static final FromLongFieldArray FROM_LONG_FIELD_ARRAY = new FromLongFieldArray();
+	private static final LongFieldListToInterval FROM_LONG_FIELD_LIST = new LongFieldListToInterval();
+	private static final LongFieldArrayToInterval FROM_LONG_FIELD_ARRAY = new LongFieldArrayToInterval();
 	
-	private static final FromIntegerFieldList FROM_INTEGER_FIELD_LIST = new FromIntegerFieldList();
-	private static final FromIntegerFieldArray FROM_INTEGER_FIELD_ARRAY = new FromIntegerFieldArray();
+	private static final IntegerFieldListToInterval FROM_INTEGER_FIELD_LIST = new IntegerFieldListToInterval();
+	private static final IntegerFieldArrayToInterval FROM_INTEGER_FIELD_ARRAY = new IntegerFieldArrayToInterval();
 	
-	private static final FromCalendarFieldList FROM_CALENDAR_FIELD_LIST = new FromCalendarFieldList();
+	private static final CalendarFieldListToInterval FROM_CALENDAR_FIELD_LIST = new CalendarFieldListToInterval();
 	
-	private static final FromBaseDateTimeFieldList FROM_BASEDATETIME_FIELD_LIST = new FromBaseDateTimeFieldList();
+	private static final BaseDateTimeFieldListToInterval FROM_BASEDATETIME_FIELD_LIST = new BaseDateTimeFieldListToInterval();
 	
-	private static final FromStringFieldList FROM_STRING_FIELD_LIST = new FromStringFieldList();
-	private static final FromStringFieldArray FROM_STRING_FIELD_ARRAY = new FromStringFieldArray();
+	private static final StringFieldListToInterval FROM_STRING_FIELD_LIST = new StringFieldListToInterval();
+	private static final StringFieldArrayToInterval FROM_STRING_FIELD_ARRAY = new StringFieldArrayToInterval();
 	
 	private FnToInterval() {
 		super();
@@ -85,14 +85,14 @@ public final class FnToInterval {
 	 * 				
 	 * @return
 	 */
-	public static final FromStringFieldList fromStringFieldList() {
+	public static final StringFieldListToInterval fromStringFieldList() {
 		return FROM_STRING_FIELD_LIST;
 	}
-	public static final FromStringFieldList fromStringFieldList(DateTimeZone dateTimeZone) {
-		return new FromStringFieldList(dateTimeZone);
+	public static final StringFieldListToInterval fromStringFieldList(DateTimeZone dateTimeZone) {
+		return new StringFieldListToInterval(dateTimeZone);
 	}
-	public static final FromStringFieldList fromStringFieldList(Chronology chronology) {
-		return new FromStringFieldList(chronology);
+	public static final StringFieldListToInterval fromStringFieldList(Chronology chronology) {
+		return new StringFieldListToInterval(chronology);
 	}
 	/**
 	 * It creates an {@link Interval} using the target {@link String} elements as the start and end. The given pattern
@@ -102,8 +102,8 @@ public final class FnToInterval {
 	 *                 
 	 * @param pattern
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern) {
-		return new FromStringFieldList(pattern);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern) {
+		return new StringFieldListToInterval(pattern);
 	}
 	/**
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
@@ -113,8 +113,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, DateTimeZone dateTimeZone) {
-		return new FromStringFieldList(pattern, dateTimeZone);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, DateTimeZone dateTimeZone) {
+		return new StringFieldListToInterval(pattern, dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
@@ -124,8 +124,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param chronology
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, Chronology chronology) {
-		return new FromStringFieldList(pattern, chronology);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, Chronology chronology) {
+		return new StringFieldListToInterval(pattern, chronology);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -134,8 +134,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, Locale locale) {
-		return new FromStringFieldList(pattern, locale);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, Locale locale) {
+		return new StringFieldListToInterval(pattern, locale);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -144,8 +144,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, String locale) {
-		return new FromStringFieldList(pattern, locale);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, String locale) {
+		return new StringFieldListToInterval(pattern, locale);
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -155,8 +155,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return new FromStringFieldList(pattern, locale, dateTimeZone);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		return new StringFieldListToInterval(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -166,8 +166,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return new FromStringFieldList(pattern, locale, dateTimeZone);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, String locale, DateTimeZone dateTimeZone) {
+		return new StringFieldListToInterval(pattern, locale, dateTimeZone);
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -177,8 +177,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, Locale locale, Chronology chronology) {
-		return new FromStringFieldList(pattern, locale, chronology);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, Locale locale, Chronology chronology) {
+		return new StringFieldListToInterval(pattern, locale, chronology);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -188,8 +188,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final FromStringFieldList fromStringFieldList(String pattern, String locale, Chronology chronology) {
-		return new FromStringFieldList(pattern, locale, chronology);
+	public static final StringFieldListToInterval fromStringFieldList(String pattern, String locale, Chronology chronology) {
+		return new StringFieldListToInterval(pattern, locale, chronology);
 	}	
 	
 	/**
@@ -204,41 +204,41 @@ public final class FnToInterval {
 	 * 				
 	 * @return
 	 */
-	public static final FromStringFieldArray fromStringFieldArray() {
+	public static final StringFieldArrayToInterval fromStringFieldArray() {
 		return FROM_STRING_FIELD_ARRAY;
 	}
-	public static final FromStringFieldArray fromStringFieldArray(DateTimeZone dateTimeZone) {
-		return new FromStringFieldArray(dateTimeZone);
+	public static final StringFieldArrayToInterval fromStringFieldArray(DateTimeZone dateTimeZone) {
+		return new StringFieldArrayToInterval(dateTimeZone);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(Chronology chronology) {
-		return new FromStringFieldArray(chronology);
+	public static final StringFieldArrayToInterval fromStringFieldArray(Chronology chronology) {
+		return new StringFieldArrayToInterval(chronology);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(String pattern) {
-		return new FromStringFieldArray(pattern);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern) {
+		return new StringFieldArrayToInterval(pattern);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, DateTimeZone dateTimeZone) {
-		return new FromStringFieldArray(pattern, dateTimeZone);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, DateTimeZone dateTimeZone) {
+		return new StringFieldArrayToInterval(pattern, dateTimeZone);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, Chronology chronology) {
-		return new FromStringFieldArray(pattern, chronology);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Chronology chronology) {
+		return new StringFieldArrayToInterval(pattern, chronology);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, Locale locale) {
-		return new FromStringFieldArray(pattern, locale);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Locale locale) {
+		return new StringFieldArrayToInterval(pattern, locale);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, String locale) {
-		return new FromStringFieldArray(pattern, locale);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, String locale) {
+		return new StringFieldArrayToInterval(pattern, locale);
 	}	
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return new FromStringFieldArray(pattern, locale, dateTimeZone);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return new FromStringFieldArray(pattern, locale, dateTimeZone);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, String locale, DateTimeZone dateTimeZone) {
+		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}	
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, Locale locale, Chronology chronology) {
-		return new FromStringFieldArray(pattern, locale, chronology);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, Locale locale, Chronology chronology) {
+		return new StringFieldArrayToInterval(pattern, locale, chronology);
 	}
-	public static final FromStringFieldArray fromStringFieldArray(String pattern, String locale, Chronology chronology) {
-		return new FromStringFieldArray(pattern, locale, chronology);
+	public static final StringFieldArrayToInterval fromStringFieldArray(String pattern, String locale, Chronology chronology) {
+		return new StringFieldArrayToInterval(pattern, locale, chronology);
 	}	
 	//
 	
@@ -246,7 +246,7 @@ public final class FnToInterval {
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements  
 	 */
-	public static final FromDateFieldList fromDateFieldList() {
+	public static final DateFieldListToInterval fromDateFieldList() {
 		return FROM_DATE_FIELD_LIST;
 	}
 	/**
@@ -256,8 +256,8 @@ public final class FnToInterval {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final FromDateFieldList fromDateFieldList(DateTimeZone dateTimeZone) {
-		return new FromDateFieldList(dateTimeZone);
+	public static final DateFieldListToInterval fromDateFieldList(DateTimeZone dateTimeZone) {
+		return new DateFieldListToInterval(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements.
@@ -265,15 +265,15 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final FromDateFieldList fromDateFieldList(Chronology chronology) {
-		return new FromDateFieldList(chronology);
+	public static final DateFieldListToInterval fromDateFieldList(Chronology chronology) {
+		return new DateFieldListToInterval(chronology);
 	}
 	
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements.
 	 */
-	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray() {
-		return new FromDateFieldArray<T>();
+	public static final <T extends Date> DateFieldArrayToInterval<T> fromDateFieldArray() {
+		return new DateFieldArrayToInterval<T>();
 	}
 	/**
 	 * 
@@ -282,8 +282,8 @@ public final class FnToInterval {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(DateTimeZone dateTimeZone) {
-		return new FromDateFieldArray<T>(dateTimeZone);
+	public static final <T extends Date> DateFieldArrayToInterval<T> fromDateFieldArray(DateTimeZone dateTimeZone) {
+		return new DateFieldArrayToInterval<T>(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements.
@@ -291,8 +291,8 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Date> FromDateFieldArray<T> fromDateFieldArray(Chronology chronology) {
-		return new FromDateFieldArray<T>(chronology);
+	public static final <T extends Date> DateFieldArrayToInterval<T> fromDateFieldArray(Chronology chronology) {
+		return new DateFieldArrayToInterval<T>(chronology);
 	}
 	//
 	
@@ -301,44 +301,44 @@ public final class FnToInterval {
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
 	 */
-	public static final FromTimestampFieldList fromTimestampFieldList() {
+	public static final TimestampFieldListToInterval fromTimestampFieldList() {
 		return FROM_TIMESTAMP_FIELD_LIST;
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link DateTimeZone}
 	 */	
-	public static final FromTimestampFieldList fromTimestampFieldList(DateTimeZone dateTimeZone) {
-		return new FromTimestampFieldList(dateTimeZone);
+	public static final TimestampFieldListToInterval fromTimestampFieldList(DateTimeZone dateTimeZone) {
+		return new TimestampFieldListToInterval(dateTimeZone);
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link Chronology}
 	 */
-	public static final FromTimestampFieldList fromTimestampFieldList(Chronology chronology) {
-		return new FromTimestampFieldList(chronology);
+	public static final TimestampFieldListToInterval fromTimestampFieldList(Chronology chronology) {
+		return new TimestampFieldListToInterval(chronology);
 	}
 	
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
 	 */
-	public static final FromTimestampFieldArray fromTimestampFieldArray() {
+	public static final TimestampFieldArrayToInterval fromTimestampFieldArray() {
 		return FROM_TIMESTAMP_FIELD_ARRAY;
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link DateTimeZone}
 	 */	
-	public static final FromTimestampFieldArray fromTimestampFieldArray(DateTimeZone dateTimeZone) {
-		return new FromTimestampFieldArray(dateTimeZone);
+	public static final TimestampFieldArrayToInterval fromTimestampFieldArray(DateTimeZone dateTimeZone) {
+		return new TimestampFieldArrayToInterval(dateTimeZone);
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link Chronology}
 	 */
-	public static final FromTimestampFieldArray fromTimestampFieldArray(Chronology chronology) {
-		return new FromTimestampFieldArray(chronology);
+	public static final TimestampFieldArrayToInterval fromTimestampFieldArray(Chronology chronology) {
+		return new TimestampFieldArrayToInterval(chronology);
 	}
 	//
 	
@@ -347,7 +347,7 @@ public final class FnToInterval {
 	 * The given {@link Long} targets representing the time in millis will be used as the start
 	 * and end of the {@link Interval} returned
 	 */
-	public static final FromLongFieldList fromLongFieldList() {
+	public static final LongFieldListToInterval fromLongFieldList() {
 		return FROM_LONG_FIELD_LIST;
 	}
 	/**
@@ -355,23 +355,23 @@ public final class FnToInterval {
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link DateTimeZone}
 	 */
-	public static final FromLongFieldList fromLongFieldList(DateTimeZone dateTimeZone) {
-		return new FromLongFieldList(dateTimeZone);
+	public static final LongFieldListToInterval fromLongFieldList(DateTimeZone dateTimeZone) {
+		return new LongFieldListToInterval(dateTimeZone);
 	}
 	/**
 	 * The given {@link Long} targets representing the time in millis will be used as the start
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link Chronology}
 	 */
-	public static final FromLongFieldList fromLongFieldList(Chronology chronology) {
-		return new FromLongFieldList(chronology);
+	public static final LongFieldListToInterval fromLongFieldList(Chronology chronology) {
+		return new LongFieldListToInterval(chronology);
 	}
 	
 	/**
 	 * The given {@link Long} targets representing the time in millis will be used as the start
 	 * and end of the {@link Interval} returned
 	 */
-	public static final FromLongFieldArray fromLongFieldArray() {
+	public static final LongFieldArrayToInterval fromLongFieldArray() {
 		return FROM_LONG_FIELD_ARRAY;
 	}
 	/**
@@ -379,39 +379,39 @@ public final class FnToInterval {
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link DateTimeZone}
 	 */
-	public static final FromLongFieldArray fromLongFieldArray(DateTimeZone dateTimeZone) {
-		return new FromLongFieldArray(dateTimeZone);
+	public static final LongFieldArrayToInterval fromLongFieldArray(DateTimeZone dateTimeZone) {
+		return new LongFieldArrayToInterval(dateTimeZone);
 	}
 	/**
 	 * The given {@link Long} targets representing the time in millis will be used as the start
 	 * and end of the {@link Interval} returned. The interval will be created with the given
 	 * {@link Chronology}
 	 */
-	public static final FromLongFieldArray fromLongFieldArray(Chronology chronology) {
-		return new FromLongFieldArray(chronology);
+	public static final LongFieldArrayToInterval fromLongFieldArray(Chronology chronology) {
+		return new LongFieldArrayToInterval(chronology);
 	}
 	//
 	
 	
 	// From Integer List or array
-	public static final FromIntegerFieldList fromIntegerFieldList() {
+	public static final IntegerFieldListToInterval fromIntegerFieldList() {
 		return FROM_INTEGER_FIELD_LIST;
 	}
-	public static final FromIntegerFieldList fromIntegerFieldList(DateTimeZone dateTimeZone) {
-		return new FromIntegerFieldList(dateTimeZone);
+	public static final IntegerFieldListToInterval fromIntegerFieldList(DateTimeZone dateTimeZone) {
+		return new IntegerFieldListToInterval(dateTimeZone);
 	}
-	public static final FromIntegerFieldList fromIntegerFieldList(Chronology chronology) {
-		return new FromIntegerFieldList(chronology);
+	public static final IntegerFieldListToInterval fromIntegerFieldList(Chronology chronology) {
+		return new IntegerFieldListToInterval(chronology);
 	}
 	
-	public static final FromIntegerFieldArray fromIntegerFieldArray() {
+	public static final IntegerFieldArrayToInterval fromIntegerFieldArray() {
 		return FROM_INTEGER_FIELD_ARRAY;
 	}
-	public static final FromIntegerFieldArray fromIntegerFieldArray(DateTimeZone dateTimeZone) {
-		return new FromIntegerFieldArray(dateTimeZone);
+	public static final IntegerFieldArrayToInterval fromIntegerFieldArray(DateTimeZone dateTimeZone) {
+		return new IntegerFieldArrayToInterval(dateTimeZone);
 	}
-	public static final FromIntegerFieldArray fromIntegerFieldArray(Chronology chronology) {
-		return new FromIntegerFieldArray(chronology);
+	public static final IntegerFieldArrayToInterval fromIntegerFieldArray(Chronology chronology) {
+		return new IntegerFieldArrayToInterval(chronology);
 	}
 	//
 	
@@ -420,7 +420,7 @@ public final class FnToInterval {
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
 	 * and end of the interval
 	 */
-	public static final FromCalendarFieldList fromCalendarFieldList() {
+	public static final CalendarFieldListToInterval fromCalendarFieldList() {
 		return FROM_CALENDAR_FIELD_LIST;
 	}
 	/**
@@ -429,8 +429,8 @@ public final class FnToInterval {
 	 *                 
 	 * @param dateTimeZone
 	 */
-	public static final FromCalendarFieldList fromCalendarFieldList(DateTimeZone dateTimeZone) {
-		return new FromCalendarFieldList(dateTimeZone);
+	public static final CalendarFieldListToInterval fromCalendarFieldList(DateTimeZone dateTimeZone) {
+		return new CalendarFieldListToInterval(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -438,16 +438,16 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final FromCalendarFieldList fromCalendarFieldList(Chronology chronology) {
-		return new FromCalendarFieldList(chronology);
+	public static final CalendarFieldListToInterval fromCalendarFieldList(Chronology chronology) {
+		return new CalendarFieldListToInterval(chronology);
 	}
 	
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
 	 * and end of the interval
 	 */
-	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray() {
-		return new FromCalendarFieldArray<T>();
+	public static final <T extends Calendar> CalendarFieldArrayToInterval<T> fromCalendarFieldArray() {
+		return new CalendarFieldArrayToInterval<T>();
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -455,8 +455,8 @@ public final class FnToInterval {
 	 *                 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(DateTimeZone dateTimeZone) {
-		return new FromCalendarFieldArray<T>(dateTimeZone);
+	public static final <T extends Calendar> CalendarFieldArrayToInterval<T> fromCalendarFieldArray(DateTimeZone dateTimeZone) {
+		return new CalendarFieldArrayToInterval<T>(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -464,30 +464,30 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Calendar> FromCalendarFieldArray<T> fromCalendarFieldArray(Chronology chronology) {
-		return new FromCalendarFieldArray<T>(chronology);
+	public static final <T extends Calendar> CalendarFieldArrayToInterval<T> fromCalendarFieldArray(Chronology chronology) {
+		return new CalendarFieldArrayToInterval<T>(chronology);
 	}
 	//
 	
 	// From BaseDateTime list or array
-	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList() {
+	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList() {
 		return FROM_BASEDATETIME_FIELD_LIST;
 	}
-	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(DateTimeZone dateTimeZone) {
-		return new FromBaseDateTimeFieldList(dateTimeZone);
+	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList(DateTimeZone dateTimeZone) {
+		return new BaseDateTimeFieldListToInterval(dateTimeZone);
 	}
-	public static final FromBaseDateTimeFieldList fromBaseDateTimeFieldList(Chronology chronology) {
-		return new FromBaseDateTimeFieldList(chronology);
+	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList(Chronology chronology) {
+		return new BaseDateTimeFieldListToInterval(chronology);
 	}
 	
-	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray() {
-		return new FromBaseDateTimeFieldArray<T>();
+	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToInterval<T> fromBaseDateTimeFieldArray() {
+		return new BaseDateTimeFieldArrayToInterval<T>();
 	}
-	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(DateTimeZone dateTimeZone) {
-		return new FromBaseDateTimeFieldArray<T>(dateTimeZone);
+	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToInterval<T> fromBaseDateTimeFieldArray(DateTimeZone dateTimeZone) {
+		return new BaseDateTimeFieldArrayToInterval<T>(dateTimeZone);
 	}
-	public static final <T extends BaseDateTime> FromBaseDateTimeFieldArray<T> fromBaseDateTimeFieldArray(Chronology chronology) {
-		return new FromBaseDateTimeFieldArray<T>(chronology);
+	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToInterval<T> fromBaseDateTimeFieldArray(Chronology chronology) {
+		return new BaseDateTimeFieldArrayToInterval<T>(chronology);
 	}
 	//
 	
@@ -520,7 +520,7 @@ public final class FnToInterval {
 	}
 	
 	
-	static final class FromStringFieldList extends BaseToInterval<List<String>> {
+	static final class StringFieldListToInterval extends BaseToInterval<List<String>> {
 
 		private final ConversionType conversionType;
 		private String pattern = null;
@@ -537,17 +537,17 @@ public final class FnToInterval {
 		 * </ul>
 		 * 		
 		 */
-		public FromStringFieldList() {
+		public StringFieldListToInterval() {
 			super();
 			this.conversionType = ConversionType.NO_PARAM;
 		}
 		
-		public FromStringFieldList(DateTimeZone dateTimeZone) {
+		public StringFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);			
 			this.conversionType = ConversionType.DATETIMEZONE;
 		}
 		
-		public FromStringFieldList(Chronology chronology) {
+		public StringFieldListToInterval(Chronology chronology) {
 			super(chronology);		
 			this.conversionType = ConversionType.CHRONOLOGY;
 		}
@@ -560,7 +560,7 @@ public final class FnToInterval {
 		 *                 
 		 * @param pattern
 		 */
-		public FromStringFieldList(String pattern) {
+		public StringFieldListToInterval(String pattern) {
 			super();	
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -577,7 +577,7 @@ public final class FnToInterval {
 		 * @param pattern
 		 * @param dateTimeZone
 		 */
-		public FromStringFieldList(String pattern, DateTimeZone dateTimeZone) {
+		public StringFieldListToInterval(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -594,7 +594,7 @@ public final class FnToInterval {
 		 * @param pattern
 		 * @param chronology
 		 */
-		public FromStringFieldList(String pattern, Chronology chronology) {
+		public StringFieldListToInterval(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -610,7 +610,7 @@ public final class FnToInterval {
 		 * @param pattern
 		 * @param locale
 		 */
-		public FromStringFieldList(String pattern, Locale locale) {
+		public StringFieldListToInterval(String pattern, Locale locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -628,7 +628,7 @@ public final class FnToInterval {
 		 * @param pattern
 		 * @param locale
 		 */
-		public FromStringFieldList(String pattern, String locale) {
+		public StringFieldListToInterval(String pattern, String locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -647,7 +647,7 @@ public final class FnToInterval {
 		 * @param locale
 		 * @param dateTimeZone
 		 */
-		public FromStringFieldList(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		public StringFieldListToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -666,7 +666,7 @@ public final class FnToInterval {
 		 * @param locale
 		 * @param dateTimeZone
 		 */
-		public FromStringFieldList(String pattern, String locale, DateTimeZone dateTimeZone) {
+		public StringFieldListToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -685,7 +685,7 @@ public final class FnToInterval {
 		 * @param locale
 		 * @param chronology
 		 */
-		public FromStringFieldList(String pattern, Locale locale, Chronology chronology) {
+		public StringFieldListToInterval(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -704,7 +704,7 @@ public final class FnToInterval {
 		 * @param locale
 		 * @param chronology
 		 */
-		public FromStringFieldList(String pattern, String locale, Chronology chronology) {
+		public StringFieldListToInterval(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -879,18 +879,18 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromStringFieldArray extends BaseToInterval<String[]> {
+	static final class StringFieldArrayToInterval extends BaseToInterval<String[]> {
 
 		private final ConversionType conversionType;
 		private String pattern = null;
 		private Locale locale = null;
 		
-		public FromStringFieldArray() {
+		public StringFieldArrayToInterval() {
 			super();		
 			this.conversionType = ConversionType.NO_PARAM;
 		}
 		
-		public FromStringFieldArray(String pattern) {
+		public StringFieldArrayToInterval(String pattern) {
 			super();	
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -899,17 +899,17 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN;
 		}	
 		
-		public FromStringFieldArray(DateTimeZone dateTimeZone) {
+		public StringFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);	
 			this.conversionType = ConversionType.DATETIMEZONE;
 		}
 		
-		public FromStringFieldArray(Chronology chronology) {
+		public StringFieldArrayToInterval(Chronology chronology) {
 			super(chronology);	
 			this.conversionType = ConversionType.CHRONOLOGY;
 		}
 				
-		public FromStringFieldArray(String pattern, DateTimeZone dateTimeZone) {
+		public StringFieldArrayToInterval(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -918,7 +918,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_DATETIMEZONE;
 		}	
 		
-		public FromStringFieldArray(String pattern, Chronology chronology) {
+		public StringFieldArrayToInterval(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -927,7 +927,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_CHRONOLOGY;
 		}
 		
-		public FromStringFieldArray(String pattern, Locale locale) {
+		public StringFieldArrayToInterval(String pattern, Locale locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -938,7 +938,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE;
 		}
 		
-		public FromStringFieldArray(String pattern, String locale) {
+		public StringFieldArrayToInterval(String pattern, String locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -949,7 +949,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE;
 		}
 		
-		public FromStringFieldArray(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		public StringFieldArrayToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -960,7 +960,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
 		}
 		
-		public FromStringFieldArray(String pattern, String locale, DateTimeZone dateTimeZone) {
+		public StringFieldArrayToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -971,7 +971,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
 		}
 		
-		public FromStringFieldArray(String pattern, Locale locale, Chronology chronology) {
+		public StringFieldArrayToInterval(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -982,7 +982,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_CHRONOLOGY;
 		}
 		
-		public FromStringFieldArray(String pattern, String locale, Chronology chronology) {
+		public StringFieldArrayToInterval(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -1157,12 +1157,12 @@ public final class FnToInterval {
 		}
 	}	
 	
-	static final class FromDateFieldList extends BaseToInterval<List<? extends Date>> {
+	static final class DateFieldListToInterval extends BaseToInterval<List<? extends Date>> {
 
 		/**
 		 * It creates an {@link Interval} from the given {@link Date} elements  
 		 */
-		public FromDateFieldList() {
+		public DateFieldListToInterval() {
 			super();			
 		}		
 		
@@ -1172,7 +1172,7 @@ public final class FnToInterval {
 		 * 
 		 * @param chronology
 		 */
-		public FromDateFieldList(Chronology chronology) {
+		public DateFieldListToInterval(Chronology chronology) {
 			super(chronology);					
 		}
 		
@@ -1183,7 +1183,7 @@ public final class FnToInterval {
 		 * 
 		 * @param dateTimeZone
 		 */
-		public FromDateFieldList(DateTimeZone dateTimeZone) {
+		public DateFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1209,12 +1209,12 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromDateFieldArray<T extends Date> extends BaseToInterval<T[]> {
+	static final class DateFieldArrayToInterval<T extends Date> extends BaseToInterval<T[]> {
 
 		/**
 		 * It creates an {@link Interval} from the given {@link Date} elements.
 		 */
-		public FromDateFieldArray() {
+		public DateFieldArrayToInterval() {
 			super();			
 		}		
 		
@@ -1224,7 +1224,7 @@ public final class FnToInterval {
 		 * 
 		 * @param chronology
 		 */
-		public FromDateFieldArray(Chronology chronology) {
+		public DateFieldArrayToInterval(Chronology chronology) {
 			super(chronology);					
 		}
 		
@@ -1235,7 +1235,7 @@ public final class FnToInterval {
 		 * 
 		 * @param dateTimeZone
 		 */
-		public FromDateFieldArray(DateTimeZone dateTimeZone) {
+		public DateFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1261,13 +1261,13 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromTimestampFieldList extends BaseToInterval<List<Timestamp>> {
+	static final class TimestampFieldListToInterval extends BaseToInterval<List<Timestamp>> {
 
 		/**
 		 * The given {@link Timestamp} target elements will be used as the start and end
 		 * of the {@link Interval} returned
 		 */
-		public FromTimestampFieldList() {
+		public TimestampFieldListToInterval() {
 			super();			
 		}		
 		
@@ -1275,7 +1275,7 @@ public final class FnToInterval {
 		 * The given {@link Timestamp} target elements will be used as the start and end
 		 * of the {@link Interval} returned with the given {@link Chronology}
 		 */
-		public FromTimestampFieldList(Chronology chronology) {
+		public TimestampFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1283,7 +1283,7 @@ public final class FnToInterval {
 		 * The given {@link Timestamp} target elements will be used as the start and end
 		 * of the {@link Interval} returned with the given {@link DateTimeZone}
 		 */		
-		public FromTimestampFieldList(DateTimeZone dateTimeZone) {
+		public TimestampFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1309,13 +1309,13 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromTimestampFieldArray extends BaseToInterval<Timestamp[]> {
+	static final class TimestampFieldArrayToInterval extends BaseToInterval<Timestamp[]> {
 
 		/**
 		 * The given {@link Timestamp} target elements will be used as the start and end
 		 * of the {@link Interval} returned
 		 */
-		public FromTimestampFieldArray() {
+		public TimestampFieldArrayToInterval() {
 			super();			
 		}		
 		
@@ -1323,7 +1323,7 @@ public final class FnToInterval {
 		 * The given {@link Timestamp} target elements will be used as the start and end
 		 * of the {@link Interval} returned with the given {@link Chronology}
 		 */
-		public FromTimestampFieldArray(Chronology chronology) {
+		public TimestampFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1331,7 +1331,7 @@ public final class FnToInterval {
 		 * The given {@link Timestamp} target elements will be used as the start and end
 		 * of the {@link Interval} returned with the given {@link DateTimeZone}
 		 */	
-		public FromTimestampFieldArray(DateTimeZone dateTimeZone) {
+		public TimestampFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1357,13 +1357,13 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromLongFieldList extends BaseToInterval<List<Long>> {
+	static final class LongFieldListToInterval extends BaseToInterval<List<Long>> {
 
 		/**
 		 * The given {@link Long} targets representing the time in millis will be used as the start
 		 * and end of the {@link Interval} returned
 		 */
-		public FromLongFieldList() {
+		public LongFieldListToInterval() {
 			super();			
 		}		
 		
@@ -1372,7 +1372,7 @@ public final class FnToInterval {
 		 * and end of the {@link Interval} returned. The interval will be created with the given
 		 * {@link Chronology}
 		 */
-		public FromLongFieldList(Chronology chronology) {
+		public LongFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1381,7 +1381,7 @@ public final class FnToInterval {
 		 * and end of the {@link Interval} returned. The interval will be created with the given
 		 * {@link DateTimeZone}
 		 */
-		public FromLongFieldList(DateTimeZone dateTimeZone) {
+		public LongFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1407,13 +1407,13 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromLongFieldArray extends BaseToInterval<Long[]> {
+	static final class LongFieldArrayToInterval extends BaseToInterval<Long[]> {
 
 		/**
 		 * The given {@link Long} targets representing the time in millis will be used as the start
 		 * and end of the {@link Interval} returned
 		 */
-		public FromLongFieldArray() {
+		public LongFieldArrayToInterval() {
 			super();			
 		}		
 		
@@ -1422,7 +1422,7 @@ public final class FnToInterval {
 		 * and end of the {@link Interval} returned. The interval will be created with the given
 		 * {@link Chronology}
 		 */
-		public FromLongFieldArray(Chronology chronology) {
+		public LongFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1431,7 +1431,7 @@ public final class FnToInterval {
 		 * and end of the {@link Interval} returned. The interval will be created with the given
 		 * {@link DateTimeZone}
 		 */
-		public FromLongFieldArray(DateTimeZone dateTimeZone) {
+		public LongFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1457,17 +1457,17 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromIntegerFieldList extends BaseToInterval<List<Integer>> {
+	static final class IntegerFieldListToInterval extends BaseToInterval<List<Integer>> {
 
-		public FromIntegerFieldList() {
+		public IntegerFieldListToInterval() {
 			super();			
 		}	
 		
-		public FromIntegerFieldList(DateTimeZone dateTimeZone) {
+		public IntegerFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
-		public FromIntegerFieldList(Chronology chronology) {
+		public IntegerFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1564,17 +1564,17 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromIntegerFieldArray extends BaseToInterval<Integer[]> {
+	static final class IntegerFieldArrayToInterval extends BaseToInterval<Integer[]> {
 
-		public FromIntegerFieldArray() {
+		public IntegerFieldArrayToInterval() {
 			super();			
 		}	
 		
-		public FromIntegerFieldArray(DateTimeZone dateTimeZone) {
+		public IntegerFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
-		public FromIntegerFieldArray(Chronology chronology) {
+		public IntegerFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1670,13 +1670,13 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromCalendarFieldList extends BaseToInterval<List<? extends Calendar>> {
+	static final class CalendarFieldListToInterval extends BaseToInterval<List<? extends Calendar>> {
 
 		/**
 		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
 		 * and end of the interval
 		 */
-		public FromCalendarFieldList() {
+		public CalendarFieldListToInterval() {
 			super();			
 		}		
 		
@@ -1686,7 +1686,7 @@ public final class FnToInterval {
 		 * 
 		 * @param chronology
 		 */
-		public FromCalendarFieldList(Chronology chronology) {
+		public CalendarFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1696,7 +1696,7 @@ public final class FnToInterval {
 		 *                 
 		 * @param dateTimeZone
 		 */
-		public FromCalendarFieldList(DateTimeZone dateTimeZone) {
+		public CalendarFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1722,13 +1722,13 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromCalendarFieldArray<T extends Calendar> extends BaseToInterval<T[]> {
+	static final class CalendarFieldArrayToInterval<T extends Calendar> extends BaseToInterval<T[]> {
 
 		/**
 		 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
 		 * and end of the interval
 		 */
-		public FromCalendarFieldArray() {
+		public CalendarFieldArrayToInterval() {
 			super();			
 		}		
 		
@@ -1738,7 +1738,7 @@ public final class FnToInterval {
 		 * 
 		 * @param chronology
 		 */
-		public FromCalendarFieldArray(Chronology chronology) {
+		public CalendarFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1748,7 +1748,7 @@ public final class FnToInterval {
 		 *                 
 		 * @param dateTimeZone
 		 */
-		public FromCalendarFieldArray(DateTimeZone dateTimeZone) {
+		public CalendarFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1774,17 +1774,17 @@ public final class FnToInterval {
 		}		
 	}	
 		
-	static final class FromBaseDateTimeFieldList extends BaseToInterval<List<? extends BaseDateTime>> {
+	static final class BaseDateTimeFieldListToInterval extends BaseToInterval<List<? extends BaseDateTime>> {
 
-		public FromBaseDateTimeFieldList() {
+		public BaseDateTimeFieldListToInterval() {
 			super();			
 		}		
 		
-		public FromBaseDateTimeFieldList(Chronology chronology) {
+		public BaseDateTimeFieldListToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromBaseDateTimeFieldList(DateTimeZone dateTimeZone) {
+		public BaseDateTimeFieldListToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1810,17 +1810,17 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class FromBaseDateTimeFieldArray<T extends BaseDateTime> extends BaseToInterval<T[]> {
+	static final class BaseDateTimeFieldArrayToInterval<T extends BaseDateTime> extends BaseToInterval<T[]> {
 
-		public FromBaseDateTimeFieldArray() {
+		public BaseDateTimeFieldArrayToInterval() {
 			super();			
 		}		
 		
-		public FromBaseDateTimeFieldArray(Chronology chronology) {
+		public BaseDateTimeFieldArrayToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public FromBaseDateTimeFieldArray(DateTimeZone dateTimeZone) {
+		public BaseDateTimeFieldArrayToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		

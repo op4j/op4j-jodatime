@@ -55,8 +55,8 @@ public final class FnJodaToString {
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @return
 	 */
-	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format) {
-		return new FromBaseDateTime(formatType, format);
+	public static final BaseDateTimeToStr fromBaseDateTime(final FormatType formatType, final String format) {
+		return new BaseDateTimeToStr(formatType, format);
 	}
 	
 	/**
@@ -67,8 +67,8 @@ public final class FnJodaToString {
 	 * @param locale {@link Locale} to be used with the given pattern
 	 * @return
 	 */
-	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format, final Locale locale) {
-		return new FromBaseDateTime(formatType, format, locale);
+	public static final BaseDateTimeToStr fromBaseDateTime(final FormatType formatType, final String format, final Locale locale) {
+		return new BaseDateTimeToStr(formatType, format, locale);
 	}
 	
 	/**
@@ -79,8 +79,8 @@ public final class FnJodaToString {
 	 * @param chronology
 	 * @return
 	 */
-	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format, final Chronology chronology) {
-		return new FromBaseDateTime(formatType, format, chronology);
+	public static final BaseDateTimeToStr fromBaseDateTime(final FormatType formatType, final String format, final Chronology chronology) {
+		return new BaseDateTimeToStr(formatType, format, chronology);
 	}
 	/**
 	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
@@ -90,16 +90,16 @@ public final class FnJodaToString {
 	 * @param locale locale to be used with the given pattern
 	 * @return
 	 */
-	public static final FromBaseDateTime fromBaseDateTime(final FormatType formatType, final String format, final String locale) {
-		return new FromBaseDateTime(formatType, format, locale);
+	public static final BaseDateTimeToStr fromBaseDateTime(final FormatType formatType, final String format, final String locale) {
+		return new BaseDateTimeToStr(formatType, format, locale);
 	}
 	/**
 	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given {@link DateTimeFormatter}
 	 * 
 	 * @param formatter
 	 */
-	public static final FromBaseDateTime fromBaseDateTime(final DateTimeFormatter formatter) {
-		return new FromBaseDateTime(formatter);
+	public static final BaseDateTimeToStr fromBaseDateTime(final DateTimeFormatter formatter) {
+		return new BaseDateTimeToStr(formatter);
 	}
 	//
 	
@@ -111,8 +111,8 @@ public final class FnJodaToString {
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @return
 	 */
-	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format) {
-		return new FromLocalTime(formatType, format);
+	public static final LocalTimeToStr fromLocalTime(final FormatType formatType, final String format) {
+		return new LocalTimeToStr(formatType, format);
 	}
 	
 	/**
@@ -123,8 +123,8 @@ public final class FnJodaToString {
 	 * @param locale locale to be used with the pattern
 	 * @return
 	 */
-	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final Locale locale) {
-		return new FromLocalTime(formatType, format, locale);
+	public static final LocalTimeToStr fromLocalTime(final FormatType formatType, final String format, final Locale locale) {
+		return new LocalTimeToStr(formatType, format, locale);
 	}
 	
 	/**
@@ -135,8 +135,8 @@ public final class FnJodaToString {
 	 * @param chronology
 	 * @return
 	 */
-	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final Chronology chronology) {
-		return new FromLocalTime(formatType, format, chronology);
+	public static final LocalTimeToStr fromLocalTime(final FormatType formatType, final String format, final Chronology chronology) {
+		return new LocalTimeToStr(formatType, format, chronology);
 	}
 	
 	/**
@@ -147,16 +147,16 @@ public final class FnJodaToString {
 	 * @param locale locale to be used with the pattern
 	 * @return
 	 */
-	public static final FromLocalTime fromLocalTime(final FormatType formatType, final String format, final String locale) {
-		return new FromLocalTime(formatType, format, locale);
+	public static final LocalTimeToStr fromLocalTime(final FormatType formatType, final String format, final String locale) {
+		return new LocalTimeToStr(formatType, format, locale);
 	}
 	/**
 	 * It converts the given {@link LocalTime} into a {@link String} by means of the given {@link DateTimeFormatter}
 	 * 
 	 * @param formatter
 	 */
-	public static final FromLocalTime fromLocalTime(final DateTimeFormatter formatter) {
-		return new FromLocalTime(formatter);
+	public static final LocalTimeToStr fromLocalTime(final DateTimeFormatter formatter) {
+		return new LocalTimeToStr(formatter);
 	}
 	//
 	
@@ -168,8 +168,8 @@ public final class FnJodaToString {
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
 	 */
-	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format) {
-		return new FromLocalDate(formatType, format);
+	public static final LocalDateToStr fromLocalDate(final FormatType formatType, final String format) {
+		return new LocalDateToStr(formatType, format);
 	}
 	/**
 	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
@@ -179,8 +179,8 @@ public final class FnJodaToString {
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale
 	 */
-	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
-		return new FromLocalDate(formatType, format, locale);
+	public static final LocalDateToStr fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
+		return new LocalDateToStr(formatType, format, locale);
 	}
 	/**
 	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
@@ -190,8 +190,8 @@ public final class FnJodaToString {
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param chronology
 	 */
-	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
-		return new FromLocalDate(formatType, format, chronology);
+	public static final LocalDateToStr fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
+		return new LocalDateToStr(formatType, format, chronology);
 	}
 	/**
 	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
@@ -201,8 +201,8 @@ public final class FnJodaToString {
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale
 	 */
-	public static final FromLocalDate fromLocalDate(final FormatType formatType, final String format, final String locale) {
-		return new FromLocalDate(formatType, format, locale);
+	public static final LocalDateToStr fromLocalDate(final FormatType formatType, final String format, final String locale) {
+		return new LocalDateToStr(formatType, format, locale);
 	}
 	
 	/**
@@ -210,8 +210,8 @@ public final class FnJodaToString {
 	 * 
 	 * @param formatter
 	 */
-	public static final FromLocalDate fromLocalDate(final DateTimeFormatter formatter) {
-		return new FromLocalDate(formatter);
+	public static final LocalDateToStr fromLocalDate(final DateTimeFormatter formatter) {
+		return new LocalDateToStr(formatter);
 	}
 	//
 	
@@ -220,7 +220,7 @@ public final class FnJodaToString {
 		STYLE			
 	}
 	
-	static final class FromBaseDateTime extends AbstractNullAsNullFunction<BaseDateTime, String> {
+	static final class BaseDateTimeToStr extends AbstractNullAsNullFunction<BaseDateTime, String> {
 
 		private ConversionType conversionType;
 		
@@ -236,7 +236,7 @@ public final class FnJodaToString {
 			FROM_FORMATTER
 		}
 		
-		public FromBaseDateTime(DateTimeFormatter formatter) {
+		public BaseDateTimeToStr(DateTimeFormatter formatter) {
 			super();
 			
 			Validate.notNull(formatter, "formatter can't be null");
@@ -245,13 +245,13 @@ public final class FnJodaToString {
 			this.conversionType = ConversionType.FROM_FORMATTER;
 		}
 		
-		public FromBaseDateTime(FormatType formatType, String format) {
+		public BaseDateTimeToStr(FormatType formatType, String format) {
 			super();		
 			
 			setPatternStyleAndConversionType(formatType, format);
 		}
 		
-		public FromBaseDateTime(FormatType formatType, String format, Chronology chronology) {
+		public BaseDateTimeToStr(FormatType formatType, String format, Chronology chronology) {
 			super();			
 			
 			Validate.notNull(chronology, "chronology can't be null");
@@ -260,7 +260,7 @@ public final class FnJodaToString {
 			this.chronology = chronology;
 		}
 		
-		public FromBaseDateTime(FormatType formatType, String format, Locale locale) {
+		public BaseDateTimeToStr(FormatType formatType, String format, Locale locale) {
 			super();			
 			
 			Validate.notNull(locale, "locale can't be null");
@@ -269,7 +269,7 @@ public final class FnJodaToString {
 			this.locale = locale;
 		}
 		
-		public FromBaseDateTime(FormatType formatType, String format, String locale) {
+		public BaseDateTimeToStr(FormatType formatType, String format, String locale) {
 			super();	
 			
 			Validate.notEmpty(locale, "locale can't be neither empty nor null");
@@ -322,7 +322,7 @@ public final class FnJodaToString {
 		}		
 	}
 	
-	static final class FromLocalTime extends AbstractNullAsNullFunction<LocalTime, String> {
+	static final class LocalTimeToStr extends AbstractNullAsNullFunction<LocalTime, String> {
 
 		private ConversionType conversionType;
 		
@@ -338,7 +338,7 @@ public final class FnJodaToString {
 			FROM_FORMATTER
 		}
 		
-		public FromLocalTime(DateTimeFormatter formatter) {
+		public LocalTimeToStr(DateTimeFormatter formatter) {
 			super();
 			
 			Validate.notNull(formatter, "formatter can't be null");
@@ -347,12 +347,12 @@ public final class FnJodaToString {
 			this.conversionType = ConversionType.FROM_FORMATTER;
 		}
 		
-		public FromLocalTime(FormatType formatType, String format) {
+		public LocalTimeToStr(FormatType formatType, String format) {
 			super();			
 			setPatternStyleAndConversionType(formatType, format);
 		}
 		
-		public FromLocalTime(FormatType formatType, String format, Chronology chronology) {
+		public LocalTimeToStr(FormatType formatType, String format, Chronology chronology) {
 			super();			
 			
 			Validate.notNull(chronology, "chronology can't be null");
@@ -361,7 +361,7 @@ public final class FnJodaToString {
 			this.chronology = chronology;
 		}
 		
-		public FromLocalTime(FormatType formatType, String format, Locale locale) {
+		public LocalTimeToStr(FormatType formatType, String format, Locale locale) {
 			super();			
 			
 			Validate.notNull(locale, "locale can't be null");
@@ -370,7 +370,7 @@ public final class FnJodaToString {
 			this.locale = locale;
 		}
 		
-		public FromLocalTime(FormatType formatType, String format, String locale) {
+		public LocalTimeToStr(FormatType formatType, String format, String locale) {
 			super();			
 			
 			Validate.notEmpty(locale, "locale can't be neither empty nor null");
@@ -423,7 +423,7 @@ public final class FnJodaToString {
 		}
 	}
 	
-	static final class FromLocalDate extends AbstractNullAsNullFunction<LocalDate, String> {
+	static final class LocalDateToStr extends AbstractNullAsNullFunction<LocalDate, String> {
 
 		private ConversionType conversionType;
 		
@@ -439,7 +439,7 @@ public final class FnJodaToString {
 			FROM_FORMATTER
 		}
 		
-		public FromLocalDate(DateTimeFormatter formatter) {
+		public LocalDateToStr(DateTimeFormatter formatter) {
 			super();
 			
 			Validate.notNull(formatter, "formatter can't be null");
@@ -448,12 +448,12 @@ public final class FnJodaToString {
 			this.conversionType = ConversionType.FROM_FORMATTER;
 		}
 		
-		public FromLocalDate(FormatType formatType, String format) {
+		public LocalDateToStr(FormatType formatType, String format) {
 			super();			
 			setPatternStyleAndConversionType(formatType, format);
 		}
 		
-		public FromLocalDate(FormatType formatType, String format, Chronology chronology) {
+		public LocalDateToStr(FormatType formatType, String format, Chronology chronology) {
 			super();		
 			
 			Validate.notNull(chronology, "chronology can't be null");
@@ -463,7 +463,7 @@ public final class FnJodaToString {
 		}
 		
 		
-		public FromLocalDate(FormatType formatType, String format, Locale locale) {
+		public LocalDateToStr(FormatType formatType, String format, Locale locale) {
 			super();	
 			
 			Validate.notNull(locale, "locale can't be null");
@@ -472,7 +472,7 @@ public final class FnJodaToString {
 			this.locale = locale;
 		}
 		
-		public FromLocalDate(FormatType formatType, String format, String locale) {
+		public LocalDateToStr(FormatType formatType, String format, String locale) {
 			super();	
 			
 			Validate.notEmpty(locale, "locale can't be neither empty nor null");
