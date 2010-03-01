@@ -44,7 +44,7 @@ import org.op4j.functions.ExecCtx;
  * 
  * @since 1.0
  * 
- * @author Soraya S&aacute;nchez
+ * @author Soraya S&aacute;nchez Labandeira
  *
  */
 public final class FnToInterval {
@@ -74,8 +74,8 @@ public final class FnToInterval {
 	
 	//From String list or array
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -90,8 +90,8 @@ public final class FnToInterval {
 	}
 
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -106,8 +106,8 @@ public final class FnToInterval {
 		return new StringFieldListToInterval(dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -176,7 +176,7 @@ public final class FnToInterval {
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -187,7 +187,7 @@ public final class FnToInterval {
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -198,7 +198,7 @@ public final class FnToInterval {
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -209,7 +209,7 @@ public final class FnToInterval {
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
 	 *
 	 * @param pattern
 	 * @param locale
@@ -220,8 +220,8 @@ public final class FnToInterval {
 	}	
 	
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -235,8 +235,8 @@ public final class FnToInterval {
 		return STRING_FIELD_ARRAY_TO_INTERVAL;
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -251,8 +251,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -267,8 +267,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(chronology);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -283,8 +283,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -300,8 +300,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -317,8 +317,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, chronology);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -334,8 +334,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -351,8 +351,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale);
 	}	
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -369,8 +369,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -387,8 +387,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}	
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -405,8 +405,8 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale, chronology);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -542,7 +542,7 @@ public final class FnToInterval {
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -551,8 +551,8 @@ public final class FnToInterval {
 		return new LongFieldListToInterval(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} targets representing the time in millis will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -570,7 +570,7 @@ public final class FnToInterval {
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -580,7 +580,7 @@ public final class FnToInterval {
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -616,14 +616,14 @@ public final class FnToInterval {
 	// From Calendar list or array
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
-	 * and end of the interval
+	 * and end of the {@link Interval}
 	 */
 	public static final CalendarFieldListToInterval fromCalendarFieldList() {
 		return CALENDAR_FIELD_LIST_TO_INTERVAL;
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * Such an interval will be created in the given DateTimeZone
+	 * Such an {@link Interval} will be created in the given DateTimeZone
 	 *                 
 	 * @param dateTimeZone
 	 */
@@ -632,7 +632,7 @@ public final class FnToInterval {
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * The interval will be created with the given {@link Chronology}
+	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -642,14 +642,14 @@ public final class FnToInterval {
 	
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
-	 * and end of the interval
+	 * and end of the {@link Interval}
 	 */
 	public static final <T extends Calendar> CalendarFieldArrayToInterval<T> fromCalendarFieldArray() {
 		return new CalendarFieldArrayToInterval<T>();
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * Such an interval will be created in the given DateTimeZone
+	 * Such an {@link Interval} will be created in the given DateTimeZone
 	 *                 
 	 * @param dateTimeZone
 	 */
@@ -658,7 +658,7 @@ public final class FnToInterval {
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * The interval will be created with the given {@link Chronology}
+	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */

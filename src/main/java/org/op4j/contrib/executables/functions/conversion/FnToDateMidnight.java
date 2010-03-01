@@ -42,7 +42,7 @@ import org.op4j.functions.ExecCtx;
  * 
  * @since 1.0
  * 
- * @author Soraya S&aacute;nchez
+ * @author Soraya S&aacute;nchez Labandeira
  *
  */
 public final class FnToDateMidnight {

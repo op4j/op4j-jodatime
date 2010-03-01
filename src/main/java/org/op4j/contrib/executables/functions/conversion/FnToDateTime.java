@@ -42,7 +42,7 @@ import org.op4j.functions.ExecCtx;
  * 
  * @since 1.0
  * 
- * @author Soraya S&aacute;nchez
+ * @author Soraya S&aacute;nchez Labandeira
  *
  */
 public final class FnToDateTime {
@@ -218,13 +218,13 @@ public final class FnToDateTime {
 	
 	// Conversion from Long
 	/**
-	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime}
+	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime}
 	 */
 	public static final LongToDateTime fromLong() {
 		return LONG_TO_DATE_TIME;
 	}
 	/**
-	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} in the given
+	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime} in the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -233,7 +233,7 @@ public final class FnToDateTime {
 		return new LongToDateTime(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} with the given
+	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime} with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -245,14 +245,14 @@ public final class FnToDateTime {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link DateTime} is created from the given integer list.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldListToDateTime fromIntegerFieldList() {
 		return INTEGER_FIELD_LIST_TO_DATE_TIME;
 	}
 	/**
-	 * A {@link DateTime} is created from the given integer list.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -266,14 +266,14 @@ public final class FnToDateTime {
 	
 	// Conversion from Integer array
 	/**
-	 * A {@link DateTime} is created from the given integer array.
+	 * A {@link DateTime} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldArrayToDateTime fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_DATE_TIME;
 	}
 	/**
-	 * A {@link DateTime} is created from the given integer array.
+	 * A {@link DateTime} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -287,14 +287,14 @@ public final class FnToDateTime {
 	
 	// Conversion from String list
 	/**
-	 * A {@link DateTime} is created from the given {@link String} list.
+	 * A {@link DateTime} is created from the given {@link String} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldListToDateTime fromStringFieldList() {
 		return STRING_FIELD_LIST_TO_DATE_TIME;
 	}
 	/**
-	 * A {@link DateTime} is created from the given {@link String} list.
+	 * A {@link DateTime} is created from the given {@link String} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
