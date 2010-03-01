@@ -57,8 +57,9 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
-	 * 		 
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
+	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @return
@@ -68,7 +69,8 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
 	 * 		 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -81,6 +83,7 @@ public class FnJodaTimeUtils {
 	
 	/**
 	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -91,7 +94,8 @@ public class FnJodaTimeUtils {
 		return FnJodaToString.fromBaseDateTime(formatType, format, chronology);
 	}
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style.
+	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
 	 * 		 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -111,7 +115,8 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
 	 *  
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -122,7 +127,8 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
 	 *  
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -134,7 +140,8 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -146,7 +153,8 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style.
+	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * (depending on the value of formatType parameter).
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
