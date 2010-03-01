@@ -216,13 +216,13 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Long
 	/**
-	 * The given long representing the time in millis is converted into a {@link DateMidnight}
+	 * The given long representing the time in milliseconds is converted into a {@link DateMidnight}
 	 */
 	public static final LongToDateMidnight fromLong() {
 		return LONG_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link DateMidnight} in the given
+	 * The given long representing the time in milliseconds is converted into a {@link DateMidnight} in the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -231,7 +231,7 @@ public final class FnToDateMidnight {
 		return new LongToDateMidnight(dateTimeZone);
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link DateMidnight} with the given
+	 * The given long representing the time in milliseconds is converted into a {@link DateMidnight} with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -243,14 +243,14 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link DateMidnight} is created from the given integer list.
+	 * A {@link DateMidnight} is created from the given {@link Integer} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldListToDateMidnight fromIntegerFieldList() {
 		return INTEGER_FIELD_LIST_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given integer list.
+	 * A {@link DateMidnight} is created from the given {@link Integer} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -264,14 +264,14 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Integer array
 	/**
-	 * A {@link DateMidnight} is created from the given integer array.
+	 * A {@link DateMidnight} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IntegerFieldArrayToDateMidnight fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given integer array.
+	 * A {@link DateMidnight} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -285,14 +285,14 @@ public final class FnToDateMidnight {
 	
 	// Conversion from String list
 	/**
-	 * A {@link DateMidnight} is created from the given string list.
+	 * A {@link DateMidnight} is created from the given {@link String} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldListToDateMidnight fromStringFieldList() {
 		return STRING_FIELD_LIST_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given string list.
+	 * A {@link DateMidnight} is created from the given {@link String} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -306,14 +306,14 @@ public final class FnToDateMidnight {
 	
 	// Conversion from String array
 	/**
-	 * A {@link DateMidnight} is created from the given string array.
+	 * A {@link DateMidnight} is created from the given {@link String} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldArrayToDateMidnight fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given string array.
+	 * A {@link DateMidnight} is created from the given {@link String} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
