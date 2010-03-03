@@ -39,7 +39,7 @@ import org.op4j.functions.ExecCtx;
  * 
  * @since 1.0
  * 
- * @author Soraya S&aacute;nchez
+ * @author Soraya S&aacute;nchez Labandeira
  *
  */
 public final class FnToPeriod {
@@ -173,7 +173,7 @@ public final class FnToPeriod {
 	
 	// Conversion from two long objects
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
@@ -182,7 +182,7 @@ public final class FnToPeriod {
 		return LONG_FIELD_LIST_TO_PERIOD;
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param chronology {@link Chronology} the {@link Period} will be created with
@@ -193,7 +193,7 @@ public final class FnToPeriod {
 		return new LongFieldListToPeriod(chronology);
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with
@@ -204,7 +204,7 @@ public final class FnToPeriod {
 		return new LongFieldListToPeriod(periodType);
 	}
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with
@@ -216,7 +216,7 @@ public final class FnToPeriod {
 		return new LongFieldListToPeriod(periodType, chronology);
 	}
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
@@ -225,7 +225,7 @@ public final class FnToPeriod {
 		return LONG_FIELD_ARRAY_TO_PERIOD;
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param chronology {@link Chronology} the {@link Period} will be created with
@@ -236,7 +236,7 @@ public final class FnToPeriod {
 		return new LongFieldArrayToPeriod(chronology);
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with
@@ -247,7 +247,7 @@ public final class FnToPeriod {
 		return new LongFieldArrayToPeriod(periodType);
 	}
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with

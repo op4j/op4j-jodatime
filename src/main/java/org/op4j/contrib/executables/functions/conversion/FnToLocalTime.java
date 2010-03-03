@@ -43,7 +43,7 @@ import org.op4j.functions.ExecCtx;
  * 
  * @since 1.0
  * 
- * @author Soraya S&aacute;nchez
+ * @author Soraya S&aacute;nchez Labandeira
  *
  */
 public final class FnToLocalTime {
@@ -213,13 +213,13 @@ public final class FnToLocalTime {
 	
 	// Conversion from Long
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalTime}
+	 * The given long representing the time in milliseconds is converted into a {@link LocalTime}
 	 */
 	public static final LongToLocalTime fromLong() {
 		return LONG_TO_LOCAL_TIME;
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
+	 * The given long representing the time in milliseconds is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -227,7 +227,7 @@ public final class FnToLocalTime {
 		return new LongToLocalTime(dateTimeZone);
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalTime} with the given {@link Chronology}
+	 * The given long representing the time in milliseconds is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */

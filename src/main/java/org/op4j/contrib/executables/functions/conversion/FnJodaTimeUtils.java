@@ -643,13 +643,13 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime}
+	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime}
 	 */
 	public static final IFunction<Long, DateTime> longToDateTime() {
 		return FnToDateTime.fromLong();
 	}
 	/**
-	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} in the given
+	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime} in the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -658,7 +658,7 @@ public class FnJodaTimeUtils {
 		return FnToDateTime.fromLong(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} representing the time in millis is converted into a {@link DateTime} with the given
+	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime} with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -668,14 +668,14 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link DateTime} is created from the given integer list.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IFunction<List<Integer>, DateTime> integerFieldListToDateTime() {
 		return FnToDateTime.fromIntegerFieldList();
 	}
 	/**
-	 * A {@link DateTime} is created from the given integer list.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -686,14 +686,14 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link DateTime} is created from the given integer array.
+	 * A {@link DateTime} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IFunction<Integer[], DateTime> integerFieldArrayToDateTime() {
 		return FnToDateTime.fromIntegerFieldArray();
 	}
 	/**
-	 * A {@link DateTime} is created from the given integer array.
+	 * A {@link DateTime} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -704,14 +704,14 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link DateTime} is created from the given {@link String} list.
+	 * A {@link DateTime} is created from the given {@link String} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final IFunction<List<String>, DateTime> stringFieldListToDateTime() {
 		return FnToDateTime.fromStringFieldList();
 	}
 	/**
-	 * A {@link DateTime} is created from the given {@link String} list.
+	 * A {@link DateTime} is created from the given {@link String} {@link List}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
@@ -763,8 +763,8 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -779,8 +779,8 @@ public class FnJodaTimeUtils {
 	}
 
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -795,8 +795,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldList(dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input lists are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -865,7 +865,7 @@ public class FnJodaTimeUtils {
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -876,7 +876,7 @@ public class FnJodaTimeUtils {
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -887,7 +887,7 @@ public class FnJodaTimeUtils {
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -898,7 +898,7 @@ public class FnJodaTimeUtils {
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
-	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the interval.
+	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
 	 *
 	 * @param pattern
 	 * @param locale
@@ -909,8 +909,8 @@ public class FnJodaTimeUtils {
 	}	
 	
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -924,8 +924,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray();
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -940,8 +940,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -956,8 +956,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(chronology);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -972,8 +972,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -989,8 +989,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1006,8 +1006,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern, chronology);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1023,8 +1023,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern, locale);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1040,8 +1040,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern, locale);
 	}	
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1058,8 +1058,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern, locale, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1076,8 +1076,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern, locale, dateTimeZone);
 	}	
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1094,8 +1094,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromStringFieldArray(pattern, locale, chronology);
 	}
 	/**
-	 * It converts the given {@link String} elements into an interval. 
-	 * The target {@link String} elements represent the start and end of the interval. The accepted input arrays are:
+	 * It converts the given {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1225,7 +1225,7 @@ public class FnJodaTimeUtils {
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -1234,8 +1234,8 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromLongFieldList(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} targets representing the time in millis will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -1253,7 +1253,7 @@ public class FnJodaTimeUtils {
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -1263,7 +1263,7 @@ public class FnJodaTimeUtils {
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
-	 * and end of the {@link Interval} returned. The interval will be created with the given
+	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -1294,14 +1294,14 @@ public class FnJodaTimeUtils {
 	
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
-	 * and end of the interval
+	 * and end of the {@link Interval}
 	 */
 	public static final IFunction<List<? extends Calendar>, Interval> calendarFieldListToInterval() {
 		return FnToInterval.fromCalendarFieldList();
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * Such an interval will be created in the given DateTimeZone
+	 * Such an {@link Interval} will be created in the given DateTimeZone
 	 *                 
 	 * @param dateTimeZone
 	 */
@@ -1310,7 +1310,7 @@ public class FnJodaTimeUtils {
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * The interval will be created with the given {@link Chronology}
+	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -1320,14 +1320,14 @@ public class FnJodaTimeUtils {
 	
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
-	 * and end of the interval
+	 * and end of the {@link Interval}
 	 */
 	public static final <T extends Calendar> IFunction<T[], Interval> calendarFieldArrayToInterval() {
 		return FnToInterval.fromCalendarFieldArray();
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * Such an interval will be created in the given DateTimeZone
+	 * Such an {@link Interval} will be created in the given DateTimeZone
 	 *                 
 	 * @param dateTimeZone
 	 */
@@ -1336,7 +1336,7 @@ public class FnJodaTimeUtils {
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
-	 * The interval will be created with the given {@link Chronology}
+	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -1513,13 +1513,13 @@ public class FnJodaTimeUtils {
 	
 	
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalDate}
+	 * The given long representing the time in milliseconds is converted into a {@link LocalDate}
 	 */
 	public static final IFunction<Long, LocalDate> longToLocalDate() {
 		return FnToLocalDate.fromLong();
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalDate} in the given
+	 * The given long representing the time in milliseconds is converted into a {@link LocalDate} in the given
 	 * {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
@@ -1528,7 +1528,7 @@ public class FnJodaTimeUtils {
 		return FnToLocalDate.fromLong(dateTimeZone);
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalDate} with the given
+	 * The given long representing the time in milliseconds is converted into a {@link LocalDate} with the given
 	 * {@link Chronology}
 	 * 
 	 * @param chronology
@@ -1775,13 +1775,13 @@ public class FnJodaTimeUtils {
 	}
 
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalTime}
+	 * The given long representing the time in milliseconds is converted into a {@link LocalTime}
 	 */
 	public static final IFunction<Long, LocalTime> longToLocalTime() {
 		return FnToLocalTime.fromLong();
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalTime} in the given {@link DateTimeZone}
+	 * The given long representing the time in milliseconds is converted into a {@link LocalTime} in the given {@link DateTimeZone}
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -1789,7 +1789,7 @@ public class FnJodaTimeUtils {
 		return FnToLocalTime.fromLong(dateTimeZone);
 	}
 	/**
-	 * The given long representing the time in millis is converted into a {@link LocalTime} with the given {@link Chronology}
+	 * The given long representing the time in milliseconds is converted into a {@link LocalTime} with the given {@link Chronology}
 	 * 
 	 * @param chronology
 	 */
@@ -1989,7 +1989,7 @@ public class FnJodaTimeUtils {
 	}
 
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
@@ -1998,7 +1998,7 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromLongFieldList();
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param chronology {@link Chronology} the {@link Period} will be created with
@@ -2009,7 +2009,7 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromLongFieldList(chronology);
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with
@@ -2020,7 +2020,7 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromLongFieldList(periodType);
 	}
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with
@@ -2032,7 +2032,7 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromLongFieldList(periodType, chronology);
 	}
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
@@ -2041,7 +2041,7 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromLongFieldArray();
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param chronology {@link Chronology} the {@link Period} will be created with
@@ -2052,7 +2052,7 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromLongFieldArray(chronology);
 	}	
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with
@@ -2063,7 +2063,7 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromLongFieldArray(periodType);
 	}
 	/**
-	 * The given long targets representing the time in millis will be used as the start
+	 * The given long targets representing the time in milliseconds will be used as the start
 	 * and end instants of the Period returned 
 	 * 
 	 * @param periodType {@link PeriodType} the {@link Period} will be created with
