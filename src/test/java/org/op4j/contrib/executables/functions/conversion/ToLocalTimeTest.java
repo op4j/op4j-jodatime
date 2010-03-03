@@ -70,6 +70,9 @@ public class ToLocalTimeTest extends TestCase {
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
 				.parseDateTime(asStr).toLocalTime());
+		
+		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils.strToLocalTime(pattern,
+				Locale.CANADA.toString())).get());
 	}
 
 	@Test

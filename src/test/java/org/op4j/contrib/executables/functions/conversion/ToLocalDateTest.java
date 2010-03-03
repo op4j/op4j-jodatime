@@ -48,6 +48,10 @@ public class ToLocalDateTest extends TestCase {
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withChronology(BuddhistChronology.getInstance())
 				.parseDateTime(asStr).toLocalDate());
+		
+		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils
+				.strToLocalDate(pattern,
+				BuddhistChronology.getInstance())).get());
 	}
 
 	@Test

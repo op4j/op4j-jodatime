@@ -48,6 +48,9 @@ public class ToDateTimeTest extends TestCase {
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withChronology(BuddhistChronology.getInstance())
 				.parseDateTime(asStr));
+		
+		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils.strToDateTime(pattern,
+				BuddhistChronology.getInstance())).get());
 	}
 
 	@Test
@@ -106,6 +109,9 @@ public class ToDateTimeTest extends TestCase {
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
 				.withChronology(BuddhistChronology.getInstance())
 				.parseDateTime(asStr));
+		
+		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils.strToDateTime(pattern,
+				Locale.CANADA, BuddhistChronology.getInstance())).get());
 		
 		try {
 			Op.on(asStr).exec(FnToDateTime.fromString("",

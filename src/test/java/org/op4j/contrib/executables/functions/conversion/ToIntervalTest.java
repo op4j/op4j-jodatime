@@ -941,6 +941,11 @@ public class ToIntervalTest extends TestCase {
 		
 		assertEquals(result,
 				new Interval(start, end));
+		
+		assertEquals(result,
+				Op.on(new DateMidnight[] {start, end})
+					.exec(FnJodaTimeUtils.baseDateTimeFieldArrayToInterval())
+					.get());
 	}
 
 	@Test
@@ -971,6 +976,12 @@ public class ToIntervalTest extends TestCase {
 		assertEquals(result,
 				new Interval(start.getMillis(), end.getMillis(), 
 						BuddhistChronology.getInstance()));
+		
+		assertEquals(result,
+				Op.on(new DateTime[] {start, end})
+					.exec(FnJodaTimeUtils.baseDateTimeFieldArrayToInterval(BuddhistChronology.getInstance()))
+					.get());
+		
 	}
 
 }
