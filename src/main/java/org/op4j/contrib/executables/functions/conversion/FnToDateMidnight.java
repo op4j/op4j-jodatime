@@ -22,8 +22,9 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
@@ -49,9 +50,9 @@ public final class FnToDateMidnight {
 	
 	private final static TimestampToDateMidnight TIMESTAMP_TO_DATE_MIDNIGHT = new TimestampToDateMidnight();
 	private final static LongToDateMidnight LONG_TO_DATE_MIDNIGHT = new LongToDateMidnight();
-	private final static IntegerFieldListToDateMidnight INTEGER_FIELD_LIST_TO_DATE_MIDNIGHT = new IntegerFieldListToDateMidnight();
+	private final static IntegerFieldCollectionToDateMidnight INTEGER_FIELD_COLLECTION_TO_DATE_MIDNIGHT = new IntegerFieldCollectionToDateMidnight();
 	private final static IntegerFieldArrayToDateMidnight INTEGER_FIELD_ARRAY_TO_DATE_MIDNIGHT = new IntegerFieldArrayToDateMidnight();
-	private final static StringFieldListToDateMidnight STRING_FIELD_LIST_TO_DATE_MIDNIGHT = new StringFieldListToDateMidnight();
+	private final static StringFieldCollectionToDateMidnight STRING_FIELD_LIST_TO_DATE_MIDNIGHT = new StringFieldCollectionToDateMidnight();
 	private final static StringFieldArrayToDateMidnight STRING_FIELD_ARRAY_TO_DATE_MIDNIGHT = new StringFieldArrayToDateMidnight();
 	
 	private FnToDateMidnight() {
@@ -243,21 +244,21 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link DateMidnight} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldListToDateMidnight fromIntegerFieldList() {
-		return INTEGER_FIELD_LIST_TO_DATE_MIDNIGHT;
+	public static final IntegerFieldCollectionToDateMidnight fromIntegerFieldCollection() {
+		return INTEGER_FIELD_COLLECTION_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldListToDateMidnight fromIntegerFieldList(Chronology chronology) {
-		return new  IntegerFieldListToDateMidnight(chronology);
+	public static final IntegerFieldCollectionToDateMidnight fromIntegerFieldCollection(Chronology chronology) {
+		return new  IntegerFieldCollectionToDateMidnight(chronology);
 	}
 	//
 	
@@ -285,21 +286,21 @@ public final class FnToDateMidnight {
 	
 	// Conversion from String list
 	/**
-	 * A {@link DateMidnight} is created from the given {@link String} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldListToDateMidnight fromStringFieldList() {
+	public static final StringFieldCollectionToDateMidnight fromStringFieldCollection() {
 		return STRING_FIELD_LIST_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given {@link String} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldListToDateMidnight fromStringFieldList(Chronology chronology) {
-		return new  StringFieldListToDateMidnight(chronology);
+	public static final StringFieldCollectionToDateMidnight fromStringFieldCollection(Chronology chronology) {
+		return new  StringFieldCollectionToDateMidnight(chronology);
 	}
 	//
 	
@@ -596,13 +597,13 @@ public final class FnToDateMidnight {
 		}
 	}	
 	
-	static final class IntegerFieldListToDateMidnight extends BaseToDateMidnight<List<Integer>> {
+	static final class IntegerFieldCollectionToDateMidnight extends BaseToDateMidnight<Collection<Integer>> {
 
-		public IntegerFieldListToDateMidnight() {
+		public IntegerFieldCollectionToDateMidnight() {
 			super();			
 		}
 
-		public IntegerFieldListToDateMidnight(Chronology chronology) {
+		public IntegerFieldCollectionToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -610,16 +611,18 @@ public final class FnToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
+		public DateMidnight nullAsNullExecute(Collection<Integer> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new ExecutionException(
 						"Integer arguments list for DateMidnight conversion should of size " +
 						"between 1 and 3 (year, month, day). Size " + object.size() + " is not valid.");
 			}			
 			
-			int year = object.get(0).intValue();
-			int month = (object.size() >= 2) ? object.get(1).intValue() : 1;
-			int day = (object.size() >= 3) ? object.get(2).intValue() : 1;
+			Iterator<Integer> iterator = object.iterator();
+			
+			int year = iterator.next().intValue();
+			int month = (object.size() >= 2) ? iterator.next().intValue() : 1;
+			int day = (object.size() >= 3) ? iterator.next().intValue() : 1;
 			
 			if (this.chronology != null) {
 	        	return new DateMidnight(year, month, day, this.chronology);
@@ -663,13 +666,13 @@ public final class FnToDateMidnight {
 	
 	
 	
-	static final class StringFieldListToDateMidnight extends BaseToDateMidnight<List<String>> {
+	static final class StringFieldCollectionToDateMidnight extends BaseToDateMidnight<Collection<String>> {
 
-		public StringFieldListToDateMidnight() {
+		public StringFieldCollectionToDateMidnight() {
 			super();			
 		}
 
-		public StringFieldListToDateMidnight(Chronology chronology) {
+		public StringFieldCollectionToDateMidnight(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -677,16 +680,18 @@ public final class FnToDateMidnight {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public DateMidnight nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
+		public DateMidnight nullAsNullExecute(Collection<String> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new ExecutionException(
 						"String arguments list for DateMidnight conversion should of size " +
 						"between 1 and 3 (year, month, day). Size " + object.size() + " is not valid.");
 			}			
 			
-			String year = object.get(0);
-			String month = (object.size() >= 2) ? object.get(1) : "0";
-			String day = (object.size() >= 3) ? object.get(2) : "0";
+			Iterator<String> iterator = object.iterator();
+			
+			String year = iterator.next();
+			String month = (object.size() >= 2) ? iterator.next() : "0";
+			String day = (object.size() >= 3) ? iterator.next() : "0";
 			
 			if (this.chronology != null) {
 	        	return new DateMidnight(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
