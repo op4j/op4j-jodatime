@@ -52,7 +52,7 @@ public final class FnToDateMidnight {
 	private final static LongToDateMidnight LONG_TO_DATE_MIDNIGHT = new LongToDateMidnight();
 	private final static IntegerFieldCollectionToDateMidnight INTEGER_FIELD_COLLECTION_TO_DATE_MIDNIGHT = new IntegerFieldCollectionToDateMidnight();
 	private final static IntegerFieldArrayToDateMidnight INTEGER_FIELD_ARRAY_TO_DATE_MIDNIGHT = new IntegerFieldArrayToDateMidnight();
-	private final static StringFieldCollectionToDateMidnight STRING_FIELD_LIST_TO_DATE_MIDNIGHT = new StringFieldCollectionToDateMidnight();
+	private final static StringFieldCollectionToDateMidnight STRING_FIELD_COLLECTION_TO_DATE_MIDNIGHT = new StringFieldCollectionToDateMidnight();
 	private final static StringFieldArrayToDateMidnight STRING_FIELD_ARRAY_TO_DATE_MIDNIGHT = new StringFieldArrayToDateMidnight();
 	
 	private FnToDateMidnight() {
@@ -290,7 +290,7 @@ public final class FnToDateMidnight {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldCollectionToDateMidnight fromStringFieldCollection() {
-		return STRING_FIELD_LIST_TO_DATE_MIDNIGHT;
+		return STRING_FIELD_COLLECTION_TO_DATE_MIDNIGHT;
 	}
 	/**
 	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
