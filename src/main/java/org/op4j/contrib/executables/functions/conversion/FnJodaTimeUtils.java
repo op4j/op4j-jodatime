@@ -22,6 +22,7 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -399,21 +400,21 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link DateMidnight} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final Function<List<Integer>, DateMidnight>  integerFieldListToDateMidnight() {
-		return FnToDateMidnight.fromIntegerFieldList();
+	public static final Function<Collection<Integer>, DateMidnight>  integerFieldCollectionToDateMidnight() {
+		return FnToDateMidnight.fromIntegerFieldCollection();
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<Integer>, DateMidnight>  integerFieldListToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromIntegerFieldList(chronology);
+	public static final Function<Collection<Integer>, DateMidnight>  integerFieldCollectionToDateMidnight(Chronology chronology) {
+		return FnToDateMidnight.fromIntegerFieldCollection(chronology);
 	}
 	
 	/**
@@ -435,21 +436,21 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link DateMidnight} is created from the given {@link String} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final Function<List<String>, DateMidnight>  strFieldListToDateMidnight() {
-		return FnToDateMidnight.fromStringFieldList();
+	public static final Function<Collection<String>, DateMidnight>  strFieldCollectionToDateMidnight() {
+		return FnToDateMidnight.fromStringFieldCollection();
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given {@link String} {@link List}.
+	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<String>, DateMidnight>  strFieldListToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromStringFieldList(chronology);
+	public static final Function<Collection<String>, DateMidnight>  strFieldCollectionToDateMidnight(Chronology chronology) {
+		return FnToDateMidnight.fromStringFieldCollection(chronology);
 	}
 	
 	/**
