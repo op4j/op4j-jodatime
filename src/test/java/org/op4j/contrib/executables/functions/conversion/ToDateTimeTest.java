@@ -218,7 +218,7 @@ public class ToDateTimeTest extends TestCase {
 		Integer minute = Integer.valueOf(23);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute))
-			.exec(FnToDateTime.fromIntegerFieldList())
+			.exec(FnToDateTime.fromIntegerFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -235,7 +235,7 @@ public class ToDateTimeTest extends TestCase {
 		Integer minute = Integer.valueOf(23);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute))
-			.exec(FnToDateTime.fromIntegerFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToDateTime.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -290,7 +290,7 @@ public class ToDateTimeTest extends TestCase {
 		String second = String.valueOf(53);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute, second))
-			.exec(FnToDateTime.fromStringFieldList())
+			.exec(FnToDateTime.fromStringFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -308,7 +308,7 @@ public class ToDateTimeTest extends TestCase {
 		String second = String.valueOf(53);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute, second))
-			.exec(FnToDateTime.fromStringFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToDateTime.fromStringFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,

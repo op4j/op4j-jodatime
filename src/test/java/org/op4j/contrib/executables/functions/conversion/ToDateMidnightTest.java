@@ -211,7 +211,7 @@ public class ToDateMidnightTest extends TestCase {
 		Integer day = Integer.valueOf(8);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(FnToDateMidnight.fromIntegerFieldList())
+			.exec(FnToDateMidnight.fromIntegerFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -225,7 +225,7 @@ public class ToDateMidnightTest extends TestCase {
 		Integer day = Integer.valueOf(25);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(FnToDateMidnight.fromIntegerFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToDateMidnight.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -234,7 +234,7 @@ public class ToDateMidnightTest extends TestCase {
 		
 		try {
 			Op.on(Arrays.asList(year, month, day, Integer.valueOf(4)))
-				.exec(FnToDateMidnight.fromIntegerFieldList(BuddhistChronology.getInstance()))
+				.exec(FnToDateMidnight.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
 				.get();
 			fail("fromIntegerFieldList should not accept an integer list with more than three elements");
 		} catch (ExecutionException e) {
@@ -277,7 +277,7 @@ public class ToDateMidnightTest extends TestCase {
 		String day = String.valueOf(16);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(FnToDateMidnight.fromStringFieldList())
+			.exec(FnToDateMidnight.fromStringFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -291,7 +291,7 @@ public class ToDateMidnightTest extends TestCase {
 		String day = String.valueOf(16);
 		
 		DateMidnight result = Op.on(Arrays.asList(year, month, day))
-			.exec(FnToDateMidnight.fromStringFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToDateMidnight.fromStringFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
