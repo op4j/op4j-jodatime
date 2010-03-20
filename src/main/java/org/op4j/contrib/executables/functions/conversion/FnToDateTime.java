@@ -52,7 +52,7 @@ public final class FnToDateTime {
 	private final static LongToDateTime LONG_TO_DATE_TIME = new LongToDateTime();
 	private final static IntegerFieldCollectionToDateTime INTEGER_FIELD_COLLECTION_TO_DATE_TIME = new IntegerFieldCollectionToDateTime();
 	private final static IntegerFieldArrayToDateTime INTEGER_FIELD_ARRAY_TO_DATE_TIME = new IntegerFieldArrayToDateTime();
-	private final static StringFieldCollectionToDateTime STRING_FIELD_LIST_TO_DATE_TIME = new StringFieldCollectionToDateTime();
+	private final static StringFieldCollectionToDateTime STRING_FIELD_COLLECTION_TO_DATE_TIME = new StringFieldCollectionToDateTime();
 	private final static StringFieldArrayToDateTime STRING_FIELD_ARRAY_TO_DATE_TIME = new StringFieldArrayToDateTime();
 	
 	private FnToDateTime() {
@@ -292,7 +292,7 @@ public final class FnToDateTime {
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
 	public static final StringFieldCollectionToDateTime fromStringFieldCollection() {
-		return STRING_FIELD_LIST_TO_DATE_TIME;
+		return STRING_FIELD_COLLECTION_TO_DATE_TIME;
 	}
 	/**
 	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
