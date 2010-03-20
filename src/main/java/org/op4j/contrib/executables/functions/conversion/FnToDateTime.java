@@ -22,8 +22,9 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
@@ -49,9 +50,9 @@ public final class FnToDateTime {
 	
 	private final static TimestampToDateTime TIMESTAMP_TO_DATE_TIME = new TimestampToDateTime();
 	private final static LongToDateTime LONG_TO_DATE_TIME = new LongToDateTime();
-	private final static IntegerFieldListToDateTime INTEGER_FIELD_LIST_TO_DATE_TIME = new IntegerFieldListToDateTime();
+	private final static IntegerFieldCollectionToDateTime INTEGER_FIELD_COLLECTION_TO_DATE_TIME = new IntegerFieldCollectionToDateTime();
 	private final static IntegerFieldArrayToDateTime INTEGER_FIELD_ARRAY_TO_DATE_TIME = new IntegerFieldArrayToDateTime();
-	private final static StringFieldListToDateTime STRING_FIELD_LIST_TO_DATE_TIME = new StringFieldListToDateTime();
+	private final static StringFieldCollectionToDateTime STRING_FIELD_LIST_TO_DATE_TIME = new StringFieldCollectionToDateTime();
 	private final static StringFieldArrayToDateTime STRING_FIELD_ARRAY_TO_DATE_TIME = new StringFieldArrayToDateTime();
 	
 	private FnToDateTime() {
@@ -245,21 +246,21 @@ public final class FnToDateTime {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldListToDateTime fromIntegerFieldList() {
-		return INTEGER_FIELD_LIST_TO_DATE_TIME;
+	public static final IntegerFieldCollectionToDateTime fromIntegerFieldCollection() {
+		return INTEGER_FIELD_COLLECTION_TO_DATE_TIME;
 	}
 	/**
-	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldListToDateTime fromIntegerFieldList(Chronology chronology) {
-		return new  IntegerFieldListToDateTime(chronology);
+	public static final IntegerFieldCollectionToDateTime fromIntegerFieldCollection(Chronology chronology) {
+		return new  IntegerFieldCollectionToDateTime(chronology);
 	}
 	//
 	
@@ -287,21 +288,21 @@ public final class FnToDateTime {
 	
 	// Conversion from String list
 	/**
-	 * A {@link DateTime} is created from the given {@link String} {@link List}.
+	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldListToDateTime fromStringFieldList() {
+	public static final StringFieldCollectionToDateTime fromStringFieldCollection() {
 		return STRING_FIELD_LIST_TO_DATE_TIME;
 	}
 	/**
-	 * A {@link DateTime} is created from the given {@link String} {@link List}.
+	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldListToDateTime fromStringFieldList(Chronology chronology) {
-		return new  StringFieldListToDateTime(chronology);
+	public static final StringFieldCollectionToDateTime fromStringFieldCollection(Chronology chronology) {
+		return new  StringFieldCollectionToDateTime(chronology);
 	}
 	//
 	
@@ -599,13 +600,13 @@ public final class FnToDateTime {
 		}
 	}	
 	
-	static final class IntegerFieldListToDateTime extends BaseToDateTime<List<Integer>> {
+	static final class IntegerFieldCollectionToDateTime extends BaseToDateTime<Collection<Integer>> {
 
-		public IntegerFieldListToDateTime() {
+		public IntegerFieldCollectionToDateTime() {
 			super();			
 		}
 
-		public IntegerFieldListToDateTime(Chronology chronology) {
+		public IntegerFieldCollectionToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -613,20 +614,22 @@ public final class FnToDateTime {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public DateTime nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
+		public DateTime nullAsNullExecute(Collection<Integer> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 4 || object.size() > 7) {
 				throw new ExecutionException(
 						"Integer arguments list for DateTime conversion should of size " +
 						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.size() + " is not valid.");
 			}			
 			
-			int year = object.get(0).intValue();
-			int month = object.get(1).intValue();
-			int day = object.get(2).intValue();
-			int hour = object.get(3).intValue();
-			int minute = (object.size() >= 5) ? object.get(4).intValue() : 0;
-			int second = (object.size() >= 6) ? object.get(5).intValue() : 0;
-			int milli = (object.size() >= 7) ? object.get(6).intValue() : 0;
+			Iterator<Integer> iterator = object.iterator();
+			
+			int year = iterator.next().intValue();
+			int month = iterator.next().intValue();
+			int day = iterator.next().intValue();
+			int hour = iterator.next().intValue();
+			int minute = (object.size() >= 5) ? iterator.next().intValue() : 0;
+			int second = (object.size() >= 6) ? iterator.next().intValue() : 0;
+			int milli = (object.size() >= 7) ? iterator.next().intValue() : 0;
 			
 			if (this.chronology != null) {
 	        	return new DateTime(year, month, day, hour, minute, second, milli, this.chronology);
@@ -674,13 +677,13 @@ public final class FnToDateTime {
 	
 	
 	
-	static final class StringFieldListToDateTime extends BaseToDateTime<List<String>> {
+	static final class StringFieldCollectionToDateTime extends BaseToDateTime<Collection<String>> {
 
-		public StringFieldListToDateTime() {
+		public StringFieldCollectionToDateTime() {
 			super();			
 		}
 
-		public StringFieldListToDateTime(Chronology chronology) {
+		public StringFieldCollectionToDateTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -688,20 +691,22 @@ public final class FnToDateTime {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public DateTime nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
+		public DateTime nullAsNullExecute(Collection<String> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 4 || object.size() > 7) {
 				throw new ExecutionException(
 						"String arguments list for DateTime conversion should of size " +
 						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.size() + " is not valid.");
 			}			
 			
-			String year = object.get(0);
-			String month = object.get(1);
-			String day = object.get(2);
-			String hour = object.get(3);
-			String minute = (object.size() >= 5) ? object.get(4) : "0";
-			String second = (object.size() >= 6) ? object.get(5) : "0";
-			String milli = (object.size() >= 7) ? object.get(6) : "0";
+			Iterator<String> iterator = object.iterator();
+			
+			String year = iterator.next();
+			String month = iterator.next();
+			String day = iterator.next();
+			String hour = iterator.next();
+			String minute = (object.size() >= 5) ? iterator.next() : "0";
+			String second = (object.size() >= 6) ? iterator.next() : "0";
+			String milli = (object.size() >= 7) ? iterator.next() : "0";
 			
 			if (this.chronology != null) {
 	        	return new DateTime(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),

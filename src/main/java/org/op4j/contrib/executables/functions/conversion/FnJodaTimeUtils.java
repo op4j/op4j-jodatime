@@ -669,21 +669,21 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final Function<List<Integer>, DateTime> integerFieldListToDateTime() {
-		return FnToDateTime.fromIntegerFieldList();
+	public static final Function<Collection<Integer>, DateTime> integerFieldCollectionToDateTime() {
+		return FnToDateTime.fromIntegerFieldCollection();
 	}
 	/**
-	 * A {@link DateTime} is created from the given {@link Integer} {@link List}.
+	 * A {@link DateTime} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<Integer>, DateTime> integerFieldListToDateTime(Chronology chronology) {
-		return FnToDateTime.fromIntegerFieldList(chronology);
+	public static final Function<Collection<Integer>, DateTime> integerFieldCollectionToDateTime(Chronology chronology) {
+		return FnToDateTime.fromIntegerFieldCollection(chronology);
 	}
 	
 	/**
@@ -705,21 +705,21 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link DateTime} is created from the given {@link String} {@link List}.
+	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final Function<List<String>, DateTime> strFieldListToDateTime() {
-		return FnToDateTime.fromStringFieldList();
+	public static final Function<Collection<String>, DateTime> strFieldCollectionToDateTime() {
+		return FnToDateTime.fromStringFieldCollection();
 	}
 	/**
-	 * A {@link DateTime} is created from the given {@link String} {@link List}.
+	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<String>, DateTime> strFieldListToDateTime(Chronology chronology) {
-		return FnToDateTime.fromStringFieldList(chronology);
+	public static final Function<Collection<String>, DateTime> strFieldCollectionToDateTime(Chronology chronology) {
+		return FnToDateTime.fromStringFieldCollection(chronology);
 	}
 	
 	/**
