@@ -39,8 +39,8 @@ import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.contrib.executables.functions.conversion.FnJodaToString.FormatType;
-import org.op4j.contrib.executables.functions.conversion.FnToInterval.BaseDateTimeFieldListToInterval;
-import org.op4j.contrib.executables.functions.conversion.FnToInterval.DateFieldListToInterval;
+import org.op4j.contrib.executables.functions.conversion.FnToInterval.BaseDateTimeFieldCollectionToInterval;
+import org.op4j.contrib.executables.functions.conversion.FnToInterval.DateFieldCollectionToInterval;
 import org.op4j.functions.Function;
 
 
@@ -765,7 +765,7 @@ public class FnJodaTimeUtils {
 	
 	/**
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -775,13 +775,13 @@ public class FnJodaTimeUtils {
 	 * 				
 	 * @return
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval() {
-		return FnToInterval.fromStringFieldList();
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval() {
+		return FnToInterval.fromStringFieldCollection();
 	}
 
 	/**
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -792,12 +792,12 @@ public class FnJodaTimeUtils {
 	 * @param dateTimeZone
 	 * @return
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldList(dateTimeZone);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(DateTimeZone dateTimeZone) {
+		return FnToInterval.fromStringFieldCollection(dateTimeZone);
 	}
 	/**
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -808,8 +808,8 @@ public class FnJodaTimeUtils {
 	 * @param chronology
 	 * @return
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(Chronology chronology) {
-		return FnToInterval.fromStringFieldList(chronology);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(Chronology chronology) {
+		return FnToInterval.fromStringFieldCollection(chronology);
 	}
 	/**
 	 * It creates an {@link Interval} using the target {@link String} elements as the start and end. The given pattern
@@ -819,8 +819,8 @@ public class FnJodaTimeUtils {
 	 *                 
 	 * @param pattern
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern) {
-		return FnToInterval.fromStringFieldList(pattern);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern) {
+		return FnToInterval.fromStringFieldCollection(pattern);
 	}
 	/**
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
@@ -830,8 +830,8 @@ public class FnJodaTimeUtils {
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldList(pattern, dateTimeZone);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, DateTimeZone dateTimeZone) {
+		return FnToInterval.fromStringFieldCollection(pattern, dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
@@ -841,8 +841,8 @@ public class FnJodaTimeUtils {
 	 * @param pattern
 	 * @param chronology
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, Chronology chronology) {
-		return FnToInterval.fromStringFieldList(pattern, chronology);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Chronology chronology) {
+		return FnToInterval.fromStringFieldCollection(pattern, chronology);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -851,8 +851,8 @@ public class FnJodaTimeUtils {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, Locale locale) {
-		return FnToInterval.fromStringFieldList(pattern, locale);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale) {
+		return FnToInterval.fromStringFieldCollection(pattern, locale);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -861,8 +861,8 @@ public class FnJodaTimeUtils {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, String locale) {
-		return FnToInterval.fromStringFieldList(pattern, locale);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale) {
+		return FnToInterval.fromStringFieldCollection(pattern, locale);
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -872,8 +872,8 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldList(pattern, locale, dateTimeZone);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		return FnToInterval.fromStringFieldCollection(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -883,8 +883,8 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldList(pattern, locale, dateTimeZone);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
+		return FnToInterval.fromStringFieldCollection(pattern, locale, dateTimeZone);
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -894,8 +894,8 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, Locale locale, Chronology chronology) {
-		return FnToInterval.fromStringFieldList(pattern, locale, chronology);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale, Chronology chronology) {
+		return FnToInterval.fromStringFieldCollection(pattern, locale, chronology);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -905,8 +905,8 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final Function<List<String>, Interval> strFieldListToInterval(String pattern, String locale, Chronology chronology) {
-		return FnToInterval.fromStringFieldList(pattern, locale, chronology);
+	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale, Chronology chronology) {
+		return FnToInterval.fromStringFieldCollection(pattern, locale, chronology);
 	}	
 	
 	/**
@@ -1116,8 +1116,8 @@ public class FnJodaTimeUtils {
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements  
 	 */
-	public static final DateFieldListToInterval dateFieldListToInterval() {
-		return FnToInterval.fromDateFieldList();
+	public static final DateFieldCollectionToInterval dateFieldCollectionToInterval() {
+		return FnToInterval.fromDateFieldCollection();
 	}
 	/**
 	 * 
@@ -1126,8 +1126,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final Function<List<? extends Date>, Interval> dateFieldListToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromDateFieldList(dateTimeZone);
+	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval(DateTimeZone dateTimeZone) {
+		return FnToInterval.fromDateFieldCollection(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements.
@@ -1135,8 +1135,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @param chronology
 	 */
-	public static final Function<List<? extends Date>, Interval> dateFieldListToInterval(Chronology chronology) {
-		return FnToInterval.fromDateFieldList(chronology);
+	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval(Chronology chronology) {
+		return FnToInterval.fromDateFieldCollection(chronology);
 	}
 	
 	/**
@@ -1169,8 +1169,8 @@ public class FnJodaTimeUtils {
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
 	 */
-	public static final Function<List<Timestamp>, Interval> timestampFieldListToInterval() {
-		return FnToInterval.fromTimestampFieldList();
+	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval() {
+		return FnToInterval.fromTimestampFieldCollection();
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
@@ -1178,8 +1178,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @param dateTimeZone
 	 */	
-	public static final Function<List<Timestamp>, Interval> timestampFieldListToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromTimestampFieldList(dateTimeZone);
+	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval(DateTimeZone dateTimeZone) {
+		return FnToInterval.fromTimestampFieldCollection(dateTimeZone);
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
@@ -1187,8 +1187,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @param chronology
 	 */
-	public static final Function<List<Timestamp>, Interval> timestampFieldListToInterval(Chronology chronology) {
-		return FnToInterval.fromTimestampFieldList(chronology);
+	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval(Chronology chronology) {
+		return FnToInterval.fromTimestampFieldCollection(chronology);
 	}
 	
 	/**
@@ -1221,8 +1221,8 @@ public class FnJodaTimeUtils {
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
 	 */
-	public static final Function<List<Long>, Interval> longFieldListToInterval() {
-		return FnToInterval.fromLongFieldList();
+	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval() {
+		return FnToInterval.fromLongFieldCollection();
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
@@ -1231,8 +1231,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final Function<List<Long>, Interval> longFieldListToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromLongFieldList(dateTimeZone);
+	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval(DateTimeZone dateTimeZone) {
+		return FnToInterval.fromLongFieldCollection(dateTimeZone);
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
@@ -1241,8 +1241,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @param chronology
 	 */
-	public static final Function<List<Long>, Interval> longFieldListToInterval(Chronology chronology) {
-		return FnToInterval.fromLongFieldList(chronology);
+	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval(Chronology chronology) {
+		return FnToInterval.fromLongFieldCollection(chronology);
 	}
 	
 	/**
@@ -1273,14 +1273,14 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromLongFieldArray(chronology);
 	}
 	
-	public static final Function<List<Integer>, Interval> integerFieldListToInterval() {
-		return FnToInterval.fromIntegerFieldList();
+	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval() {
+		return FnToInterval.fromIntegerFieldCollection();
 	}
-	public static final Function<List<Integer>, Interval> integerFieldListToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromIntegerFieldList(dateTimeZone);
+	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(DateTimeZone dateTimeZone) {
+		return FnToInterval.fromIntegerFieldCollection(dateTimeZone);
 	}
-	public static final Function<List<Integer>, Interval> integerFieldListToInterval(Chronology chronology) {
-		return FnToInterval.fromIntegerFieldList(chronology);
+	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(Chronology chronology) {
+		return FnToInterval.fromIntegerFieldCollection(chronology);
 	}
 	
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval() {
@@ -1297,8 +1297,8 @@ public class FnJodaTimeUtils {
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
 	 * and end of the {@link Interval}
 	 */
-	public static final Function<List<? extends Calendar>, Interval> calendarFieldListToInterval() {
-		return FnToInterval.fromCalendarFieldList();
+	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval() {
+		return FnToInterval.fromCalendarFieldCollection();
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -1306,8 +1306,8 @@ public class FnJodaTimeUtils {
 	 *                 
 	 * @param dateTimeZone
 	 */
-	public static final Function<List<? extends Calendar>, Interval> calendarFieldListToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromCalendarFieldList(dateTimeZone);
+	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval(DateTimeZone dateTimeZone) {
+		return FnToInterval.fromCalendarFieldCollection(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -1315,8 +1315,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @param chronology
 	 */
-	public static final Function<List<? extends Calendar>, Interval> calendarFieldListToInterval(Chronology chronology) {
-		return FnToInterval.fromCalendarFieldList(chronology);
+	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval(Chronology chronology) {
+		return FnToInterval.fromCalendarFieldCollection(chronology);
 	}
 	
 	/**
@@ -1345,14 +1345,14 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromCalendarFieldArray(chronology);
 	}
 
-	public static final BaseDateTimeFieldListToInterval baseDateTimeFieldListToInterval() {
-		return FnToInterval.fromBaseDateTimeFieldList();
+	public static final BaseDateTimeFieldCollectionToInterval baseDateTimeFieldCollectionToInterval() {
+		return FnToInterval.fromBaseDateTimeFieldCollection();
 	}
-	public static final Function<List<? extends BaseDateTime>, Interval> baseDateTimeFieldListToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromBaseDateTimeFieldList(dateTimeZone);
+	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(DateTimeZone dateTimeZone) {
+		return FnToInterval.fromBaseDateTimeFieldCollection(dateTimeZone);
 	}
-	public static final Function<List<? extends BaseDateTime>, Interval> baseDateTimeFieldListToInterval(Chronology chronology) {
-		return FnToInterval.fromBaseDateTimeFieldList(chronology);
+	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(Chronology chronology) {
+		return FnToInterval.fromBaseDateTimeFieldCollection(chronology);
 	}
 	
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval() {

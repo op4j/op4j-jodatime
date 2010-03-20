@@ -22,8 +22,9 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
@@ -49,22 +50,22 @@ import org.op4j.functions.ExecCtx;
  */
 public final class FnToInterval {
 	
-	private static final DateFieldListToInterval DATE_FIELD_LIST_TO_INTERVAL = new DateFieldListToInterval();
+	private static final DateFieldCollectionToInterval DATE_FIELD_COLLECTION_TO_INTERVAL = new DateFieldCollectionToInterval();
 	
-	private static final TimestampFieldListToInterval TIMESTAMP_FIELD_LIST_TO_INTERVAL = new TimestampFieldListToInterval();
+	private static final TimestampFieldCollectionToInterval TIMESTAMP_FIELD_COLLECTION_TO_INTERVAL = new TimestampFieldCollectionToInterval();
 	private static final TimestampFieldArrayToInterval TIMESTAMP_FIELD_ARRAY_TO_INTERVAL = new TimestampFieldArrayToInterval();
 	
-	private static final LongFieldListToInterval LONG_FIELD_LIST_TO_INTERVAL = new LongFieldListToInterval();
+	private static final LongFieldCollectionToInterval LONG_FIELD_COLLECTION_TO_INTERVAL = new LongFieldCollectionToInterval();
 	private static final LongFieldArrayToInterval LONG_FIELD_ARRAY_TO_INTERVAL = new LongFieldArrayToInterval();
 	
-	private static final IntegerFieldListToInterval INTEGER_FIELD_LIST_TO_INTERVAL = new IntegerFieldListToInterval();
+	private static final IntegerFieldCollectionToInterval INTEGER_FIELD_COLLECTION_TO_INTERVAL = new IntegerFieldCollectionToInterval();
 	private static final IntegerFieldArrayToInterval INTEGER_FIELD_ARRAY_TO_INTERVAL = new IntegerFieldArrayToInterval();
 	
-	private static final CalendarFieldListToInterval CALENDAR_FIELD_LIST_TO_INTERVAL = new CalendarFieldListToInterval();
+	private static final CalendarFieldCollectionToInterval CALENDAR_FIELD_COLLECTION_TO_INTERVAL = new CalendarFieldCollectionToInterval();
 	
-	private static final BaseDateTimeFieldListToInterval BASE_DATE_TIME_FIELD_LIST_TO_INTERVAL = new BaseDateTimeFieldListToInterval();
+	private static final BaseDateTimeFieldCollectionToInterval BASE_DATE_TIME_FIELD_COLLECTION_TO_INTERVAL = new BaseDateTimeFieldCollectionToInterval();
 	
-	private static final StringFieldListToInterval STRING_FIELD_LIST_TO_INTERVAL = new StringFieldListToInterval();
+	private static final StringFieldCollectionToInterval STRING_FIELD_COLLECTION_TO_INTERVAL = new StringFieldCollectionToInterval();
 	private static final StringFieldArrayToInterval STRING_FIELD_ARRAY_TO_INTERVAL = new StringFieldArrayToInterval();
 	
 	private FnToInterval() {
@@ -75,7 +76,7 @@ public final class FnToInterval {
 	//From String list or array
 	/**
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -85,13 +86,13 @@ public final class FnToInterval {
 	 * 				
 	 * @return
 	 */
-	public static final StringFieldListToInterval fromStringFieldList() {
-		return STRING_FIELD_LIST_TO_INTERVAL;
+	public static final StringFieldCollectionToInterval fromStringFieldCollection() {
+		return STRING_FIELD_COLLECTION_TO_INTERVAL;
 	}
 
 	/**
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -102,12 +103,12 @@ public final class FnToInterval {
 	 * @param dateTimeZone
 	 * @return
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(DateTimeZone dateTimeZone) {
-		return new StringFieldListToInterval(dateTimeZone);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(DateTimeZone dateTimeZone) {
+		return new StringFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input lists are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -118,8 +119,8 @@ public final class FnToInterval {
 	 * @param chronology
 	 * @return
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(Chronology chronology) {
-		return new StringFieldListToInterval(chronology);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(Chronology chronology) {
+		return new StringFieldCollectionToInterval(chronology);
 	}
 	/**
 	 * It creates an {@link Interval} using the target {@link String} elements as the start and end. The given pattern
@@ -129,8 +130,8 @@ public final class FnToInterval {
 	 *                 
 	 * @param pattern
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern) {
-		return new StringFieldListToInterval(pattern);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern) {
+		return new StringFieldCollectionToInterval(pattern);
 	}
 	/**
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
@@ -140,8 +141,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, DateTimeZone dateTimeZone) {
-		return new StringFieldListToInterval(pattern, dateTimeZone);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, DateTimeZone dateTimeZone) {
+		return new StringFieldCollectionToInterval(pattern, dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
@@ -151,8 +152,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param chronology
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, Chronology chronology) {
-		return new StringFieldListToInterval(pattern, chronology);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, Chronology chronology) {
+		return new StringFieldCollectionToInterval(pattern, chronology);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -161,8 +162,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, Locale locale) {
-		return new StringFieldListToInterval(pattern, locale);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, Locale locale) {
+		return new StringFieldCollectionToInterval(pattern, locale);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -171,8 +172,8 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, String locale) {
-		return new StringFieldListToInterval(pattern, locale);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, String locale) {
+		return new StringFieldCollectionToInterval(pattern, locale);
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -182,8 +183,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return new StringFieldListToInterval(pattern, locale, dateTimeZone);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		return new StringFieldCollectionToInterval(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -193,8 +194,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return new StringFieldListToInterval(pattern, locale, dateTimeZone);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, String locale, DateTimeZone dateTimeZone) {
+		return new StringFieldCollectionToInterval(pattern, locale, dateTimeZone);
 	}	
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -204,8 +205,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, Locale locale, Chronology chronology) {
-		return new StringFieldListToInterval(pattern, locale, chronology);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, Locale locale, Chronology chronology) {
+		return new StringFieldCollectionToInterval(pattern, locale, chronology);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
@@ -215,8 +216,8 @@ public final class FnToInterval {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringFieldListToInterval fromStringFieldList(String pattern, String locale, Chronology chronology) {
-		return new StringFieldListToInterval(pattern, locale, chronology);
+	public static final StringFieldCollectionToInterval fromStringFieldCollection(String pattern, String locale, Chronology chronology) {
+		return new StringFieldCollectionToInterval(pattern, locale, chronology);
 	}	
 	
 	/**
@@ -428,8 +429,8 @@ public final class FnToInterval {
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements  
 	 */
-	public static final DateFieldListToInterval fromDateFieldList() {
-		return DATE_FIELD_LIST_TO_INTERVAL;
+	public static final DateFieldCollectionToInterval fromDateFieldCollection() {
+		return DATE_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
 	 * 
@@ -438,8 +439,8 @@ public final class FnToInterval {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final DateFieldListToInterval fromDateFieldList(DateTimeZone dateTimeZone) {
-		return new DateFieldListToInterval(dateTimeZone);
+	public static final DateFieldCollectionToInterval fromDateFieldCollection(DateTimeZone dateTimeZone) {
+		return new DateFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements.
@@ -447,8 +448,8 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final DateFieldListToInterval fromDateFieldList(Chronology chronology) {
-		return new DateFieldListToInterval(chronology);
+	public static final DateFieldCollectionToInterval fromDateFieldCollection(Chronology chronology) {
+		return new DateFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -483,8 +484,8 @@ public final class FnToInterval {
 	 * The given {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
 	 */
-	public static final TimestampFieldListToInterval fromTimestampFieldList() {
-		return TIMESTAMP_FIELD_LIST_TO_INTERVAL;
+	public static final TimestampFieldCollectionToInterval fromTimestampFieldCollection() {
+		return TIMESTAMP_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
@@ -492,8 +493,8 @@ public final class FnToInterval {
 	 * 
 	 * @param dateTimeZone
 	 */	
-	public static final TimestampFieldListToInterval fromTimestampFieldList(DateTimeZone dateTimeZone) {
-		return new TimestampFieldListToInterval(dateTimeZone);
+	public static final TimestampFieldCollectionToInterval fromTimestampFieldCollection(DateTimeZone dateTimeZone) {
+		return new TimestampFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
 	 * The given {@link Timestamp} target elements will be used as the start and end
@@ -501,8 +502,8 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final TimestampFieldListToInterval fromTimestampFieldList(Chronology chronology) {
-		return new TimestampFieldListToInterval(chronology);
+	public static final TimestampFieldCollectionToInterval fromTimestampFieldCollection(Chronology chronology) {
+		return new TimestampFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -537,8 +538,8 @@ public final class FnToInterval {
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
 	 */
-	public static final LongFieldListToInterval fromLongFieldList() {
-		return LONG_FIELD_LIST_TO_INTERVAL;
+	public static final LongFieldCollectionToInterval fromLongFieldCollection() {
+		return LONG_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
@@ -547,8 +548,8 @@ public final class FnToInterval {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final LongFieldListToInterval fromLongFieldList(DateTimeZone dateTimeZone) {
-		return new LongFieldListToInterval(dateTimeZone);
+	public static final LongFieldCollectionToInterval fromLongFieldCollection(DateTimeZone dateTimeZone) {
+		return new LongFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
@@ -557,8 +558,8 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final LongFieldListToInterval fromLongFieldList(Chronology chronology) {
-		return new LongFieldListToInterval(chronology);
+	public static final LongFieldCollectionToInterval fromLongFieldCollection(Chronology chronology) {
+		return new LongFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -592,14 +593,14 @@ public final class FnToInterval {
 	
 	
 	// From Integer List or array
-	public static final IntegerFieldListToInterval fromIntegerFieldList() {
-		return INTEGER_FIELD_LIST_TO_INTERVAL;
+	public static final IntegerFieldCollectionToInterval fromIntegerFieldCollection() {
+		return INTEGER_FIELD_COLLECTION_TO_INTERVAL;
 	}
-	public static final IntegerFieldListToInterval fromIntegerFieldList(DateTimeZone dateTimeZone) {
-		return new IntegerFieldListToInterval(dateTimeZone);
+	public static final IntegerFieldCollectionToInterval fromIntegerFieldCollection(DateTimeZone dateTimeZone) {
+		return new IntegerFieldCollectionToInterval(dateTimeZone);
 	}
-	public static final IntegerFieldListToInterval fromIntegerFieldList(Chronology chronology) {
-		return new IntegerFieldListToInterval(chronology);
+	public static final IntegerFieldCollectionToInterval fromIntegerFieldCollection(Chronology chronology) {
+		return new IntegerFieldCollectionToInterval(chronology);
 	}
 	
 	public static final IntegerFieldArrayToInterval fromIntegerFieldArray() {
@@ -618,8 +619,8 @@ public final class FnToInterval {
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
 	 * and end of the {@link Interval}
 	 */
-	public static final CalendarFieldListToInterval fromCalendarFieldList() {
-		return CALENDAR_FIELD_LIST_TO_INTERVAL;
+	public static final CalendarFieldCollectionToInterval fromCalendarFieldCollection() {
+		return CALENDAR_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -627,8 +628,8 @@ public final class FnToInterval {
 	 *                 
 	 * @param dateTimeZone
 	 */
-	public static final CalendarFieldListToInterval fromCalendarFieldList(DateTimeZone dateTimeZone) {
-		return new CalendarFieldListToInterval(dateTimeZone);
+	public static final CalendarFieldCollectionToInterval fromCalendarFieldCollection(DateTimeZone dateTimeZone) {
+		return new CalendarFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
 	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
@@ -636,8 +637,8 @@ public final class FnToInterval {
 	 * 
 	 * @param chronology
 	 */
-	public static final CalendarFieldListToInterval fromCalendarFieldList(Chronology chronology) {
-		return new CalendarFieldListToInterval(chronology);
+	public static final CalendarFieldCollectionToInterval fromCalendarFieldCollection(Chronology chronology) {
+		return new CalendarFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -668,14 +669,14 @@ public final class FnToInterval {
 	//
 	
 	// From BaseDateTime list or array
-	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList() {
-		return BASE_DATE_TIME_FIELD_LIST_TO_INTERVAL;
+	public static final BaseDateTimeFieldCollectionToInterval fromBaseDateTimeFieldCollection() {
+		return BASE_DATE_TIME_FIELD_COLLECTION_TO_INTERVAL;
 	}
-	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList(DateTimeZone dateTimeZone) {
-		return new BaseDateTimeFieldListToInterval(dateTimeZone);
+	public static final BaseDateTimeFieldCollectionToInterval fromBaseDateTimeFieldCollection(DateTimeZone dateTimeZone) {
+		return new BaseDateTimeFieldCollectionToInterval(dateTimeZone);
 	}
-	public static final BaseDateTimeFieldListToInterval fromBaseDateTimeFieldList(Chronology chronology) {
-		return new BaseDateTimeFieldListToInterval(chronology);
+	public static final BaseDateTimeFieldCollectionToInterval fromBaseDateTimeFieldCollection(Chronology chronology) {
+		return new BaseDateTimeFieldCollectionToInterval(chronology);
 	}
 	
 	public static final <T extends BaseDateTime> BaseDateTimeFieldArrayToInterval<T> fromBaseDateTimeFieldArray() {
@@ -722,34 +723,34 @@ public final class FnToInterval {
 	}
 	
 	
-	static final class StringFieldListToInterval extends BaseToInterval<List<String>> {
+	static final class StringFieldCollectionToInterval extends BaseToInterval<Collection<String>> {
 
 		private final ConversionType conversionType;
 		private final String pattern;
 		private final Locale locale;
 		
-		public StringFieldListToInterval() {
+		public StringFieldCollectionToInterval() {
 			super();
 			this.conversionType = ConversionType.NO_PARAM;
 			this.pattern = null;
 			this.locale = null;
 		}
 		
-		public StringFieldListToInterval(DateTimeZone dateTimeZone) {
+		public StringFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);			
 			this.conversionType = ConversionType.DATETIMEZONE;
 			this.pattern = null;
 			this.locale = null;
 		}
 		
-		public StringFieldListToInterval(Chronology chronology) {
+		public StringFieldCollectionToInterval(Chronology chronology) {
 			super(chronology);		
 			this.conversionType = ConversionType.CHRONOLOGY;
 			this.pattern = null;
 			this.locale = null;
 		}
 		
-		public StringFieldListToInterval(String pattern) {
+		public StringFieldCollectionToInterval(String pattern) {
 			super();	
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -759,7 +760,7 @@ public final class FnToInterval {
 			this.locale = null;
 		}	
 		
-		public StringFieldListToInterval(String pattern, DateTimeZone dateTimeZone) {
+		public StringFieldCollectionToInterval(String pattern, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -769,7 +770,7 @@ public final class FnToInterval {
 			this.locale = null;
 		}	
 		
-		public StringFieldListToInterval(String pattern, Chronology chronology) {
+		public StringFieldCollectionToInterval(String pattern, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -779,7 +780,7 @@ public final class FnToInterval {
 			this.locale = null;			
 		}
 		
-		public StringFieldListToInterval(String pattern, Locale locale) {
+		public StringFieldCollectionToInterval(String pattern, Locale locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -790,7 +791,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE;
 		}
 		
-		public StringFieldListToInterval(String pattern, String locale) {
+		public StringFieldCollectionToInterval(String pattern, String locale) {
 			super();
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -801,7 +802,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE;
 		}
 		
-		public StringFieldListToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+		public StringFieldCollectionToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -812,7 +813,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
 		}
 		
-		public StringFieldListToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
+		public StringFieldCollectionToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -823,7 +824,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_DATETIMEZONE;
 		}
 		
-		public StringFieldListToInterval(String pattern, Locale locale, Chronology chronology) {
+		public StringFieldCollectionToInterval(String pattern, Locale locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -834,7 +835,7 @@ public final class FnToInterval {
 			this.conversionType = ConversionType.PATTERN_LOCALE_CHRONOLOGY;
 		}
 		
-		public StringFieldListToInterval(String pattern, String locale, Chronology chronology) {
+		public StringFieldCollectionToInterval(String pattern, String locale, Chronology chronology) {
 			super(chronology);
 			
 			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
@@ -849,7 +850,9 @@ public final class FnToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<String> object, ExecCtx ctx) throws Exception {
+		public Interval nullAsNullExecute(final Collection<String> object, ExecCtx ctx) throws Exception {
+			Iterator<String> iterator = object.iterator();
+			
 			if ((ConversionType.NO_PARAM.compareTo(this.conversionType) == 0)
 					|| (ConversionType.CHRONOLOGY.compareTo(this.conversionType) == 0)
 					|| (ConversionType.DATETIMEZONE.compareTo(this.conversionType) == 0)) {
@@ -871,9 +874,9 @@ public final class FnToInterval {
 							". Size " + object.size() + " is not valid.");
 				}
 				
-				int year1 = Integer.parseInt(object.get(0));
-				int month1 = Integer.parseInt(object.get(1));
-				int day1 = Integer.parseInt(object.get(2));
+				int year1 = Integer.parseInt(iterator.next());
+				int month1 = Integer.parseInt(iterator.next());
+				int day1 = Integer.parseInt(iterator.next());
 				int hour1 = 0;
 				int minute1 = 0;
 				int second1 = 0;
@@ -886,39 +889,39 @@ public final class FnToInterval {
 				int second2 = 0;
 				int millisecond2 = 0;
 				if (object.size() == 6) {
-					year2 = Integer.parseInt(object.get(3));
-					month2 = Integer.parseInt(object.get(4));
-					day2 = Integer.parseInt(object.get(5));
+					year2 = Integer.parseInt(iterator.next());
+					month2 = Integer.parseInt(iterator.next());
+					day2 = Integer.parseInt(iterator.next());
 				} else if (object.size() == 10) {
-					hour1 = Integer.parseInt(object.get(3));
-					minute1 = Integer.parseInt(object.get(4));
-					year2 = Integer.parseInt(object.get(5));
-					month2 = Integer.parseInt(object.get(6));
-					day2 = Integer.parseInt(object.get(7));
-					hour2 = Integer.parseInt(object.get(8));
-					minute2 = Integer.parseInt(object.get(9));
+					hour1 = Integer.parseInt(iterator.next());
+					minute1 = Integer.parseInt(iterator.next());
+					year2 = Integer.parseInt(iterator.next());
+					month2 = Integer.parseInt(iterator.next());
+					day2 = Integer.parseInt(iterator.next());
+					hour2 = Integer.parseInt(iterator.next());
+					minute2 = Integer.parseInt(iterator.next());
 				} else if (object.size() == 12) {
-					hour1 = Integer.parseInt(object.get(3));
-					minute1 = Integer.parseInt(object.get(4));
-					second1 = Integer.parseInt(object.get(5));
-					year2 = Integer.parseInt(object.get(6));
-					month2 = Integer.parseInt(object.get(7));
-					day2 = Integer.parseInt(object.get(8));
-					hour2 = Integer.parseInt(object.get(9));
-					minute2 = Integer.parseInt(object.get(10));
-					second2 = Integer.parseInt(object.get(11));
+					hour1 = Integer.parseInt(iterator.next());
+					minute1 = Integer.parseInt(iterator.next());
+					second1 = Integer.parseInt(iterator.next());
+					year2 = Integer.parseInt(iterator.next());
+					month2 = Integer.parseInt(iterator.next());
+					day2 = Integer.parseInt(iterator.next());
+					hour2 = Integer.parseInt(iterator.next());
+					minute2 = Integer.parseInt(iterator.next());
+					second2 = Integer.parseInt(iterator.next());
 				} else {
-					hour1 = Integer.parseInt(object.get(3));
-					minute1 = Integer.parseInt(object.get(4));
-					second1 = Integer.parseInt(object.get(5));
-					millisecond1 = Integer.parseInt(object.get(6));
-					year2 = Integer.parseInt(object.get(7));
-					month2 = Integer.parseInt(object.get(8));
-					day2 = Integer.parseInt(object.get(9));
-					hour2 = Integer.parseInt(object.get(10));
-					minute2 = Integer.parseInt(object.get(11));
-					second2 = Integer.parseInt(object.get(12));
-					millisecond2 = Integer.parseInt(object.get(13));
+					hour1 = Integer.parseInt(iterator.next());
+					minute1 = Integer.parseInt(iterator.next());
+					second1 = Integer.parseInt(iterator.next());
+					millisecond1 = Integer.parseInt(iterator.next());
+					year2 = Integer.parseInt(iterator.next());
+					month2 = Integer.parseInt(iterator.next());
+					day2 = Integer.parseInt(iterator.next());
+					hour2 = Integer.parseInt(iterator.next());
+					minute2 = Integer.parseInt(iterator.next());
+					second2 = Integer.parseInt(iterator.next());
+					millisecond2 = Integer.parseInt(iterator.next());
 				}
 				
 				switch (this.conversionType) {
@@ -982,17 +985,17 @@ public final class FnToInterval {
 					break;		
 			}
 			if (this.chronology != null) {
-				return new Interval(dateTimeFormatter.parseDateTime(object.get(0)).getMillis(), 
-						dateTimeFormatter.parseDateTime(object.get(1)).getMillis(),
+				return new Interval(dateTimeFormatter.parseDateTime(iterator.next()).getMillis(), 
+						dateTimeFormatter.parseDateTime(iterator.next()).getMillis(),
 						this.chronology);	
 			}
 			if (this.dateTimeZone != null) {
-				return new Interval(dateTimeFormatter.parseDateTime(object.get(0)).getMillis(), 
-						dateTimeFormatter.parseDateTime(object.get(1)).getMillis(),
+				return new Interval(dateTimeFormatter.parseDateTime(iterator.next()).getMillis(), 
+						dateTimeFormatter.parseDateTime(iterator.next()).getMillis(),
 						this.dateTimeZone);	
 			}
-			return new Interval(dateTimeFormatter.parseDateTime(object.get(0)).getMillis(), 
-					dateTimeFormatter.parseDateTime(object.get(1)).getMillis());	
+			return new Interval(dateTimeFormatter.parseDateTime(iterator.next()).getMillis(), 
+					dateTimeFormatter.parseDateTime(iterator.next()).getMillis());	
 									
 		}
 		
@@ -1296,20 +1299,20 @@ public final class FnToInterval {
 		}
 	}	
 	
-	static final class DateFieldListToInterval extends BaseToInterval<List<? extends Date>> {
+	static final class DateFieldCollectionToInterval extends BaseToInterval<Collection<? extends Date>> {
 
 		/**
 		 * It creates an {@link Interval} from the given {@link Date} elements  
 		 */
-		public DateFieldListToInterval() {
+		public DateFieldCollectionToInterval() {
 			super();			
 		}		
 		
-		public DateFieldListToInterval(Chronology chronology) {
+		public DateFieldCollectionToInterval(Chronology chronology) {
 			super(chronology);					
 		}
 		
-		public DateFieldListToInterval(DateTimeZone dateTimeZone) {
+		public DateFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1317,21 +1320,23 @@ public final class FnToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<? extends Date> object, ExecCtx ctx) throws Exception {			
+		public Interval nullAsNullExecute(final Collection<? extends Date> object, ExecCtx ctx) throws Exception {			
 			if (object.size() != 2 ) {
 				throw new ExecutionException(
 						"Date arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
 			
+			Iterator<? extends Date> iterator = object.iterator();
+			
 			if (this.dateTimeZone != null) {
-				return new Interval(object.get(0).getTime(), object.get(1).getTime(), this.dateTimeZone);
+				return new Interval(iterator.next().getTime(), iterator.next().getTime(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new Interval(object.get(0).getTime(), object.get(1).getTime(), this.chronology);
+				return new Interval(iterator.next().getTime(), iterator.next().getTime(), this.chronology);
 			}
 			
-			return new Interval(object.get(0).getTime(), object.get(1).getTime());
+			return new Interval(iterator.next().getTime(), iterator.next().getTime());
 		}		
 	}	
 	
@@ -1371,17 +1376,17 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class TimestampFieldListToInterval extends BaseToInterval<List<Timestamp>> {
+	static final class TimestampFieldCollectionToInterval extends BaseToInterval<Collection<Timestamp>> {
 
-		public TimestampFieldListToInterval() {
+		public TimestampFieldCollectionToInterval() {
 			super();			
 		}		
 		
-		public TimestampFieldListToInterval(Chronology chronology) {
+		public TimestampFieldCollectionToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public TimestampFieldListToInterval(DateTimeZone dateTimeZone) {
+		public TimestampFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1389,21 +1394,23 @@ public final class FnToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<Timestamp> object, ExecCtx ctx) throws Exception {
+		public Interval nullAsNullExecute(final Collection<Timestamp> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new ExecutionException(
 						"Timestamp arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
 			
+			Iterator<Timestamp> iterator = object.iterator();
+			
 			if (this.dateTimeZone != null) {
-				return new Interval(object.get(0).getTime(), object.get(1).getTime(), this.dateTimeZone);
+				return new Interval(iterator.next().getTime(), iterator.next().getTime(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new Interval(object.get(0).getTime(), object.get(1).getTime(), this.chronology);
+				return new Interval(iterator.next().getTime(), iterator.next().getTime(), this.chronology);
 			}
 			
-			return new Interval(object.get(0).getTime(), object.get(1).getTime());
+			return new Interval(iterator.next().getTime(), iterator.next().getTime());
 		}		
 	}	
 	
@@ -1443,17 +1450,17 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class LongFieldListToInterval extends BaseToInterval<List<Long>> {
+	static final class LongFieldCollectionToInterval extends BaseToInterval<Collection<Long>> {
 
-		public LongFieldListToInterval() {
+		public LongFieldCollectionToInterval() {
 			super();			
 		}		
 		
-		public LongFieldListToInterval(Chronology chronology) {
+		public LongFieldCollectionToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public LongFieldListToInterval(DateTimeZone dateTimeZone) {
+		public LongFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1461,21 +1468,23 @@ public final class FnToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<Long> object, ExecCtx ctx) throws Exception {
+		public Interval nullAsNullExecute(final Collection<Long> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new ExecutionException(
 						"Long arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
 			
+			Iterator<Long> iterator = object.iterator();
+			
 			if (this.dateTimeZone != null) {
-				return new Interval(object.get(0).longValue(), object.get(1).longValue(), this.dateTimeZone);
+				return new Interval(iterator.next().longValue(), iterator.next().longValue(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new Interval(object.get(0).longValue(), object.get(1).longValue(), this.chronology);
+				return new Interval(iterator.next().longValue(), iterator.next().longValue(), this.chronology);
 			}
 			
-			return new Interval(object.get(0).longValue(), object.get(1).longValue());
+			return new Interval(iterator.next().longValue(), iterator.next().longValue());
 		}		
 	}	
 	
@@ -1515,17 +1524,17 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class IntegerFieldListToInterval extends BaseToInterval<List<Integer>> {
+	static final class IntegerFieldCollectionToInterval extends BaseToInterval<Collection<Integer>> {
 
-		public IntegerFieldListToInterval() {
+		public IntegerFieldCollectionToInterval() {
 			super();			
 		}	
 		
-		public IntegerFieldListToInterval(DateTimeZone dateTimeZone) {
+		public IntegerFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
-		public IntegerFieldListToInterval(Chronology chronology) {
+		public IntegerFieldCollectionToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -1533,7 +1542,7 @@ public final class FnToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<Integer> object, ExecCtx ctx) throws Exception {
+		public Interval nullAsNullExecute(final Collection<Integer> object, ExecCtx ctx) throws Exception {
 			
 			//Size 6 (year, month, day)
 			//Size 10 (year, month, day, hour, minute)
@@ -1552,9 +1561,11 @@ public final class FnToInterval {
 						". Size " + object.size() + " is not valid.");
 			}
 
-			int year1 = object.get(0).intValue();
-			int month1 = object.get(1).intValue();
-			int day1 = object.get(2).intValue();
+			Iterator<Integer> iterator = object.iterator();
+			
+			int year1 = iterator.next().intValue();
+			int month1 = iterator.next().intValue();
+			int day1 = iterator.next().intValue();
 			int hour1 = 0;
 			int minute1 = 0;
 			int second1 = 0;
@@ -1567,39 +1578,39 @@ public final class FnToInterval {
 			int second2 = 0;
 			int millisecond2 = 0;
 			if (object.size() == 6) {
-				year2 = object.get(3).intValue();
-				month2 = object.get(4).intValue();
-				day2 = object.get(5).intValue();
+				year2 = iterator.next().intValue();
+				month2 = iterator.next().intValue();
+				day2 = iterator.next().intValue();
 			} else if (object.size() == 10) {
-				hour1 = object.get(3).intValue();
-				minute1 = object.get(4).intValue();
-				year2 = object.get(5).intValue();
-				month2 = object.get(6).intValue();
-				day2 = object.get(7).intValue();
-				hour2 = object.get(8).intValue();
-				minute2 = object.get(9).intValue();
+				hour1 = iterator.next().intValue();
+				minute1 = iterator.next().intValue();
+				year2 = iterator.next().intValue();
+				month2 = iterator.next().intValue();
+				day2 = iterator.next().intValue();
+				hour2 = iterator.next().intValue();
+				minute2 = iterator.next().intValue();
 			} else if (object.size() == 12) {
-				hour1 = object.get(3).intValue();
-				minute1 = object.get(4).intValue();
-				second1 = object.get(5).intValue();
-				year2 = object.get(6).intValue();
-				month2 = object.get(7).intValue();
-				day2 = object.get(8).intValue();
-				hour2 = object.get(9).intValue();
-				minute2 = object.get(10).intValue();
-				second2 = object.get(11).intValue();
+				hour1 = iterator.next().intValue();
+				minute1 = iterator.next().intValue();
+				second1 = iterator.next().intValue();
+				year2 = iterator.next().intValue();
+				month2 = iterator.next().intValue();
+				day2 = iterator.next().intValue();
+				hour2 = iterator.next().intValue();
+				minute2 = iterator.next().intValue();
+				second2 = iterator.next().intValue();
 			} else {
-				hour1 = object.get(3).intValue();
-				minute1 = object.get(4).intValue();
-				second1 = object.get(5).intValue();
-				millisecond1 = object.get(6).intValue();
-				year2 = object.get(7).intValue();
-				month2 = object.get(8).intValue();
-				day2 = object.get(9).intValue();
-				hour2 = object.get(10).intValue();
-				minute2 = object.get(11).intValue();
-				second2 = object.get(12).intValue();
-				millisecond2 = object.get(13).intValue();
+				hour1 = iterator.next().intValue();
+				minute1 = iterator.next().intValue();
+				second1 = iterator.next().intValue();
+				millisecond1 = iterator.next().intValue();
+				year2 = iterator.next().intValue();
+				month2 = iterator.next().intValue();
+				day2 = iterator.next().intValue();
+				hour2 = iterator.next().intValue();
+				minute2 = iterator.next().intValue();
+				second2 = iterator.next().intValue();
+				millisecond2 = iterator.next().intValue();
 			}
 
 			if (this.chronology != null) {
@@ -1728,17 +1739,17 @@ public final class FnToInterval {
 		}		
 	}	
 	
-	static final class CalendarFieldListToInterval extends BaseToInterval<List<? extends Calendar>> {
+	static final class CalendarFieldCollectionToInterval extends BaseToInterval<Collection<? extends Calendar>> {
 
-		public CalendarFieldListToInterval() {
+		public CalendarFieldCollectionToInterval() {
 			super();			
 		}		
 		
-		public CalendarFieldListToInterval(Chronology chronology) {
+		public CalendarFieldCollectionToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public CalendarFieldListToInterval(DateTimeZone dateTimeZone) {
+		public CalendarFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1746,21 +1757,23 @@ public final class FnToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<? extends Calendar> object, ExecCtx ctx) throws Exception {
+		public Interval nullAsNullExecute(final Collection<? extends Calendar> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new ExecutionException(
 						"Calendar arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
 			
+			Iterator<? extends Calendar> iterator = object.iterator();
+			
 			if (this.dateTimeZone != null) {
-				return new Interval(object.get(0).getTimeInMillis(), object.get(1).getTimeInMillis(), this.dateTimeZone);
+				return new Interval(iterator.next().getTimeInMillis(), iterator.next().getTimeInMillis(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new Interval(object.get(0).getTimeInMillis(), object.get(1).getTimeInMillis(), this.chronology);
+				return new Interval(iterator.next().getTimeInMillis(), iterator.next().getTimeInMillis(), this.chronology);
 			}
 			
-			return new Interval(object.get(0).getTimeInMillis(), object.get(1).getTimeInMillis());
+			return new Interval(iterator.next().getTimeInMillis(), iterator.next().getTimeInMillis());
 		}		
 	}	
 	
@@ -1800,17 +1813,17 @@ public final class FnToInterval {
 		}		
 	}	
 		
-	static final class BaseDateTimeFieldListToInterval extends BaseToInterval<List<? extends BaseDateTime>> {
+	static final class BaseDateTimeFieldCollectionToInterval extends BaseToInterval<Collection<? extends BaseDateTime>> {
 
-		public BaseDateTimeFieldListToInterval() {
+		public BaseDateTimeFieldCollectionToInterval() {
 			super();			
 		}		
 		
-		public BaseDateTimeFieldListToInterval(Chronology chronology) {
+		public BaseDateTimeFieldCollectionToInterval(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public BaseDateTimeFieldListToInterval(DateTimeZone dateTimeZone) {
+		public BaseDateTimeFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 			super(dateTimeZone);
 		}
 		
@@ -1818,21 +1831,23 @@ public final class FnToInterval {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Interval nullAsNullExecute(final List<? extends BaseDateTime> object, ExecCtx ctx) throws Exception {
+		public Interval nullAsNullExecute(final Collection<? extends BaseDateTime> object, ExecCtx ctx) throws Exception {
 			if (object.size() != 2 ) {
 				throw new ExecutionException(
 						"BaseDateTime arguments list for Interval conversion should have size 2. " +
 						"Size " + object.size() + " is not valid.");
 			}
 			
+			Iterator<? extends BaseDateTime> iterator = object.iterator();
+			
 			if (this.dateTimeZone != null) {
-				return new Interval(object.get(0).getMillis(), object.get(1).getMillis(), this.dateTimeZone);
+				return new Interval(iterator.next().getMillis(), iterator.next().getMillis(), this.dateTimeZone);
 			}
 			if (this.chronology != null) {
-				return new Interval(object.get(0).getMillis(), object.get(1).getMillis(), this.chronology);
+				return new Interval(iterator.next().getMillis(), iterator.next().getMillis(), this.chronology);
 			}
 			
-			return new Interval(object.get(0).getMillis(), object.get(1).getMillis());
+			return new Interval(iterator.next().getMillis(), iterator.next().getMillis());
 		}		
 	}	
 	
