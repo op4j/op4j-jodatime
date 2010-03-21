@@ -205,7 +205,7 @@ public class ToLocalDateTest extends TestCase {
 		Integer month = Integer.valueOf(12);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month))
-			.exec(FnToLocalDate.fromIntegerFieldList())
+			.exec(FnToLocalDate.fromIntegerFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -219,7 +219,7 @@ public class ToLocalDateTest extends TestCase {
 		Integer day = Integer.valueOf(25);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month, day))
-			.exec(FnToLocalDate.fromIntegerFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToLocalDate.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -259,7 +259,7 @@ public class ToLocalDateTest extends TestCase {
 		String month = String.valueOf(3);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month))
-			.exec(FnToLocalDate.fromStringFieldList())
+			.exec(FnToLocalDate.fromStringFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -272,7 +272,7 @@ public class ToLocalDateTest extends TestCase {
 		String month = String.valueOf(8);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month))
-			.exec(FnToLocalDate.fromStringFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToLocalDate.fromStringFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,

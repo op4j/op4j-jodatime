@@ -1539,21 +1539,21 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link LocalDate} is created from the given integer list.
+	 * A {@link LocalDate} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final Function<List<Integer>, LocalDate> integerFieldListToLocalDate() {
-		return FnToLocalDate.fromIntegerFieldList();
+	public static final Function<Collection<Integer>, LocalDate> integerFieldCollectionToLocalDate() {
+		return FnToLocalDate.fromIntegerFieldCollection();
 	}
 	/**
-	 * A {@link LocalDate} is created from the given integer list.
+	 * A {@link LocalDate} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<Integer>, LocalDate> integerFieldListToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromIntegerFieldList(chronology);
+	public static final Function<Collection<Integer>, LocalDate> integerFieldCollectionToLocalDate(Chronology chronology) {
+		return FnToLocalDate.fromIntegerFieldCollection(chronology);
 	}
 	
 	/**
@@ -1575,21 +1575,21 @@ public class FnJodaTimeUtils {
 	}
 	
 	/**
-	 * A {@link LocalDate} is created from the given string list.
+	 * A {@link LocalDate} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final Function<List<String>, LocalDate> strFieldListToLocalDate() {
-		return FnToLocalDate.fromStringFieldList();
+	public static final Function<Collection<String>, LocalDate> strFieldCollectionToLocalDate() {
+		return FnToLocalDate.fromStringFieldCollection();
 	}
 	/**
-	 * A {@link LocalDate} is created from the given string list.
+	 * A {@link LocalDate} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<String>, LocalDate> strFieldListToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromStringFieldList(chronology);
+	public static final Function<Collection<String>, LocalDate> strFieldCollectionToLocalDate(Chronology chronology) {
+		return FnToLocalDate.fromStringFieldCollection(chronology);
 	}
 	
 	/**
@@ -1799,21 +1799,21 @@ public class FnJodaTimeUtils {
 	}
 
 	/**
-	 * A {@link LocalTime} is created from the given {@link Integer} list.
+	 * A {@link LocalTime} is created from the given {@link Integer} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final Function<List<Integer>, LocalTime> integerFieldListToLocalTime() {
-		return FnToLocalTime.fromIntegerFieldList();
+	public static final Function<Collection<Integer>, LocalTime> integerFieldCollectionToLocalTime() {
+		return FnToLocalTime.fromIntegerFieldCollection();
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link Integer} list.
+	 * A {@link LocalTime} is created from the given {@link Integer} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<Integer>, LocalTime> integerFieldListToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromIntegerFieldList(chronology);
+	public static final Function<Collection<Integer>, LocalTime> integerFieldCollectionToLocalTime(Chronology chronology) {
+		return FnToLocalTime.fromIntegerFieldCollection(chronology);
 	}
 
 	/**
@@ -1835,21 +1835,21 @@ public class FnJodaTimeUtils {
 	}
 
 	/**
-	 * A {@link LocalTime} is created from the given {@link String} list.
+	 * A {@link LocalTime} is created from the given {@link String} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final Function<List<String>, LocalTime> strFieldListToLocalTime() {
-		return FnToLocalTime.fromStringFieldList();
+	public static final Function<Collection<String>, LocalTime> strFieldCollectionToLocalTime() {
+		return FnToLocalTime.fromStringFieldCollection();
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link String} list.
+	 * A {@link LocalTime} is created from the given {@link String} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final Function<List<String>, LocalTime> strFieldListToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromStringFieldList(chronology);
+	public static final Function<Collection<String>, LocalTime> strFieldCollectionToLocalTime(Chronology chronology) {
+		return FnToLocalTime.fromStringFieldCollection(chronology);
 	}
 
 	/**

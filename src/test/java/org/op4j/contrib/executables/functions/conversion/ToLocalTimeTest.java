@@ -204,7 +204,7 @@ public class ToLocalTimeTest extends TestCase {
 		Integer minute = Integer.valueOf(30);
 		
 		LocalTime result = Op.on(Arrays.asList(hour, minute))
-			.exec(FnToLocalTime.fromIntegerFieldList())
+			.exec(FnToLocalTime.fromIntegerFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -218,7 +218,7 @@ public class ToLocalTimeTest extends TestCase {
 		Integer sec = Integer.valueOf(45);
 		
 		LocalTime result = Op.on(Arrays.asList(hour, minute, sec))
-			.exec(FnToLocalTime.fromIntegerFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToLocalTime.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -259,7 +259,7 @@ public class ToLocalTimeTest extends TestCase {
 		String minute = String.valueOf(30);
 		
 		LocalTime result = Op.on(Arrays.asList(hour, minute))
-			.exec(FnToLocalTime.fromStringFieldList())
+			.exec(FnToLocalTime.fromStringFieldCollection())
 			.get();
 	
 		assertEquals(result,
@@ -272,7 +272,7 @@ public class ToLocalTimeTest extends TestCase {
 		String minute = String.valueOf(30);
 		
 		LocalTime result = Op.on(Arrays.asList(hour, minute))
-			.exec(FnToLocalTime.fromStringFieldList(BuddhistChronology.getInstance()))
+			.exec(FnToLocalTime.fromStringFieldCollection(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,

@@ -22,8 +22,9 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
@@ -50,9 +51,9 @@ public final class FnToLocalDate {
 	
 	private final static TimestampToLocalDate TIMESTAMP_TO_LOCAL_DATE = new TimestampToLocalDate();
 	private final static LongToLocalDate LONG_TO_LOCAL_DATE = new LongToLocalDate();
-	private final static IntegerFieldListToLocalDate INTEGER_FIELD_LIST_TO_LOCAL_DATE = new IntegerFieldListToLocalDate();
+	private final static IntegerFieldCollectionToLocalDate INTEGER_FIELD_LIST_TO_LOCAL_DATE = new IntegerFieldCollectionToLocalDate();
 	private final static IntegerFieldArrayToLocalDate INTEGER_FIELD_ARRAY_TO_LOCAL_DATE = new IntegerFieldArrayToLocalDate();
-	private final static StringFieldListToLocalDate STRING_FIELD_LIST_TO_LOCAL_DATE = new StringFieldListToLocalDate();
+	private final static StringFieldCollectionToLocalDate STRING_FIELD_COLLECTION_TO_LOCAL_DATE = new StringFieldCollectionToLocalDate();
 	private final static StringFieldArrayToLocalDate STRING_FIELD_ARRAY_TO_LOCAL_DATE = new StringFieldArrayToLocalDate();
 	
 	
@@ -245,21 +246,21 @@ public final class FnToLocalDate {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link LocalDate} is created from the given integer list.
+	 * A {@link LocalDate} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldListToLocalDate fromIntegerFieldList() {
+	public static final IntegerFieldCollectionToLocalDate fromIntegerFieldCollection() {
 		return INTEGER_FIELD_LIST_TO_LOCAL_DATE;
 	}
 	/**
-	 * A {@link LocalDate} is created from the given integer list.
+	 * A {@link LocalDate} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldListToLocalDate fromIntegerFieldList(Chronology chronology) {
-		return new IntegerFieldListToLocalDate(chronology);
+	public static final IntegerFieldCollectionToLocalDate fromIntegerFieldCollection(Chronology chronology) {
+		return new IntegerFieldCollectionToLocalDate(chronology);
 	}
 	//
 	
@@ -287,21 +288,21 @@ public final class FnToLocalDate {
 	
 	// Conversion from String list
 	/**
-	 * A {@link LocalDate} is created from the given string list.
+	 * A {@link LocalDate} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldListToLocalDate fromStringFieldList() {
-		return STRING_FIELD_LIST_TO_LOCAL_DATE;
+	public static final StringFieldCollectionToLocalDate fromStringFieldCollection() {
+		return STRING_FIELD_COLLECTION_TO_LOCAL_DATE;
 	}
 	/**
-	 * A {@link LocalDate} is created from the given string list.
+	 * A {@link LocalDate} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldListToLocalDate fromStringFieldList(Chronology chronology) {
-		return new StringFieldListToLocalDate(chronology);
+	public static final StringFieldCollectionToLocalDate fromStringFieldCollection(Chronology chronology) {
+		return new StringFieldCollectionToLocalDate(chronology);
 	}
 	//
 	
@@ -599,13 +600,13 @@ public final class FnToLocalDate {
 		}
 	}	
 	
-	static final class IntegerFieldListToLocalDate extends BaseToLocalDate<List<Integer>> {
+	static final class IntegerFieldCollectionToLocalDate extends BaseToLocalDate<Collection<Integer>> {
 
-		public IntegerFieldListToLocalDate() {
+		public IntegerFieldCollectionToLocalDate() {
 			super();			
 		}
 
-		public IntegerFieldListToLocalDate(Chronology chronology) {
+		public IntegerFieldCollectionToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -613,16 +614,18 @@ public final class FnToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
+		public LocalDate nullAsNullExecute(Collection<Integer> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new ExecutionException(
 						"Integer arguments list for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.size() + " is not valid.");
 			}			
 			
-			int year = object.get(0).intValue();
-			int month = (object.size() >= 2) ? object.get(1).intValue() : 1;
-			int day = (object.size() >= 3) ? object.get(2).intValue() : 1;
+			Iterator<Integer> iterator = object.iterator();
+			
+			int year = iterator.next().intValue();
+			int month = (object.size() >= 2) ? iterator.next().intValue() : 1;
+			int day = (object.size() >= 3) ? iterator.next().intValue() : 1;
 			
 			if (this.chronology != null) {
 	        	return new LocalDate(year, month, day, this.chronology);
@@ -666,13 +669,13 @@ public final class FnToLocalDate {
 	
 	
 	
-	static final class StringFieldListToLocalDate extends BaseToLocalDate<List<String>> {
+	static final class StringFieldCollectionToLocalDate extends BaseToLocalDate<Collection<String>> {
 
-		public StringFieldListToLocalDate() {
+		public StringFieldCollectionToLocalDate() {
 			super();			
 		}
 
-		public StringFieldListToLocalDate(Chronology chronology) {
+		public StringFieldCollectionToLocalDate(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -680,16 +683,18 @@ public final class FnToLocalDate {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public LocalDate nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
+		public LocalDate nullAsNullExecute(Collection<String> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 3) {
 				throw new ExecutionException(
 						"String arguments list for LocalDate conversion should hava a size " +
 						"between 1 and 3. Size " + object.size() + " is not valid.");
 			}			
 			
-			String year = object.get(0);
-			String month = (object.size() >= 2) ? object.get(1) : "1";
-			String day = (object.size() >= 3) ? object.get(2) : "1";
+			Iterator<String> iterator = object.iterator();
+			
+			String year = iterator.next();
+			String month = (object.size() >= 2) ? iterator.next() : "1";
+			String day = (object.size() >= 3) ? iterator.next() : "1";
 			
 			if (this.chronology != null) {
 	        	return new LocalDate(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),

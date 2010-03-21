@@ -22,8 +22,9 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.apache.commons.lang.LocaleUtils;
@@ -50,9 +51,9 @@ public final class FnToLocalTime {
 	
 	private final static TimestampToLocalTime TIMESTAMP_TO_LOCAL_TIME = new TimestampToLocalTime();
 	private final static LongToLocalTime LONG_TO_LOCAL_TIME = new LongToLocalTime();
-	private final static IntegerFieldListToLocalTime INTEGER_FIELD_LIST_TO_LOCAL_TIME = new IntegerFieldListToLocalTime();
+	private final static IntegerFieldCollectionToLocalTime INTEGER_FIELD_LIST_TO_LOCAL_TIME = new IntegerFieldCollectionToLocalTime();
 	private final static IntegerFieldArrayToLocalTime INTEGER_FIELD_ARRAY_TO_LOCAL_TIME = new IntegerFieldArrayToLocalTime();
-	private final static StringFieldListToLocalTime STRING_FIELD_LIST_TO_LOCAL_TIME = new StringFieldListToLocalTime();
+	private final static StringFieldCollectionToLocalTime STRING_FIELD_LIST_TO_LOCAL_TIME = new StringFieldCollectionToLocalTime();
 	private final static StringFieldArrayToLocalTime STRING_FIELD_ARRAY_TO_LOCAL_TIME = new StringFieldArrayToLocalTime();
 	
 	
@@ -238,21 +239,21 @@ public final class FnToLocalTime {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link LocalTime} is created from the given {@link Integer} list.
+	 * A {@link LocalTime} is created from the given {@link Integer} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final IntegerFieldListToLocalTime fromIntegerFieldList() {
+	public static final IntegerFieldCollectionToLocalTime fromIntegerFieldCollection() {
 		return INTEGER_FIELD_LIST_TO_LOCAL_TIME;
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link Integer} list.
+	 * A {@link LocalTime} is created from the given {@link Integer} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldListToLocalTime fromIntegerFieldList(Chronology chronology) {
-		return new IntegerFieldListToLocalTime(chronology);
+	public static final IntegerFieldCollectionToLocalTime fromIntegerFieldCollection(Chronology chronology) {
+		return new IntegerFieldCollectionToLocalTime(chronology);
 	}
 	//
 	
@@ -280,21 +281,21 @@ public final class FnToLocalTime {
 	
 	// Conversion from String list
 	/**
-	 * A {@link LocalTime} is created from the given {@link String} list.
+	 * A {@link LocalTime} is created from the given {@link String} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
 	 */
-	public static final StringFieldListToLocalTime fromStringFieldList() {
+	public static final StringFieldCollectionToLocalTime fromStringFieldCollection() {
 		return STRING_FIELD_LIST_TO_LOCAL_TIME;
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link String} list.
+	 * A {@link LocalTime} is created from the given {@link String} {@link Collection}.
 	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
 	 * The result will be created with the given {@link Chronology}
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldListToLocalTime fromStringFieldList(Chronology chronology) {
-		return new StringFieldListToLocalTime(chronology);
+	public static final StringFieldCollectionToLocalTime fromStringFieldCollection(Chronology chronology) {
+		return new StringFieldCollectionToLocalTime(chronology);
 	}
 	//
 	
@@ -591,13 +592,13 @@ public final class FnToLocalTime {
 		}
 	}	
 	
-	static final class IntegerFieldListToLocalTime extends BaseToLocalTime<List<Integer>> {
+	static final class IntegerFieldCollectionToLocalTime extends BaseToLocalTime<Collection<Integer>> {
 
-		public IntegerFieldListToLocalTime() {
+		public IntegerFieldCollectionToLocalTime() {
 			super();			
 		}
 
-		public IntegerFieldListToLocalTime(Chronology chronology) {
+		public IntegerFieldCollectionToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -605,17 +606,19 @@ public final class FnToLocalTime {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public LocalTime nullAsNullExecute(List<Integer> object, ExecCtx ctx) throws Exception {
+		public LocalTime nullAsNullExecute(Collection<Integer> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 4) {
 				throw new ExecutionException(
 						"Integer arguments list for LocalTime conversion should have a size " +
 						"between 1 and 4. Size " + object.size() + " is not valid.");
 			}			
 			
-			int hour = object.get(0).intValue();
-			int minute = (object.size() >= 2) ? object.get(1).intValue() : 0;
-			int second = (object.size() >= 3) ? object.get(2).intValue() : 0;
-			int milli = (object.size() >= 4) ? object.get(3).intValue() : 0;
+			Iterator<Integer> iterator = object.iterator();
+			
+			int hour = iterator.next().intValue();
+			int minute = (object.size() >= 2) ? iterator.next().intValue() : 0;
+			int second = (object.size() >= 3) ? iterator.next().intValue() : 0;
+			int milli = (object.size() >= 4) ? iterator.next().intValue() : 0;
 			
 			if (this.chronology != null) {
 	        	return new LocalTime(hour, minute, second, 
@@ -664,13 +667,13 @@ public final class FnToLocalTime {
 	
 	
 	
-	static final class StringFieldListToLocalTime extends BaseToLocalTime<List<String>> {
+	static final class StringFieldCollectionToLocalTime extends BaseToLocalTime<Collection<String>> {
 
-		public StringFieldListToLocalTime() {
+		public StringFieldCollectionToLocalTime() {
 			super();			
 		}
 
-		public StringFieldListToLocalTime(Chronology chronology) {
+		public StringFieldCollectionToLocalTime(Chronology chronology) {
 			super(chronology);
 		}
 		
@@ -678,17 +681,19 @@ public final class FnToLocalTime {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public LocalTime nullAsNullExecute(List<String> object, ExecCtx ctx) throws Exception {
+		public LocalTime nullAsNullExecute(Collection<String> object, ExecCtx ctx) throws Exception {
 			if (object.size() < 1 || object.size() > 4) {
 				throw new ExecutionException(
 						"String arguments list for LocalTime conversion should have a size " +
 						"between 1 and 4. Size " + object.size() + " is not valid.");
 			}			
 			
-			String hour = object.get(0);
-			String minute = (object.size() >= 2) ? object.get(1) : "0";
-			String second = (object.size() >= 3) ? object.get(2) : "0";
-			String milli = (object.size() >= 4) ? object.get(3) : "0";
+			Iterator<String> iterator = object.iterator();
+			
+			String hour = iterator.next();
+			String minute = (object.size() >= 2) ? iterator.next() : "0";
+			String second = (object.size() >= 3) ? iterator.next() : "0";
+			String milli = (object.size() >= 4) ? iterator.next() : "0";
 			
 			if (this.chronology != null) {
 	        	return new LocalTime(Integer.parseInt(hour),Integer.parseInt(minute), Integer.parseInt(second), 
