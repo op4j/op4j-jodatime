@@ -24,7 +24,6 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import org.joda.time.Chronology;
@@ -1897,8 +1896,8 @@ public class FnJodaTimeUtils {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final Function<List<? extends Date>, Period> fromDateFieldListToPeriod() {
-		return FnToPeriod.fromDateFieldList();
+	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod() {
+		return FnToPeriod.fromDateFieldCollection();
 	}	
 	/**
 	 * @param chronology {@link Chronology} the {@link Period} is being created with
@@ -1906,14 +1905,14 @@ public class FnJodaTimeUtils {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final Function<List<? extends Date>, Period> fromDateFieldListToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromDateFieldList(chronology);
+	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod(final Chronology chronology) {
+		return FnToPeriod.fromDateFieldCollection(chronology);
 	}	
-	public static final Function<List<? extends Date>, Period> fromDateFieldListToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromDateFieldList(periodType);
+	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod(final PeriodType periodType) {
+		return FnToPeriod.fromDateFieldCollection(periodType);
 	}
-	public static final Function<List<? extends Date>, Period> fromDateFieldListToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromDateFieldList(periodType, chronology);
+	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+		return FnToPeriod.fromDateFieldCollection(periodType, chronology);
 	}
 	public static final <T extends Date> Function<T[], Period> fromDateFieldArrayToPeriod() {
 		return FnToPeriod.fromDateFieldArray();
@@ -1928,17 +1927,17 @@ public class FnJodaTimeUtils {
 		return FnToPeriod.fromDateFieldArray(periodType, chronology);
 	}
 
-	public static final Function<List<Timestamp>, Period> fromTimestampFieldListToPeriod() {
-		return FnToPeriod.fromTimestampFieldList();
+	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod() {
+		return FnToPeriod.fromTimestampFieldCollection();
 	}	
-	public static final Function<List<Timestamp>, Period> fromTimestampFieldListToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromTimestampFieldList(chronology);
+	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod(final Chronology chronology) {
+		return FnToPeriod.fromTimestampFieldCollection(chronology);
 	}	
-	public static final Function<List<Timestamp>, Period> fromTimestampFieldListToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromTimestampFieldList(periodType);
+	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod(final PeriodType periodType) {
+		return FnToPeriod.fromTimestampFieldCollection(periodType);
 	}
-	public static final Function<List<Timestamp>, Period> fromTimestampFieldListToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromTimestampFieldList(periodType, chronology);
+	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+		return FnToPeriod.fromTimestampFieldCollection(periodType, chronology);
 	}
 	public static final Function<Timestamp[], Period> fromTimestampFieldArrayToPeriod() {
 		return FnToPeriod.fromTimestampFieldArray();
@@ -1995,8 +1994,8 @@ public class FnJodaTimeUtils {
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<List<Long>, Period> fromLongFieldListToPeriod() {
-		return FnToPeriod.fromLongFieldList();
+	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod() {
+		return FnToPeriod.fromLongFieldCollection();
 	}	
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -2006,8 +2005,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<List<Long>, Period> fromLongFieldListToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromLongFieldList(chronology);
+	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod(final Chronology chronology) {
+		return FnToPeriod.fromLongFieldCollection(chronology);
 	}	
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -2017,8 +2016,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<List<Long>, Period> fromLongFieldListToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromLongFieldList(periodType);
+	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod(final PeriodType periodType) {
+		return FnToPeriod.fromLongFieldCollection(periodType);
 	}
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -2029,8 +2028,8 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<List<Long>, Period> fromLongFieldListToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromLongFieldList(periodType, chronology);
+	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+		return FnToPeriod.fromLongFieldCollection(periodType, chronology);
 	}
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -2079,17 +2078,17 @@ public class FnJodaTimeUtils {
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<List<? extends Calendar>, Period> fromCalendarFieldListToPeriod() {
-		return FnToPeriod.fromCalendarFieldList();
+	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod() {
+		return FnToPeriod.fromCalendarFieldCollection();
 	}	
-	public static final Function<List<? extends Calendar>, Period> fromCalendarFieldListToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromCalendarFieldList(chronology);
+	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod(final Chronology chronology) {
+		return FnToPeriod.fromCalendarFieldCollection(chronology);
 	}	
-	public static final Function<List<? extends Calendar>, Period> fromCalendarFieldListToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromCalendarFieldList(periodType);
+	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod(final PeriodType periodType) {
+		return FnToPeriod.fromCalendarFieldCollection(periodType);
 	}
-	public static final Function<List<? extends Calendar>, Period> fromCalendarFieldListToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromCalendarFieldList(periodType, chronology);
+	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+		return FnToPeriod.fromCalendarFieldCollection(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
@@ -2111,17 +2110,17 @@ public class FnJodaTimeUtils {
 	 * @return the {@link Period} represented by the given start and end 
 	 * {@link BaseDateTime} elements
 	 */ 
-	public static final Function<List<? extends BaseDateTime>, Period> fromBaseDateTimeFieldListToPeriod() {
-		return FnToPeriod.fromBaseDateTimeFieldList();
+	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod() {
+		return FnToPeriod.fromBaseDateTimeFieldCollection();
 	}	
-	public static final Function<List<? extends BaseDateTime>, Period> fromBaseDateTimeFieldListToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromBaseDateTimeFieldList(chronology);
+	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod(final Chronology chronology) {
+		return FnToPeriod.fromBaseDateTimeFieldCollection(chronology);
 	}	
-	public static final Function<List<? extends BaseDateTime>, Period> fromBaseDateTimeFieldListToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromBaseDateTimeFieldList(periodType);
+	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod(final PeriodType periodType) {
+		return FnToPeriod.fromBaseDateTimeFieldCollection(periodType);
 	}
-	public static final Function<List<? extends BaseDateTime>, Period> fromBaseDateTimeFieldListToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromBaseDateTimeFieldList(periodType, chronology);
+	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+		return FnToPeriod.fromBaseDateTimeFieldCollection(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end 
@@ -2149,11 +2148,11 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final Function<List<Integer>, Period> fromIntegerFieldListToPeriod() {
-		return FnToPeriod.fromIntegerFieldList();
+	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollectionToPeriod() {
+		return FnToPeriod.fromIntegerFieldCollection();
 	}
-	public static final Function<List<Integer>, Period> fromIntegerFieldListToPeriod(PeriodType periodType) {
-		return FnToPeriod.fromIntegerFieldList(periodType);
+	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollectionToPeriod(PeriodType periodType) {
+		return FnToPeriod.fromIntegerFieldCollection(periodType);
 	}
 	public static final Function<Integer[], Period> fromIntegerFieldArrayToPeriod() {
 		return FnToPeriod.fromIntegerFieldArray();
@@ -2171,11 +2170,11 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final Function<List<String>, Period> fromStrFieldListToPeriod() {
-		return FnToPeriod.fromStringFieldList();
+	public static final Function<Collection<String>, Period> fromStrFieldCollectionToPeriod() {
+		return FnToPeriod.fromStringFieldCollection();
 	}
-	public static final Function<List<String>, Period> fromStrFieldListToPeriod(PeriodType periodType) {
-		return FnToPeriod.fromStringFieldList(periodType);
+	public static final Function<Collection<String>, Period> fromStrFieldCollectionToPeriod(PeriodType periodType) {
+		return FnToPeriod.fromStringFieldCollection(periodType);
 	}
 	public static final Function<String[], Period> fromStrFieldArrayToPeriod() {
 		return FnToPeriod.fromStringFieldArray();

@@ -22,8 +22,9 @@ package org.op4j.contrib.executables.functions.conversion;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Iterator;
 
 import org.apache.commons.lang.Validate;
 import org.joda.time.Chronology;
@@ -44,24 +45,24 @@ import org.op4j.functions.ExecCtx;
  */
 public final class FnToPeriod {
 	
-	private static final DateFieldListToPeriod DATE_FIELD_LIST_TO_PERIOD = new DateFieldListToPeriod();
+	private static final DateFieldCollectionToPeriod DATE_FIELD_COLLECTION_TO_PERIOD = new DateFieldCollectionToPeriod();
 	
-	private static final TimestampFieldListToPeriod TIMESTAMP_FIELD_LIST_TO_PERIOD = new TimestampFieldListToPeriod();
+	private static final TimestampFieldCollectionToPeriod TIMESTAMP_FIELD_COLLECTION_TO_PERIOD = new TimestampFieldCollectionToPeriod();
 	private static final TimestampFieldArrayToPeriod TIMESTAMP_FIELD_ARRAY_TO_PERIOD = new TimestampFieldArrayToPeriod();
 	
 	private static final LongToPeriod LONG_TO_PERIOD = new LongToPeriod();
 	
-	private static final LongFieldListToPeriod LONG_FIELD_LIST_TO_PERIOD = new LongFieldListToPeriod();
+	private static final LongFieldCollectionToPeriod LONG_FIELD_COLLECTION_TO_PERIOD = new LongFieldCollectionToPeriod();
 	private static final LongFieldArrayToPeriod LONG_FIELD_ARRAY_TO_PERIOD = new LongFieldArrayToPeriod();
 	
-	private static final CalendarFieldListToPeriod CALENDAR_FIELD_LIST_TO_PERIOD = new CalendarFieldListToPeriod();
+	private static final CalendarFieldCollectionToPeriod CALENDAR_FIELD_COLLECTION_TO_PERIOD = new CalendarFieldCollectionToPeriod();
 	
-	private static final BaseDateTimeFieldListToPeriod BASE_DATE_TIME_FIELD_LIST_TO_PERIOD = new BaseDateTimeFieldListToPeriod();
+	private static final BaseDateTimeFieldCollectionToPeriod BASE_DATE_TIME_FIELD_COLLECTION_TO_PERIOD = new BaseDateTimeFieldCollectionToPeriod();
 	
-	private static final IntegerFieldListToPeriod INTEGER_FIELD_LIST_TO_PERIOD = new IntegerFieldListToPeriod();
+	private static final IntegerFieldCollectionToPeriod INTEGER_FIELD_COLLECTION_TO_PERIOD = new IntegerFieldCollectionToPeriod();
 	private static final IntegerFieldArrayToPeriod INTEGER_FIELD_ARRAY_TO_PERIOD = new IntegerFieldArrayToPeriod();
 	
-	private static final StringFieldListToPeriod STRING_FIELD_LIST_TO_PERIOD = new StringFieldListToPeriod();
+	private static final StringFieldCollectionToPeriod STRING_FIELD_COLLECTION_TO_PERIOD = new StringFieldCollectionToPeriod();
 	private static final StringFieldArrayToPeriod STRING_FIELD_ARRAY_TO_PERIOD = new StringFieldArrayToPeriod();
 	
 	
@@ -74,8 +75,8 @@ public final class FnToPeriod {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final DateFieldListToPeriod fromDateFieldList() {
-		return DATE_FIELD_LIST_TO_PERIOD;
+	public static final DateFieldCollectionToPeriod fromDateFieldCollection() {
+		return DATE_FIELD_COLLECTION_TO_PERIOD;
 	}	
 	/**
 	 * @param chronology {@link Chronology} the {@link Period} is being created with
@@ -83,14 +84,14 @@ public final class FnToPeriod {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final DateFieldListToPeriod fromDateFieldList(final Chronology chronology) {
-		return new DateFieldListToPeriod(chronology);
+	public static final DateFieldCollectionToPeriod fromDateFieldCollection(final Chronology chronology) {
+		return new DateFieldCollectionToPeriod(chronology);
 	}	
-	public static final DateFieldListToPeriod fromDateFieldList(final PeriodType periodType) {
-		return new DateFieldListToPeriod(periodType);
+	public static final DateFieldCollectionToPeriod fromDateFieldCollection(final PeriodType periodType) {
+		return new DateFieldCollectionToPeriod(periodType);
 	}
-	public static final DateFieldListToPeriod fromDateFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new DateFieldListToPeriod(periodType, chronology);
+	public static final DateFieldCollectionToPeriod fromDateFieldCollection(final PeriodType periodType, final Chronology chronology) {
+		return new DateFieldCollectionToPeriod(periodType, chronology);
 	}
 	public static final <T extends Date> DateFieldArrayToPeriod<T> fromDateFieldArray() {
 		return new DateFieldArrayToPeriod<T>();
@@ -107,17 +108,17 @@ public final class FnToPeriod {
 	//
 	
 	// Conversion from two timestamp objects
-	public static final TimestampFieldListToPeriod fromTimestampFieldList() {
-		return TIMESTAMP_FIELD_LIST_TO_PERIOD;
+	public static final TimestampFieldCollectionToPeriod fromTimestampFieldCollection() {
+		return TIMESTAMP_FIELD_COLLECTION_TO_PERIOD;
 	}	
-	public static final TimestampFieldListToPeriod fromTimestampFieldList(final Chronology chronology) {
-		return new TimestampFieldListToPeriod(chronology);
+	public static final TimestampFieldCollectionToPeriod fromTimestampFieldCollection(final Chronology chronology) {
+		return new TimestampFieldCollectionToPeriod(chronology);
 	}	
-	public static final TimestampFieldListToPeriod fromTimestampFieldList(final PeriodType periodType) {
-		return new TimestampFieldListToPeriod(periodType);
+	public static final TimestampFieldCollectionToPeriod fromTimestampFieldCollection(final PeriodType periodType) {
+		return new TimestampFieldCollectionToPeriod(periodType);
 	}
-	public static final TimestampFieldListToPeriod fromTimestampFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new TimestampFieldListToPeriod(periodType, chronology);
+	public static final TimestampFieldCollectionToPeriod fromTimestampFieldCollection(final PeriodType periodType, final Chronology chronology) {
+		return new TimestampFieldCollectionToPeriod(periodType, chronology);
 	}
 	public static final TimestampFieldArrayToPeriod fromTimestampFieldArray() {
 		return TIMESTAMP_FIELD_ARRAY_TO_PERIOD;
@@ -178,8 +179,8 @@ public final class FnToPeriod {
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final LongFieldListToPeriod fromLongFieldList() {
-		return LONG_FIELD_LIST_TO_PERIOD;
+	public static final LongFieldCollectionToPeriod fromLongFieldCollection() {
+		return LONG_FIELD_COLLECTION_TO_PERIOD;
 	}	
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -189,8 +190,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final LongFieldListToPeriod fromLongFieldList(final Chronology chronology) {
-		return new LongFieldListToPeriod(chronology);
+	public static final LongFieldCollectionToPeriod fromLongFieldCollection(final Chronology chronology) {
+		return new LongFieldCollectionToPeriod(chronology);
 	}	
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -200,8 +201,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final LongFieldListToPeriod fromLongFieldList(final PeriodType periodType) {
-		return new LongFieldListToPeriod(periodType);
+	public static final LongFieldCollectionToPeriod fromLongFieldCollection(final PeriodType periodType) {
+		return new LongFieldCollectionToPeriod(periodType);
 	}
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -212,8 +213,8 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final LongFieldListToPeriod fromLongFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new LongFieldListToPeriod(periodType, chronology);
+	public static final LongFieldCollectionToPeriod fromLongFieldCollection(final PeriodType periodType, final Chronology chronology) {
+		return new LongFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
 	 * The given long targets representing the time in milliseconds will be used as the start
@@ -264,17 +265,17 @@ public final class FnToPeriod {
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final CalendarFieldListToPeriod fromCalendarFieldList() {
-		return CALENDAR_FIELD_LIST_TO_PERIOD;
+	public static final CalendarFieldCollectionToPeriod fromCalendarFieldCollection() {
+		return CALENDAR_FIELD_COLLECTION_TO_PERIOD;
 	}	
-	public static final CalendarFieldListToPeriod fromCalendarFieldList(final Chronology chronology) {
-		return new CalendarFieldListToPeriod(chronology);
+	public static final CalendarFieldCollectionToPeriod fromCalendarFieldCollection(final Chronology chronology) {
+		return new CalendarFieldCollectionToPeriod(chronology);
 	}	
-	public static final CalendarFieldListToPeriod fromCalendarFieldList(final PeriodType periodType) {
-		return new CalendarFieldListToPeriod(periodType);
+	public static final CalendarFieldCollectionToPeriod fromCalendarFieldCollection(final PeriodType periodType) {
+		return new CalendarFieldCollectionToPeriod(periodType);
 	}
-	public static final CalendarFieldListToPeriod fromCalendarFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new CalendarFieldListToPeriod(periodType, chronology);
+	public static final CalendarFieldCollectionToPeriod fromCalendarFieldCollection(final PeriodType periodType, final Chronology chronology) {
+		return new CalendarFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
@@ -298,17 +299,17 @@ public final class FnToPeriod {
 	 * @return the {@link Period} represented by the given start and end 
 	 * {@link BaseDateTime} elements
 	 */
-	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList() {
-		return BASE_DATE_TIME_FIELD_LIST_TO_PERIOD;
+	public static final BaseDateTimeFieldCollectionToPeriod fromBaseDateTimeFieldCollection() {
+		return BASE_DATE_TIME_FIELD_COLLECTION_TO_PERIOD;
 	}	
-	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList(final Chronology chronology) {
-		return new BaseDateTimeFieldListToPeriod(chronology);
+	public static final BaseDateTimeFieldCollectionToPeriod fromBaseDateTimeFieldCollection(final Chronology chronology) {
+		return new BaseDateTimeFieldCollectionToPeriod(chronology);
 	}	
-	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList(final PeriodType periodType) {
-		return new BaseDateTimeFieldListToPeriod(periodType);
+	public static final BaseDateTimeFieldCollectionToPeriod fromBaseDateTimeFieldCollection(final PeriodType periodType) {
+		return new BaseDateTimeFieldCollectionToPeriod(periodType);
 	}
-	public static final BaseDateTimeFieldListToPeriod fromBaseDateTimeFieldList(final PeriodType periodType, final Chronology chronology) {
-		return new BaseDateTimeFieldListToPeriod(periodType, chronology);
+	public static final BaseDateTimeFieldCollectionToPeriod fromBaseDateTimeFieldCollection(final PeriodType periodType, final Chronology chronology) {
+		return new BaseDateTimeFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end 
@@ -337,11 +338,11 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final IntegerFieldListToPeriod fromIntegerFieldList() {
-		return INTEGER_FIELD_LIST_TO_PERIOD;
+	public static final IntegerFieldCollectionToPeriod fromIntegerFieldCollection() {
+		return INTEGER_FIELD_COLLECTION_TO_PERIOD;
 	}
-	public static final IntegerFieldListToPeriod fromIntegerFieldList(PeriodType periodType) {
-		return new IntegerFieldListToPeriod(periodType);
+	public static final IntegerFieldCollectionToPeriod fromIntegerFieldCollection(PeriodType periodType) {
+		return new IntegerFieldCollectionToPeriod(periodType);
 	}
 	public static final IntegerFieldArrayToPeriod fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_PERIOD;
@@ -359,11 +360,11 @@ public final class FnToPeriod {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final StringFieldListToPeriod fromStringFieldList() {
-		return STRING_FIELD_LIST_TO_PERIOD;
+	public static final StringFieldCollectionToPeriod fromStringFieldCollection() {
+		return STRING_FIELD_COLLECTION_TO_PERIOD;
 	}
-	public static final StringFieldListToPeriod fromStringFieldList(PeriodType periodType) {
-		return new StringFieldListToPeriod(periodType);
+	public static final StringFieldCollectionToPeriod fromStringFieldCollection(PeriodType periodType) {
+		return new StringFieldCollectionToPeriod(periodType);
 	}
 	public static final StringFieldArrayToPeriod fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_PERIOD;
@@ -414,21 +415,21 @@ public final class FnToPeriod {
 		}
 	}
 	
-	static final class DateFieldListToPeriod extends BaseToPeriod<List<? extends Date>> {
+	static final class DateFieldCollectionToPeriod extends BaseToPeriod<Collection<? extends Date>> {
 
-		public DateFieldListToPeriod() {
+		public DateFieldCollectionToPeriod() {
 			super();			
 		}		
 		
-		public DateFieldListToPeriod(Chronology chronology) {
+		public DateFieldCollectionToPeriod(Chronology chronology) {
 			super(chronology);					
 		}
 		
-		public DateFieldListToPeriod(PeriodType periodType) {
+		public DateFieldCollectionToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public DateFieldListToPeriod(PeriodType periodType, Chronology chronology) {
+		public DateFieldCollectionToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -436,23 +437,26 @@ public final class FnToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<? extends Date> dates, ExecCtx ctx) throws Exception {
+		public Period nullAsNullExecute(final Collection<? extends Date> dates, ExecCtx ctx) throws Exception {
 			if (dates.size() != 2 ) {
 				throw new ExecutionException(
 						"Date arguments list for Period conversion should have size " +
 						"2. Size " + dates.size() + " is not valid.");
 			}
+			
+			Iterator<? extends Date> iterator = dates.iterator();
+			
 			if (this.periodType != null && this.chronology != null) {
-				return new Period(dates.get(0).getTime(), dates.get(1).getTime(), 
+				return new Period(iterator.next().getTime(), iterator.next().getTime(), 
 						this.periodType, this.chronology);
 			}
 			if (this.periodType != null) {
-				return new Period(dates.get(0).getTime(), dates.get(1).getTime(), this.periodType);
+				return new Period(iterator.next().getTime(), iterator.next().getTime(), this.periodType);
 			}
 			if (this.chronology != null) {
-				return new Period(dates.get(0).getTime(), dates.get(1).getTime(), this.chronology);
+				return new Period(iterator.next().getTime(), iterator.next().getTime(), this.chronology);
 			}
-			return new Period(dates.get(0).getTime(), dates.get(1).getTime());
+			return new Period(iterator.next().getTime(), iterator.next().getTime());
 		}		
 	}	
 	
@@ -498,21 +502,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class TimestampFieldListToPeriod extends BaseToPeriod<List<Timestamp>> {
+	static final class TimestampFieldCollectionToPeriod extends BaseToPeriod<Collection<Timestamp>> {
 
-		public TimestampFieldListToPeriod() {
+		public TimestampFieldCollectionToPeriod() {
 			super();			
 		}		
 		
-		public TimestampFieldListToPeriod(Chronology chronology) {
+		public TimestampFieldCollectionToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public TimestampFieldListToPeriod(PeriodType periodType) {
+		public TimestampFieldCollectionToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public TimestampFieldListToPeriod(PeriodType periodType, Chronology chronology) {
+		public TimestampFieldCollectionToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -520,23 +524,26 @@ public final class FnToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<Timestamp> timestamps, ExecCtx ctx) throws Exception {
+		public Period nullAsNullExecute(final Collection<Timestamp> timestamps, ExecCtx ctx) throws Exception {
 			if (timestamps.size() != 2 ) {
 				throw new ExecutionException(
 						"Timestamp arguments list for Period conversion should of sizes " +
 						"2. Size " + timestamps.size() + " is not valid.");
 			}
+			
+			Iterator<Timestamp> iterator = timestamps.iterator();
+			
 			if (this.periodType != null && this.chronology != null) {
-				return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime(), 
+				return new Period(iterator.next().getTime(), iterator.next().getTime(), 
 						this.periodType, this.chronology);
 			}
 			if (this.periodType != null) {
-				return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime(), this.periodType);
+				return new Period(iterator.next().getTime(), iterator.next().getTime(), this.periodType);
 			}
 			if (this.chronology != null) {
-				return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime(), this.chronology);
+				return new Period(iterator.next().getTime(), iterator.next().getTime(), this.chronology);
 			}
-			return new Period(timestamps.get(0).getTime(), timestamps.get(1).getTime());
+			return new Period(iterator.next().getTime(), iterator.next().getTime());
 		}		
 	}	
 	
@@ -618,21 +625,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class LongFieldListToPeriod extends BaseToPeriod<List<Long>> {
+	static final class LongFieldCollectionToPeriod extends BaseToPeriod<Collection<Long>> {
 
-		public LongFieldListToPeriod() {
+		public LongFieldCollectionToPeriod() {
 			super();			
 		}		
 		
-		public LongFieldListToPeriod(Chronology chronology) {
+		public LongFieldCollectionToPeriod(Chronology chronology) {
 			super(chronology);				
 		}
 		
-		public LongFieldListToPeriod(PeriodType periodType) {
+		public LongFieldCollectionToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public LongFieldListToPeriod(PeriodType periodType, Chronology chronology) {
+		public LongFieldCollectionToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -640,23 +647,26 @@ public final class FnToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<Long> longs, ExecCtx ctx) throws Exception {
+		public Period nullAsNullExecute(final Collection<Long> longs, ExecCtx ctx) throws Exception {
 			if (longs.size() != 2 ) {
 				throw new ExecutionException(
 						"Long arguments list for Period conversion should have size " +
 						"2. Size " + longs.size() + " is not valid.");
 			}
+			
+			Iterator<Long> iterator = longs.iterator();
+			
 			if (this.periodType != null && this.chronology != null) {
-				return new Period(longs.get(0).longValue(), longs.get(1).longValue(), 
+				return new Period(iterator.next().longValue(), iterator.next().longValue(), 
 						this.periodType, this.chronology);
 			}
 			if (this.periodType != null) {
-				return new Period(longs.get(0).longValue(), longs.get(1).longValue(), this.periodType);
+				return new Period(iterator.next().longValue(), iterator.next().longValue(), this.periodType);
 			}
 			if (this.chronology != null) {
-				return new Period(longs.get(0).longValue(), longs.get(1).longValue(), this.chronology);
+				return new Period(iterator.next().longValue(), iterator.next().longValue(), this.chronology);
 			}
-			return new Period(longs.get(0).longValue(), longs.get(1).longValue());
+			return new Period(iterator.next().longValue(), iterator.next().longValue());
 		}		
 	}	
 	
@@ -702,21 +712,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	 
-	static final class CalendarFieldListToPeriod extends BaseToPeriod<List<? extends Calendar>> {
+	static final class CalendarFieldCollectionToPeriod extends BaseToPeriod<Collection<? extends Calendar>> {
 
-		public CalendarFieldListToPeriod() {
+		public CalendarFieldCollectionToPeriod() {
 			super();			
 		}		
 		
-		public CalendarFieldListToPeriod(Chronology chronology) {
+		public CalendarFieldCollectionToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public CalendarFieldListToPeriod(PeriodType periodType) {
+		public CalendarFieldCollectionToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public CalendarFieldListToPeriod(PeriodType periodType, Chronology chronology) {
+		public CalendarFieldCollectionToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -724,23 +734,26 @@ public final class FnToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<? extends Calendar> calendars, ExecCtx ctx) throws Exception {
+		public Period nullAsNullExecute(final Collection<? extends Calendar> calendars, ExecCtx ctx) throws Exception {
 			if (calendars.size() != 2 ) {
 				throw new ExecutionException(
 						"Calendar arguments list for Period conversion should have size " +
 						"2. Size " + calendars.size() + " is not valid.");
 			}
+			
+			Iterator<? extends Calendar> iterator = calendars.iterator();
+			
 			if (this.periodType != null && this.chronology != null) {
-				return new Period(calendars.get(0).getTimeInMillis(), calendars.get(1).getTimeInMillis(), 
+				return new Period(iterator.next().getTimeInMillis(), iterator.next().getTimeInMillis(), 
 						this.periodType, this.chronology);
 			}
 			if (this.periodType != null) {
-				return new Period(calendars.get(0).getTimeInMillis(), calendars.get(1).getTimeInMillis(), this.periodType);
+				return new Period(iterator.next().getTimeInMillis(), iterator.next().getTimeInMillis(), this.periodType);
 			}
 			if (this.chronology != null) {
-				return new Period(calendars.get(0).getTimeInMillis(), calendars.get(1).getTimeInMillis(), this.chronology);
+				return new Period(iterator.next().getTimeInMillis(), iterator.next().getTimeInMillis(), this.chronology);
 			}
-			return new Period(calendars.get(0).getTimeInMillis(), calendars.get(1).getTimeInMillis());
+			return new Period(iterator.next().getTimeInMillis(), iterator.next().getTimeInMillis());
 		}		
 	}	
 	
@@ -786,21 +799,21 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class BaseDateTimeFieldListToPeriod extends BaseToPeriod<List<? extends BaseDateTime>> {
+	static final class BaseDateTimeFieldCollectionToPeriod extends BaseToPeriod<Collection<? extends BaseDateTime>> {
 
-		public BaseDateTimeFieldListToPeriod() {
+		public BaseDateTimeFieldCollectionToPeriod() {
 			super();			
 		}		
 		
-		public BaseDateTimeFieldListToPeriod(Chronology chronology) {
+		public BaseDateTimeFieldCollectionToPeriod(Chronology chronology) {
 			super(chronology);
 		}
 		
-		public BaseDateTimeFieldListToPeriod(PeriodType periodType) {
+		public BaseDateTimeFieldCollectionToPeriod(PeriodType periodType) {
 			super(periodType);
 		}
 		
-		public BaseDateTimeFieldListToPeriod(PeriodType periodType, Chronology chronology) {
+		public BaseDateTimeFieldCollectionToPeriod(PeriodType periodType, Chronology chronology) {
 			super(periodType, chronology);
 		}
 		
@@ -808,23 +821,26 @@ public final class FnToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<? extends BaseDateTime> dateTimes, ExecCtx ctx) throws Exception {
+		public Period nullAsNullExecute(final Collection<? extends BaseDateTime> dateTimes, ExecCtx ctx) throws Exception {
 			if (dateTimes.size() != 2 ) {
 				throw new ExecutionException(
 						"DateTime arguments list for Period conversion should have size " +
 						"2. Size " + dateTimes.size() + " is not valid.");
 			}
+			
+			Iterator<? extends BaseDateTime> iterator = dateTimes.iterator();
+			
 			if (this.periodType != null && this.chronology != null) {
-				return new Period(dateTimes.get(0).getMillis(), dateTimes.get(1).getMillis(), 
+				return new Period(iterator.next().getMillis(), iterator.next().getMillis(), 
 						this.periodType, this.chronology);
 			}
 			if (this.periodType != null) {
-				return new Period(dateTimes.get(0), dateTimes.get(1), this.periodType);
+				return new Period(iterator.next(), iterator.next(), this.periodType);
 			}
 			if (this.chronology != null) {
-				return new Period(dateTimes.get(0).getMillis(), dateTimes.get(1).getMillis(), this.chronology);
+				return new Period(iterator.next().getMillis(), iterator.next().getMillis(), this.chronology);
 			}
-			return new Period(dateTimes.get(0), dateTimes.get(1));
+			return new Period(iterator.next(), iterator.next());
 		}		
 	}	
 	
@@ -869,13 +885,13 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class IntegerFieldListToPeriod extends BaseToPeriod<List<Integer>> {
+	static final class IntegerFieldCollectionToPeriod extends BaseToPeriod<Collection<Integer>> {
 
-		public IntegerFieldListToPeriod() {
+		public IntegerFieldCollectionToPeriod() {
 			super();			
 		}	
 		
-		public IntegerFieldListToPeriod(PeriodType periodType) {
+		public IntegerFieldCollectionToPeriod(PeriodType periodType) {
 			super(periodType);
 		}	
 		
@@ -883,7 +899,9 @@ public final class FnToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<Integer> integers, ExecCtx ctx) throws Exception {
+		public Period nullAsNullExecute(final Collection<Integer> integers, ExecCtx ctx) throws Exception {
+			
+			Iterator<Integer> iterator = integers.iterator();
 			
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
@@ -894,7 +912,6 @@ public final class FnToPeriod {
 							". Size " + integers.size() + " is not valid.");
 				}				
 				
-				int currentIndex = 0;
 				int years = 0;
 				int months = 0;
 				int weeks = 0;
@@ -904,28 +921,28 @@ public final class FnToPeriod {
 				int seconds = 0;
 				int millis = 0;
 				if (this.periodType.isSupported(DurationFieldType.years())) {
-					years = integers.get(currentIndex++).intValue();					
+					years = iterator.next().intValue();					
 				}
 				if (this.periodType.isSupported(DurationFieldType.months())) {
-					months = integers.get(currentIndex++).intValue();					
+					months = iterator.next().intValue();					
 				}
 				if (this.periodType.isSupported(DurationFieldType.weeks())) {
-					weeks = integers.get(currentIndex++).intValue();					
+					weeks = iterator.next().intValue();					
 				}
 				if (this.periodType.isSupported(DurationFieldType.days())) {
-					days = integers.get(currentIndex++).intValue();					
+					days = iterator.next().intValue();					
 				}
 				if (this.periodType.isSupported(DurationFieldType.hours())) {
-					hours = integers.get(currentIndex++).intValue();					
+					hours = iterator.next().intValue();					
 				}
 				if (this.periodType.isSupported(DurationFieldType.minutes())) {
-					minutes = integers.get(currentIndex++).intValue();					
+					minutes = iterator.next().intValue();					
 				}
 				if (this.periodType.isSupported(DurationFieldType.seconds())) {
-					seconds = integers.get(currentIndex++).intValue();					
+					seconds = iterator.next().intValue();					
 				}
 				if (this.periodType.isSupported(DurationFieldType.millis())) {
-					millis = integers.get(currentIndex++).intValue();					
+					millis = iterator.next().intValue();					
 				}				
 				
 				return new Period(years, months, weeks, days, hours, minutes, seconds, millis, this.periodType);
@@ -944,15 +961,15 @@ public final class FnToPeriod {
 
 			// hours, minutes, seconds, milliseconds
 			if (integers.size() == 4) {
-				return new Period(integers.get(0).intValue(), integers.get(1).intValue(), 
-						integers.get(2).intValue(), integers.get(3).intValue());
+				return new Period(iterator.next().intValue(), iterator.next().intValue(), 
+						iterator.next().intValue(), iterator.next().intValue());
 			} 
 			
 			// years, months, weeks, days, hours, minutes, seconds and milliseconds
-			return new Period(integers.get(0).intValue(), integers.get(1).intValue(), 
-					integers.get(2).intValue(), integers.get(3).intValue(),
-					integers.get(4).intValue(), integers.get(5).intValue(),
-					integers.get(6).intValue(), integers.get(7).intValue());
+			return new Period(iterator.next().intValue(), iterator.next().intValue(), 
+					iterator.next().intValue(), iterator.next().intValue(),
+					iterator.next().intValue(), iterator.next().intValue(),
+					iterator.next().intValue(), iterator.next().intValue());
 		}		
 	}	
 	
@@ -1042,13 +1059,13 @@ public final class FnToPeriod {
 		}		
 	}	
 	
-	static final class StringFieldListToPeriod extends BaseToPeriod<List<String>> {
+	static final class StringFieldCollectionToPeriod extends BaseToPeriod<Collection<String>> {
 
-		public StringFieldListToPeriod() {
+		public StringFieldCollectionToPeriod() {
 			super();			
 		}	
 		
-		public StringFieldListToPeriod(PeriodType periodType) {
+		public StringFieldCollectionToPeriod(PeriodType periodType) {
 			super(periodType);
 		}	
 		
@@ -1056,7 +1073,10 @@ public final class FnToPeriod {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public Period nullAsNullExecute(final List<String> strings, ExecCtx ctx) throws Exception {
+		public Period nullAsNullExecute(final Collection<String> strings, ExecCtx ctx) throws Exception {
+			
+			Iterator<String> iterator = strings.iterator();
+			
 			if (this.periodType != null) {
 				// Check list size is consistent with periodType
 				if (strings.size() != this.periodType.size()) { 
@@ -1066,7 +1086,6 @@ public final class FnToPeriod {
 							". Size " + strings.size() + " is not valid.");
 				}				
 				
-				int currentIndex = 0;
 				int years = 0;
 				int months = 0;
 				int weeks = 0;
@@ -1076,28 +1095,28 @@ public final class FnToPeriod {
 				int seconds = 0;
 				int millis = 0;
 				if (this.periodType.isSupported(DurationFieldType.years())) {
-					years = Integer.parseInt(strings.get(currentIndex++));					
+					years = Integer.parseInt(iterator.next());					
 				}
 				if (this.periodType.isSupported(DurationFieldType.months())) {
-					months = Integer.parseInt(strings.get(currentIndex++));					
+					months = Integer.parseInt(iterator.next());					
 				}
 				if (this.periodType.isSupported(DurationFieldType.weeks())) {
-					weeks = Integer.parseInt(strings.get(currentIndex++));					
+					weeks = Integer.parseInt(iterator.next());					
 				}
 				if (this.periodType.isSupported(DurationFieldType.days())) {
-					days = Integer.parseInt(strings.get(currentIndex++));					
+					days = Integer.parseInt(iterator.next());					
 				}
 				if (this.periodType.isSupported(DurationFieldType.hours())) {
-					hours = Integer.parseInt(strings.get(currentIndex++));					
+					hours = Integer.parseInt(iterator.next());					
 				}
 				if (this.periodType.isSupported(DurationFieldType.minutes())) {
-					minutes = Integer.parseInt(strings.get(currentIndex++));					
+					minutes = Integer.parseInt(iterator.next());					
 				}
 				if (this.periodType.isSupported(DurationFieldType.seconds())) {
-					seconds = Integer.parseInt(strings.get(currentIndex++));					
+					seconds = Integer.parseInt(iterator.next());					
 				}
 				if (this.periodType.isSupported(DurationFieldType.millis())) {
-					millis = Integer.parseInt(strings.get(currentIndex++));					
+					millis = Integer.parseInt(iterator.next());					
 				}				
 				
 				return new Period(years, months, weeks, days, hours, minutes, seconds, millis, this.periodType);
@@ -1116,15 +1135,15 @@ public final class FnToPeriod {
 
 			// hours, minutes, seconds, milliseconds
 			if (strings.size() == 4) {
-				return new Period(Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
-						Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)));
+				return new Period(Integer.parseInt(iterator.next()), Integer.parseInt(iterator.next()), 
+						Integer.parseInt(iterator.next()), Integer.parseInt(iterator.next()));
 			} 
 			
 			// years, months, weeks, days, hours, minutes, seconds and milliseconds
-			return new Period(Integer.parseInt(strings.get(0)), Integer.parseInt(strings.get(1)), 
-					Integer.parseInt(strings.get(2)), Integer.parseInt(strings.get(3)),
-					Integer.parseInt(strings.get(4)), Integer.parseInt(strings.get(5)),
-					Integer.parseInt(strings.get(6)), Integer.parseInt(strings.get(7)));
+			return new Period(Integer.parseInt(iterator.next()), Integer.parseInt(iterator.next()), 
+					Integer.parseInt(iterator.next()), Integer.parseInt(iterator.next()),
+					Integer.parseInt(iterator.next()), Integer.parseInt(iterator.next()),
+					Integer.parseInt(iterator.next()), Integer.parseInt(iterator.next()));
 		}		
 	}	
 	
