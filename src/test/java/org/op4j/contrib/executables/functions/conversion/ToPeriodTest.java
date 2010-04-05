@@ -19,6 +19,7 @@ import org.joda.time.chrono.CopticChronology;
 import org.joda.time.chrono.GregorianChronology;
 import org.junit.Test;
 import org.op4j.Op;
+import org.op4j.jodatime.functions.FnToPeriod;
 
 public class ToPeriodTest extends TestCase {
 

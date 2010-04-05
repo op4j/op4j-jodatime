@@ -20,6 +20,8 @@ import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.jodatime.functions.FnJodaTimeUtils;
+import org.op4j.jodatime.functions.FnToInterval;
 
 public class ToIntervalTest extends TestCase {
 

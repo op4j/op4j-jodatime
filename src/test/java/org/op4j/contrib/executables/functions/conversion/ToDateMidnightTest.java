@@ -17,6 +17,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
+import org.op4j.jodatime.functions.FnToDateMidnight;
 
 public class ToDateMidnightTest extends TestCase {
 

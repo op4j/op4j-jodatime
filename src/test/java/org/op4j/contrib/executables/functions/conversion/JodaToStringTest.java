@@ -16,7 +16,8 @@ import org.joda.time.chrono.GregorianChronology;
 import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
-import org.op4j.contrib.executables.functions.conversion.FnJodaToString.FormatType;
+import org.op4j.jodatime.functions.FnJodaToString;
+import org.op4j.jodatime.functions.FnJodaToString.FormatType;
 
 public class JodaToStringTest extends TestCase {
 

@@ -16,6 +16,8 @@ import org.joda.time.chrono.GJChronology;
 import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
+import org.op4j.jodatime.functions.FnJodaTimeUtils;
+import org.op4j.jodatime.functions.FnToLocalTime;
 
 public class ToLocalTimeTest extends TestCase {
 
