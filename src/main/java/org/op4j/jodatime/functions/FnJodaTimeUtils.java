@@ -1896,7 +1896,7 @@ public class FnJodaTimeUtils {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod() {
+	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod() {
 		return FnToPeriod.fromDateFieldCollection();
 	}	
 	/**
@@ -1905,57 +1905,57 @@ public class FnJodaTimeUtils {
 	 * @return the {@link Period} created from the {@link Date} target elements given as the start
 	 * and end of such {@link Period}
 	 */
-	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod(final Chronology chronology) {
+	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromDateFieldCollection(chronology);
 	}	
-	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod(final PeriodType periodType) {
+	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromDateFieldCollection(periodType);
 	}
-	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromDateFieldCollection(periodType, chronology);
 	}
-	public static final <T extends Date> Function<T[], Period> fromDateFieldArrayToPeriod() {
+	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod() {
 		return FnToPeriod.fromDateFieldArray();
 	}	
-	public static final <T extends Date> Function<T[], Period> fromDateFieldArrayToPeriod(final Chronology chronology) {
+	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromDateFieldArray(chronology);
 	}	
-	public static final <T extends Date> Function<T[], Period> fromDateFieldArrayToPeriod(final PeriodType periodType) {
+	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromDateFieldArray(periodType);
 	}
-	public static final <T extends Date> Function<T[], Period> fromDateFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromDateFieldArray(periodType, chronology);
 	}
 
-	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod() {
+	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod() {
 		return FnToPeriod.fromTimestampFieldCollection();
 	}	
-	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod(final Chronology chronology) {
+	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromTimestampFieldCollection(chronology);
 	}	
-	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod(final PeriodType periodType) {
+	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromTimestampFieldCollection(periodType);
 	}
-	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromTimestampFieldCollection(periodType, chronology);
 	}
-	public static final Function<Timestamp[], Period> fromTimestampFieldArrayToPeriod() {
+	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod() {
 		return FnToPeriod.fromTimestampFieldArray();
 	}	
-	public static final Function<Timestamp[], Period> fromTimestampFieldArrayToPeriod(final Chronology chronology) {
+	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromTimestampFieldArray(chronology);
 	}	
-	public static final Function<Timestamp[], Period> fromTimestampFieldArrayToPeriod(final PeriodType periodType) {
+	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromTimestampFieldArray(periodType);
 	}
-	public static final Function<Timestamp[], Period> fromTimestampFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromTimestampFieldArray(periodType, chronology);
 	}
 
 	/**
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final Function<Long, Period> fromLongToPeriod() {
+	public static final Function<Long, Period> longToPeriod() {
 		return FnToPeriod.fromLong();
 	}
 	/**
@@ -1964,7 +1964,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final Function<Long, Period> fromLongToPeriod(final Chronology chronology) {
+	public static final Function<Long, Period> longToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromLong(chronology);
 	}
 	/**
@@ -1973,7 +1973,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final Function<Long, Period> fromLongToPeriod(final PeriodType periodType) {
+	public static final Function<Long, Period> longToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromLong(periodType);
 	}
 	/**
@@ -1984,7 +1984,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return a Period with the given Duration in milliseconds
 	 */
-	public static final Function<Long, Period> fromLongToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Long, Period> longToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromLong(periodType, chronology);
 	}
 
@@ -1994,7 +1994,7 @@ public class FnJodaTimeUtils {
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod() {
+	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod() {
 		return FnToPeriod.fromLongFieldCollection();
 	}	
 	/**
@@ -2005,7 +2005,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod(final Chronology chronology) {
+	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromLongFieldCollection(chronology);
 	}	
 	/**
@@ -2016,7 +2016,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod(final PeriodType periodType) {
+	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromLongFieldCollection(periodType);
 	}
 	/**
@@ -2028,7 +2028,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Collection<Long>, Period> fromLongFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromLongFieldCollection(periodType, chronology);
 	}
 	/**
@@ -2037,7 +2037,7 @@ public class FnJodaTimeUtils {
 	 *  
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Long[], Period> fromLongFieldArrayToPeriod() {
+	public static final Function<Long[], Period> longFieldArrayToPeriod() {
 		return FnToPeriod.fromLongFieldArray();
 	}	
 	/**
@@ -2048,7 +2048,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Long[], Period> fromLongFieldArrayToPeriod(final Chronology chronology) {
+	public static final Function<Long[], Period> longFieldArrayToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromLongFieldArray(chronology);
 	}	
 	/**
@@ -2059,7 +2059,7 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Long[], Period> fromLongFieldArrayToPeriod(final PeriodType periodType) {
+	public static final Function<Long[], Period> longFieldArrayToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromLongFieldArray(periodType);
 	}
 	/**
@@ -2071,38 +2071,38 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Long[], Period> fromLongFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Long[], Period> longFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromLongFieldArray(periodType, chronology);
 	}
 
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod() {
+	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod() {
 		return FnToPeriod.fromCalendarFieldCollection();
 	}	
-	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod(final Chronology chronology) {
+	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromCalendarFieldCollection(chronology);
 	}	
-	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod(final PeriodType periodType) {
+	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromCalendarFieldCollection(periodType);
 	}
-	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromCalendarFieldCollection(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end instants
 	 */
-	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArrayToPeriod() {
+	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod() {
 		return FnToPeriod.fromCalendarFieldArray();
 	}	
-	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArrayToPeriod(final Chronology chronology) {
+	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromCalendarFieldArray(chronology);
 	}	
-	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArrayToPeriod(final PeriodType periodType) {
+	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromCalendarFieldArray(periodType);
 	}
-	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromCalendarFieldArray(periodType, chronology);
 	}
 
@@ -2110,32 +2110,32 @@ public class FnJodaTimeUtils {
 	 * @return the {@link Period} represented by the given start and end 
 	 * {@link BaseDateTime} elements
 	 */ 
-	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod() {
+	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod() {
 		return FnToPeriod.fromBaseDateTimeFieldCollection();
 	}	
-	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod(final Chronology chronology) {
+	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromBaseDateTimeFieldCollection(chronology);
 	}	
-	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod(final PeriodType periodType) {
+	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromBaseDateTimeFieldCollection(periodType);
 	}
-	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromBaseDateTimeFieldCollection(periodType, chronology);
 	}
 	/**
 	 * @return the {@link Period} represented by the given start and end 
 	 * {@link BaseDateTime} elements
 	 */
-	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArrayToPeriod() {
+	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod() {
 		return FnToPeriod.fromBaseDateTimeFieldArray();
 	}	
-	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArrayToPeriod(final Chronology chronology) {
+	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final Chronology chronology) {
 		return FnToPeriod.fromBaseDateTimeFieldArray(chronology);
 	}	
-	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArrayToPeriod(final PeriodType periodType) {
+	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final PeriodType periodType) {
 		return FnToPeriod.fromBaseDateTimeFieldArray(periodType);
 	}
-	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
+	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
 		return FnToPeriod.fromBaseDateTimeFieldArray(periodType, chronology);
 	}
 	
@@ -2148,16 +2148,16 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollectionToPeriod() {
+	public static final Function<Collection<Integer>, Period> integerFieldCollectionToPeriod() {
 		return FnToPeriod.fromIntegerFieldCollection();
 	}
-	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollectionToPeriod(PeriodType periodType) {
+	public static final Function<Collection<Integer>, Period> integerFieldCollectionToPeriod(PeriodType periodType) {
 		return FnToPeriod.fromIntegerFieldCollection(periodType);
 	}
-	public static final Function<Integer[], Period> fromIntegerFieldArrayToPeriod() {
+	public static final Function<Integer[], Period> integerFieldArrayToPeriod() {
 		return FnToPeriod.fromIntegerFieldArray();
 	}
-	public static final Function<Integer[], Period> fromIntegerFieldArrayToPeriod(PeriodType periodType) {
+	public static final Function<Integer[], Period> integerFieldArrayToPeriod(PeriodType periodType) {
 		return FnToPeriod.fromIntegerFieldArray(periodType);
 	}
 	
@@ -2170,16 +2170,16 @@ public class FnJodaTimeUtils {
 	 * 
 	 * @return the {@link Period}
 	 */
-	public static final Function<Collection<String>, Period> fromStrFieldCollectionToPeriod() {
+	public static final Function<Collection<String>, Period> strFieldCollectionToPeriod() {
 		return FnToPeriod.fromStringFieldCollection();
 	}
-	public static final Function<Collection<String>, Period> fromStrFieldCollectionToPeriod(PeriodType periodType) {
+	public static final Function<Collection<String>, Period> strFieldCollectionToPeriod(PeriodType periodType) {
 		return FnToPeriod.fromStringFieldCollection(periodType);
 	}
-	public static final Function<String[], Period> fromStrFieldArrayToPeriod() {
+	public static final Function<String[], Period> strFieldArrayToPeriod() {
 		return FnToPeriod.fromStringFieldArray();
 	}
-	public static final Function<String[], Period> fromStrFieldArrayToPeriod(PeriodType periodType) {
+	public static final Function<String[], Period> strFieldArrayToPeriod(PeriodType periodType) {
 		return FnToPeriod.fromStringFieldArray(periodType);
 	}
 	
