@@ -6,15 +6,66 @@
   <groupId>org.op4j</groupId>
   <artifactId>op4j-jodatime</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-dev</version>
+  <version>1.0-beta3-SNAPSHOT</version>
   <name>op4j-jodatime</name>
+  <description>op4j-jodatime</description>
   <url>http://www.op4j.org</url>
 
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>The OP4J team</name>
+    <url>http://www.op4j.org</url>
+  </organization>
+  
+  <scm>
+    <url>scm:svn:http://op4j.svn.sourceforge.net/svnroot/op4j/trunk/op4j-jodatime</url>
+    <connection>scm:svn:https://op4j.svn.sourceforge.net/svnroot/op4j/trunk/op4j-jodatime</connection>
+    <developerConnection>scm:svn:https://op4j.svn.sourceforge.net/svnroot/op4j/trunk/op4j-jodatime</developerConnection>
+  </scm>
+  
+  <developers>
+    <developer>
+      <id>sschz</id>
+      <name>Soraya Sanchez</name>
+      <email>sschz AT users.sourceforge.net</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+  
+  <distributionManagement>
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+    </repository>
+  </distributionManagement>
+
   <build>
-    <sourceDirectory>src/main/java</sourceDirectory>
-    <testSourceDirectory>src/test/java</testSourceDirectory>
-    <outputDirectory>target/classes</outputDirectory>
-    <testOutputDirectory>target/test-classes</testOutputDirectory>
+    
+    <resources>
+        <resource>
+            <directory>.</directory>
+            <targetPath>META-INF</targetPath>
+            <includes>
+                <include>LICENSE.txt</include>
+                <include>NOTICE.txt</include>
+            </includes>
+        </resource>
+    </resources>
     
     <plugins>
     
@@ -26,6 +77,66 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <noqualifier>java.lang</noqualifier>
+          <overview>${basedir}/src/main/javadoc/overview.html</overview>
+          <javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
+          <reportOutputDirectory>${project.reporting.outputDirectory}/apidocs</reportOutputDirectory>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <tagBase>https://op4j.svn.sourceforge.net/svnroot/op4j/tags/op4j-jodatime</tagBase>
+        </configuration>
+      </plugin>
+      
             
     </plugins>
 
