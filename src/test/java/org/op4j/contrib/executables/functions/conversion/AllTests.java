@@ -7,7 +7,7 @@ public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite(
-				"Test for org.op4j.contrib.executables.functions.conversion");
+				"Test for org.op4j.jodatime.functions");
 		//$JUnit-BEGIN$
 		suite.addTestSuite(JodaToStringTest.class);
 		suite.addTestSuite(ToDateMidnightTest.class);
