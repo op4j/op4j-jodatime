@@ -39,8 +39,6 @@ import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.functions.Function;
 import org.op4j.jodatime.functions.FnJodaToString.FormatType;
-import org.op4j.jodatime.functions.FnToInterval.BaseDateTimeFieldCollectionToInterval;
-import org.op4j.jodatime.functions.FnToInterval.DateFieldCollectionToInterval;
 
 
 /**
@@ -1115,7 +1113,7 @@ public class FnJodaTimeUtils {
 	/**
 	 * It creates an {@link Interval} from the given {@link Date} elements  
 	 */
-	public static final DateFieldCollectionToInterval dateFieldCollectionToInterval() {
+	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval() {
 		return FnToInterval.fromDateFieldCollection();
 	}
 	/**
@@ -1344,7 +1342,7 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromCalendarFieldArray(chronology);
 	}
 
-	public static final BaseDateTimeFieldCollectionToInterval baseDateTimeFieldCollectionToInterval() {
+	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval() {
 		return FnToInterval.fromBaseDateTimeFieldCollection();
 	}
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(DateTimeZone dateTimeZone) {

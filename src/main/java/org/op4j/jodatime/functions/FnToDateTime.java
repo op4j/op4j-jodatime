@@ -38,6 +38,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.Function;
 
 /**
  * 
@@ -69,7 +70,7 @@ public final class FnToDateTime {
 	 * @param pattern
 	 * @return
 	 */
-	public static final StringToDateTime fromString(String pattern) {
+	public static final Function<String, DateTime> fromString(String pattern) {
 		return new StringToDateTime(pattern);
 	}	
 	/**
@@ -80,7 +81,7 @@ public final class FnToDateTime {
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
-	public static final StringToDateTime fromString(String pattern, DateTimeZone dateTimeZone) {
+	public static final Function<String, DateTime> fromString(String pattern, DateTimeZone dateTimeZone) {
 		return new StringToDateTime(pattern, dateTimeZone);
 	}	
 	/**
@@ -91,7 +92,7 @@ public final class FnToDateTime {
 	 * @param pattern
 	 * @param chronology
 	 */
-	public static final StringToDateTime fromString(String pattern, Chronology chronology) {
+	public static final Function<String, DateTime> fromString(String pattern, Chronology chronology) {
 		return new StringToDateTime(pattern, chronology);
 	}	
 	/**
@@ -101,7 +102,7 @@ public final class FnToDateTime {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringToDateTime fromString(String pattern, Locale locale) {
+	public static final Function<String, DateTime> fromString(String pattern, Locale locale) {
 		return new StringToDateTime(pattern, locale);
 	}
 	/**
@@ -111,7 +112,7 @@ public final class FnToDateTime {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringToDateTime fromString(String pattern, String locale) {
+	public static final Function<String, DateTime> fromString(String pattern, String locale) {
 		return new StringToDateTime(pattern, locale);
 	}
 	/**
@@ -122,7 +123,7 @@ public final class FnToDateTime {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringToDateTime fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+	public static final Function<String, DateTime> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new StringToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
@@ -133,7 +134,7 @@ public final class FnToDateTime {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringToDateTime fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
+	public static final Function<String, DateTime> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new StringToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
@@ -144,7 +145,7 @@ public final class FnToDateTime {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringToDateTime fromString(String pattern, Locale locale, Chronology chronology) {
+	public static final Function<String, DateTime> fromString(String pattern, Locale locale, Chronology chronology) {
 		return new StringToDateTime(pattern, locale, chronology);
 	}
 	/**
@@ -155,7 +156,7 @@ public final class FnToDateTime {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringToDateTime fromString(String pattern, String locale, Chronology chronology) {
+	public static final Function<String, DateTime> fromString(String pattern, String locale, Chronology chronology) {
 		return new StringToDateTime(pattern, locale, chronology);
 	}
 	//
@@ -165,7 +166,7 @@ public final class FnToDateTime {
 	/**
 	 * The given {@link Date} is converted into a {@link DateTime}
 	 */
-	public static final <T extends Date> DateToDateTime<T> fromDate() {
+	public static final <T extends Date> Function<T, DateTime> fromDate() {
 		return new DateToDateTime<T>();
 	}
 	/**
@@ -174,7 +175,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Date> DateToDateTime<T> fromDate(DateTimeZone dateTimeZone) {
+	public static final <T extends Date> Function<T, DateTime> fromDate(DateTimeZone dateTimeZone) {
 		return new DateToDateTime<T>(dateTimeZone);
 	}
 	/**
@@ -183,7 +184,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Date> DateToDateTime<T> fromDate(Chronology chronology) {
+	public static final <T extends Date> Function<T, DateTime> fromDate(Chronology chronology) {
 		return new DateToDateTime<T>(chronology);
 	}
 	//
@@ -193,7 +194,7 @@ public final class FnToDateTime {
 	/**
 	 * The given {@link Timestamp} is converted into a {@link DateTime}
 	 */
-	public static final TimestampToDateTime fromTimestamp() {
+	public static final Function<Timestamp, DateTime> fromTimestamp() {
 		return TIMESTAMP_TO_DATE_TIME;
 	}
 	/**
@@ -202,7 +203,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final TimestampToDateTime fromTimestamp(DateTimeZone dateTimeZone) {
+	public static final Function<Timestamp, DateTime> fromTimestamp(DateTimeZone dateTimeZone) {
 		return new TimestampToDateTime(dateTimeZone);
 	}
 	/**
@@ -211,7 +212,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param chronology
 	 */
-	public static final TimestampToDateTime fromTimestamp(Chronology chronology) {
+	public static final Function<Timestamp, DateTime> fromTimestamp(Chronology chronology) {
 		return new TimestampToDateTime(chronology);
 	}
 	//
@@ -221,7 +222,7 @@ public final class FnToDateTime {
 	/**
 	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime}
 	 */
-	public static final LongToDateTime fromLong() {
+	public static final Function<Long, DateTime> fromLong() {
 		return LONG_TO_DATE_TIME;
 	}
 	/**
@@ -230,7 +231,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final LongToDateTime fromLong(DateTimeZone dateTimeZone) {
+	public static final Function<Long, DateTime> fromLong(DateTimeZone dateTimeZone) {
 		return new LongToDateTime(dateTimeZone);
 	}
 	/**
@@ -239,7 +240,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param chronology
 	 */
-	public static final LongToDateTime fromLong(Chronology chronology) {
+	public static final Function<Long, DateTime> fromLong(Chronology chronology) {
 		return new LongToDateTime(chronology);
 	}
 	//
@@ -249,7 +250,7 @@ public final class FnToDateTime {
 	 * A {@link DateTime} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldCollectionToDateTime fromIntegerFieldCollection() {
+	public static final Function<Collection<Integer>, DateTime> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_COLLECTION_TO_DATE_TIME;
 	}
 	/**
@@ -259,7 +260,7 @@ public final class FnToDateTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldCollectionToDateTime fromIntegerFieldCollection(Chronology chronology) {
+	public static final Function<Collection<Integer>, DateTime> fromIntegerFieldCollection(Chronology chronology) {
 		return new  IntegerFieldCollectionToDateTime(chronology);
 	}
 	//
@@ -270,7 +271,7 @@ public final class FnToDateTime {
 	 * A {@link DateTime} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldArrayToDateTime fromIntegerFieldArray() {
+	public static final Function<Integer[], DateTime> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_DATE_TIME;
 	}
 	/**
@@ -280,7 +281,7 @@ public final class FnToDateTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldArrayToDateTime fromIntegerFieldArray(Chronology chronology) {
+	public static final Function<Integer[], DateTime> fromIntegerFieldArray(Chronology chronology) {
 		return new  IntegerFieldArrayToDateTime(chronology);
 	}
 	//
@@ -291,7 +292,7 @@ public final class FnToDateTime {
 	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldCollectionToDateTime fromStringFieldCollection() {
+	public static final Function<Collection<String>, DateTime> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_DATE_TIME;
 	}
 	/**
@@ -301,7 +302,7 @@ public final class FnToDateTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldCollectionToDateTime fromStringFieldCollection(Chronology chronology) {
+	public static final Function<Collection<String>, DateTime> fromStringFieldCollection(Chronology chronology) {
 		return new  StringFieldCollectionToDateTime(chronology);
 	}
 	//
@@ -312,7 +313,7 @@ public final class FnToDateTime {
 	 * A {@link DateTime} is created from the given {@link String} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldArrayToDateTime fromStringFieldArray() {
+	public static final Function<String[], DateTime> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_DATE_TIME;
 	}
 	/**
@@ -322,7 +323,7 @@ public final class FnToDateTime {
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldArrayToDateTime fromStringFieldArray(Chronology chronology) {
+	public static final Function<String[], DateTime> fromStringFieldArray(Chronology chronology) {
 		return new  StringFieldArrayToDateTime(chronology);
 	}
 	//
@@ -332,7 +333,7 @@ public final class FnToDateTime {
 	/**
 	 * It converts a {@link Calendar} into a {@link DateTime}
 	 */
-	public static final <T extends Calendar> CalendarToDateTime<T> fromCalendar() {
+	public static final <T extends Calendar> Function<T, DateTime> fromCalendar() {
 		return new CalendarToDateTime<T>();
 	}
 	/**
@@ -340,7 +341,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Calendar> CalendarToDateTime<T> fromCalendar(DateTimeZone dateTimeZone) {
+	public static final <T extends Calendar> Function<T, DateTime> fromCalendar(DateTimeZone dateTimeZone) {
 		return new CalendarToDateTime<T>(dateTimeZone);
 	}
 	/**
@@ -348,13 +349,13 @@ public final class FnToDateTime {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Calendar> CalendarToDateTime<T> fromCalendar(Chronology chronology) {
+	public static final <T extends Calendar> Function<T, DateTime> fromCalendar(Chronology chronology) {
 		return new CalendarToDateTime<T>(chronology);
 	}
 	//
 	
 	
-	private static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<T, DateTime> {
+	static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<T, DateTime> {
 
 		final DateTimeZone dateTimeZone;
 		final Chronology chronology;

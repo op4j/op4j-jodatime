@@ -38,6 +38,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.Function;
 
 /**
  * 
@@ -67,7 +68,7 @@ public final class FnToDateMidnight {
 	 *                 
 	 * @param pattern
 	 */
-	public static final StringToDateMidnight fromString(String pattern) {
+	public static final Function<String, DateMidnight> fromString(String pattern) {
 		return new StringToDateMidnight(pattern);
 	}	
 	/**
@@ -78,7 +79,7 @@ public final class FnToDateMidnight {
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
-	public static final StringToDateMidnight fromString(String pattern, DateTimeZone dateTimeZone) {
+	public static final Function<String, DateMidnight> fromString(String pattern, DateTimeZone dateTimeZone) {
 		return new StringToDateMidnight(pattern, dateTimeZone);
 	}	
 	/**
@@ -89,7 +90,7 @@ public final class FnToDateMidnight {
 	 * @param pattern
 	 * @param chronology
 	 */
-	public static final StringToDateMidnight fromString(String pattern, Chronology chronology) {
+	public static final Function<String, DateMidnight> fromString(String pattern, Chronology chronology) {
 		return new StringToDateMidnight(pattern, chronology);
 	}	
 	/**
@@ -99,7 +100,7 @@ public final class FnToDateMidnight {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringToDateMidnight fromString(String pattern, Locale locale) {
+	public static final Function<String, DateMidnight> fromString(String pattern, Locale locale) {
 		return new StringToDateMidnight(pattern, locale);
 	}
 	/**
@@ -109,7 +110,7 @@ public final class FnToDateMidnight {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringToDateMidnight fromString(String pattern, String locale) {
+	public static final Function<String, DateMidnight> fromString(String pattern, String locale) {
 		return new StringToDateMidnight(pattern, locale);
 	}
 	/**
@@ -120,7 +121,7 @@ public final class FnToDateMidnight {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringToDateMidnight fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+	public static final Function<String, DateMidnight> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new StringToDateMidnight(pattern, locale, dateTimeZone);
 	}
 	/**
@@ -131,7 +132,7 @@ public final class FnToDateMidnight {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringToDateMidnight fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
+	public static final Function<String, DateMidnight> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new StringToDateMidnight(pattern, locale, dateTimeZone);
 	}
 	/**
@@ -142,7 +143,7 @@ public final class FnToDateMidnight {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringToDateMidnight fromString(String pattern, Locale locale, Chronology chronology) {
+	public static final Function<String, DateMidnight> fromString(String pattern, Locale locale, Chronology chronology) {
 		return new StringToDateMidnight(pattern, locale, chronology);
 	}
 	/**
@@ -153,7 +154,7 @@ public final class FnToDateMidnight {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringToDateMidnight fromString(String pattern, String locale, Chronology chronology) {
+	public static final Function<String, DateMidnight> fromString(String pattern, String locale, Chronology chronology) {
 		return new StringToDateMidnight(pattern, locale, chronology);
 	}
 	//
@@ -163,7 +164,7 @@ public final class FnToDateMidnight {
 	/**
 	 * The given {@link Date} is converted into a {@link DateMidnight}
 	 */
-	public static final <T extends Date> DateToDateMidnight<T> fromDate() {
+	public static final <T extends Date> Function<T, DateMidnight> fromDate() {
 		return new DateToDateMidnight<T>();
 	}
 	/**
@@ -172,7 +173,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Date> DateToDateMidnight<T> fromDate(DateTimeZone dateTimeZone) {
+	public static final <T extends Date> Function<T, DateMidnight> fromDate(DateTimeZone dateTimeZone) {
 		return new DateToDateMidnight<T>(dateTimeZone);
 	}
 	/**
@@ -181,7 +182,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Date> DateToDateMidnight<T> fromDate(Chronology chronology) {
+	public static final <T extends Date> Function<T, DateMidnight> fromDate(Chronology chronology) {
 		return new DateToDateMidnight<T>(chronology);
 	}
 	//
@@ -191,7 +192,7 @@ public final class FnToDateMidnight {
 	/**
 	 * The given {@link Timestamp} is converted into a {@link DateMidnight}
 	 */
-	public static final TimestampToDateMidnight fromTimestamp() {
+	public static final Function<Timestamp, DateMidnight> fromTimestamp() {
 		return TIMESTAMP_TO_DATE_MIDNIGHT;
 	}
 	/**
@@ -200,7 +201,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final TimestampToDateMidnight fromTimestamp(DateTimeZone dateTimeZone) {
+	public static final Function<Timestamp, DateMidnight> fromTimestamp(DateTimeZone dateTimeZone) {
 		return new TimestampToDateMidnight(dateTimeZone);
 	}
 	/**
@@ -209,7 +210,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param chronology
 	 */
-	public static final TimestampToDateMidnight fromTimestamp(Chronology chronology) {
+	public static final Function<Timestamp, DateMidnight> fromTimestamp(Chronology chronology) {
 		return new TimestampToDateMidnight(chronology);
 	}
 	//
@@ -219,7 +220,7 @@ public final class FnToDateMidnight {
 	/**
 	 * The given long representing the time in milliseconds is converted into a {@link DateMidnight}
 	 */
-	public static final LongToDateMidnight fromLong() {
+	public static final Function<Long, DateMidnight> fromLong() {
 		return LONG_TO_DATE_MIDNIGHT;
 	}
 	/**
@@ -228,7 +229,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final LongToDateMidnight fromLong(DateTimeZone dateTimeZone) {
+	public static final Function<Long, DateMidnight> fromLong(DateTimeZone dateTimeZone) {
 		return new LongToDateMidnight(dateTimeZone);
 	}
 	/**
@@ -237,7 +238,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param chronology
 	 */
-	public static final LongToDateMidnight fromLong(Chronology chronology) {
+	public static final Function<Long, DateMidnight> fromLong(Chronology chronology) {
 		return new LongToDateMidnight(chronology);
 	}
 	//
@@ -247,7 +248,7 @@ public final class FnToDateMidnight {
 	 * A {@link DateMidnight} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldCollectionToDateMidnight fromIntegerFieldCollection() {
+	public static final Function<Collection<Integer>, DateMidnight> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_COLLECTION_TO_DATE_MIDNIGHT;
 	}
 	/**
@@ -257,7 +258,7 @@ public final class FnToDateMidnight {
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldCollectionToDateMidnight fromIntegerFieldCollection(Chronology chronology) {
+	public static final Function<Collection<Integer>, DateMidnight> fromIntegerFieldCollection(Chronology chronology) {
 		return new  IntegerFieldCollectionToDateMidnight(chronology);
 	}
 	//
@@ -268,7 +269,7 @@ public final class FnToDateMidnight {
 	 * A {@link DateMidnight} is created from the given {@link Integer} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldArrayToDateMidnight fromIntegerFieldArray() {
+	public static final Function<Integer[], DateMidnight> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
@@ -278,7 +279,7 @@ public final class FnToDateMidnight {
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldArrayToDateMidnight fromIntegerFieldArray(Chronology chronology) {
+	public static final Function<Integer[], DateMidnight> fromIntegerFieldArray(Chronology chronology) {
 		return new  IntegerFieldArrayToDateMidnight(chronology);
 	}
 	//
@@ -289,7 +290,7 @@ public final class FnToDateMidnight {
 	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldCollectionToDateMidnight fromStringFieldCollection() {
+	public static final Function<Collection<String>, DateMidnight> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_DATE_MIDNIGHT;
 	}
 	/**
@@ -299,7 +300,7 @@ public final class FnToDateMidnight {
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldCollectionToDateMidnight fromStringFieldCollection(Chronology chronology) {
+	public static final Function<Collection<String>, DateMidnight> fromStringFieldCollection(Chronology chronology) {
 		return new  StringFieldCollectionToDateMidnight(chronology);
 	}
 	//
@@ -310,7 +311,7 @@ public final class FnToDateMidnight {
 	 * A {@link DateMidnight} is created from the given {@link String} array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldArrayToDateMidnight fromStringFieldArray() {
+	public static final Function<String[], DateMidnight> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
@@ -320,7 +321,7 @@ public final class FnToDateMidnight {
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldArrayToDateMidnight fromStringFieldArray(Chronology chronology) {
+	public static final Function<String[], DateMidnight> fromStringFieldArray(Chronology chronology) {
 		return new  StringFieldArrayToDateMidnight(chronology);
 	}
 	//
@@ -330,7 +331,7 @@ public final class FnToDateMidnight {
 	/**
 	 * It converts a {@link Calendar} into a {@link DateMidnight}
 	 */
-	public static final <T extends Calendar> CalendarToDateMidnight<T> fromCalendar() {
+	public static final <T extends Calendar> Function<T, DateMidnight> fromCalendar() {
 		return new CalendarToDateMidnight<T>();
 	}
 	/**
@@ -338,7 +339,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Calendar> CalendarToDateMidnight<T> fromCalendar(DateTimeZone dateTimeZone) {
+	public static final <T extends Calendar> Function<T, DateMidnight> fromCalendar(DateTimeZone dateTimeZone) {
 		return new CalendarToDateMidnight<T>(dateTimeZone);
 	}
 	/**
@@ -346,7 +347,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Calendar> CalendarToDateMidnight<T> fromCalendar(Chronology chronology) {
+	public static final <T extends Calendar> Function<T, DateMidnight> fromCalendar(Chronology chronology) {
 		return new CalendarToDateMidnight<T>(chronology);
 	}
 	//

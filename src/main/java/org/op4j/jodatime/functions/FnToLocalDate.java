@@ -31,6 +31,7 @@ import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.joda.time.Chronology;
+import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
@@ -38,6 +39,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.functions.AbstractNullAsNullFunction;
 import org.op4j.functions.ExecCtx;
+import org.op4j.functions.Function;
 
 /**
  * 
@@ -68,7 +70,7 @@ public final class FnToLocalDate {
 	 *                 
 	 * @param pattern
 	 */
-	public static final StringToLocalDate fromString(String pattern) {
+	public static final Function<String, LocalDate> fromString(String pattern) {
 		return new StringToLocalDate(pattern);
 	}	
 	/**
@@ -79,7 +81,7 @@ public final class FnToLocalDate {
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
-	public static final StringToLocalDate fromString(String pattern, DateTimeZone dateTimeZone) {
+	public static final Function<String, LocalDate> fromString(String pattern, DateTimeZone dateTimeZone) {
 		return new StringToLocalDate(pattern, dateTimeZone);
 	}	
 	/**
@@ -90,7 +92,7 @@ public final class FnToLocalDate {
 	 * @param pattern
 	 * @param chronology
 	 */
-	public static final StringToLocalDate fromString(String pattern, Chronology chronology) {
+	public static final Function<String, LocalDate> fromString(String pattern, Chronology chronology) {
 		return new StringToLocalDate(pattern, chronology);
 	}	
 	/**
@@ -100,7 +102,7 @@ public final class FnToLocalDate {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringToLocalDate fromString(String pattern, Locale locale) {
+	public static final Function<String, LocalDate> fromString(String pattern, Locale locale) {
 		return new StringToLocalDate(pattern, locale);
 	}
 	/**
@@ -110,7 +112,7 @@ public final class FnToLocalDate {
 	 * @param pattern
 	 * @param locale
 	 */
-	public static final StringToLocalDate fromString(String pattern, String locale) {
+	public static final Function<String, LocalDate> fromString(String pattern, String locale) {
 		return new StringToLocalDate(pattern, locale);
 	}
 	/**
@@ -121,7 +123,7 @@ public final class FnToLocalDate {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringToLocalDate fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+	public static final Function<String, LocalDate> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new StringToLocalDate(pattern, locale, dateTimeZone);
 	}
 	/**
@@ -132,7 +134,7 @@ public final class FnToLocalDate {
 	 * @param locale
 	 * @param dateTimeZone
 	 */
-	public static final StringToLocalDate fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
+	public static final Function<String, LocalDate> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new StringToLocalDate(pattern, locale, dateTimeZone);
 	}
 	/**
@@ -143,7 +145,7 @@ public final class FnToLocalDate {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringToLocalDate fromString(String pattern, Locale locale, Chronology chronology) {
+	public static final Function<String, LocalDate> fromString(String pattern, Locale locale, Chronology chronology) {
 		return new StringToLocalDate(pattern, locale, chronology);
 	}
 	/**
@@ -154,7 +156,7 @@ public final class FnToLocalDate {
 	 * @param locale
 	 * @param chronology
 	 */
-	public static final StringToLocalDate fromString(String pattern, String locale, Chronology chronology) {
+	public static final Function<String, LocalDate> fromString(String pattern, String locale, Chronology chronology) {
 		return new StringToLocalDate(pattern, locale, chronology);
 	}
 	//
@@ -164,7 +166,7 @@ public final class FnToLocalDate {
 	/**
 	 * The given {@link Date} is converted into a {@link LocalDate}
 	 */
-	public static final <T extends Date> DateToLocalDate<T> fromDate() {
+	public static final <T extends Date> Function<T, LocalDate> fromDate() {
 		return new DateToLocalDate<T>();
 	}
 	/**
@@ -173,7 +175,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Date> DateToLocalDate<T> fromDate(DateTimeZone dateTimeZone) {
+	public static final <T extends Date> Function<T, LocalDate> fromDate(DateTimeZone dateTimeZone) {
 		return new DateToLocalDate<T>(dateTimeZone);
 	}
 	/**
@@ -182,7 +184,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Date> DateToLocalDate<T> fromDate(Chronology chronology) {
+	public static final <T extends Date> Function<T, LocalDate> fromDate(Chronology chronology) {
 		return new DateToLocalDate<T>(chronology);
 	}
 	//
@@ -192,7 +194,7 @@ public final class FnToLocalDate {
 	/**
 	 * The given {@link Timestamp} is converted into a {@link LocalDate}
 	 */
-	public static final TimestampToLocalDate fromTimestamp() {
+	public static final Function<Timestamp, LocalDate> fromTimestamp() {
 		return TIMESTAMP_TO_LOCAL_DATE;
 	}
 	/**
@@ -201,7 +203,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final TimestampToLocalDate fromTimestamp(DateTimeZone dateTimeZone) {
+	public static final Function<Timestamp, LocalDate> fromTimestamp(DateTimeZone dateTimeZone) {
 		return new TimestampToLocalDate(dateTimeZone);
 	}
 	/**
@@ -210,7 +212,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param chronology
 	 */
-	public static final TimestampToLocalDate fromTimestamp(Chronology chronology) {
+	public static final Function<Timestamp, LocalDate> fromTimestamp(Chronology chronology) {
 		return new TimestampToLocalDate(chronology);
 	}
 	//
@@ -220,7 +222,7 @@ public final class FnToLocalDate {
 	/**
 	 * The given long representing the time in milliseconds is converted into a {@link LocalDate}
 	 */
-	public static final LongToLocalDate fromLong() {
+	public static final Function<Long, LocalDate> fromLong() {
 		return LONG_TO_LOCAL_DATE;
 	}
 	/**
@@ -229,7 +231,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final LongToLocalDate fromLong(DateTimeZone dateTimeZone) {
+	public static final Function<Long, LocalDate> fromLong(DateTimeZone dateTimeZone) {
 		return new LongToLocalDate(dateTimeZone);
 	}
 	/**
@@ -238,7 +240,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param chronology
 	 */
-	public static final LongToLocalDate fromLong(Chronology chronology) {
+	public static final Function<Long, LocalDate> fromLong(Chronology chronology) {
 		return new LongToLocalDate(chronology);
 	}
 	//
@@ -248,7 +250,7 @@ public final class FnToLocalDate {
 	 * A {@link LocalDate} is created from the given {@link Integer} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldCollectionToLocalDate fromIntegerFieldCollection() {
+	public static final Function<Collection<Integer>, LocalDate> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_LIST_TO_LOCAL_DATE;
 	}
 	/**
@@ -258,7 +260,7 @@ public final class FnToLocalDate {
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldCollectionToLocalDate fromIntegerFieldCollection(Chronology chronology) {
+	public static final Function<Collection<Integer>, LocalDate> fromIntegerFieldCollection(Chronology chronology) {
 		return new IntegerFieldCollectionToLocalDate(chronology);
 	}
 	//
@@ -269,7 +271,7 @@ public final class FnToLocalDate {
 	 * A {@link LocalDate} is created from the given integer array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final IntegerFieldArrayToLocalDate fromIntegerFieldArray() {
+	public static final Function<Integer[], LocalDate> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_LOCAL_DATE;
 	}
 	/**
@@ -279,7 +281,7 @@ public final class FnToLocalDate {
 	 *                 
 	 * @param chronology
 	 */
-	public static final IntegerFieldArrayToLocalDate fromIntegerFieldArray(Chronology chronology) {
+	public static final Function<Integer[], LocalDate> fromIntegerFieldArray(Chronology chronology) {
 		return new IntegerFieldArrayToLocalDate(chronology);
 	}
 	//
@@ -290,7 +292,7 @@ public final class FnToLocalDate {
 	 * A {@link LocalDate} is created from the given {@link String} {@link Collection}.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldCollectionToLocalDate fromStringFieldCollection() {
+	public static final Function<Collection<String>, LocalDate> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_LOCAL_DATE;
 	}
 	/**
@@ -300,7 +302,7 @@ public final class FnToLocalDate {
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldCollectionToLocalDate fromStringFieldCollection(Chronology chronology) {
+	public static final Function<Collection<String>, LocalDate> fromStringFieldCollection(Chronology chronology) {
 		return new StringFieldCollectionToLocalDate(chronology);
 	}
 	//
@@ -311,7 +313,7 @@ public final class FnToLocalDate {
 	 * A {@link LocalDate} is created from the given string array.
 	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
 	 */
-	public static final StringFieldArrayToLocalDate fromStringFieldArray() {
+	public static final Function<String[], LocalDate> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_LOCAL_DATE;
 	}
 	/**
@@ -321,7 +323,7 @@ public final class FnToLocalDate {
 	 *                 
 	 * @param chronology
 	 */
-	public static final StringFieldArrayToLocalDate fromStringFieldArray(Chronology chronology) {
+	public static final Function<String[], LocalDate> fromStringFieldArray(Chronology chronology) {
 		return new  StringFieldArrayToLocalDate(chronology);
 	}
 	//
@@ -331,7 +333,7 @@ public final class FnToLocalDate {
 	/**
 	 * It converts a {@link Calendar} into a {@link LocalDate}
 	 */
-	public static final <T extends Calendar> CalendarToLocalDate<T> fromCalendar() {
+	public static final <T extends Calendar> Function<T, LocalDate> fromCalendar() {
 		return new CalendarToLocalDate<T>();
 	}
 	/**
@@ -339,7 +341,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param dateTimeZone
 	 */
-	public static final <T extends Calendar> CalendarToLocalDate<T> fromCalendar(DateTimeZone dateTimeZone) {
+	public static final <T extends Calendar> Function<T, LocalDate> fromCalendar(DateTimeZone dateTimeZone) {
 		return new CalendarToLocalDate<T>(dateTimeZone);
 	}
 	/**
@@ -347,13 +349,13 @@ public final class FnToLocalDate {
 	 * 
 	 * @param chronology
 	 */
-	public static final <T extends Calendar> CalendarToLocalDate<T> fromCalendar(Chronology chronology) {
+	public static final <T extends Calendar> Function<T, LocalDate> fromCalendar(Chronology chronology) {
 		return new CalendarToLocalDate<T>(chronology);
 	}
 	//
 	
 	
-	private static abstract class BaseToLocalDate<T> extends AbstractNullAsNullFunction<T, LocalDate> {
+	static abstract class BaseToLocalDate<T> extends AbstractNullAsNullFunction<T, LocalDate> {
 
 		final DateTimeZone dateTimeZone;
 		final Chronology chronology;
