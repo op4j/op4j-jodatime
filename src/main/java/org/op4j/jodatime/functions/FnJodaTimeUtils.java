@@ -1270,22 +1270,104 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromLongFieldArray(chronology);
 	}
 	
+	/**
+     * It converts the given {@link Integer} elements into an {@link Interval}. 
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
+     * integer collections are:
+     * <ul>
+     * <li>year, month, day, year, month, day</li>
+     * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+     * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+     * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     *              
+     * @return
+     */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval() {
 		return FnToInterval.fromIntegerFieldCollection();
 	}
+	
+	/**
+     * It converts the given {@link Integer} elements into an {@link Interval} with the given {@link DateTime}. 
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
+     * integer collections are:
+     * <ul>
+     * <li>year, month, day, year, month, day</li>
+     * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+     * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+     * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     *              
+     * @return
+     */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 		return FnToInterval.fromIntegerFieldCollection(dateTimeZone);
 	}
+	
+	/**
+     * It converts the given {@link Integer} elements into an {@link Interval}.  with the given {@link Chronology}
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
+     * integer collections are:
+     * <ul>
+     * <li>year, month, day, year, month, day</li>
+     * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+     * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+     * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     *              
+     * @return
+     */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(Chronology chronology) {
 		return FnToInterval.fromIntegerFieldCollection(chronology);
 	}
 	
+	/**
+     * It converts the given {@link Integer} elements into an {@link Interval}. 
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
+     * integer arrays are:
+     * <ul>
+     * <li>year, month, day, year, month, day</li>
+     * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+     * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+     * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     *              
+     * @return
+     */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval() {
 		return FnToInterval.fromIntegerFieldArray();
 	}
+	
+	/**
+     * It converts the given {@link Integer} elements into an {@link Interval} with the given {@link DateTimeZone}. 
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
+     * integer arrays are:
+     * <ul>
+     * <li>year, month, day, year, month, day</li>
+     * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+     * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+     * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     *              
+     * @return
+     */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval(DateTimeZone dateTimeZone) {
 		return FnToInterval.fromIntegerFieldArray(dateTimeZone);
 	}
+	
+	/**
+     * It converts the given {@link Integer} elements into an {@link Interval} with the given {@link Chronology}. 
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
+     * integer arrays are:
+     * <ul>
+     * <li>year, month, day, year, month, day</li>
+     * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
+     * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
+     * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
+     * </ul>
+     *              
+     * @return
+     */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval(Chronology chronology) {
 		return FnToInterval.fromIntegerFieldArray(chronology);
 	}
@@ -1342,22 +1424,62 @@ public class FnJodaTimeUtils {
 		return FnToInterval.fromCalendarFieldArray(chronology);
 	}
 
+	/**
+     * The two target elements accepted by this function are used as the start and end of the
+     * {@link Interval} returned
+     * 
+     * @return
+     */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval() {
 		return FnToInterval.fromBaseDateTimeFieldCollection();
 	}
+	
+	/**
+     * The two target elements accepted by this function are used as the start and end of the
+     * {@link Interval} being created with the given {@link DateTimeZone}
+     * 
+     * @return
+     */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(DateTimeZone dateTimeZone) {
 		return FnToInterval.fromBaseDateTimeFieldCollection(dateTimeZone);
 	}
+	
+	/**
+     * The two target elements accepted by this function are used as the start and end of the
+     * {@link Interval} being created with the given {@link Chronology}
+     * 
+     * @return
+     */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(Chronology chronology) {
 		return FnToInterval.fromBaseDateTimeFieldCollection(chronology);
 	}
 	
+	/**
+     * The array accepted by this function, as its input, contains two {@link BaseDateTime} objects used
+     * as the start and end of the {@link Interval} returned
+     * 
+     * @return
+     */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval() {
 		return FnToInterval.fromBaseDateTimeFieldArray();
 	}
+	
+	/**
+     * The array accepted by this function, as its input, contains two {@link BaseDateTime} objects used
+     * as the start and end of the {@link Interval} being created (with the given {@link DateTimeZone})
+     * 
+     * @return
+     */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval(DateTimeZone dateTimeZone) {
 		return FnToInterval.fromBaseDateTimeFieldArray(dateTimeZone);
 	}
+	
+	/**
+     * The array accepted by this function, as its input, contains two {@link BaseDateTime} objects used
+     * as the start and end of the {@link Interval} being created (with the given {@link Chronology})
+     * 
+     * @return
+     */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval(Chronology chronology) {
 		return FnToInterval.fromBaseDateTimeFieldArray(chronology);
 	}
