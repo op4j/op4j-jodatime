@@ -55,8 +55,8 @@ public final class FnJodaToString {
 	 * (depending on the value of formatType parameter).
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format 
 	 * @return
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format) {
@@ -69,9 +69,9 @@ public final class FnJodaToString {
 	 * (depending on the value of formatType parameter).
 	 * </p>
 	 *  
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
-	 * @param locale {@link Locale} to be used with the given pattern
+	 * @param formatType 
+	 * @param format
+	 * @param locale 
 	 * @return
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final Locale locale) {
@@ -84,8 +84,8 @@ public final class FnJodaToString {
 	 * (depending on the value of formatType parameter).
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format 
 	 * @param chronology
 	 * @return
 	 */
@@ -100,7 +100,7 @@ public final class FnJodaToString {
 	 * 		 
 	 * @param formatType
 	 * @param format
-	 * @param locale locale to be used with the given pattern
+	 * @param locale
 	 * @return
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final String locale) {
@@ -125,8 +125,8 @@ public final class FnJodaToString {
 	 * (depending on the value of formatType parameter).
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format
 	 * @return
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format) {
@@ -139,9 +139,9 @@ public final class FnJodaToString {
 	 * (depending on the value of formatType parameter).
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
-	 * @param locale locale to be used with the pattern
+	 * @param formatType 
+	 * @param format 
+	 * @param locale 
 	 * @return
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final Locale locale) {
@@ -154,8 +154,8 @@ public final class FnJodaToString {
 	 * (depending on the value of formatType parameter).
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format 
 	 * @param chronology
 	 * @return
 	 */
@@ -169,9 +169,9 @@ public final class FnJodaToString {
 	 * (depending on the value of formatType parameter).
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
-	 * @param locale locale to be used with the pattern
+	 * @param formatType 
+	 * @param format 
+	 * @param locale 
 	 * @return
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final String locale) {
@@ -196,8 +196,8 @@ public final class FnJodaToString {
 	 * or style (depending on the formatType value)
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format) {
 		return new LocalDateToStr(formatType, format);
@@ -208,8 +208,8 @@ public final class FnJodaToString {
 	 * or style (depending on the formatType value) with the given {@link Locale}
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format 
 	 * @param locale
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
@@ -221,8 +221,8 @@ public final class FnJodaToString {
 	 * or style (depending on the formatType value) with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format 
 	 * @param chronology
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
@@ -234,8 +234,8 @@ public final class FnJodaToString {
 	 * or style (depending on the formatType value) with the given {@link Locale}
 	 * </p>
 	 * 
-	 * @param formatType format {@link FormatType}
-	 * @param format string with the format used to convert the target BaseDateTime
+	 * @param formatType 
+	 * @param format 
 	 * @param locale
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final String locale) {
