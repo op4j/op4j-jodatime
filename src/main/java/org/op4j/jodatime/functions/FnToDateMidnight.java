@@ -62,9 +62,11 @@ public final class FnToDateMidnight {
 		
 	// From String
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter. If
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern parameter. If
 	 * the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
+	 * </p>
 	 *                 
 	 * @param pattern
 	 */
@@ -72,9 +74,11 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
 	 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
+	 * </p>
 	 *                 
 	 * @param pattern
 	 * @param dateTimeZone
@@ -83,10 +87,12 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern, dateTimeZone);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern parameter and with the given
 	 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
-	 * 		                
+	 * </p>
+	 * 	                
 	 * @param pattern
 	 * @param chronology
 	 */
@@ -94,8 +100,10 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern, chronology);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern and
 	 * {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -104,8 +112,10 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern, locale);
 	}
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern and
 	 * {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -114,9 +124,11 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern, locale);
 	}
 	/**
-	 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * <p>
+	 * It converts the input String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
-	 *                 
+	 * </p>
+	 *               
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
@@ -125,8 +137,10 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern, locale, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -136,8 +150,10 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern, locale, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateMidnight} will be created with the given {@link Chronology}
+	 * </p>
 	 *                 
 	 * @param pattern
 	 * @param locale
@@ -147,8 +163,10 @@ public final class FnToDateMidnight {
 		return new StringToDateMidnight(pattern, locale, chronology);
 	}
 	/**
-	 * It converts the given String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
+	 * <p>
+	 * It converts the input String into a {@link DateMidnight} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateMidnight} will be created with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -162,14 +180,18 @@ public final class FnToDateMidnight {
 	
 	// From Date
 	/**
-	 * The given {@link Date} is converted into a {@link DateMidnight}
+	 * <p>
+	 * The input {@link Date} is converted into a {@link DateMidnight}
+	 * </p>
 	 */
 	public static final <T extends Date> Function<T, DateMidnight> fromDate() {
 		return new DateToDateMidnight<T>();
 	}
 	/**
-	 * The given {@link Date} is converted into a {@link DateMidnight} configured with the given
+	 * <p>
+	 * The input {@link Date} is converted into a {@link DateMidnight} configured with the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -177,8 +199,10 @@ public final class FnToDateMidnight {
 		return new DateToDateMidnight<T>(dateTimeZone);
 	}
 	/**
-	 * The given {@link Date} is converted into a {@link DateMidnight} with the given
+	 * <p>
+	 * The input {@link Date} is converted into a {@link DateMidnight} with the given
 	 * {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -190,14 +214,18 @@ public final class FnToDateMidnight {
 	
 	// From Date
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateMidnight}
+	 * <p>
+	 * The input {@link Timestamp} is converted into a {@link DateMidnight}
+	 * </p>
 	 */
 	public static final Function<Timestamp, DateMidnight> fromTimestamp() {
 		return TIMESTAMP_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateMidnight} in the given
+	 * <p>
+	 * The input {@link Timestamp} is converted into a {@link DateMidnight} in the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -205,8 +233,10 @@ public final class FnToDateMidnight {
 		return new TimestampToDateMidnight(dateTimeZone);
 	}
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateMidnight} with the given
+	 * <p>
+	 * The input {@link Timestamp} is converted into a {@link DateMidnight} with the given
 	 * {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -218,14 +248,18 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Long
 	/**
-	 * The given long representing the time in milliseconds is converted into a {@link DateMidnight}
+	 * <p>
+	 * The input {@link Long} representing the time in milliseconds is converted into a {@link DateMidnight}
+	 * </p>
 	 */
 	public static final Function<Long, DateMidnight> fromLong() {
 		return LONG_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * The given long representing the time in milliseconds is converted into a {@link DateMidnight} in the given
+	 * <p>
+	 * The input {@link Long} representing the time in milliseconds is converted into a {@link DateMidnight} in the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -233,8 +267,10 @@ public final class FnToDateMidnight {
 		return new LongToDateMidnight(dateTimeZone);
 	}
 	/**
-	 * The given long representing the time in milliseconds is converted into a {@link DateMidnight} with the given
+	 * <p>
+	 * The input {@link Long}g representing the time in milliseconds is converted into a {@link DateMidnight} with the given
 	 * {@link Chronology}
+	 * <p>
 	 * 
 	 * @param chronology
 	 */
@@ -245,17 +281,38 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link DateMidnight} is created from the given {@link Integer} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * <p>
+	 * A {@link DateMidnight} is created from the input {@link Integer} {@link Collection}.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Collection<Integer> are:
+	 * <ul>
+	 * <li>year (month and day will be set to 1)</li>
+	 * <li>year, month (day will be set to 1)</li>
+	 * <li>year, month, day</li>
+	 * </ul>
+	 * </p>
+	 * 
 	 */
 	public static final Function<Collection<Integer>, DateMidnight> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_COLLECTION_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given {@link Integer} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * <p>
+	 * A {@link DateMidnight} is created from the input {@link Integer} {@link Collection}.
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Collection<Integer> are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<Collection<Integer>, DateMidnight> fromIntegerFieldCollection(Chronology chronology) {
@@ -266,17 +323,37 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Integer array
 	/**
-	 * A {@link DateMidnight} is created from the given {@link Integer} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * <p>
+	 * A {@link DateMidnight} is created from the input {@link Integer} array.
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Integer[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * </p>
 	 */
 	public static final Function<Integer[], DateMidnight> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
+	 * <p>
 	 * A {@link DateMidnight} is created from the given {@link Integer} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Integer[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<Integer[], DateMidnight> fromIntegerFieldArray(Chronology chronology) {
@@ -287,17 +364,37 @@ public final class FnToDateMidnight {
 	
 	// Conversion from String list
 	/**
-	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * <p>
+	 * A {@link DateMidnight} is created from the input {@link String} {@link Collection}.
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Collection<String> are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * </p>
 	 */
 	public static final Function<Collection<String>, DateMidnight> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given {@link String} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * <p>
+	 * A {@link DateMidnight} is created from the input {@link String} {@link Collection}.
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>                
+	 * 
+	 * <p>
+     * The valid input Collection<String> are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<Collection<String>, DateMidnight> fromStringFieldCollection(Chronology chronology) {
@@ -308,17 +405,38 @@ public final class FnToDateMidnight {
 	
 	// Conversion from String array
 	/**
+	 * <p>
 	 * A {@link DateMidnight} is created from the given {@link String} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input String[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * </p>
+     * 
 	 */
 	public static final Function<String[], DateMidnight> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_DATE_MIDNIGHT;
 	}
 	/**
-	 * A {@link DateMidnight} is created from the given {@link String} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * <p>
+	 * A {@link DateMidnight} is created from the input {@link String} array.
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>                
+	 * 
+	 * <p>
+     * The valid input String[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<String[], DateMidnight> fromStringFieldArray(Chronology chronology) {
@@ -329,13 +447,17 @@ public final class FnToDateMidnight {
 	
 	// Conversion from Calendar
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link DateMidnight}
+	 * </p>
 	 */
 	public static final <T extends Calendar> Function<T, DateMidnight> fromCalendar() {
 		return new CalendarToDateMidnight<T>();
 	}
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link DateMidnight} in the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -343,7 +465,9 @@ public final class FnToDateMidnight {
 		return new CalendarToDateMidnight<T>(dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link DateMidnight} with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */

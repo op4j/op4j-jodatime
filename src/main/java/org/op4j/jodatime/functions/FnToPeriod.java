@@ -73,8 +73,10 @@ public final class FnToPeriod {
 	
 	// Conversion from two date objects
 	/**
+	 * <p>
 	 * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
 	 * {@link Period} it creates
+	 * </p>
 	 * 
 	 * @return 
 	 */
@@ -82,9 +84,11 @@ public final class FnToPeriod {
 		return DATE_FIELD_COLLECTION_TO_PERIOD;
 	}	
 	/**
+	 * <p>
 	 * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
+     * </p>
      * 
 	 * @param chronology 
 	 * 
@@ -94,8 +98,10 @@ public final class FnToPeriod {
 		return new DateFieldCollectionToPeriod(chronology);
 	}	
 	/**
+	 * <p>
      * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the specified {@link PeriodType}
+     * </p>
      * 
      * @param periodType 
      * 
@@ -105,9 +111,11 @@ public final class FnToPeriod {
 		return new DateFieldCollectionToPeriod(periodType);
 	}
 	/**
+	 * <p>
      * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType} and {@link Chronology}
+     * </p>
      * 
      * @param periodType
      * @param chronology 
@@ -118,8 +126,10 @@ public final class FnToPeriod {
 		return new DateFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates
+     * </p>
      * 
      * @return 
      */
@@ -128,9 +138,11 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
+     * </p>
      * 
      * @param chronology 
      * 
@@ -141,9 +153,11 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType}
+     * </p>
      * 
      * @param periodType 
      * 
@@ -154,9 +168,11 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType} and {@link Chronology}
+     * </p>
      * 
      * @param periodType
      * @param chronology 
@@ -170,8 +186,10 @@ public final class FnToPeriod {
 	
 	// Conversion from two timestamp objects
 	/**
+	 * <p>
      * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates
+     * </p>
      * 
      * @return 
      */
@@ -180,9 +198,11 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
+     * </p>
      * 
      * @param chronology 
      * 
@@ -193,9 +213,11 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType}
+     * </p>
      * 
      * @param periodType
      * 
@@ -206,9 +228,11 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the specified 
      * specified {@link PeriodType} and {@link Chronology}
+     * </p>
      * 
      * @param periodType 
      * @param chronology
@@ -220,8 +244,10 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates
+     * </p>
      * 
      * @return 
      */
@@ -230,9 +256,11 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
+     * </p>
      * 
      * @param chronology 
      * 
@@ -243,9 +271,11 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType}
+     * </p>
      * 
      * @param periodType 
      * 
@@ -256,9 +286,11 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the specified 
      * specified {@link PeriodType} and {@link Chronology}
+     * </p>
      * 
      * @param periodType 
      * @param chronology
@@ -273,8 +305,10 @@ public final class FnToPeriod {
 	
 	// Conversion from Long
 	/**
+	 * <p>
 	 * The function returned receives a Long representing the {@link Period} duration in milliseconds
 	 * and creates a {@link Period} with such duration
+	 * </p>
 	 * 
 	 * @return 
 	 */
@@ -282,8 +316,10 @@ public final class FnToPeriod {
 		return LONG_TO_PERIOD;
 	}
 	/**
+	 * <p>
 	 * Creates a {@link Period} with the specified {@link Chronology} and, as the duration, the input
 	 * received by this function (in milliseconds)
+	 * </p>
 	 * 
 	 * @param chronology 
 	 * 
@@ -293,8 +329,10 @@ public final class FnToPeriod {
 		return new LongToPeriod(chronology);
 	}
 	/**
+	 * <p>
 	 * Creates a {@link Period} with the specified {@link PeriodType} and, as the duration, the input
      * received by this function (in milliseconds)
+     * </p>
      * 
 	 * @param periodType 
 	 * 
@@ -304,8 +342,10 @@ public final class FnToPeriod {
 		return new LongToPeriod(periodType);
 	}
 	/**
+	 * <p>
 	 * Creates a {@link Period} with the specified {@link PeriodType} and {@link Chronology} and, as the duration, the input
      * received by this function (in milliseconds)
+     * </p>
      * 
 	 * @param periodType 
 	 * @param chronology 
@@ -319,17 +359,21 @@ public final class FnToPeriod {
 	
 	// Conversion from two long objects
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
-	 *  
+	 * </p>
+	 * 
 	 * @return 
 	 */
 	public static final Function<Collection<Long>, Period> fromLongFieldCollection() {
 		return LONG_FIELD_COLLECTION_TO_PERIOD;
 	}	
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
+	 * </p>
 	 * 
 	 * @param chronology
 	 * 
@@ -339,8 +383,10 @@ public final class FnToPeriod {
 		return new LongFieldCollectionToPeriod(chronology);
 	}	
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
+	 * </p>
 	 * 
 	 * @param periodType
 	 * 
@@ -350,8 +396,10 @@ public final class FnToPeriod {
 		return new LongFieldCollectionToPeriod(periodType);
 	}
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
+	 * </p>
 	 * 
 	 * @param periodType
 	 * @param chronology
@@ -362,8 +410,10 @@ public final class FnToPeriod {
 		return new LongFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
+	 * </p>
 	 *  
 	 * @return
 	 */
@@ -371,8 +421,10 @@ public final class FnToPeriod {
 		return LONG_FIELD_ARRAY_TO_PERIOD;
 	}	
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
+	 * </p>
 	 * 
 	 * @param chronology
 	 * 
@@ -382,8 +434,10 @@ public final class FnToPeriod {
 		return new LongFieldArrayToPeriod(chronology);
 	}	
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
+	 * </p>
 	 * 
 	 * @param periodType 
 	 * 
@@ -393,8 +447,10 @@ public final class FnToPeriod {
 		return new LongFieldArrayToPeriod(periodType);
 	}
 	/**
+	 * <p>
 	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end instants of the {@link Period} returned 
+	 * </p>
 	 * 
 	 * @param periodType 
 	 * @param chronology 
@@ -408,8 +464,10 @@ public final class FnToPeriod {
 	
 	// Conversion from two calendar objects
 	/**
+	 * <p>
 	 * It creates a {@link Period} represented by the given start and end instants. The input received by the {@link Function}
 	 * must have size 2
+	 * </p>
 	 * 
 	 * @return 
 	 */
@@ -417,18 +475,24 @@ public final class FnToPeriod {
 		return CALENDAR_FIELD_COLLECTION_TO_PERIOD;
 	}	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param chronology
      * @return 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final Chronology chronology) {
 		return new CalendarFieldCollectionToPeriod(chronology);
 	}	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
      * @return 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final PeriodType periodType) {
@@ -436,16 +500,22 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType} and {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
+     * @param chronology
      * @return 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final PeriodType periodType, final Chronology chronology) {
 		return new CalendarFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
+	 * <p>
 	 * It creates a {@link Period} represented by the given start and end instants 
+	 * </p>
 	 * 
 	 * @return
 	 */
@@ -454,9 +524,12 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param chronology
      * @return 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final Chronology chronology) {
@@ -464,9 +537,12 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
      * @return 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final PeriodType periodType) {
@@ -474,9 +550,13 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType} and {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
+     * @param chronology
      * @return 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
@@ -486,7 +566,9 @@ public final class FnToPeriod {
 	
 	// Conversion from two datetime objects
 	/**
+	 * <p>
 	 * It creates a {@link Period} represented by the given start and end instants
+	 * </p>
 	 * 
 	 * @return 
 	 */
@@ -495,9 +577,12 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param chronology
      * @return 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final Chronology chronology) {
@@ -505,9 +590,12 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
      * @return 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final PeriodType periodType) {
@@ -515,9 +603,13 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType} and {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
+     * @param chronology
      * @return 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final PeriodType periodType, final Chronology chronology) {
@@ -525,7 +617,9 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a {@link Period} represented by the given start and end instants
+     * </p>
      * 
      * @return 
      */
@@ -534,9 +628,12 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param chronology
      * @return 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final Chronology chronology) {
@@ -544,9 +641,12 @@ public final class FnToPeriod {
 	}	
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
      * @return 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final PeriodType periodType) {
@@ -554,9 +654,13 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a {@link Period} with the specified {@link PeriodType} and {@link Chronology}. The input received by the {@link Function} 
      * must have size 2 and represents the start and end instants of the {@link Period}
+     * </p>
      * 
+     * @param periodType
+     * @param chronology
      * @return 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {
@@ -565,11 +669,13 @@ public final class FnToPeriod {
 	//
 	
 	/**
+	 * <p>
 	 * It creates a Period either:
 	 * <ul>	  
 	 * <li>From a {@link Collection} of {@link Integer} representing the hours, minutes, seconds and milliseconds</li>
 	 * <li>From a {@link Collection} of {@link Integer} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
 	 * </ul>
+	 * </p>
 	 * 
 	 * @return 
 	 */
@@ -578,12 +684,15 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a Period with the specified {@link PeriodType} either:
      * <ul>   
      * <li>From a {@link Collection} of {@link Integer} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link Integer} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
+     * </p>
      * 
+     * @param periodType
      * @return 
      */
 	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollection(PeriodType periodType) {
@@ -591,11 +700,13 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a Period either:
      * <ul>   
      * <li>From an Integer[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From an Integer[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
+     * </p>
      * 
      * @return 
      */
@@ -604,12 +715,15 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
      * It creates a Period with the specified {@link PeriodType} either:
      * <ul>   
      * <li>From an Integer[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From an Integer[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
+     * </p>
      * 
+     * @param periodType
      * @return 
      */
 	public static final Function<Integer[], Period> fromIntegerFieldArray(PeriodType periodType) {
@@ -617,52 +731,62 @@ public final class FnToPeriod {
 	}
 	
 	/**
+	 * <p>
 	 * A Period is created either:
 	 * <ul>	  
 	 * <li>From a {@link Collection} of {@link String} representing the hours, minutes, seconds and milliseconds</li>
 	 * <li>From a {@link Collection} of {@link String} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
 	 * </ul>
+	 * </p>
 	 * 
-	 * @return the {@link Period}
+	 * @return 
 	 */
 	public static final Function<Collection<String>, Period> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_PERIOD;
 	}
 	
 	/**
+	 * <p>
      * A Period is created with the specified {@link PeriodType} either:
      * <ul>   
      * <li>From a {@link Collection} of {@link String} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link String} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
+     * </p>
      * 
-     * @return the {@link Period}
+     * @param periodType
+     * @return 
      */
 	public static final Function<Collection<String>, Period> fromStringFieldCollection(PeriodType periodType) {
 		return new StringFieldCollectionToPeriod(periodType);
 	}
 	
 	/**
+	 * <p>
      * A Period is created either:
      * <ul>   
      * <li>From a String[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a String[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
+     * </p>
      * 
-     * @return the {@link Period}
+     * @return 
      */
 	public static final Function<String[], Period> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_PERIOD;
 	}
 	
 	/**
+	 * <p>
      * A Period is created with the specified {@link PeriodType} either:
      * <ul>   
      * <li>From a String[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a String[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
+     * </p>
      * 
-     * @return the {@link Period}
+     * @param periodType
+     * @return 
      */
 	public static final Function<String[], Period> fromStringFieldArray(PeriodType periodType) {
 		return new StringFieldArrayToPeriod(periodType);

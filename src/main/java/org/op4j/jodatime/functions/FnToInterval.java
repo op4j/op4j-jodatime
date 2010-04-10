@@ -76,14 +76,20 @@ public final class FnToInterval {
 	
 	//From String list or array
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input Collection<String> are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 				
 	 * @return
 	 */
@@ -92,14 +98,20 @@ public final class FnToInterval {
 	}
 
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input Ccollection<String> are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 * @return
@@ -108,14 +120,20 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input collections are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input Collection<String> are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 
 	 * @param chronology
 	 * @return
@@ -124,10 +142,12 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(chronology);
 	}
 	/**
+	 * <p>
 	 * It creates an {@link Interval} using the target {@link String} elements as the start and end. The given pattern
 	 * will be used to create the {@link DateTime} objects from the given {@link String} elements. If
 	 * the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
+	 * </p>
 	 *                 
 	 * @param pattern
 	 */
@@ -135,10 +155,12 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern);
 	}
 	/**
+	 * <p>
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
 	 * and with the given {@link DateTimeZone}. If the pattern includes either, the name of the month or
 	 * day of week, a conversion accepting a {@link Locale} must be used instead
-	 *                 
+	 * </p>
+	 *                  
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
@@ -146,9 +168,11 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern, dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It creates an {@link Interval} from the given start and end {@link String} elements using the given pattern parameter
 	 * and with the given {@link Chronology}. If the pattern includes either, the name of the month or
 	 * day of week, a conversion accepting a {@link Locale} must be used instead
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param chronology
@@ -157,8 +181,10 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern, chronology);
 	}
 	/**
+	 * <p>
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
 	 * and {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -167,8 +193,10 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern, locale);
 	}
 	/**
+	 * <p>
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
 	 * and {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -177,8 +205,10 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern, locale);
 	}	
 	/**
+	 * <p>
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
 	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -188,8 +218,10 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern, locale, dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
 	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -199,8 +231,10 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern, locale, dateTimeZone);
 	}	
 	/**
-	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link String} elements using the given pattern
 	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -210,8 +244,10 @@ public final class FnToInterval {
 		return new StringFieldCollectionToInterval(pattern, locale, chronology);
 	}
 	/**
-	 * It creates an {@link Interval} from the given {@link String} elements using the given pattern
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link String} elements using the given pattern
 	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
+	 * </p>
 	 *
 	 * @param pattern
 	 * @param locale
@@ -222,14 +258,20 @@ public final class FnToInterval {
 	}	
 	
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 				
 	 * @return
 	 */
@@ -237,15 +279,21 @@ public final class FnToInterval {
 		return STRING_FIELD_ARRAY_TO_INTERVAL;
 	}
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * 		
+	 * </p>
+	 * 	
 	 * @param dateTimeZone
 	 * @return
 	 */
@@ -253,14 +301,20 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 		
 	 * @param chronology
 	 * @return
@@ -269,15 +323,21 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(chronology);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * 		
+	 * </p>
+	 * 
 	 * @param pattern
 	 * @return
 	 */
@@ -285,14 +345,20 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern);
 	}
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 		
 	 * @param pattern
 	 * @param dateTimeZone
@@ -302,14 +368,20 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 		
 	 * @param pattern
 	 * @param chronology
@@ -319,14 +391,20 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, chronology);
 	}
 	/**
-	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * <p>
+	 * It converts the input {@link String} elements into an {@link Interval}. 
+	 * The target {@link String} elements represent the start and end of the {@link Interval}.
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 		
 	 * @param pattern
 	 * @param locale
@@ -336,15 +414,21 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * 		
+	 * </p>
+	 * 	
 	 * @param pattern
 	 * @param locale
 	 * @return
@@ -353,14 +437,20 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale);
 	}	
 	/**
+	 * <p>
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 		
 	 * @param pattern
 	 * @param locale
@@ -371,14 +461,20 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 		
 	 * @param pattern
 	 * @param locale
@@ -389,15 +485,21 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}	
 	/**
+	 * <p>
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}. 
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * 		
+	 * </p>
+	 * 	
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
@@ -407,14 +509,20 @@ public final class FnToInterval {
 		return new StringFieldArrayToInterval(pattern, locale, chronology);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} elements into an {@link Interval}. 
-	 * The target {@link String} elements represent the start and end of the {@link Interval}. The accepted input arrays are:
+	 * The target {@link String} elements represent the start and end of the {@link Interval}.
+	 * </p>
+	 * 
+	 * <p>
+	 * The accepted input String[] are:
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
+	 * </p>
 	 * 		
 	 * @param pattern
 	 * @param locale
@@ -428,15 +536,18 @@ public final class FnToInterval {
 	
 	// From Date list or array
 	/**
-	 * It creates an {@link Interval} from the given {@link Date} elements  
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Date} elements  
+	 * </p>
 	 */
 	public static final Function<Collection<? extends Date>, Interval> fromDateFieldCollection() {
 		return DATE_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
-	 * 
-	 * It creates an {@link Interval} from the given {@link Date}  elements.
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Date}  elements.
 	 * The {@link Interval} will be created with the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -444,8 +555,10 @@ public final class FnToInterval {
 		return new DateFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
-	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Date} elements.
 	 * The {@link Interval} will be created with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -454,15 +567,18 @@ public final class FnToInterval {
 	}
 	
 	/**
+	 * <p>
 	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 * </p>
 	 */
 	public static final <T extends Date> Function<T[], Interval> fromDateFieldArray() {
 		return new DateFieldArrayToInterval<T>();
 	}
 	/**
-	 * 
-	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Date} elements.
 	 * The {@link Interval} will be created with the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -470,8 +586,10 @@ public final class FnToInterval {
 		return new DateFieldArrayToInterval<T>(dateTimeZone);
 	}
 	/**
-	 * It creates an {@link Interval} from the given {@link Date} elements.
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Date} elements.
 	 * The {@link Interval} will be created with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -482,15 +600,19 @@ public final class FnToInterval {
 	
 	// From Timestamp list or array
 	/**
-	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * <p>
+	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
+	 * </p>
 	 */
 	public static final Function<Collection<Timestamp>, Interval> fromTimestampFieldCollection() {
 		return TIMESTAMP_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
-	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * <p>
+	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */	
@@ -498,8 +620,10 @@ public final class FnToInterval {
 		return new TimestampFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
-	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * <p>
+	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -508,15 +632,19 @@ public final class FnToInterval {
 	}
 	
 	/**
-	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * <p>
+	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
+	 * </p>
 	 */
 	public static final Function<Timestamp[], Interval> fromTimestampFieldArray() {
 		return TIMESTAMP_FIELD_ARRAY_TO_INTERVAL;
 	}
 	/**
-	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * <p>
+	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */	
@@ -524,8 +652,10 @@ public final class FnToInterval {
 		return new TimestampFieldArrayToInterval(dateTimeZone);
 	}
 	/**
-	 * The given {@link Timestamp} target elements will be used as the start and end
+	 * <p>
+	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -536,16 +666,20 @@ public final class FnToInterval {
 	
 	// From Long list or array
 	/**
-	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * <p>
+	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
+	 * </p>
 	 */
 	public static final Function<Collection<Long>, Interval> fromLongFieldCollection() {
 		return LONG_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
-	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * <p>
+	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -553,9 +687,11 @@ public final class FnToInterval {
 		return new LongFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * <p>
+	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -564,16 +700,20 @@ public final class FnToInterval {
 	}
 	
 	/**
-	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * <p>
+	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
+	 * </p>
 	 */
 	public static final Function<Long[], Interval> fromLongFieldArray() {
 		return LONG_FIELD_ARRAY_TO_INTERVAL;
 	}
 	/**
-	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * <p>
+	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -581,9 +721,11 @@ public final class FnToInterval {
 		return new LongFieldArrayToInterval(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} targets representing the time in milliseconds will be used as the start
+	 * <p>
+	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned. The {@link Interval} will be created with the given
 	 * {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -595,48 +737,62 @@ public final class FnToInterval {
 	
 	// From Integer List or array
 	/**
-     * It converts the given {@link Integer} elements into an {@link Interval}. 
-     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
-     * integer collections are:
+	 * <p>
+     * It converts the input {@link Integer} elements into an {@link Interval}. 
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}.
+     * </p>
+     * 
+     * <p>The accepted input Collection<Integer> collections are:
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     *              
+     * </p>
+     *       
      * @return
      */
 	public static final Function<Collection<Integer>, Interval> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
-     * It converts the given {@link Integer} elements into an {@link Interval} with the given {@link DateTime}. 
-     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
-     * integer collections are:
+	 * <p>
+     * It converts the input {@link Integer} elements into an {@link Interval} with the given {@link DateTime}. 
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
+     * </p>
+     * 
+     * <p>The accepted input Collection<Integer> are:
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
+     * </p>
      *              
+     * @param dateTimeZone
      * @return
      */
 	public static final Function<Collection<Integer>, Interval> fromIntegerFieldCollection(DateTimeZone dateTimeZone) {
 		return new IntegerFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
+	 * <p>
      * It converts the given {@link Integer} elements into an {@link Interval}.  with the given {@link Chronology}
-     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
-     * integer collections are:
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
+     * </p>
+     * 
+     * <p>The accepted input Collection<Integer> are:
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     *              
+     * </p>
+     *       
+     * @param chronology
      * @return
      */
 	public static final Function<Collection<Integer>, Interval> fromIntegerFieldCollection(Chronology chronology) {
@@ -644,48 +800,62 @@ public final class FnToInterval {
 	}
 	
 	/**
+	 * <p>
      * It converts the given {@link Integer} elements into an {@link Interval}. 
-     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
-     * integer arrays are:
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
+     * </p>
+     * 
+     * <p>The accepted input Integer[] are:
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     *              
+     * </p>
+     *         
      * @return
      */
 	public static final Function<Integer[], Interval> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_INTERVAL;
 	}
 	/**
+	 * <p>
      * It converts the given {@link Integer} elements into an {@link Interval} with the given {@link DateTimeZone}. 
-     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
-     * integer arrays are:
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
+     * </p>
+     * 
+     * <p>The accepted input Integer[] are:
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     *              
+     * </p>
+     * 
+     * @param dateTimeZone             
      * @return
      */
 	public static final Function<Integer[], Interval> fromIntegerFieldArray(DateTimeZone dateTimeZone) {
 		return new IntegerFieldArrayToInterval(dateTimeZone);
 	}
 	/**
+	 * <p>
      * It converts the given {@link Integer} elements into an {@link Interval} with the given {@link Chronology}. 
-     * The target {@link Integer} elements represent the start and end of the {@link Interval}. The accepted input 
-     * integer arrays are:
+     * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
+     * </p>
+     * 
+     * <p>The accepted input Integer[] are:
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     *              
+     * </p>
+     * 
+     * @param chronology           
      * @return
      */
 	public static final Function<Integer[], Interval> fromIntegerFieldArray(Chronology chronology) {
@@ -695,15 +865,19 @@ public final class FnToInterval {
 	
 	// From Calendar list or array
 	/**
-	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Calendar} targets used as the start 
 	 * and end of the {@link Interval}
+	 * </p>
 	 */
 	public static final Function<Collection<? extends Calendar>, Interval> fromCalendarFieldCollection() {
 		return CALENDAR_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
-	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Calendar} targets used as the start and end. 
 	 * Such an {@link Interval} will be created in the given DateTimeZone
+	 * </p>
 	 *                 
 	 * @param dateTimeZone
 	 */
@@ -711,8 +885,10 @@ public final class FnToInterval {
 		return new CalendarFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
-	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Calendar} targets used as the start and end. 
 	 * The {@link Interval} will be created with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -721,15 +897,19 @@ public final class FnToInterval {
 	}
 	
 	/**
-	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start 
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Calendar} targets representing the start 
 	 * and end of the {@link Interval}
+	 * </p>
 	 */
 	public static final <T extends Calendar> Function<T[], Interval> fromCalendarFieldArray() {
 		return new CalendarFieldArrayToInterval<T>();
 	}
 	/**
-	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Calendar} targets representing the start and end. 
 	 * Such an {@link Interval} will be created in the given DateTimeZone
+	 * </p>
 	 *                 
 	 * @param dateTimeZone
 	 */
@@ -737,8 +917,10 @@ public final class FnToInterval {
 		return new CalendarFieldArrayToInterval<T>(dateTimeZone);
 	}
 	/**
-	 * It creates an {@link Interval} with the given {@link Calendar} targets as the start and end. 
+	 * <p>
+	 * It creates an {@link Interval} from the input {@link Calendar} targets representing the start and end. 
 	 * The {@link Interval} will be created with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -749,8 +931,10 @@ public final class FnToInterval {
 	
 	// From BaseDateTime list or array
 	/**
+	 * <p>
 	 * The two target elements accepted by this function are used as the start and end of the
 	 * {@link Interval} returned
+	 * </p>
 	 * 
 	 * @return
 	 */
@@ -758,18 +942,24 @@ public final class FnToInterval {
 		return BASE_DATE_TIME_FIELD_COLLECTION_TO_INTERVAL;
 	}
 	/**
+	 * <p>
      * The two target elements accepted by this function are used as the start and end of the
      * {@link Interval} being created with the given {@link DateTimeZone}
+     * </p>
      * 
+     * @param dateTimeZone
      * @return
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> fromBaseDateTimeFieldCollection(DateTimeZone dateTimeZone) {
 		return new BaseDateTimeFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
+	 * <p>
      * The two target elements accepted by this function are used as the start and end of the
      * {@link Interval} being created with the given {@link Chronology}
+     * </p>
      * 
+     * @param chronology
      * @return
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> fromBaseDateTimeFieldCollection(Chronology chronology) {
@@ -777,8 +967,10 @@ public final class FnToInterval {
 	}
 	
 	/**
+	 * <p>
      * The array accepted by this function, as its input, contains two {@link BaseDateTime} objects used
      * as the start and end of the {@link Interval} returned
+     * </p>
      * 
      * @return
      */
@@ -786,18 +978,24 @@ public final class FnToInterval {
 		return new BaseDateTimeFieldArrayToInterval<T>();
 	}
 	/**
+	 * <p>
      * The array accepted by this function, as its input, contains two {@link BaseDateTime} objects used
      * as the start and end of the {@link Interval} being created (with the given {@link DateTimeZone})
+     * </p>
      * 
+     * @param dateTimeZone
      * @return
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> fromBaseDateTimeFieldArray(DateTimeZone dateTimeZone) {
 		return new BaseDateTimeFieldArrayToInterval<T>(dateTimeZone);
 	}
 	/**
+	 * <p>
      * The array accepted by this function, as its input, contains two {@link BaseDateTime} objects used
      * as the start and end of the {@link Interval} being created (with the given {@link Chronology})
+     * </p>
      * 
+     * @param chronology
      * @return
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> fromBaseDateTimeFieldArray(Chronology chronology) {

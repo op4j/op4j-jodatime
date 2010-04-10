@@ -62,10 +62,12 @@ public final class FnToDateTime {
 		
 	// From String
 	/**
-	 * It converts the given {@link String} into a {@link DateTime} using the 
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateTime} using the 
 	 * given pattern parameter. If the pattern includes either, the name of 
 	 * the month or day of week, a conversion accepting a {@link Locale} must 
 	 * be used instead 
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @return
@@ -74,9 +76,11 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter and with the given
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateTime} using the given pattern parameter and with the given
 	 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
+	 * </p>
 	 *                 
 	 * @param pattern
 	 * @param dateTimeZone
@@ -85,9 +89,11 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern, dateTimeZone);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateTime} using the given pattern parameter and with the given
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateTime} using the given pattern parameter and with the given
 	 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
+	 * </p>
 	 * 		                
 	 * @param pattern
 	 * @param chronology
@@ -96,8 +102,10 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern, chronology);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link DateTime} using the given pattern and
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateTime} using the given pattern and
 	 * {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -106,8 +114,10 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern, locale);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link DateTime} using the given pattern and
 	 * {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -116,8 +126,10 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern, locale);
 	}
 	/**
+	 * <p>
 	 * It converts the given String into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
+	 * </p>
 	 *                 
 	 * @param pattern
 	 * @param locale
@@ -127,8 +139,10 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -138,8 +152,10 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
-	 * It converts the given {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateTime} will be created with the given {@link Chronology}
+	 * </p>
 	 *                 
 	 * @param pattern
 	 * @param locale
@@ -149,8 +165,10 @@ public final class FnToDateTime {
 		return new StringToDateTime(pattern, locale, chronology);
 	}
 	/**
-	 * It converts the given String into a {@link DateTime} using the given pattern and {@link Locale} parameters.
+	 * <p>
+	 * It converts the input {@link String} into a {@link DateTime} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateTime} will be created with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -164,14 +182,18 @@ public final class FnToDateTime {
 	
 	// From Date
 	/**
-	 * The given {@link Date} is converted into a {@link DateTime}
+	 * <p>
+	 * The input {@link Date} is converted into a {@link DateTime}
+	 * </p>
 	 */
 	public static final <T extends Date> Function<T, DateTime> fromDate() {
 		return new DateToDateTime<T>();
 	}
 	/**
-	 * The given {@link Date} is converted into a {@link DateTime} configured with the given
+	 * <p>
+	 * The input {@link Date} is converted into a {@link DateTime} configured with the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -179,8 +201,10 @@ public final class FnToDateTime {
 		return new DateToDateTime<T>(dateTimeZone);
 	}
 	/**
-	 * The given {@link Date} is converted into a {@link DateTime} with the given
+	 * <p>
+	 * The input {@link Date} is converted into a {@link DateTime} with the given
 	 * {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -192,14 +216,18 @@ public final class FnToDateTime {
 	
 	// From Date
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateTime}
+	 * <p>
+	 * The input {@link Timestamp} is converted into a {@link DateTime}
+	 * </p>
 	 */
 	public static final Function<Timestamp, DateTime> fromTimestamp() {
 		return TIMESTAMP_TO_DATE_TIME;
 	}
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateTime} in the given
+	 * <p>
+	 * The input {@link Timestamp} is converted into a {@link DateTime} in the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -207,8 +235,10 @@ public final class FnToDateTime {
 		return new TimestampToDateTime(dateTimeZone);
 	}
 	/**
-	 * The given {@link Timestamp} is converted into a {@link DateTime} with the given
+	 * <p>
+	 * The input {@link Timestamp} is converted into a {@link DateTime} with the given
 	 * {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -220,14 +250,18 @@ public final class FnToDateTime {
 	
 	// Conversion from Long
 	/**
-	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime}
+	 * <p>
+	 * The input {@link Long} representing the time in milliseconds is converted into a {@link DateTime}
+	 * </p>
 	 */
 	public static final Function<Long, DateTime> fromLong() {
 		return LONG_TO_DATE_TIME;
 	}
 	/**
-	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime} in the given
+	 * <p>
+	 * The input {@link Long} representing the time in milliseconds is converted into a {@link DateTime} in the given
 	 * {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -235,8 +269,10 @@ public final class FnToDateTime {
 		return new LongToDateTime(dateTimeZone);
 	}
 	/**
-	 * The given {@link Long} representing the time in milliseconds is converted into a {@link DateTime} with the given
+	 * <p>
+	 * The input {@link Long} representing the time in milliseconds is converted into a {@link DateTime} with the given
 	 * {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -247,17 +283,35 @@ public final class FnToDateTime {
 	
 	// Conversion from Integer list
 	/**
-	 * A {@link DateTime} is created from the given {@link Integer} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * <p>
+	 * A {@link DateTime} is created from the input {@link Integer} {@link Collection}.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Collection<Integer> are:
+	 * <ul>
+	 * <li>year (month and day will be set to 1)</li>
+	 * <li>year, month (day will be set to 1)</li>
+	 * <li>year, month, day</li>
+	 * </p>
 	 */
 	public static final Function<Collection<Integer>, DateTime> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_COLLECTION_TO_DATE_TIME;
 	}
 	/**
-	 * A {@link DateTime} is created from the given {@link Integer} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
+	 * <p>
+	 * A {@link DateTime} is created from the input {@link Integer} {@link Collection}.
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Collection<Integer> are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<Collection<Integer>, DateTime> fromIntegerFieldCollection(Chronology chronology) {
@@ -268,17 +322,35 @@ public final class FnToDateTime {
 	
 	// Conversion from Integer array
 	/**
+	 * <p>
 	 * A {@link DateTime} is created from the given {@link Integer} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Integer[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </p>
 	 */
 	public static final Function<Integer[], DateTime> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_DATE_TIME;
 	}
 	/**
+	 * <p>
 	 * A {@link DateTime} is created from the given {@link Integer} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Integer[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<Integer[], DateTime> fromIntegerFieldArray(Chronology chronology) {
@@ -289,17 +361,35 @@ public final class FnToDateTime {
 	
 	// Conversion from String list
 	/**
+	 * <p>
 	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Collection<String> are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </p>
 	 */
 	public static final Function<Collection<String>, DateTime> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_DATE_TIME;
 	}
 	/**
+	 * <p>
 	 * A {@link DateTime} is created from the given {@link String} {@link Collection}.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input Collection<String> are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<Collection<String>, DateTime> fromStringFieldCollection(Chronology chronology) {
@@ -310,17 +400,36 @@ public final class FnToDateTime {
 	
 	// Conversion from String array
 	/**
+	 * <p>
 	 * A {@link DateTime} is created from the given {@link String} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1.
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input String[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </p>
+     * 
 	 */
 	public static final Function<String[], DateTime> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_DATE_TIME;
 	}
 	/**
+	 * <p>
 	 * A {@link DateTime} is created from the given {@link String} array.
-	 * Year, month, day can be used. If not all of them set, the last ones will be set to 1
 	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * </p>
+	 * 
+	 * <p>
+     * The valid input String[] are:
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<String[], DateTime> fromStringFieldArray(Chronology chronology) {
@@ -331,13 +440,17 @@ public final class FnToDateTime {
 	
 	// Conversion from Calendar
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link DateTime}
+	 * </p>
 	 */
 	public static final <T extends Calendar> Function<T, DateTime> fromCalendar() {
 		return new CalendarToDateTime<T>();
 	}
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link DateTime} in the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -345,7 +458,9 @@ public final class FnToDateTime {
 		return new CalendarToDateTime<T>(dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link DateTime} with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */

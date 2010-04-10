@@ -50,9 +50,11 @@ public final class FnJodaToString {
 	
 	// From BaseDateTime
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link BaseDateTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
-	 * 		 
+	 * </p>
+	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @return
@@ -62,9 +64,11 @@ public final class FnJodaToString {
 	}
 	
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link BaseDateTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
-	 * 		 
+	 * </p>
+	 *  
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale {@link Locale} to be used with the given pattern
@@ -75,8 +79,10 @@ public final class FnJodaToString {
 	}
 	
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link BaseDateTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
+	 * </p>
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -87,8 +93,10 @@ public final class FnJodaToString {
 		return new BaseDateTimeToStr(formatType, format, chronology);
 	}
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link BaseDateTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
+	 * </p>
 	 * 		 
 	 * @param formatType
 	 * @param format
@@ -99,7 +107,9 @@ public final class FnJodaToString {
 		return new BaseDateTimeToStr(formatType, format, locale);
 	}
 	/**
-	 * It converts the given {@link BaseDateTime} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * <p>
+	 * It converts the input {@link BaseDateTime} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * </p>
 	 * 
 	 * @param formatter
 	 */
@@ -110,9 +120,11 @@ public final class FnJodaToString {
 	
 	// From LocalTime
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link LocalTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
-	 *  
+	 * </p>
+	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @return
@@ -122,9 +134,11 @@ public final class FnJodaToString {
 	}
 	
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link LocalTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
-	 *  
+	 * </p>
+	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
 	 * @param locale locale to be used with the pattern
@@ -135,8 +149,10 @@ public final class FnJodaToString {
 	}
 	
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link LocalTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
+	 * </p>
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -148,8 +164,10 @@ public final class FnJodaToString {
 	}
 	
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given pattern or style
+	 * <p>
+	 * It converts the input {@link LocalTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
+	 * </p>
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -160,7 +178,9 @@ public final class FnJodaToString {
 		return new LocalTimeToStr(formatType, format, locale);
 	}
 	/**
-	 * It converts the given {@link LocalTime} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * <p>
+	 * It converts the input {@link LocalTime} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * </p>
 	 * 
 	 * @param formatter
 	 */
@@ -171,8 +191,10 @@ public final class FnJodaToString {
 	
 	// From LocalDate
 	/**
-	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * <p>
+	 * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value)
+	 * </p>
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -181,8 +203,10 @@ public final class FnJodaToString {
 		return new LocalDateToStr(formatType, format);
 	}
 	/**
-	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * <p>
+	 * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value) with the given {@link Locale}
+	 * </p>
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -192,8 +216,10 @@ public final class FnJodaToString {
 		return new LocalDateToStr(formatType, format, locale);
 	}
 	/**
-	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * <p>
+	 * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value) with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -203,8 +229,10 @@ public final class FnJodaToString {
 		return new LocalDateToStr(formatType, format, chronology);
 	}
 	/**
-	 * It converts the given {@link LocalDate} into a {@link String} by means of the given pattern
+	 * <p>
+	 * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
 	 * or style (depending on the formatType value) with the given {@link Locale}
+	 * </p>
 	 * 
 	 * @param formatType format {@link FormatType}
 	 * @param format string with the format used to convert the target BaseDateTime
@@ -215,7 +243,9 @@ public final class FnJodaToString {
 	}
 	
 	/**
-	 * It converts the given {@link LocalDate} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * <p>
+	 * It converts the input {@link LocalDate} into a {@link String} by means of the given {@link DateTimeFormatter}
+	 * </p>
 	 * 
 	 * @param formatter
 	 */

@@ -65,9 +65,11 @@ public final class FnToLocalTime {
 	// From String
 	
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter. If
 	 * the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
+	 * </p>
 	 *                 
 	 * @param pattern 
 	 */
@@ -75,10 +77,12 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern);
 	}	
 	/**
-	 * It converts the given String into a {@link LocalTime} using the given pattern parameter and with the given
+	 * <p>
+	 * It converts the given String into a {@link LocalTime} using the given pattern parameter and with the specified
 	 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
-	 *                 
+	 * </p> 
+	 *             
 	 * @param pattern
 	 * @param dateTimeZone
 	 */
@@ -86,10 +90,12 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern, dateTimeZone);
 	}	
 	/**
-	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter and with the given
+	 * <p>
+	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern parameter with the specified
 	 * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
-	 * 		                
+	 * </p>
+	 *                 
 	 * @param pattern
 	 * @param chronology
 	 */
@@ -97,7 +103,9 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern, chronology);
 	}	
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -106,7 +114,9 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern, locale);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
+	 * </p>
 	 * 
 	 * @param pattern
 	 * @param locale
@@ -115,9 +125,11 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern, locale);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-	 *                 
+	 * </p>
+	 *                
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
@@ -126,9 +138,11 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern, locale, dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
 	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
-	 *                 
+	 * </p> 
+	 *                
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
@@ -137,9 +151,11 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern, locale, dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
-	 * The {@link DateTime} will be created with the given {@link Chronology}
-	 *                 
+	 * The {@link DateTime} will be created with the specified {@link Chronology}
+	 * </p>  
+	 *              
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
@@ -148,9 +164,11 @@ public final class FnToLocalTime {
 		return new StringToLocalTime(pattern, locale, chronology);
 	}
 	/**
+	 * <p>
 	 * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters.
-	 * The {@link DateTime} will be created with the given {@link Chronology}
-	 *                 
+	 * The {@link DateTime} will be created with the specified {@link Chronology}
+	 * </p> 
+	 *                
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
@@ -163,13 +181,17 @@ public final class FnToLocalTime {
 	
 	// From Date
 	/**
+	 * <p>
 	 * The given {@link Date} is converted into a {@link LocalTime}
+	 * </p>
 	 */
 	public static final <T extends Date> Function<T, LocalTime> fromDate() {
 		return new DateToLocalTime<T>();
 	}
 	/**
+	 * <p>
 	 * The given {@link Date} is converted into a {@link LocalTime} configured with the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -177,7 +199,9 @@ public final class FnToLocalTime {
 		return new DateToLocalTime<T>(dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * The given {@link Date} is converted into a {@link LocalTime} with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -189,13 +213,17 @@ public final class FnToLocalTime {
 	
 	// From Date
 	/**
+	 * <p>
 	 * The given {@link Timestamp} is converted into a {@link LocalTime}
+	 * </p>
 	 */
 	public static final Function<Timestamp, LocalTime> fromTimestamp() {
 		return TIMESTAMP_TO_LOCAL_TIME;
 	}
 	/**
+	 * <p>
 	 * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -203,7 +231,9 @@ public final class FnToLocalTime {
 		return new TimestampToLocalTime(dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * The given {@link Timestamp} is converted into a {@link LocalTime} with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -215,13 +245,17 @@ public final class FnToLocalTime {
 	
 	// Conversion from Long
 	/**
+	 * <p>
 	 * The given long representing the time in milliseconds is converted into a {@link LocalTime}
+	 * </p>
 	 */
 	public static final Function<Long, LocalTime> fromLong() {
 		return LONG_TO_LOCAL_TIME;
 	}
 	/**
+	 * <p>
 	 * The given long representing the time in milliseconds is converted into a {@link LocalTime} in the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -229,7 +263,9 @@ public final class FnToLocalTime {
 		return new LongToLocalTime(dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * The given long representing the time in milliseconds is converted into a {@link LocalTime} with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
@@ -240,17 +276,40 @@ public final class FnToLocalTime {
 	
 	// Conversion from Integer list
 	/**
+	 * <p>
 	 * A {@link LocalTime} is created from the given {@link Integer} {@link Collection}.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Collection<Integer> represent:
+	 * <ul>
+	 * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+	 * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+	 * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+	 * <li>hour, minute, second, millisecond</li>
+	 * </ul>
+	 * </p>
+	 * 
 	 */
 	public static final Function<Collection<Integer>, LocalTime> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_LIST_TO_LOCAL_TIME;
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link Integer} {@link Collection}.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * <p>
+	 * A {@link LocalTime} is created from the given {@link Integer} {@link Collection} with the specified
+	 * {@link Chronology}.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Collection<Integer> represent:
+	 * <ul>
+     * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second, millisecond</li>
+     * </ul>
+	 * </p>       
+	 *  
 	 * @param chronology
 	 */
 	public static final Function<Collection<Integer>, LocalTime> fromIntegerFieldCollection(Chronology chronology) {
@@ -261,16 +320,37 @@ public final class FnToLocalTime {
 	
 	// Conversion from Integer array
 	/**
-	 * A {@link LocalTime} is created from the given {@link Integer} array.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
+	 * <p>
+	 * A {@link LocalTime} is created from the given {@link Integer} Array.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Integer[] represent:
+	 * <ul>
+     * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second, millisecond</li>
+     * </ul>
+     * </p>
 	 */
 	public static final Function<Integer[], LocalTime> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_LOCAL_TIME;
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link Integer} array.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-	 * The result will be created with the given {@link Chronology}
+	 * <p>
+	 * A {@link LocalTime} is created from the given {@link Integer} array with the specified {@link Chronology}.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Integer[] represent:
+     * <ul>
+     * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second, millisecond</li>
+     * </ul>
+     * </p>
 	 *                 
 	 * @param chronology
 	 */
@@ -282,17 +362,39 @@ public final class FnToLocalTime {
 	
 	// Conversion from String list
 	/**
+	 * <p>
 	 * A {@link LocalTime} is created from the given {@link String} {@link Collection}.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Collection<String> represent:
+     * <ul>
+     * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second, millisecond</li>
+     * </ul>
+     * </p>
 	 */
 	public static final Function<Collection<String>, LocalTime> fromStringFieldCollection() {
 		return STRING_FIELD_LIST_TO_LOCAL_TIME;
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link String} {@link Collection}.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-	 * The result will be created with the given {@link Chronology}
-	 *                 
+	 * <p>
+	 * A {@link LocalTime} is created from the given {@link String} {@link Collection} with the specified
+	 * {@link Chronology}
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input Collection<String> represent:
+     * <ul>
+     * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second, millisecond</li>
+     * </ul>
+     * </p>
+     * 
 	 * @param chronology
 	 */
 	public static final Function<Collection<String>, LocalTime> fromStringFieldCollection(Chronology chronology) {
@@ -303,16 +405,37 @@ public final class FnToLocalTime {
 	
 	// Conversion from String array
 	/**
+	 * <p>
 	 * A {@link LocalTime} is created from the given {@link String} array.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0.
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input String[] represent:
+     * <ul>
+     * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second, millisecond</li>
+     * </ul>
+     * </p>
 	 */
 	public static final Function<String[], LocalTime> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_LOCAL_TIME;
 	}
 	/**
-	 * A {@link LocalTime} is created from the given {@link String} array.
-	 * Hour, minute, second and millisecond can be used. If not all of them set, the last ones will be set to 0
-	 * The result will be created with the given {@link Chronology}
+	 * <p>
+	 * A {@link LocalTime} is created from the given {@link String} array with the specified {@link Chronology}
+	 * </p>
+	 * 
+	 * <p>
+	 * The valid input String[] represent:
+     * <ul>
+     * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
+     * <li>hour, minute, second, millisecond</li>
+     * </ul>
+	 * </p>
 	 *                 
 	 * @param chronology
 	 */
@@ -324,13 +447,17 @@ public final class FnToLocalTime {
 	
 	// Conversion from Calendar
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link LocalTime}
+	 * </p>
 	 */
 	public static final <T extends Calendar> Function<T, LocalTime> fromCalendar() {
 		return new CalendarToLocalTime<T>();
 	}
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link LocalTime} in the given {@link DateTimeZone}
+	 * </p>
 	 * 
 	 * @param dateTimeZone
 	 */
@@ -338,7 +465,9 @@ public final class FnToLocalTime {
 		return new CalendarToLocalTime<T>(dateTimeZone);
 	}
 	/**
+	 * <p>
 	 * It converts a {@link Calendar} into a {@link LocalTime} with the given {@link Chronology}
+	 * </p>
 	 * 
 	 * @param chronology
 	 */
