@@ -56,6 +56,16 @@ public class FnJodaTimeUtils {
 	
 	/**
      * <p>
+     * It converts the input {@link BaseDateTime} into a {@link String}  
+     * </p>
+     * 
+     * @return the {@link String} created from the input and arguments 
+     */
+    public static final Function<BaseDateTime, String> baseDateTimeToStr() {
+        return FnJodaToString.fromBaseDateTime();
+    }
+	/**
+     * <p>
      * It converts the input {@link BaseDateTime} into a {@link String} by means of the given pattern or style
      * (depending on the value of formatType parameter).
      * </p>
@@ -123,6 +133,17 @@ public class FnJodaTimeUtils {
 		return FnJodaToString.fromBaseDateTime(formatter);
 	}
 	
+	/**
+     * <p>
+     * It converts the input {@link LocalTime} into a {@link String}
+     * </p>
+     * 
+     * @return the {@link String} created from the input and arguments 
+     */
+    public static final Function<LocalTime, String> localTimeToStr() {
+        return FnJodaToString.fromLocalTime();
+    }
+    
 	/**
      * <p>
      * It converts the input {@link LocalTime} into a {@link String} by means of the given pattern or style
@@ -193,6 +214,16 @@ public class FnJodaTimeUtils {
 		return FnJodaToString.fromLocalTime(formatter);
 	}
 	
+	/**
+     * <p>
+     * It converts the input {@link LocalDate} into a {@link String}
+     * </p>
+     * 
+     * @return the {@link String} created from the input and arguments 
+     */
+    public static final Function<LocalDate, String> localDateToStr() {
+        return FnJodaToString.fromLocalDate();
+    }
 	/**
      * <p>
      * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
