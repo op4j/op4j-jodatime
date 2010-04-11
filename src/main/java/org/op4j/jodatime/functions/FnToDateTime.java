@@ -308,7 +308,7 @@ public final class FnToDateTime {
 	 * </p>
 	 * 
 	 * <p>
-	 * The valid input Collection<Integer> are:
+	 * The valid input Collection&lt;Integer&gt; are:
 	 * </p>
 	 * <ul>
 	 * <li>year (month and day will be set to 1)</li>
@@ -328,7 +328,7 @@ public final class FnToDateTime {
 	 * </p>
 	 * 
 	 * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -396,7 +396,7 @@ public final class FnToDateTime {
 	 * </p>
 	 * 
 	 * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -416,7 +416,7 @@ public final class FnToDateTime {
 	 * </p>
 	 * 
 	 * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
