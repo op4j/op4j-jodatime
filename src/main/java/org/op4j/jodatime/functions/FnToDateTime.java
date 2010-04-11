@@ -83,7 +83,7 @@ public final class FnToDateTime {
 	 * </p>
 	 *                 
 	 * @param pattern string with the format of the input String 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, DateTimeZone dateTimeZone) {
@@ -137,7 +137,7 @@ public final class FnToDateTime {
 	 *                 
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -151,7 +151,7 @@ public final class FnToDateTime {
 	 * 
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -205,7 +205,7 @@ public final class FnToDateTime {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, DateTime> fromDate(DateTimeZone dateTimeZone) {
@@ -243,7 +243,7 @@ public final class FnToDateTime {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, DateTime> fromTimestamp(DateTimeZone dateTimeZone) {
@@ -281,7 +281,7 @@ public final class FnToDateTime {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Long, DateTime> fromLong(DateTimeZone dateTimeZone) {
@@ -485,7 +485,7 @@ public final class FnToDateTime {
 	 * It converts a {@link Calendar} into a {@link DateTime} in the given {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, DateTime> fromCalendar(DateTimeZone dateTimeZone) {

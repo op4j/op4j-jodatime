@@ -84,7 +84,7 @@ public final class FnToLocalDate {
 	 * </p>
 	 *               
 	 * @param pattern string with the format of the input String 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, DateTimeZone dateTimeZone) {
@@ -138,7 +138,7 @@ public final class FnToLocalDate {
 	 *              
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -152,7 +152,7 @@ public final class FnToLocalDate {
 	 * 
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -206,7 +206,7 @@ public final class FnToLocalDate {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, LocalDate> fromDate(DateTimeZone dateTimeZone) {
@@ -244,7 +244,7 @@ public final class FnToLocalDate {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, LocalDate> fromTimestamp(DateTimeZone dateTimeZone) {
@@ -282,7 +282,7 @@ public final class FnToLocalDate {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Long, LocalDate> fromLong(DateTimeZone dateTimeZone) {
@@ -493,7 +493,7 @@ public final class FnToLocalDate {
 	 * It converts a {@link Calendar} into a {@link LocalDate} in the given {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, LocalDate> fromCalendar(DateTimeZone dateTimeZone) {

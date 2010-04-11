@@ -82,7 +82,7 @@ public final class FnToDateMidnight {
 	 * </p>
 	 *                 
 	 * @param pattern string with the format of the input String 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
 	 */
 	public static final Function<String, DateMidnight> fromString(String pattern, DateTimeZone dateTimeZone) {
@@ -136,7 +136,7 @@ public final class FnToDateMidnight {
 	 *               
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
 	 */
 	public static final Function<String, DateMidnight> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -150,7 +150,7 @@ public final class FnToDateMidnight {
 	 * 
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
 	 */
 	public static final Function<String, DateMidnight> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -204,7 +204,7 @@ public final class FnToDateMidnight {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, DateMidnight> fromDate(DateTimeZone dateTimeZone) {
@@ -242,7 +242,7 @@ public final class FnToDateMidnight {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, DateMidnight> fromTimestamp(DateTimeZone dateTimeZone) {
@@ -280,7 +280,7 @@ public final class FnToDateMidnight {
 	 * {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
 	 */
 	public static final Function<Long, DateMidnight> fromLong(DateTimeZone dateTimeZone) {
@@ -492,7 +492,7 @@ public final class FnToDateMidnight {
 	 * It converts a {@link Calendar} into a {@link DateMidnight} in the given {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param dateTimeZone
+	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, DateMidnight> fromCalendar(DateTimeZone dateTimeZone) {

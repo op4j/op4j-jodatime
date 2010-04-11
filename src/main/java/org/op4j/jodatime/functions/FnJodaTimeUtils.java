@@ -282,7 +282,7 @@ public class FnJodaTimeUtils {
      * </p>
      *                 
      * @param pattern string with the format of the input String 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, DateTimeZone dateTimeZone) {
@@ -336,7 +336,7 @@ public class FnJodaTimeUtils {
      *               
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -350,7 +350,7 @@ public class FnJodaTimeUtils {
      * 
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -401,7 +401,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateMidnight> dateToDateMidnight(DateTimeZone dateTimeZone) {
@@ -436,7 +436,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateMidnight>  timestampToDateMidnight(DateTimeZone dateTimeZone) {
@@ -471,7 +471,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Long, DateMidnight>  longToDateMidnight(DateTimeZone dateTimeZone) {
@@ -669,7 +669,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link DateMidnight} in the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateMidnight> calendarToDateMidnight(DateTimeZone dateTimeZone) {
@@ -709,7 +709,7 @@ public class FnJodaTimeUtils {
      * </p>
      *                 
      * @param pattern string with the format of the input String 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, DateTimeZone dateTimeZone) {
@@ -763,7 +763,7 @@ public class FnJodaTimeUtils {
      *                 
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -777,7 +777,7 @@ public class FnJodaTimeUtils {
      * 
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -828,7 +828,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateTime> dateToDateTime(DateTimeZone dateTimeZone) {
@@ -863,7 +863,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateTime> timestampToDateTime(DateTimeZone dateTimeZone) {
@@ -898,7 +898,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Long, DateTime> longToDateTime(DateTimeZone dateTimeZone) {
@@ -1088,7 +1088,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link DateTime} in the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateTime> calendarToDateTime(DateTimeZone dateTimeZone) {
@@ -1144,7 +1144,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(DateTimeZone dateTimeZone) {
@@ -1194,7 +1194,7 @@ public class FnJodaTimeUtils {
      * </p>
      *                  
      * @param pattern string with the format of the input String 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, DateTimeZone dateTimeZone) {
@@ -1248,7 +1248,7 @@ public class FnJodaTimeUtils {
      * 
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -1262,7 +1262,7 @@ public class FnJodaTimeUtils {
      * 
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -1334,7 +1334,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *  
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(DateTimeZone dateTimeZone) {
@@ -1401,7 +1401,7 @@ public class FnJodaTimeUtils {
      * </p>
      *      
      * @param pattern string with the format of the input String 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, DateTimeZone dateTimeZone) {
@@ -1494,7 +1494,7 @@ public class FnJodaTimeUtils {
      *      
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -1518,7 +1518,7 @@ public class FnJodaTimeUtils {
      *      
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -1589,7 +1589,7 @@ public class FnJodaTimeUtils {
      * The {@link Interval} will be created with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval(DateTimeZone dateTimeZone) {
@@ -1624,7 +1624,7 @@ public class FnJodaTimeUtils {
      * The {@link Interval} will be created with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Interval> dateFieldArrayToInterval(DateTimeZone dateTimeZone) {
@@ -1660,7 +1660,7 @@ public class FnJodaTimeUtils {
      * of the {@link Interval} returned with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval(DateTimeZone dateTimeZone) {
@@ -1696,7 +1696,7 @@ public class FnJodaTimeUtils {
      * of the {@link Interval} returned with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */ 
 	public static final Function<Timestamp[], Interval> timestampFieldArrayToInterval(DateTimeZone dateTimeZone) {
@@ -1733,7 +1733,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval(DateTimeZone dateTimeZone) {
@@ -1771,7 +1771,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Long[], Interval> longFieldArrayToInterval(DateTimeZone dateTimeZone) {
@@ -1827,7 +1827,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *          
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(DateTimeZone dateTimeZone) {
@@ -1892,7 +1892,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval(DateTimeZone dateTimeZone) {
@@ -1938,7 +1938,7 @@ public class FnJodaTimeUtils {
      * Such an {@link Interval} will be created in the given DateTimeZone
      * </p>
      *                 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval(DateTimeZone dateTimeZone) {
@@ -1974,7 +1974,7 @@ public class FnJodaTimeUtils {
      * Such an {@link Interval} will be created in the given DateTimeZone
      * </p>
      *                 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Interval> calendarFieldArrayToInterval(DateTimeZone dateTimeZone) {
@@ -2011,7 +2011,7 @@ public class FnJodaTimeUtils {
      * {@link Interval} being created with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(DateTimeZone dateTimeZone) {
@@ -2049,7 +2049,7 @@ public class FnJodaTimeUtils {
      * as the start and end of the {@link Interval} being created (with the given {@link DateTimeZone})
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval(DateTimeZone dateTimeZone) {
@@ -2090,7 +2090,7 @@ public class FnJodaTimeUtils {
      * </p>
      *               
      * @param pattern string with the format of the input String 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, DateTimeZone dateTimeZone) {
@@ -2144,7 +2144,7 @@ public class FnJodaTimeUtils {
      *              
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -2158,7 +2158,7 @@ public class FnJodaTimeUtils {
      * 
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -2209,7 +2209,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalDate> dateToLocalDate(DateTimeZone dateTimeZone) {
@@ -2244,7 +2244,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalDate> timestampToLocalDate(DateTimeZone dateTimeZone) {
@@ -2280,7 +2280,7 @@ public class FnJodaTimeUtils {
      * {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Long, LocalDate> longToLocalDate(DateTimeZone dateTimeZone) {
@@ -2478,7 +2478,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link LocalDate} in the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalDate> calendarToLocalDate(DateTimeZone dateTimeZone) {
@@ -2517,7 +2517,7 @@ public class FnJodaTimeUtils {
      * </p> 
      *             
      * @param pattern string with the format of the input String 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, DateTimeZone dateTimeZone) {
@@ -2569,7 +2569,7 @@ public class FnJodaTimeUtils {
      *                
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
@@ -2583,7 +2583,7 @@ public class FnJodaTimeUtils {
      *                
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, String locale, DateTimeZone dateTimeZone) {
@@ -2633,7 +2633,7 @@ public class FnJodaTimeUtils {
      * The given {@link Date} is converted into a {@link LocalTime} configured with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalTime> dateToLocalTime(DateTimeZone dateTimeZone) {
@@ -2666,7 +2666,7 @@ public class FnJodaTimeUtils {
      * The given {@link Timestamp} is converted into a {@link LocalTime} in the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalTime> timestampToLocalTime(DateTimeZone dateTimeZone) {
@@ -2699,7 +2699,7 @@ public class FnJodaTimeUtils {
      * The given long representing the time in milliseconds is converted into a {@link LocalTime} in the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Long, LocalTime> longToLocalTime(DateTimeZone dateTimeZone) {
@@ -2902,7 +2902,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link LocalTime} in the given {@link DateTimeZone}
      * </p>
      * 
-     * @param dateTimeZone
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalTime> calendarToLocalTime(DateTimeZone dateTimeZone) {
