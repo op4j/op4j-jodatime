@@ -50,6 +50,17 @@ public final class FnJodaToString {
 	
 	// From BaseDateTime
 	/**
+     * <p>
+     * It converts the input {@link BaseDateTime} into a {@link String}  
+     * </p>
+     * 
+     * @return the {@link String} created from the input and arguments 
+     */
+    public static final Function<BaseDateTime, String> fromBaseDateTime() {
+        return new BaseDateTimeToStr();
+    }
+    
+	/**
 	 * <p>
 	 * It converts the input {@link BaseDateTime} into a {@link String} by means of the given pattern or style
 	 * (depending on the value of formatType parameter).
@@ -120,6 +131,17 @@ public final class FnJodaToString {
 	//
 	
 	// From LocalTime
+	/**
+     * <p>
+     * It converts the input {@link LocalTime} into a {@link String}
+     * </p>
+     * 
+     * @return the {@link String} created from the input and arguments 
+     */
+    public static final Function<LocalTime, String> fromLocalTime() {
+        return new LocalTimeToStr();
+    }
+    
 	/**
 	 * <p>
 	 * It converts the input {@link LocalTime} into a {@link String} by means of the given pattern or style
@@ -192,6 +214,16 @@ public final class FnJodaToString {
 	//
 	
 	// From LocalDate
+	/**
+     * <p>
+     * It converts the input {@link LocalDate} into a {@link String}
+     * </p>
+     * 
+     * @return the {@link String} created from the input and arguments 
+     */
+    public static final Function<LocalDate, String> fromLocalDate() {
+        return new LocalDateToStr();
+    }
 	/**
 	 * <p>
 	 * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
@@ -280,6 +312,18 @@ public final class FnJodaToString {
 			FROM_STYLE,
 			FROM_FORMATTER
 		}
+		
+		public BaseDateTimeToStr() {
+            super();
+            
+            this.conversionType = null;            
+            this.formatter = null;
+            this.pattern = null;
+            this.style = null;
+            this.locale = null;
+            this.chronology = null;
+            
+        }
 		
 		public BaseDateTimeToStr(DateTimeFormatter formatter) {
 			super();
@@ -399,7 +443,10 @@ public final class FnJodaToString {
 		 */
 		@Override
 		public String nullAsNullExecute(final BaseDateTime baseDateTime, ExecCtx ctx) throws Exception {
-			switch (this.conversionType) {
+			if (this.conversionType == null) {
+			    return baseDateTime.toString();
+			}
+		    switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return baseDateTime.toString(this.formatter);					
 				default:
@@ -435,6 +482,17 @@ public final class FnJodaToString {
 			FROM_STYLE,
 			FROM_FORMATTER
 		}
+		
+		public LocalTimeToStr() {
+            super();
+            
+            this.conversionType = null;
+            this.formatter = null;
+            this.pattern = null;
+            this.style = null;
+            this.locale = null;
+            this.chronology = null;
+        }
 		
 		public LocalTimeToStr(DateTimeFormatter formatter) {
 			super();
@@ -553,7 +611,11 @@ public final class FnJodaToString {
 		 */
 		@Override
 		public String nullAsNullExecute(final LocalTime localTime, ExecCtx ctx) throws Exception {
-			switch (this.conversionType) {
+			if (this.conversionType == null) {
+			    return localTime.toString();
+			}
+			
+		    switch (this.conversionType) {
 				case FROM_FORMATTER:
 					return localTime.toString(this.formatter);					
 				default:
@@ -589,6 +651,17 @@ public final class FnJodaToString {
 			FROM_STYLE,
 			FROM_FORMATTER
 		}
+		
+		public LocalDateToStr() {
+            super();
+            
+            this.formatter = null;
+            this.conversionType = null;
+            this.pattern = null;
+            this.style = null;
+            this.locale = null;
+            this.chronology = null;
+        }
 		
 		public LocalDateToStr(DateTimeFormatter formatter) {
 			super();
@@ -707,10 +780,14 @@ public final class FnJodaToString {
 		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
 		 */
 		@Override
-		public String nullAsNullExecute(final LocalDate LocalDate, ExecCtx ctx) throws Exception {
-			switch (this.conversionType) {
+		public String nullAsNullExecute(final LocalDate localDate, ExecCtx ctx) throws Exception {
+			if (this.conversionType == null) {
+			    return localDate.toString();
+			}
+			
+		    switch (this.conversionType) {
 				case FROM_FORMATTER:
-					return LocalDate.toString(this.formatter);					
+					return localDate.toString(this.formatter);					
 				default:
 					// Either pattern or style
 					DateTimeFormatter f = null;
@@ -725,7 +802,7 @@ public final class FnJodaToString {
 					if (this.chronology != null) {
 						f = f.withChronology(this.chronology);
 					}
-					return LocalDate.toString(f);					
+					return localDate.toString(f);					
 			}			
 		}
 	}
