@@ -91,7 +91,7 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 				
-	 * @return
+	 * @return the {@link Interval} created from the input
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_INTERVAL;
@@ -114,7 +114,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(DateTimeZone dateTimeZone) {
 		return new StringFieldCollectionToInterval(dateTimeZone);
@@ -136,7 +136,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(Chronology chronology) {
 		return new StringFieldCollectionToInterval(chronology);
@@ -150,6 +150,7 @@ public final class FnToInterval {
 	 * </p>
 	 *                 
 	 * @param pattern
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern) {
 		return new StringFieldCollectionToInterval(pattern);
@@ -163,6 +164,7 @@ public final class FnToInterval {
 	 *                  
 	 * @param pattern
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, DateTimeZone dateTimeZone) {
 		return new StringFieldCollectionToInterval(pattern, dateTimeZone);
@@ -176,6 +178,7 @@ public final class FnToInterval {
 	 * 
 	 * @param pattern
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, Chronology chronology) {
 		return new StringFieldCollectionToInterval(pattern, chronology);
@@ -188,6 +191,7 @@ public final class FnToInterval {
 	 * 
 	 * @param pattern
 	 * @param locale
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, Locale locale) {
 		return new StringFieldCollectionToInterval(pattern, locale);
@@ -200,6 +204,7 @@ public final class FnToInterval {
 	 * 
 	 * @param pattern
 	 * @param locale
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, String locale) {
 		return new StringFieldCollectionToInterval(pattern, locale);
@@ -213,6 +218,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new StringFieldCollectionToInterval(pattern, locale, dateTimeZone);
@@ -226,6 +232,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new StringFieldCollectionToInterval(pattern, locale, dateTimeZone);
@@ -239,6 +246,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, Locale locale, Chronology chronology) {
 		return new StringFieldCollectionToInterval(pattern, locale, chronology);
@@ -252,6 +260,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, String locale, Chronology chronology) {
 		return new StringFieldCollectionToInterval(pattern, locale, chronology);
@@ -273,7 +282,7 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 				
-	 * @return
+	 * @return the {@link Interval} created from the input
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_INTERVAL;
@@ -295,7 +304,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 	
 	 * @param dateTimeZone
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(dateTimeZone);
@@ -317,7 +326,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 		
 	 * @param chronology
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(Chronology chronology) {
 		return new StringFieldArrayToInterval(chronology);
@@ -339,7 +348,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param pattern
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern) {
 		return new StringFieldArrayToInterval(pattern);
@@ -362,7 +371,7 @@ public final class FnToInterval {
 	 * 		
 	 * @param pattern
 	 * @param dateTimeZone
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(pattern, dateTimeZone);
@@ -385,7 +394,7 @@ public final class FnToInterval {
 	 * 		
 	 * @param pattern
 	 * @param chronology
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, Chronology chronology) {
 		return new StringFieldArrayToInterval(pattern, chronology);
@@ -408,7 +417,7 @@ public final class FnToInterval {
 	 * 		
 	 * @param pattern
 	 * @param locale
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, Locale locale) {
 		return new StringFieldArrayToInterval(pattern, locale);
@@ -431,7 +440,7 @@ public final class FnToInterval {
 	 * 	
 	 * @param pattern
 	 * @param locale
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, String locale) {
 		return new StringFieldArrayToInterval(pattern, locale);
@@ -455,7 +464,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
@@ -479,7 +488,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new StringFieldArrayToInterval(pattern, locale, dateTimeZone);
@@ -503,7 +512,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, Locale locale, Chronology chronology) {
 		return new StringFieldArrayToInterval(pattern, locale, chronology);
@@ -527,7 +536,7 @@ public final class FnToInterval {
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
-	 * @return
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, String locale, Chronology chronology) {
 		return new StringFieldArrayToInterval(pattern, locale, chronology);
@@ -539,6 +548,8 @@ public final class FnToInterval {
 	 * <p>
 	 * It creates an {@link Interval} from the input {@link Date} elements  
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input
 	 */
 	public static final Function<Collection<? extends Date>, Interval> fromDateFieldCollection() {
 		return DATE_FIELD_COLLECTION_TO_INTERVAL;
@@ -550,6 +561,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<? extends Date>, Interval> fromDateFieldCollection(DateTimeZone dateTimeZone) {
 		return new DateFieldCollectionToInterval(dateTimeZone);
@@ -561,6 +573,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<? extends Date>, Interval> fromDateFieldCollection(Chronology chronology) {
 		return new DateFieldCollectionToInterval(chronology);
@@ -570,6 +583,8 @@ public final class FnToInterval {
 	 * <p>
 	 * It creates an {@link Interval} from the given {@link Date} elements.
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input
 	 */
 	public static final <T extends Date> Function<T[], Interval> fromDateFieldArray() {
 		return new DateFieldArrayToInterval<T>();
@@ -581,6 +596,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T[], Interval> fromDateFieldArray(DateTimeZone dateTimeZone) {
 		return new DateFieldArrayToInterval<T>(dateTimeZone);
@@ -592,6 +608,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T[], Interval> fromDateFieldArray(Chronology chronology) {
 		return new DateFieldArrayToInterval<T>(chronology);
@@ -604,6 +621,8 @@ public final class FnToInterval {
 	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input 
 	 */
 	public static final Function<Collection<Timestamp>, Interval> fromTimestampFieldCollection() {
 		return TIMESTAMP_FIELD_COLLECTION_TO_INTERVAL;
@@ -615,6 +634,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */	
 	public static final Function<Collection<Timestamp>, Interval> fromTimestampFieldCollection(DateTimeZone dateTimeZone) {
 		return new TimestampFieldCollectionToInterval(dateTimeZone);
@@ -626,6 +646,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<Timestamp>, Interval> fromTimestampFieldCollection(Chronology chronology) {
 		return new TimestampFieldCollectionToInterval(chronology);
@@ -636,6 +657,8 @@ public final class FnToInterval {
 	 * The input {@link Timestamp} target elements will be used as the start and end
 	 * of the {@link Interval} returned
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input 
 	 */
 	public static final Function<Timestamp[], Interval> fromTimestampFieldArray() {
 		return TIMESTAMP_FIELD_ARRAY_TO_INTERVAL;
@@ -647,6 +670,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */	
 	public static final Function<Timestamp[], Interval> fromTimestampFieldArray(DateTimeZone dateTimeZone) {
 		return new TimestampFieldArrayToInterval(dateTimeZone);
@@ -658,6 +682,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Timestamp[], Interval> fromTimestampFieldArray(Chronology chronology) {
 		return new TimestampFieldArrayToInterval(chronology);
@@ -670,6 +695,8 @@ public final class FnToInterval {
 	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input 
 	 */
 	public static final Function<Collection<Long>, Interval> fromLongFieldCollection() {
 		return LONG_FIELD_COLLECTION_TO_INTERVAL;
@@ -682,6 +709,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<Long>, Interval> fromLongFieldCollection(DateTimeZone dateTimeZone) {
 		return new LongFieldCollectionToInterval(dateTimeZone);
@@ -694,6 +722,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<Long>, Interval> fromLongFieldCollection(Chronology chronology) {
 		return new LongFieldCollectionToInterval(chronology);
@@ -704,6 +733,8 @@ public final class FnToInterval {
 	 * The input {@link Long} targets representing the time in milliseconds will be used as the start
 	 * and end of the {@link Interval} returned
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input
 	 */
 	public static final Function<Long[], Interval> fromLongFieldArray() {
 		return LONG_FIELD_ARRAY_TO_INTERVAL;
@@ -716,6 +747,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Long[], Interval> fromLongFieldArray(DateTimeZone dateTimeZone) {
 		return new LongFieldArrayToInterval(dateTimeZone);
@@ -728,6 +760,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Long[], Interval> fromLongFieldArray(Chronology chronology) {
 		return new LongFieldArrayToInterval(chronology);
@@ -751,7 +784,7 @@ public final class FnToInterval {
      * </ul>
      * </p>
      *       
-     * @return
+     * @return the {@link Interval} created from the input 
      */
 	public static final Function<Collection<Integer>, Interval> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_COLLECTION_TO_INTERVAL;
@@ -772,7 +805,7 @@ public final class FnToInterval {
      * </p>
      *              
      * @param dateTimeZone
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Interval> fromIntegerFieldCollection(DateTimeZone dateTimeZone) {
 		return new IntegerFieldCollectionToInterval(dateTimeZone);
@@ -793,7 +826,7 @@ public final class FnToInterval {
      * </p>
      *       
      * @param chronology
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Interval> fromIntegerFieldCollection(Chronology chronology) {
 		return new IntegerFieldCollectionToInterval(chronology);
@@ -814,7 +847,7 @@ public final class FnToInterval {
      * </ul>
      * </p>
      *         
-     * @return
+     * @return the {@link Interval} created from the input 
      */
 	public static final Function<Integer[], Interval> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_INTERVAL;
@@ -835,7 +868,7 @@ public final class FnToInterval {
      * </p>
      * 
      * @param dateTimeZone             
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Integer[], Interval> fromIntegerFieldArray(DateTimeZone dateTimeZone) {
 		return new IntegerFieldArrayToInterval(dateTimeZone);
@@ -856,7 +889,7 @@ public final class FnToInterval {
      * </p>
      * 
      * @param chronology           
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Integer[], Interval> fromIntegerFieldArray(Chronology chronology) {
 		return new IntegerFieldArrayToInterval(chronology);
@@ -869,6 +902,8 @@ public final class FnToInterval {
 	 * It creates an {@link Interval} from the input {@link Calendar} targets used as the start 
 	 * and end of the {@link Interval}
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input  
 	 */
 	public static final Function<Collection<? extends Calendar>, Interval> fromCalendarFieldCollection() {
 		return CALENDAR_FIELD_COLLECTION_TO_INTERVAL;
@@ -880,6 +915,7 @@ public final class FnToInterval {
 	 * </p>
 	 *                 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<? extends Calendar>, Interval> fromCalendarFieldCollection(DateTimeZone dateTimeZone) {
 		return new CalendarFieldCollectionToInterval(dateTimeZone);
@@ -891,6 +927,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<? extends Calendar>, Interval> fromCalendarFieldCollection(Chronology chronology) {
 		return new CalendarFieldCollectionToInterval(chronology);
@@ -901,6 +938,8 @@ public final class FnToInterval {
 	 * It creates an {@link Interval} from the input {@link Calendar} targets representing the start 
 	 * and end of the {@link Interval}
 	 * </p>
+	 * 
+	 * @return the {@link Interval} created from the input
 	 */
 	public static final <T extends Calendar> Function<T[], Interval> fromCalendarFieldArray() {
 		return new CalendarFieldArrayToInterval<T>();
@@ -912,6 +951,7 @@ public final class FnToInterval {
 	 * </p>
 	 *                 
 	 * @param dateTimeZone
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T[], Interval> fromCalendarFieldArray(DateTimeZone dateTimeZone) {
 		return new CalendarFieldArrayToInterval<T>(dateTimeZone);
@@ -923,6 +963,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T[], Interval> fromCalendarFieldArray(Chronology chronology) {
 		return new CalendarFieldArrayToInterval<T>(chronology);
@@ -936,7 +977,7 @@ public final class FnToInterval {
 	 * {@link Interval} returned
 	 * </p>
 	 * 
-	 * @return
+	 * @return the {@link Interval} created from the input  
 	 */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> fromBaseDateTimeFieldCollection() {
 		return BASE_DATE_TIME_FIELD_COLLECTION_TO_INTERVAL;
@@ -948,7 +989,7 @@ public final class FnToInterval {
      * </p>
      * 
      * @param dateTimeZone
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> fromBaseDateTimeFieldCollection(DateTimeZone dateTimeZone) {
 		return new BaseDateTimeFieldCollectionToInterval(dateTimeZone);
@@ -960,7 +1001,7 @@ public final class FnToInterval {
      * </p>
      * 
      * @param chronology
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> fromBaseDateTimeFieldCollection(Chronology chronology) {
 		return new BaseDateTimeFieldCollectionToInterval(chronology);
@@ -972,7 +1013,7 @@ public final class FnToInterval {
      * as the start and end of the {@link Interval} returned
      * </p>
      * 
-     * @return
+     * @return the {@link Interval} created from the input  
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> fromBaseDateTimeFieldArray() {
 		return new BaseDateTimeFieldArrayToInterval<T>();
@@ -984,7 +1025,7 @@ public final class FnToInterval {
      * </p>
      * 
      * @param dateTimeZone
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> fromBaseDateTimeFieldArray(DateTimeZone dateTimeZone) {
 		return new BaseDateTimeFieldArrayToInterval<T>(dateTimeZone);
@@ -996,7 +1037,7 @@ public final class FnToInterval {
      * </p>
      * 
      * @param chronology
-     * @return
+     * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> fromBaseDateTimeFieldArray(Chronology chronology) {
 		return new BaseDateTimeFieldArrayToInterval<T>(chronology);

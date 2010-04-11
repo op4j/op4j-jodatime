@@ -72,6 +72,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 *                 
 	 * @param pattern 
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern) {
 		return new StringToLocalTime(pattern);
@@ -85,6 +86,7 @@ public final class FnToLocalTime {
 	 *             
 	 * @param pattern
 	 * @param dateTimeZone
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, DateTimeZone dateTimeZone) {
 		return new StringToLocalTime(pattern, dateTimeZone);
@@ -98,6 +100,7 @@ public final class FnToLocalTime {
 	 *                 
 	 * @param pattern
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, Chronology chronology) {
 		return new StringToLocalTime(pattern, chronology);
@@ -109,6 +112,7 @@ public final class FnToLocalTime {
 	 * 
 	 * @param pattern
 	 * @param locale
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, Locale locale) {
 		return new StringToLocalTime(pattern, locale);
@@ -120,6 +124,7 @@ public final class FnToLocalTime {
 	 * 
 	 * @param pattern
 	 * @param locale
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, String locale) {
 		return new StringToLocalTime(pattern, locale);
@@ -133,6 +138,7 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
 		return new StringToLocalTime(pattern, locale, dateTimeZone);
@@ -146,6 +152,7 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param locale
 	 * @param dateTimeZone
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
 		return new StringToLocalTime(pattern, locale, dateTimeZone);
@@ -159,6 +166,7 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, Locale locale, Chronology chronology) {
 		return new StringToLocalTime(pattern, locale, chronology);
@@ -172,6 +180,7 @@ public final class FnToLocalTime {
 	 * @param pattern
 	 * @param locale
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String, LocalTime> fromString(String pattern, String locale, Chronology chronology) {
 		return new StringToLocalTime(pattern, locale, chronology);
@@ -184,6 +193,8 @@ public final class FnToLocalTime {
 	 * <p>
 	 * The given {@link Date} is converted into a {@link LocalTime}
 	 * </p>
+	 * 
+	 * @return the {@link LocalTime} created from the input
 	 */
 	public static final <T extends Date> Function<T, LocalTime> fromDate() {
 		return new DateToLocalTime<T>();
@@ -194,6 +205,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, LocalTime> fromDate(DateTimeZone dateTimeZone) {
 		return new DateToLocalTime<T>(dateTimeZone);
@@ -204,6 +216,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, LocalTime> fromDate(Chronology chronology) {
 		return new DateToLocalTime<T>(chronology);
@@ -216,6 +229,8 @@ public final class FnToLocalTime {
 	 * <p>
 	 * The given {@link Timestamp} is converted into a {@link LocalTime}
 	 * </p>
+	 * 
+	 * @return the {@link LocalTime} created from the input 
 	 */
 	public static final Function<Timestamp, LocalTime> fromTimestamp() {
 		return TIMESTAMP_TO_LOCAL_TIME;
@@ -226,6 +241,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, LocalTime> fromTimestamp(DateTimeZone dateTimeZone) {
 		return new TimestampToLocalTime(dateTimeZone);
@@ -236,6 +252,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, LocalTime> fromTimestamp(Chronology chronology) {
 		return new TimestampToLocalTime(chronology);
@@ -248,6 +265,8 @@ public final class FnToLocalTime {
 	 * <p>
 	 * The given long representing the time in milliseconds is converted into a {@link LocalTime}
 	 * </p>
+	 * 
+	 * @return the {@link LocalTime} created from the input
 	 */
 	public static final Function<Long, LocalTime> fromLong() {
 		return LONG_TO_LOCAL_TIME;
@@ -258,6 +277,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<Long, LocalTime> fromLong(DateTimeZone dateTimeZone) {
 		return new LongToLocalTime(dateTimeZone);
@@ -268,6 +288,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<Long, LocalTime> fromLong(Chronology chronology) {
 		return new LongToLocalTime(chronology);
@@ -290,6 +311,7 @@ public final class FnToLocalTime {
 	 * </ul>
 	 * </p>
 	 * 
+	 * @return the {@link LocalTime} created from the input
 	 */
 	public static final Function<Collection<Integer>, LocalTime> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_LIST_TO_LOCAL_TIME;
@@ -311,6 +333,7 @@ public final class FnToLocalTime {
 	 * </p>       
 	 *  
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<Collection<Integer>, LocalTime> fromIntegerFieldCollection(Chronology chronology) {
 		return new IntegerFieldCollectionToLocalTime(chronology);
@@ -333,6 +356,8 @@ public final class FnToLocalTime {
      * <li>hour, minute, second, millisecond</li>
      * </ul>
      * </p>
+     * 
+     * @return the {@link LocalTime} created from the input
 	 */
 	public static final Function<Integer[], LocalTime> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_LOCAL_TIME;
@@ -353,6 +378,7 @@ public final class FnToLocalTime {
      * </p>
 	 *                 
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<Integer[], LocalTime> fromIntegerFieldArray(Chronology chronology) {
 		return new IntegerFieldArrayToLocalTime(chronology);
@@ -375,6 +401,8 @@ public final class FnToLocalTime {
      * <li>hour, minute, second, millisecond</li>
      * </ul>
      * </p>
+     * 
+     * @return the {@link LocalTime} created from the input
 	 */
 	public static final Function<Collection<String>, LocalTime> fromStringFieldCollection() {
 		return STRING_FIELD_LIST_TO_LOCAL_TIME;
@@ -396,6 +424,7 @@ public final class FnToLocalTime {
      * </p>
      * 
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, LocalTime> fromStringFieldCollection(Chronology chronology) {
 		return new StringFieldCollectionToLocalTime(chronology);
@@ -418,6 +447,8 @@ public final class FnToLocalTime {
      * <li>hour, minute, second, millisecond</li>
      * </ul>
      * </p>
+     * 
+     * @return the {@link LocalTime} created from the input
 	 */
 	public static final Function<String[], LocalTime> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_LOCAL_TIME;
@@ -438,6 +469,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 *                 
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final Function<String[], LocalTime> fromStringFieldArray(Chronology chronology) {
 		return new StringFieldArrayToLocalTime(chronology);
@@ -450,6 +482,8 @@ public final class FnToLocalTime {
 	 * <p>
 	 * It converts a {@link Calendar} into a {@link LocalTime}
 	 * </p>
+	 * 
+	 * @return the {@link LocalTime} created from the input 
 	 */
 	public static final <T extends Calendar> Function<T, LocalTime> fromCalendar() {
 		return new CalendarToLocalTime<T>();
@@ -460,6 +494,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param dateTimeZone
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, LocalTime> fromCalendar(DateTimeZone dateTimeZone) {
 		return new CalendarToLocalTime<T>(dateTimeZone);
@@ -470,6 +505,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * @param chronology
+	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, LocalTime> fromCalendar(Chronology chronology) {
 		return new CalendarToLocalTime<T>(chronology);

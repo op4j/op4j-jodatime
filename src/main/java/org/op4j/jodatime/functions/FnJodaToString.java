@@ -57,7 +57,7 @@ public final class FnJodaToString {
 	 * 
 	 * @param formatType 
 	 * @param format 
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format) {
 		return new BaseDateTimeToStr(formatType, format);
@@ -72,7 +72,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format
 	 * @param locale 
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final Locale locale) {
 		return new BaseDateTimeToStr(formatType, format, locale);
@@ -87,7 +87,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format 
 	 * @param chronology
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final Chronology chronology) {
 		return new BaseDateTimeToStr(formatType, format, chronology);
@@ -101,7 +101,7 @@ public final class FnJodaToString {
 	 * @param formatType
 	 * @param format
 	 * @param locale
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final String locale) {
 		return new BaseDateTimeToStr(formatType, format, locale);
@@ -112,6 +112,7 @@ public final class FnJodaToString {
 	 * </p>
 	 * 
 	 * @param formatter
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final DateTimeFormatter formatter) {
 		return new BaseDateTimeToStr(formatter);
@@ -127,7 +128,7 @@ public final class FnJodaToString {
 	 * 
 	 * @param formatType 
 	 * @param format
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format) {
 		return new LocalTimeToStr(formatType, format);
@@ -142,7 +143,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format 
 	 * @param locale 
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final Locale locale) {
 		return new LocalTimeToStr(formatType, format, locale);
@@ -157,7 +158,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format 
 	 * @param chronology
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final Chronology chronology) {
 		return new LocalTimeToStr(formatType, format, chronology);
@@ -172,7 +173,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format 
 	 * @param locale 
-	 * @return
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final String locale) {
 		return new LocalTimeToStr(formatType, format, locale);
@@ -183,6 +184,7 @@ public final class FnJodaToString {
 	 * </p>
 	 * 
 	 * @param formatter
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final DateTimeFormatter formatter) {
 		return new LocalTimeToStr(formatter);
@@ -198,6 +200,7 @@ public final class FnJodaToString {
 	 * 
 	 * @param formatType 
 	 * @param format 
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format) {
 		return new LocalDateToStr(formatType, format);
@@ -211,6 +214,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format 
 	 * @param locale
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
 		return new LocalDateToStr(formatType, format, locale);
@@ -224,6 +228,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format 
 	 * @param chronology
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
 		return new LocalDateToStr(formatType, format, chronology);
@@ -237,6 +242,7 @@ public final class FnJodaToString {
 	 * @param formatType 
 	 * @param format 
 	 * @param locale
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final String locale) {
 		return new LocalDateToStr(formatType, format, locale);
@@ -248,6 +254,7 @@ public final class FnJodaToString {
 	 * </p>
 	 * 
 	 * @param formatter
+	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final DateTimeFormatter formatter) {
 		return new LocalDateToStr(formatter);

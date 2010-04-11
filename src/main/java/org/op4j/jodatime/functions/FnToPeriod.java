@@ -74,45 +74,45 @@ public final class FnToPeriod {
 	// Conversion from two date objects
 	/**
 	 * <p>
-	 * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
+	 * The function receives a {@link Collection} of two {@link Date} elements used as the start and end of the
 	 * {@link Period} it creates
 	 * </p>
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input 
 	 */
 	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollection() {
 		return DATE_FIELD_COLLECTION_TO_PERIOD;
 	}	
 	/**
 	 * <p>
-	 * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
+	 * The function receives a {@link Collection} of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
      * </p>
      * 
 	 * @param chronology 
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollection(final Chronology chronology) {
 		return new DateFieldCollectionToPeriod(chronology);
 	}	
 	/**
 	 * <p>
-     * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
+     * The function receives a {@link Collection} of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the specified {@link PeriodType}
      * </p>
      * 
      * @param periodType 
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollection(final PeriodType periodType) {
 		return new DateFieldCollectionToPeriod(periodType);
 	}
 	/**
 	 * <p>
-     * The function returned receives a {@link Collection} of two {@link Date} elements used as the start and end of the
+     * The function receives a {@link Collection} of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
@@ -120,18 +120,18 @@ public final class FnToPeriod {
      * @param periodType
      * @param chronology 
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Period> fromDateFieldCollection(final PeriodType periodType, final Chronology chronology) {
 		return new DateFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Date} elements used as the start and end of the
+     * The function receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates
      * </p>
      * 
-     * @return 
+     * @return the {@link Period} created from the input 
      */
 	public static final <T extends Date> Function<T[], Period> fromDateFieldArray() {
 		return new DateFieldArrayToPeriod<T>();
@@ -139,14 +139,14 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Date} elements used as the start and end of the
+     * The function receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
      * </p>
      * 
      * @param chronology 
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Period> fromDateFieldArray(final Chronology chronology) {
 		return new DateFieldArrayToPeriod<T>(chronology);
@@ -154,14 +154,14 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Date} elements used as the start and end of the
+     * The function receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType}
      * </p>
      * 
      * @param periodType 
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Period> fromDateFieldArray(final PeriodType periodType) {
 		return new DateFieldArrayToPeriod<T>(periodType);
@@ -169,7 +169,7 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Date} elements used as the start and end of the
+     * The function receives an Array of two {@link Date} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
@@ -177,7 +177,7 @@ public final class FnToPeriod {
      * @param periodType
      * @param chronology 
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Period> fromDateFieldArray(final PeriodType periodType, final Chronology chronology) {
 		return new DateFieldArrayToPeriod<T>(periodType, chronology);
@@ -187,11 +187,11 @@ public final class FnToPeriod {
 	// Conversion from two timestamp objects
 	/**
 	 * <p>
-     * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
+     * The function receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates
      * </p>
      * 
-     * @return 
+     * @return the {@link Period} created from the input
      */
 	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollection() {
 		return TIMESTAMP_FIELD_COLLECTION_TO_PERIOD;
@@ -199,14 +199,14 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
+     * The function receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
      * </p>
      * 
      * @param chronology 
      * 
-     * @return
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollection(final Chronology chronology) {
 		return new TimestampFieldCollectionToPeriod(chronology);
@@ -214,14 +214,14 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
+     * The function receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType}
      * </p>
      * 
      * @param periodType
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollection(final PeriodType periodType) {
 		return new TimestampFieldCollectionToPeriod(periodType);
@@ -229,7 +229,7 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
+     * The function receives a {@link Collection} of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the specified 
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
@@ -237,7 +237,7 @@ public final class FnToPeriod {
      * @param periodType 
      * @param chronology
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Period> fromTimestampFieldCollection(final PeriodType periodType, final Chronology chronology) {
 		return new TimestampFieldCollectionToPeriod(periodType, chronology);
@@ -245,11 +245,11 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
+     * The function receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates
      * </p>
      * 
-     * @return 
+     * @return the {@link Period} created from the input 
      */
 	public static final Function<Timestamp[], Period> fromTimestampFieldArray() {
 		return TIMESTAMP_FIELD_ARRAY_TO_PERIOD;
@@ -257,14 +257,14 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
+     * The function receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link Chronology}
      * </p>
      * 
      * @param chronology 
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Period> fromTimestampFieldArray(final Chronology chronology) {
 		return new TimestampFieldArrayToPeriod(chronology);
@@ -272,14 +272,14 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
+     * The function receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the 
      * specified {@link PeriodType}
      * </p>
      * 
      * @param periodType 
      * 
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Period> fromTimestampFieldArray(final PeriodType periodType) {
 		return new TimestampFieldArrayToPeriod(periodType);
@@ -287,7 +287,7 @@ public final class FnToPeriod {
 	
 	/**
 	 * <p>
-     * The function returned receives an Array of two {@link Timestamp} elements used as the start and end of the
+     * The function receives an Array of two {@link Timestamp} elements used as the start and end of the
      * {@link Period} it creates. The {@link Period} will be created using the specified 
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
@@ -295,8 +295,7 @@ public final class FnToPeriod {
      * @param periodType 
      * @param chronology
      * 
-     * @return the {@link Period} created from the {@link Timestamp} target elements given as the start
-     * and end of such {@link Period}
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Period> fromTimestampFieldArray(final PeriodType periodType, final Chronology chronology) {
 		return new TimestampFieldArrayToPeriod(periodType, chronology);
@@ -306,11 +305,11 @@ public final class FnToPeriod {
 	// Conversion from Long
 	/**
 	 * <p>
-	 * The function returned receives a Long representing the {@link Period} duration in milliseconds
+	 * The function receives a Long representing the {@link Period} duration in milliseconds
 	 * and creates a {@link Period} with such duration
 	 * </p>
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input
 	 */
 	public static final Function<Long, Period> fromLong() {
 		return LONG_TO_PERIOD;
@@ -323,7 +322,7 @@ public final class FnToPeriod {
 	 * 
 	 * @param chronology 
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Long, Period> fromLong(final Chronology chronology) {
 		return new LongToPeriod(chronology);
@@ -336,7 +335,7 @@ public final class FnToPeriod {
      * 
 	 * @param periodType 
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Long, Period> fromLong(final PeriodType periodType) {
 		return new LongToPeriod(periodType);
@@ -350,7 +349,7 @@ public final class FnToPeriod {
 	 * @param periodType 
 	 * @param chronology 
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Long, Period> fromLong(final PeriodType periodType, final Chronology chronology) {
 		return new LongToPeriod(periodType, chronology);
@@ -364,7 +363,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input 
 	 */
 	public static final Function<Collection<Long>, Period> fromLongFieldCollection() {
 		return LONG_FIELD_COLLECTION_TO_PERIOD;
@@ -377,7 +376,7 @@ public final class FnToPeriod {
 	 * 
 	 * @param chronology
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Collection<Long>, Period> fromLongFieldCollection(final Chronology chronology) {
 		return new LongFieldCollectionToPeriod(chronology);
@@ -390,7 +389,7 @@ public final class FnToPeriod {
 	 * 
 	 * @param periodType
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Collection<Long>, Period> fromLongFieldCollection(final PeriodType periodType) {
 		return new LongFieldCollectionToPeriod(periodType);
@@ -404,7 +403,7 @@ public final class FnToPeriod {
 	 * @param periodType
 	 * @param chronology
 	 * 
-	 * @return
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Collection<Long>, Period> fromLongFieldCollection(final PeriodType periodType, final Chronology chronology) {
 		return new LongFieldCollectionToPeriod(periodType, chronology);
@@ -415,7 +414,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 *  
-	 * @return
+	 * @return the {@link Period} created from the input
 	 */
 	public static final Function<Long[], Period> fromLongFieldArray() {
 		return LONG_FIELD_ARRAY_TO_PERIOD;
@@ -428,7 +427,7 @@ public final class FnToPeriod {
 	 * 
 	 * @param chronology
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Long[], Period> fromLongFieldArray(final Chronology chronology) {
 		return new LongFieldArrayToPeriod(chronology);
@@ -441,7 +440,7 @@ public final class FnToPeriod {
 	 * 
 	 * @param periodType 
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Long[], Period> fromLongFieldArray(final PeriodType periodType) {
 		return new LongFieldArrayToPeriod(periodType);
@@ -455,7 +454,7 @@ public final class FnToPeriod {
 	 * @param periodType 
 	 * @param chronology 
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input and arguments 
 	 */
 	public static final Function<Long[], Period> fromLongFieldArray(final PeriodType periodType, final Chronology chronology) {
 		return new LongFieldArrayToPeriod(periodType, chronology);
@@ -469,7 +468,7 @@ public final class FnToPeriod {
 	 * must have size 2
 	 * </p>
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input
 	 */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection() {
 		return CALENDAR_FIELD_COLLECTION_TO_PERIOD;
@@ -481,7 +480,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final Chronology chronology) {
 		return new CalendarFieldCollectionToPeriod(chronology);
@@ -493,7 +492,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final PeriodType periodType) {
 		return new CalendarFieldCollectionToPeriod(periodType);
@@ -507,7 +506,7 @@ public final class FnToPeriod {
      * 
      * @param periodType
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final PeriodType periodType, final Chronology chronology) {
 		return new CalendarFieldCollectionToPeriod(periodType, chronology);
@@ -517,7 +516,7 @@ public final class FnToPeriod {
 	 * It creates a {@link Period} represented by the given start and end instants 
 	 * </p>
 	 * 
-	 * @return
+	 * @return the {@link Period} created from the input 
 	 */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray() {
 		return new CalendarFieldArrayToPeriod<T>();
@@ -530,7 +529,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final Chronology chronology) {
 		return new CalendarFieldArrayToPeriod<T>(chronology);
@@ -543,7 +542,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final PeriodType periodType) {
 		return new CalendarFieldArrayToPeriod<T>(periodType);
@@ -557,7 +556,7 @@ public final class FnToPeriod {
      * 
      * @param periodType
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
 		return new CalendarFieldArrayToPeriod<T>(periodType, chronology);
@@ -570,7 +569,7 @@ public final class FnToPeriod {
 	 * It creates a {@link Period} represented by the given start and end instants
 	 * </p>
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input 
 	 */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection() {
 		return BASE_DATE_TIME_FIELD_COLLECTION_TO_PERIOD;
@@ -583,7 +582,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final Chronology chronology) {
 		return new BaseDateTimeFieldCollectionToPeriod(chronology);
@@ -596,7 +595,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final PeriodType periodType) {
 		return new BaseDateTimeFieldCollectionToPeriod(periodType);
@@ -610,7 +609,7 @@ public final class FnToPeriod {
      * 
      * @param periodType
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final PeriodType periodType, final Chronology chronology) {
 		return new BaseDateTimeFieldCollectionToPeriod(periodType, chronology);
@@ -621,7 +620,7 @@ public final class FnToPeriod {
      * It creates a {@link Period} represented by the given start and end instants
      * </p>
      * 
-     * @return 
+     * @return the {@link Period} created from the input
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray() {
 		return new BaseDateTimeFieldArrayToPeriod<T>();
@@ -634,7 +633,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final Chronology chronology) {
 		return new BaseDateTimeFieldArrayToPeriod<T>(chronology);
@@ -647,7 +646,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final PeriodType periodType) {
 		return new BaseDateTimeFieldArrayToPeriod<T>(periodType);
@@ -661,7 +660,7 @@ public final class FnToPeriod {
      * 
      * @param periodType
      * @param chronology
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {
 		return new BaseDateTimeFieldArrayToPeriod<T>(periodType, chronology);
@@ -677,7 +676,7 @@ public final class FnToPeriod {
 	 * </ul>
 	 * </p>
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input 
 	 */
 	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollection() {
 		return INTEGER_FIELD_COLLECTION_TO_PERIOD;
@@ -693,7 +692,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollection(PeriodType periodType) {
 		return new IntegerFieldCollectionToPeriod(periodType);
@@ -708,7 +707,7 @@ public final class FnToPeriod {
      * </ul>
      * </p>
      * 
-     * @return 
+     * @return the {@link Period} created from the input
      */
 	public static final Function<Integer[], Period> fromIntegerFieldArray() {
 		return INTEGER_FIELD_ARRAY_TO_PERIOD;
@@ -724,7 +723,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Integer[], Period> fromIntegerFieldArray(PeriodType periodType) {
 		return new IntegerFieldArrayToPeriod(periodType);
@@ -739,7 +738,7 @@ public final class FnToPeriod {
 	 * </ul>
 	 * </p>
 	 * 
-	 * @return 
+	 * @return the {@link Period} created from the input
 	 */
 	public static final Function<Collection<String>, Period> fromStringFieldCollection() {
 		return STRING_FIELD_COLLECTION_TO_PERIOD;
@@ -755,7 +754,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Period> fromStringFieldCollection(PeriodType periodType) {
 		return new StringFieldCollectionToPeriod(periodType);
@@ -770,7 +769,7 @@ public final class FnToPeriod {
      * </ul>
      * </p>
      * 
-     * @return 
+     * @return the {@link Period} created from the input  
      */
 	public static final Function<String[], Period> fromStringFieldArray() {
 		return STRING_FIELD_ARRAY_TO_PERIOD;
@@ -786,7 +785,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @return 
+     * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<String[], Period> fromStringFieldArray(PeriodType periodType) {
 		return new StringFieldArrayToPeriod(periodType);
