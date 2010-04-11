@@ -103,7 +103,7 @@ public final class FnToPeriod {
      * {@link Period} it creates. The {@link Period} will be created using the specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -117,7 +117,7 @@ public final class FnToPeriod {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -159,7 +159,7 @@ public final class FnToPeriod {
      * specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -174,7 +174,7 @@ public final class FnToPeriod {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -219,7 +219,7 @@ public final class FnToPeriod {
      * specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -234,7 +234,7 @@ public final class FnToPeriod {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -277,7 +277,7 @@ public final class FnToPeriod {
      * specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -292,7 +292,7 @@ public final class FnToPeriod {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -333,7 +333,7 @@ public final class FnToPeriod {
      * received by this function (in milliseconds)
      * </p>
      * 
-	 * @param periodType 
+	 * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -346,7 +346,7 @@ public final class FnToPeriod {
      * received by this function (in milliseconds)
      * </p>
      * 
-	 * @param periodType 
+	 * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
 	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
@@ -387,7 +387,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 * 
-	 * @param periodType
+	 * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -400,7 +400,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 * 
-	 * @param periodType
+	 * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
 	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
@@ -438,7 +438,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 * 
-	 * @param periodType 
+	 * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -451,7 +451,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 * 
-	 * @param periodType 
+	 * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
 	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
@@ -491,7 +491,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final PeriodType periodType) {
@@ -504,7 +504,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -541,7 +541,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final PeriodType periodType) {
@@ -554,7 +554,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -594,7 +594,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final PeriodType periodType) {
@@ -607,7 +607,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -645,7 +645,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final PeriodType periodType) {
@@ -658,7 +658,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -691,7 +691,7 @@ public final class FnToPeriod {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Period> fromIntegerFieldCollection(PeriodType periodType) {
@@ -722,7 +722,7 @@ public final class FnToPeriod {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Integer[], Period> fromIntegerFieldArray(PeriodType periodType) {
@@ -753,7 +753,7 @@ public final class FnToPeriod {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Period> fromStringFieldCollection(PeriodType periodType) {
@@ -784,7 +784,7 @@ public final class FnToPeriod {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<String[], Period> fromStringFieldArray(PeriodType periodType) {

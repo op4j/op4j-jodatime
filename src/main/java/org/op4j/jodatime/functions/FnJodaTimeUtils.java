@@ -2951,7 +2951,7 @@ public class FnJodaTimeUtils {
      * {@link Period} it creates. The {@link Period} will be created using the specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -2965,7 +2965,7 @@ public class FnJodaTimeUtils {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -3008,7 +3008,7 @@ public class FnJodaTimeUtils {
      * specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3023,7 +3023,7 @@ public class FnJodaTimeUtils {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -3066,7 +3066,7 @@ public class FnJodaTimeUtils {
      * specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3081,7 +3081,7 @@ public class FnJodaTimeUtils {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -3121,7 +3121,7 @@ public class FnJodaTimeUtils {
      * specified {@link PeriodType}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3135,7 +3135,7 @@ public class FnJodaTimeUtils {
      * specified {@link PeriodType} and {@link Chronology}
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -3174,7 +3174,7 @@ public class FnJodaTimeUtils {
      * received by this function (in milliseconds)
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3187,7 +3187,7 @@ public class FnJodaTimeUtils {
      * received by this function (in milliseconds)
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -3226,7 +3226,7 @@ public class FnJodaTimeUtils {
      * and end instants of the {@link Period} returned 
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3239,7 +3239,7 @@ public class FnJodaTimeUtils {
      * and end instants of the {@link Period} returned 
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -3277,7 +3277,7 @@ public class FnJodaTimeUtils {
      * and end instants of the {@link Period} returned 
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3290,7 +3290,7 @@ public class FnJodaTimeUtils {
      * and end instants of the {@link Period} returned 
      * </p>
      * 
-     * @param periodType 
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
@@ -3328,7 +3328,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final PeriodType periodType) {
@@ -3340,7 +3340,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3375,7 +3375,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final PeriodType periodType) {
@@ -3387,7 +3387,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3423,7 +3423,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final PeriodType periodType) {
@@ -3435,7 +3435,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3470,7 +3470,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final PeriodType periodType) {
@@ -3482,7 +3482,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3513,7 +3513,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Period> integerFieldCollectionToPeriod(PeriodType periodType) {
@@ -3542,7 +3542,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Integer[], Period> integerFieldArrayToPeriod(PeriodType periodType) {
@@ -3572,7 +3572,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Period> strFieldCollectionToPeriod(PeriodType periodType) {
@@ -3601,7 +3601,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param periodType
+     * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<String[], Period> strFieldArrayToPeriod(PeriodType periodType) {
