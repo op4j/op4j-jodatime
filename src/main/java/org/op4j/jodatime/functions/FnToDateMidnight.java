@@ -60,7 +60,7 @@ public final class FnToDateMidnight {
 		super();
 	}
 		
-	// From String
+	
 	/**
 	 * <p>
 	 * It converts the input {@link String} into a {@link DateMidnight} using the given pattern parameter. If
@@ -184,10 +184,10 @@ public final class FnToDateMidnight {
 	public static final Function<String, DateMidnight> fromString(String pattern, String locale, Chronology chronology) {
 		return new StringToDateMidnight(pattern, locale, chronology);
 	}
-	//
 	
 	
-	// From Date
+	
+	
 	/**
 	 * <p>
 	 * The input {@link Date} is converted into a {@link DateMidnight}
@@ -222,10 +222,10 @@ public final class FnToDateMidnight {
 	public static final <T extends Date> Function<T, DateMidnight> fromDate(Chronology chronology) {
 		return new DateToDateMidnight<T>(chronology);
 	}
-	//
 	
 	
-	// From Date
+	
+	
 	/**
 	 * <p>
 	 * The input {@link Timestamp} is converted into a {@link DateMidnight}
@@ -260,10 +260,10 @@ public final class FnToDateMidnight {
 	public static final Function<Timestamp, DateMidnight> fromTimestamp(Chronology chronology) {
 		return new TimestampToDateMidnight(chronology);
 	}
-	//
+	
 		
 	
-	// Conversion from Long
+	
 	/**
 	 * <p>
 	 * The input {@link Long} representing the time in milliseconds is converted into a {@link DateMidnight}
@@ -288,9 +288,9 @@ public final class FnToDateMidnight {
 	}
 	/**
 	 * <p>
-	 * The input {@link Long}g representing the time in milliseconds is converted into a {@link DateMidnight} with the given
+	 * The input {@link Long} representing the time in milliseconds is converted into a {@link DateMidnight} with the given
 	 * {@link Chronology}
-	 * <p>
+	 * </p>
 	 * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateMidnight} created from the input and arguments 
@@ -298,16 +298,16 @@ public final class FnToDateMidnight {
 	public static final Function<Long, DateMidnight> fromLong(Chronology chronology) {
 		return new LongToDateMidnight(chronology);
 	}
-	//
 	
-	// Conversion from Integer list
+	
+	
 	/**
 	 * <p>
 	 * A {@link DateMidnight} is created from the input {@link Integer} {@link Collection}.
 	 * </p>
 	 * 
 	 * <p>
-	 * The valid input Collection<Integer> are:
+	 * The valid input Collection&lt;Integer&gt; are:
 	 * </p>
 	 * <ul>
 	 * <li>year (month and day will be set to 1)</li>
@@ -327,7 +327,7 @@ public final class FnToDateMidnight {
 	 * </p>
 	 * 
 	 * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -341,10 +341,10 @@ public final class FnToDateMidnight {
 	public static final Function<Collection<Integer>, DateMidnight> fromIntegerFieldCollection(Chronology chronology) {
 		return new  IntegerFieldCollectionToDateMidnight(chronology);
 	}
-	//
 	
 	
-	// Conversion from Integer array
+	
+	
 	/**
 	 * <p>
 	 * A {@link DateMidnight} is created from the input {@link Integer} array.
@@ -385,17 +385,17 @@ public final class FnToDateMidnight {
 	public static final Function<Integer[], DateMidnight> fromIntegerFieldArray(Chronology chronology) {
 		return new  IntegerFieldArrayToDateMidnight(chronology);
 	}
-	//
 	
 	
-	// Conversion from String list
+	
+	
 	/**
 	 * <p>
 	 * A {@link DateMidnight} is created from the input {@link String} {@link Collection}.
 	 * </p>
 	 * 
 	 * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -415,7 +415,7 @@ public final class FnToDateMidnight {
 	 * </p>                
 	 * 
 	 * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -429,10 +429,10 @@ public final class FnToDateMidnight {
 	public static final Function<Collection<String>, DateMidnight> fromStringFieldCollection(Chronology chronology) {
 		return new  StringFieldCollectionToDateMidnight(chronology);
 	}
-	//
 	
 	
-	// Conversion from String array
+	
+	
 	/**
 	 * <p>
 	 * A {@link DateMidnight} is created from the given {@link String} array.
@@ -474,10 +474,10 @@ public final class FnToDateMidnight {
 	public static final Function<String[], DateMidnight> fromStringFieldArray(Chronology chronology) {
 		return new  StringFieldArrayToDateMidnight(chronology);
 	}
-	//
 	
 	
-	// Conversion from Calendar
+	
+	
 	/**
 	 * <p>
 	 * It converts a {@link Calendar} into a {@link DateMidnight}
@@ -510,7 +510,7 @@ public final class FnToDateMidnight {
 	public static final <T extends Calendar> Function<T, DateMidnight> fromCalendar(Chronology chronology) {
 		return new CalendarToDateMidnight<T>(chronology);
 	}
-	//
+	
 	
 	
 	static abstract class BaseToDateMidnight<T> extends AbstractNullAsNullFunction<T, DateMidnight> {
