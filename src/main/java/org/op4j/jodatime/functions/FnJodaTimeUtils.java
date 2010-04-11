@@ -510,9 +510,9 @@ public class FnJodaTimeUtils {
 	}
 	/**
      * <p>
-     * The input {@link Long}g representing the time in milliseconds is converted into a {@link DateMidnight} with the given
+     * The input {@link Long} representing the time in milliseconds is converted into a {@link DateMidnight} with the given
      * {@link Chronology}
-     * <p>
+     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
@@ -527,7 +527,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -547,7 +547,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -609,7 +609,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -629,7 +629,7 @@ public class FnJodaTimeUtils {
      * </p>                
      * 
      * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -954,7 +954,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -974,7 +974,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -1036,7 +1036,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -1056,7 +1056,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -1152,7 +1152,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The accepted input Collection<String> are:
+     * The accepted input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
@@ -1174,7 +1174,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The accepted input Ccollection<String> are:
+     * The accepted input CCollection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
@@ -1196,7 +1196,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The accepted input Collection<String> are:
+     * The accepted input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
@@ -1836,7 +1836,7 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}.
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> collections are:</p>
+     * <p>The accepted input Collection&lt;Integer&gt; collections are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1856,7 +1856,7 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:</p>
+     * <p>The accepted input Collection&lt;Integer&gt; are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -1877,7 +1877,7 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:</p>
+     * <p>The accepted input Collection&lt;Integer&gt; are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -2337,7 +2337,7 @@ public class FnJodaTimeUtils {
      * A {@link LocalDate} is created from the given {@link Integer} {@link Collection}.
      * </p>
      * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -2357,7 +2357,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<Integer> are:
+     * The valid input Collection&lt;Integer&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -2419,7 +2419,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -2439,7 +2439,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<String> are:
+     * The valid input Collection&lt;String&gt; are:
      * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
@@ -2756,7 +2756,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<Integer> represent:
+     * The valid input Collection&lt;Integer&gt; represent:
      * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
@@ -2777,7 +2777,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<Integer> represent:
+     * The valid input Collection&lt;Integer&gt; represent:
      * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
@@ -2841,7 +2841,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<String> represent:
+     * The valid input Collection&lt;String&gt; represent:
      * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
@@ -2862,7 +2862,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * <p>
-     * The valid input Collection<String> represent:
+     * The valid input Collection&lt;String&gt; represent:
      * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
