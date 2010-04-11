@@ -303,13 +303,13 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input Collection<Integer> represent:
+	 * </p>
 	 * <ul>
 	 * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
 	 * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
 	 * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
 	 * <li>hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 
 	 * @return the {@link LocalTime} created from the input
 	 */
@@ -324,13 +324,13 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input Collection<Integer> represent:
+	 * </p>
 	 * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-	 * </p>       
 	 *  
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalTime} created from the input and arguments 
@@ -349,13 +349,13 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input Integer[] represent:
+	 * </p>
 	 * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link LocalTime} created from the input
 	 */
@@ -369,14 +369,14 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input Integer[] represent:
+	 * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
-	 *                 
+     *                
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalTime} created from the input and arguments 
 	 */
@@ -394,13 +394,13 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input Collection<String> represent:
+	 * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link LocalTime} created from the input
 	 */
@@ -415,13 +415,13 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input Collection<String> represent:
+	 * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalTime} created from the input and arguments 
@@ -440,13 +440,13 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input String[] represent:
+	 * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link LocalTime} created from the input
 	 */
@@ -460,14 +460,14 @@ public final class FnToLocalTime {
 	 * 
 	 * <p>
 	 * The valid input String[] represent:
+	 * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-	 * </p>
-	 *                 
+	 *                  
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalTime} created from the input and arguments 
 	 */

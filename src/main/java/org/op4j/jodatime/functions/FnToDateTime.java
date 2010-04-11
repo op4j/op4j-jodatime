@@ -309,11 +309,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
 	 * The valid input Collection<Integer> are:
+	 * </p>
 	 * <ul>
 	 * <li>year (month and day will be set to 1)</li>
 	 * <li>year, month (day will be set to 1)</li>
 	 * <li>year, month, day</li>
-	 * </p>
+	 * </ul>
 	 * 
 	 * @return the {@link DateTime} created from the input 
 	 */
@@ -328,11 +329,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
@@ -351,11 +353,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @return the {@link DateTime} created from the input 
 	 */
@@ -370,11 +373,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
@@ -393,11 +397,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @return the {@link DateTime} created from the input 
 	 */
@@ -412,11 +417,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
@@ -435,11 +441,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @return the {@link DateTime} created from the input 
 	 */
@@ -454,11 +461,12 @@ public final class FnToDateTime {
 	 * 
 	 * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 

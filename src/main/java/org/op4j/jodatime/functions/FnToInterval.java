@@ -83,13 +83,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input Collection<String> are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 				
 	 * @return the {@link Interval} created from the input
 	 */
@@ -105,13 +105,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input Ccollection<String> are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 
 	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link Interval} created from the input and arguments 
@@ -127,13 +127,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input Collection<String> are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
@@ -274,14 +274,14 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
-	 * 				
+	 * 			
 	 * @return the {@link Interval} created from the input
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray() {
@@ -295,13 +295,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 	
 	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link Interval} created from the input and arguments 
@@ -317,13 +317,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 		
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
@@ -339,13 +339,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 
 	 * @param pattern string with the format of the input String 
 	 * @return the {@link Interval} created from the input and arguments 
@@ -361,14 +361,14 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
-	 * 		
+	 * 	
 	 * @param pattern string with the format of the input String 
 	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
 	 * @return the {@link Interval} created from the input and arguments 
@@ -384,13 +384,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 		
 	 * @param pattern string with the format of the input String 
 	 * @param chronology {@link Chronology} to be used 
@@ -407,13 +407,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 		
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
@@ -430,13 +430,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 	
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
@@ -453,13 +453,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 		
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
@@ -477,13 +477,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 		
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
@@ -501,13 +501,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 	
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
@@ -525,13 +525,13 @@ public final class FnToInterval {
 	 * 
 	 * <p>
 	 * The accepted input String[] are:
+	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
 	 * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
 	 * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
 	 * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
 	 * </ul>
-	 * </p>
 	 * 		
 	 * @param pattern string with the format of the input String 
 	 * @param locale {@link Locale} to be used 
@@ -775,14 +775,13 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}.
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> collections are:
+     * <p>The accepted input Collection<Integer> collections are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *       
      * @return the {@link Interval} created from the input 
      */
@@ -795,14 +794,13 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:
+     * <p>The accepted input Collection<Integer> are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *              
      * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -816,14 +814,13 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:
+     * <p>The accepted input Collection<Integer> are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *       
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -838,14 +835,13 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Integer[] are:
+     * <p>The accepted input Integer[] are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *         
      * @return the {@link Interval} created from the input 
      */
@@ -858,14 +854,13 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Integer[] are:
+     * <p>The accepted input Integer[] are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -879,14 +874,13 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Integer[] are:
+     * <p>The accepted input Integer[] are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 

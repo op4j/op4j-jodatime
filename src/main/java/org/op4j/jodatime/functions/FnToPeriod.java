@@ -670,11 +670,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
 	 * It creates a Period either:
+	 * </p>
 	 * <ul>	  
 	 * <li>From a {@link Collection} of {@link Integer} representing the hours, minutes, seconds and milliseconds</li>
 	 * <li>From a {@link Collection} of {@link Integer} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
 	 * </ul>
-	 * </p>
 	 * 
 	 * @return the {@link Period} created from the input 
 	 */
@@ -685,11 +685,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
      * It creates a Period with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From a {@link Collection} of {@link Integer} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link Integer} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
@@ -701,11 +701,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
      * It creates a Period either:
+     * </p>
      * <ul>   
      * <li>From an Integer[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From an Integer[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link Period} created from the input
      */
@@ -716,11 +716,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
      * It creates a Period with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From an Integer[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From an Integer[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
@@ -732,11 +732,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
 	 * A Period is created either:
+	 * </p>
 	 * <ul>	  
 	 * <li>From a {@link Collection} of {@link String} representing the hours, minutes, seconds and milliseconds</li>
 	 * <li>From a {@link Collection} of {@link String} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
 	 * </ul>
-	 * </p>
 	 * 
 	 * @return the {@link Period} created from the input
 	 */
@@ -747,11 +747,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
      * A Period is created with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From a {@link Collection} of {@link String} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link String} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
@@ -763,11 +763,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
      * A Period is created either:
+     * </p>
      * <ul>   
      * <li>From a String[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a String[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link Period} created from the input  
      */
@@ -778,11 +778,11 @@ public final class FnToPeriod {
 	/**
 	 * <p>
      * A Period is created with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From a String[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a String[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 

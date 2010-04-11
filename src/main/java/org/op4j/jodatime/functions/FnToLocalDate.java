@@ -309,12 +309,12 @@ public final class FnToLocalDate {
 	 * </p>
 	 * <p>
 	 * The valid input Collection<Integer> are:
+	 * </p>
 	 * <ul>
 	 * <li>year (month and day will be set to 1)</li>
 	 * <li>year, month (day will be set to 1)</li>
 	 * <li>year, month, day</li>
 	 * </ul> 
-	 * </p>
 	 * 
 	 * @return the {@link LocalDate} created from the input
 	 */
@@ -329,12 +329,12 @@ public final class FnToLocalDate {
 	 * 
 	 * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
@@ -353,12 +353,12 @@ public final class FnToLocalDate {
 	 * 
 	 * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @return the {@link LocalDate} created from the input
 	 */
@@ -373,12 +373,12 @@ public final class FnToLocalDate {
 	 * 
 	 * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
@@ -397,12 +397,12 @@ public final class FnToLocalDate {
 	 * 
 	 * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @return the {@link LocalDate} created from the input
 	 */
@@ -417,12 +417,12 @@ public final class FnToLocalDate {
 	 * 
 	 * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 
@@ -441,12 +441,12 @@ public final class FnToLocalDate {
 	 * 
 	 * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @return the {@link LocalDate} created from the input
 	 */
@@ -461,12 +461,12 @@ public final class FnToLocalDate {
 	 * 
 	 * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
 	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link LocalDate} created from the input and arguments 

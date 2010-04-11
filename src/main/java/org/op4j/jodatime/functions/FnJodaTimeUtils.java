@@ -528,12 +528,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link DateMidnight} created from the input 
      */
@@ -548,12 +548,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
@@ -569,12 +569,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link DateMidnight} created from the input 
      */
@@ -589,12 +589,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
@@ -610,12 +610,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link DateMidnight} created from the input  
      */
@@ -630,12 +630,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
@@ -651,12 +651,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link DateMidnight} created from the input 
      */
@@ -671,12 +671,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
@@ -955,11 +955,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @return the {@link DateTime} created from the input 
      */
@@ -974,11 +975,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
@@ -994,11 +996,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @return the {@link DateTime} created from the input 
      */
@@ -1013,11 +1016,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
@@ -1033,11 +1037,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @return the {@link DateTime} created from the input
      */
@@ -1052,11 +1057,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
@@ -1072,12 +1078,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
-     *
+     * </ul>
+     * 
      * @return the {@link DateTime} created from the input
      */
 	public static final Function<String[], DateTime> strFieldArrayToDateTime() {
@@ -1091,11 +1098,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
-     * </p>
+     * </ul>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
@@ -1145,13 +1153,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *              
      * @return the {@link Interval} created from the input 
      */
@@ -1167,13 +1175,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input Ccollection<String> are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -1189,13 +1197,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -1336,13 +1344,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *              
      * @return the {@link Interval} created from the input
      */
@@ -1357,13 +1365,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *  
      * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -1379,13 +1387,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *      
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -1401,13 +1409,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param pattern string with the format of the input String 
      * @return the {@link Interval} created from the input and arguments 
@@ -1423,13 +1431,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *      
      * @param pattern string with the format of the input String 
      * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
@@ -1446,13 +1454,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *      
      * @param pattern string with the format of the input String 
      * @param chronology {@link Chronology} to be used 
@@ -1469,13 +1477,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *      
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
@@ -1492,13 +1500,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *  
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
@@ -1515,13 +1523,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *      
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
@@ -1539,13 +1547,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *      
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
@@ -1563,13 +1571,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *  
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
@@ -1587,13 +1595,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The accepted input String[] are:
+     * </p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *      
      * @param pattern string with the format of the input String 
      * @param locale {@link Locale} to be used 
@@ -1828,14 +1836,13 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}.
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> collections are:
+     * <p>The accepted input Collection<Integer> collections are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *       
      * @return the {@link Interval} created from the input  
      */
@@ -1849,14 +1856,13 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:
+     * <p>The accepted input Collection<Integer> are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *          
      * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -1871,14 +1877,13 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:
+     * <p>The accepted input Collection<Integer> are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *  
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -1893,14 +1898,13 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Integer[] are:
+     * <p>The accepted input Integer[] are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *         
      * @return the {@link Interval} created from the input 
      */
@@ -1914,14 +1918,13 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Integer[] are:
+     * <p>The accepted input Integer[] are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -1936,14 +1939,13 @@ public class FnJodaTimeUtils {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Integer[] are:
+     * <p>The accepted input Integer[] are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
      * <li>year, month, day, hour, minute, second, year, month, day, hour, minute, second</li>
      * <li>year, month, day, hour, minute, second, millisecond, year, month, day, hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
@@ -2336,12 +2338,12 @@ public class FnJodaTimeUtils {
      * </p>
      * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @return the {@link LocalDate} created from the input
      */
@@ -2356,12 +2358,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<Integer> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
@@ -2377,12 +2379,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @return the {@link LocalDate} created from the input
      */
@@ -2397,12 +2399,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
@@ -2418,12 +2420,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @return the {@link LocalDate} created from the input
      */
@@ -2438,12 +2440,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
@@ -2459,12 +2461,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @return the {@link LocalDate} created from the input
      */
@@ -2479,12 +2481,12 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] are:
+     * </p>
      * <ul>
      * <li>year (month and day will be set to 1)</li>
      * <li>year, month (day will be set to 1)</li>
      * <li>year, month, day</li>
      * </ul> 
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
@@ -2755,13 +2757,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<Integer> represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link LocalTime} created from the input
      */
@@ -2776,13 +2778,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<Integer> represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>       
      *  
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
@@ -2798,13 +2800,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link LocalTime} created from the input
      */
@@ -2818,13 +2820,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Integer[] represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *                 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
@@ -2840,13 +2842,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link LocalTime} created from the input
      */
@@ -2861,13 +2863,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input Collection<String> represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
@@ -2883,13 +2885,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link LocalTime} created from the input
      */
@@ -2903,13 +2905,13 @@ public class FnJodaTimeUtils {
      * 
      * <p>
      * The valid input String[] represent:
+     * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute (second and millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second (millisecond will be set to 0 in the output {@link LocalTime})</li>
      * <li>hour, minute, second, millisecond</li>
      * </ul>
-     * </p>
      *                 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
@@ -3524,11 +3526,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * It creates a Period either:
+     * </p>
      * <ul>   
      * <li>From a {@link Collection} of {@link Integer} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link Integer} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link Period} created from the input 
      */
@@ -3538,11 +3540,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * It creates a Period with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From a {@link Collection} of {@link Integer} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link Integer} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
@@ -3553,11 +3555,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * It creates a Period either:
+     * </p>
      * <ul>   
      * <li>From an Integer[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From an Integer[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link Period} created from the input
      */
@@ -3567,11 +3569,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * It creates a Period with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From an Integer[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From an Integer[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
@@ -3583,11 +3585,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * A Period is created either:
+     * </p>
      * <ul>   
      * <li>From a {@link Collection} of {@link String} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link String} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link Period} created from the input
      */
@@ -3597,11 +3599,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * A Period is created with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From a {@link Collection} of {@link String} representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a {@link Collection} of {@link String} representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
@@ -3612,11 +3614,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * A Period is created either:
+     * </p>
      * <ul>   
      * <li>From a String[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a String[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @return the {@link Period} created from the input 
      */
@@ -3626,11 +3628,11 @@ public class FnJodaTimeUtils {
 	/**
      * <p>
      * A Period is created with the specified {@link PeriodType} either:
+     * </p>
      * <ul>   
      * <li>From a String[] representing the hours, minutes, seconds and milliseconds</li>
      * <li>From a String[] representing the years, months, weeks, days, hours, minutes, seconds and milliseconds</li>
      * </ul>
-     * </p>
      * 
      * @param periodType the {@link PeriodType} to be created. It specifies which duration fields are to be used 
      * @return the {@link Period} created from the input and arguments 
