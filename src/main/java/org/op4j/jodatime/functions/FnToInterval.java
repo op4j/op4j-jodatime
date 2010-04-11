@@ -82,7 +82,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * <p>
-	 * The accepted input Collection<String> are:
+	 * The accepted input Collection&lt;String&gt; are:
 	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
@@ -104,7 +104,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * <p>
-	 * The accepted input Ccollection<String> are:
+	 * The accepted input CCollection&lt;String&gt; are:
 	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
@@ -126,7 +126,7 @@ public final class FnToInterval {
 	 * </p>
 	 * 
 	 * <p>
-	 * The accepted input Collection<String> are:
+	 * The accepted input Collection&lt;String&gt; are:
 	 * </p>
 	 * <ul>
 	 * <li>year, month, day, year, month, day</li>
@@ -775,7 +775,7 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}.
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> collections are:</p>
+     * <p>The accepted input Collection&lt;Integer&gt; collections are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -794,7 +794,7 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:</p>
+     * <p>The accepted input Collection&lt;Integer&gt; are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
@@ -814,7 +814,7 @@ public final class FnToInterval {
      * The target {@link Integer} elements represent the start and end of the {@link Interval}. 
      * </p>
      * 
-     * <p>The accepted input Collection<Integer> are:</p>
+     * <p>The accepted input Collection&lt;Integer&gt; are:</p>
      * <ul>
      * <li>year, month, day, year, month, day</li>
      * <li>year, month, day, hour, minute, year, month, day, hour, minute</li>
