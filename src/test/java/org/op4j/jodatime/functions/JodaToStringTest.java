@@ -21,6 +21,17 @@ import org.op4j.jodatime.functions.FnJodaToString.FormatType;
 
 public class JodaToStringTest extends TestCase {
 
+    @Test
+    public void testFromBaseDateTime() {
+        // Convert DateTime
+        List<DateTime> targets = new ArrayList<DateTime>();
+        targets.add(new DateTime());
+        List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromBaseDateTime()).get();
+        
+        assertEquals(targets.get(0).toString(),
+                result.get(0));
+    }
+    
 	@Test
 	public void testFromBaseDateTimeFormatTypeString() {
 		// Convert DateTime
@@ -99,6 +110,16 @@ public class JodaToStringTest extends TestCase {
 	}
 	
 	@Test
+    public void testFromLocalTime() {
+        List<LocalTime> targets = new ArrayList<LocalTime>();
+        targets.add(new LocalTime());
+        List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromLocalTime()).get();
+        
+        assertEquals(targets.get(0).toString(),
+                result.get(0));
+    }
+	
+	@Test
 	public void testFromLocalTimeFormatTypeString() {
 		List<LocalTime> targets = new ArrayList<LocalTime>();
 		targets.add(new LocalTime());
@@ -174,6 +195,16 @@ public class JodaToStringTest extends TestCase {
 				DateTimeFormat.fullDateTime()),
 				result.get(0));		
 	}
+	
+	@Test
+    public void testFromLocalDate() {
+        List<LocalDate> targets = new ArrayList<LocalDate>();
+        targets.add(new LocalDate());
+        List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromLocalDate()).get();
+        
+        assertEquals(targets.get(0).toString(),
+                result.get(0));
+    }
 	
 	@Test
 	public void testFromLocalDateFormatTypeString() {
