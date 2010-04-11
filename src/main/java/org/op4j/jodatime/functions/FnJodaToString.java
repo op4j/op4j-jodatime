@@ -48,7 +48,8 @@ public final class FnJodaToString {
 		super();
 	}
 	
-	// From BaseDateTime
+	
+	
 	/**
      * <p>
      * It converts the input {@link BaseDateTime} into a {@link String}  
@@ -128,9 +129,10 @@ public final class FnJodaToString {
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final DateTimeFormatter formatter) {
 		return new BaseDateTimeToStr(formatter);
 	}
-	//
 	
-	// From LocalTime
+	
+	
+	
 	/**
      * <p>
      * It converts the input {@link LocalTime} into a {@link String}
@@ -211,9 +213,10 @@ public final class FnJodaToString {
 	public static final Function<LocalTime, String> fromLocalTime(final DateTimeFormatter formatter) {
 		return new LocalTimeToStr(formatter);
 	}
-	//
 	
-	// From LocalDate
+	
+	
+	
 	/**
      * <p>
      * It converts the input {@link LocalDate} into a {@link String}
@@ -291,7 +294,7 @@ public final class FnJodaToString {
 	public static final Function<LocalDate, String> fromLocalDate(final DateTimeFormatter formatter) {
 		return new LocalDateToStr(formatter);
 	}
-	//
+	
 	
 	public static enum FormatType {
 		PATTERN,
