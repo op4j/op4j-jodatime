@@ -302,7 +302,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * <p>
-	 * The valid input Collection<Integer> represent:
+	 * The valid input Collection&lt;Integer&gt; represent:
 	 * </p>
 	 * <ul>
 	 * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
@@ -323,7 +323,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * <p>
-	 * The valid input Collection<Integer> represent:
+	 * The valid input Collection&lt;Integer&gt; represent:
 	 * </p>
 	 * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
@@ -393,7 +393,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * <p>
-	 * The valid input Collection<String> represent:
+	 * The valid input Collection&lt;String&gt; represent:
 	 * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
@@ -414,7 +414,7 @@ public final class FnToLocalTime {
 	 * </p>
 	 * 
 	 * <p>
-	 * The valid input Collection<String> represent:
+	 * The valid input Collection&lt;String&gt; represent:
 	 * </p>
      * <ul>
      * <li>hour (minute, second and millisecond will be set to 0 in the output {@link LocalTime})</li>
