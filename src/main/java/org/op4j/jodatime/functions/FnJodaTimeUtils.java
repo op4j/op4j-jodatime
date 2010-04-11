@@ -60,8 +60,8 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      * 
-     * @param formatType 
-     * @param format 
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format) {
@@ -74,9 +74,9 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      *  
-     * @param formatType 
-     * @param format
-     * @param locale 
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format, final Locale locale) {
@@ -89,9 +89,9 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      * 
-     * @param formatType
-     * @param format 
-     * @param chronology
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format, final Chronology chronology) {
@@ -103,9 +103,9 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      *       
-     * @param formatType
-     * @param format
-     * @param locale 
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format, final String locale) {
@@ -116,7 +116,7 @@ public class FnJodaTimeUtils {
      * It converts the input {@link BaseDateTime} into a {@link String} by means of the given {@link DateTimeFormatter}
      * </p>
      * 
-     * @param formatter
+     * @param formatter {@link DateTimeFormatter} to generate the output String with 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final DateTimeFormatter formatter) {
@@ -129,8 +129,8 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      * 
-     * @param formatType 
-     * @param format 
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format) {
@@ -143,9 +143,9 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      * 
-     * @param formatType
-     * @param format
-     * @param locale 
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format, final Locale locale) {
@@ -158,9 +158,9 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      * 
-     * @param formatType 
-     * @param format
-     * @param chronology
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format, final Chronology chronology) {
@@ -173,9 +173,9 @@ public class FnJodaTimeUtils {
      * (depending on the value of formatType parameter).
      * </p>
      * 
-     * @param formatType
-     * @param format 
-     * @param locale 
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format, final String locale) {
@@ -186,7 +186,7 @@ public class FnJodaTimeUtils {
      * It converts the input {@link LocalTime} into a {@link String} by means of the given {@link DateTimeFormatter}
      * </p>
      * 
-     * @param formatter
+     * @param formatter {@link DateTimeFormatter} to generate the output String with 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalTime, String> localTimeToStr(final DateTimeFormatter formatter) {
@@ -199,8 +199,8 @@ public class FnJodaTimeUtils {
      * or style (depending on the formatType value)
      * </p>
      * 
-     * @param formatType 
-     * @param format 
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format) {
@@ -212,9 +212,9 @@ public class FnJodaTimeUtils {
      * or style (depending on the formatType value) with the given {@link Locale}
      * </p>
      * 
-     * @param formatType 
-     * @param format 
-     * @param locale
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format, final Locale locale) {
@@ -226,9 +226,9 @@ public class FnJodaTimeUtils {
      * or style (depending on the formatType value) with the given {@link Chronology}
      * </p>
      * 
-     * @param formatType 
-     * @param format 
-     * @param chronology
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format, final Chronology chronology) {
@@ -240,9 +240,9 @@ public class FnJodaTimeUtils {
      * or style (depending on the formatType value) with the given {@link Locale}
      * </p>
      * 
-     * @param formatType 
-     * @param format 
-     * @param locale
+     * @param formatType the format {@link FormatType} 
+     * @param format string with the format used for the output 
+     * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format, final String locale) {
@@ -254,7 +254,7 @@ public class FnJodaTimeUtils {
      * It converts the input {@link LocalDate} into a {@link String} by means of the given {@link DateTimeFormatter}
      * </p>
      * 
-     * @param formatter
+     * @param formatter {@link DateTimeFormatter} to generate the output String with 
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalDate, String> localDateToStr(final DateTimeFormatter formatter) {
@@ -268,7 +268,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                 
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern) {
@@ -281,7 +281,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                 
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @param dateTimeZone
      * @return the {@link DateMidnight} created from the input and arguments 
      */
@@ -295,8 +295,8 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                  
-     * @param pattern
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Chronology chronology) {
@@ -308,8 +308,8 @@ public class FnJodaTimeUtils {
      * {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Locale locale) {
@@ -321,8 +321,8 @@ public class FnJodaTimeUtils {
      * {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, String locale) {
@@ -334,8 +334,8 @@ public class FnJodaTimeUtils {
      * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
      * </p>
      *               
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link DateMidnight} created from the input and arguments 
      */
@@ -348,8 +348,8 @@ public class FnJodaTimeUtils {
      * The {@link DateMidnight} is configured with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link DateMidnight} created from the input and arguments 
      */
@@ -362,9 +362,9 @@ public class FnJodaTimeUtils {
      * The {@link DateMidnight} will be created with the given {@link Chronology}
      * </p>
      *                 
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Locale locale, Chronology chronology) {
@@ -376,9 +376,9 @@ public class FnJodaTimeUtils {
      * The {@link DateMidnight} will be created with the given {@link Chronology}
      * </p>
      * 
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, String locale, Chronology chronology) {
@@ -413,7 +413,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateMidnight> dateToDateMidnight(Chronology chronology) {
@@ -448,7 +448,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateMidnight>  timestampToDateMidnight(Chronology chronology) {
@@ -483,7 +483,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * <p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Long, DateMidnight>  longToDateMidnight(Chronology chronology) {
@@ -524,7 +524,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, DateMidnight>  integerFieldCollectionToDateMidnight(Chronology chronology) {
@@ -565,7 +565,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Integer[], DateMidnight>  integerFieldArrayToDateMidnight(Chronology chronology) {
@@ -606,7 +606,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Collection<String>, DateMidnight>  strFieldCollectionToDateMidnight(Chronology chronology) {
@@ -647,7 +647,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String[], DateMidnight>  strFieldArrayToDateMidnight(Chronology chronology) {
@@ -680,7 +680,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link DateMidnight} with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateMidnight> calendarToDateMidnight(Chronology chronology) {
@@ -695,7 +695,7 @@ public class FnJodaTimeUtils {
      * be used instead 
      * </p>
      * 
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern) {
@@ -708,7 +708,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                 
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @param dateTimeZone
      * @return the {@link DateTime} created from the input and arguments 
      */
@@ -722,8 +722,8 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                      
-     * @param pattern
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Chronology chronology) {
@@ -735,8 +735,8 @@ public class FnJodaTimeUtils {
      * {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Locale locale) {
@@ -748,8 +748,8 @@ public class FnJodaTimeUtils {
      * {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, String locale) {
@@ -761,8 +761,8 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} is configured with the given {@link DateTimeZone}
      * </p>
      *                 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link DateTime} created from the input and arguments 
      */
@@ -775,8 +775,8 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} is configured with the given {@link DateTimeZone}
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link DateTime} created from the input and arguments 
      */
@@ -789,9 +789,9 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} will be created with the given {@link Chronology}
      * </p>
      *                 
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Locale locale, Chronology chronology) {
@@ -803,9 +803,9 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} will be created with the given {@link Chronology}
      * </p>
      * 
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, String locale, Chronology chronology) {
@@ -840,7 +840,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateTime> dateToDateTime(Chronology chronology) {
@@ -875,7 +875,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateTime> timestampToDateTime(Chronology chronology) {
@@ -910,7 +910,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Long, DateTime> longToDateTime(Chronology chronology) {
@@ -949,7 +949,7 @@ public class FnJodaTimeUtils {
      * <li>year, month, day</li>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, DateTime> integerFieldCollectionToDateTime(Chronology chronology) {
@@ -988,7 +988,7 @@ public class FnJodaTimeUtils {
      * <li>year, month, day</li>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Integer[], DateTime> integerFieldArrayToDateTime(Chronology chronology) {
@@ -1027,7 +1027,7 @@ public class FnJodaTimeUtils {
      * <li>year, month, day</li>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Collection<String>, DateTime> strFieldCollectionToDateTime(Chronology chronology) {
@@ -1066,7 +1066,7 @@ public class FnJodaTimeUtils {
      * <li>year, month, day</li>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String[], DateTime> strFieldArrayToDateTime(Chronology chronology) {
@@ -1099,7 +1099,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link DateTime} with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateTime> calendarToDateTime(Chronology chronology) {
@@ -1166,7 +1166,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(Chronology chronology) {
@@ -1180,7 +1180,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                 
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern) {
@@ -1193,7 +1193,7 @@ public class FnJodaTimeUtils {
      * day of week, a conversion accepting a {@link Locale} must be used instead
      * </p>
      *                  
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @param dateTimeZone
      * @return the {@link Interval} created from the input and arguments 
      */
@@ -1207,8 +1207,8 @@ public class FnJodaTimeUtils {
      * day of week, a conversion accepting a {@link Locale} must be used instead
      * </p>
      * 
-     * @param pattern
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Chronology chronology) {
@@ -1220,8 +1220,8 @@ public class FnJodaTimeUtils {
      * and {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale) {
@@ -1233,8 +1233,8 @@ public class FnJodaTimeUtils {
      * and {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale) {
@@ -1246,8 +1246,8 @@ public class FnJodaTimeUtils {
      * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link Interval} created from the input and arguments 
      */
@@ -1260,8 +1260,8 @@ public class FnJodaTimeUtils {
      * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link Interval} created from the input and arguments 
      */
@@ -1274,9 +1274,9 @@ public class FnJodaTimeUtils {
      * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
      * </p>
      * 
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale, Chronology chronology) {
@@ -1288,9 +1288,9 @@ public class FnJodaTimeUtils {
      * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
      * </p>
      *
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale, Chronology chronology) {
@@ -1356,7 +1356,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *      
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(Chronology chronology) {
@@ -1378,7 +1378,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern) {
@@ -1400,7 +1400,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *      
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @param dateTimeZone
      * @return the {@link Interval} created from the input and arguments 
      */
@@ -1423,8 +1423,8 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *      
-     * @param pattern
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Chronology chronology) {
@@ -1446,8 +1446,8 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *      
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Locale locale) {
@@ -1469,8 +1469,8 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *  
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, String locale) {
@@ -1492,8 +1492,8 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *      
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link Interval} created from the input and arguments 
      */
@@ -1516,8 +1516,8 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *      
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link Interval} created from the input and arguments 
      */
@@ -1540,9 +1540,9 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *  
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Locale locale, Chronology chronology) {
@@ -1564,9 +1564,9 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *      
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, String locale, Chronology chronology) {
@@ -1601,7 +1601,7 @@ public class FnJodaTimeUtils {
      * The {@link Interval} will be created with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval(Chronology chronology) {
@@ -1636,7 +1636,7 @@ public class FnJodaTimeUtils {
      * The {@link Interval} will be created with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Interval> dateFieldArrayToInterval(Chronology chronology) {
@@ -1672,7 +1672,7 @@ public class FnJodaTimeUtils {
      * of the {@link Interval} returned with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval(Chronology chronology) {
@@ -1708,7 +1708,7 @@ public class FnJodaTimeUtils {
      * of the {@link Interval} returned with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Interval> timestampFieldArrayToInterval(Chronology chronology) {
@@ -1746,7 +1746,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval(Chronology chronology) {
@@ -1784,7 +1784,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Long[], Interval> longFieldArrayToInterval(Chronology chronology) {
@@ -1849,7 +1849,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *  
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(Chronology chronology) {
@@ -1914,7 +1914,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param chronology            
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval(Chronology chronology) {
@@ -1950,7 +1950,7 @@ public class FnJodaTimeUtils {
      * The {@link Interval} will be created with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval(Chronology chronology) {
@@ -1986,7 +1986,7 @@ public class FnJodaTimeUtils {
      * The {@link Interval} will be created with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Interval> calendarFieldArrayToInterval(Chronology chronology) {
@@ -2024,7 +2024,7 @@ public class FnJodaTimeUtils {
      * {@link Interval} being created with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(Chronology chronology) {
@@ -2062,7 +2062,7 @@ public class FnJodaTimeUtils {
      * as the start and end of the {@link Interval} being created (with the given {@link Chronology})
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval(Chronology chronology) {
@@ -2076,7 +2076,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern) {
@@ -2089,7 +2089,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *               
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @param dateTimeZone
      * @return the {@link LocalDate} created from the input and arguments 
      */
@@ -2103,8 +2103,8 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                  
-     * @param pattern
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Chronology chronology) {
@@ -2116,8 +2116,8 @@ public class FnJodaTimeUtils {
      * {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Locale locale) {
@@ -2129,8 +2129,8 @@ public class FnJodaTimeUtils {
      * {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, String locale) {
@@ -2142,8 +2142,8 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} is created with the specified {@link DateTimeZone}
      * </p>
      *              
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link LocalDate} created from the input and arguments 
      */
@@ -2156,8 +2156,8 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} is created with the specified {@link DateTimeZone}
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link LocalDate} created from the input and arguments 
      */
@@ -2170,9 +2170,9 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} will be created with the given {@link Chronology}
      * </p>
      *                 
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Locale locale, Chronology chronology) {
@@ -2184,9 +2184,9 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} will be created with the given {@link Chronology}
      * </p>
      * 
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, String locale, Chronology chronology) {
@@ -2221,7 +2221,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalDate> dateToLocalDate(Chronology chronology) {
@@ -2256,7 +2256,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalDate> timestampToLocalDate(Chronology chronology) {
@@ -2292,7 +2292,7 @@ public class FnJodaTimeUtils {
      * {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Long, LocalDate> longToLocalDate(Chronology chronology) {
@@ -2332,7 +2332,7 @@ public class FnJodaTimeUtils {
      * </ul> 
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, LocalDate> integerFieldCollectionToLocalDate(Chronology chronology) {
@@ -2373,7 +2373,7 @@ public class FnJodaTimeUtils {
      * </ul> 
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Integer[], LocalDate> integerFieldArrayToLocalDate(Chronology chronology) {
@@ -2414,7 +2414,7 @@ public class FnJodaTimeUtils {
      * </ul> 
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Collection<String>, LocalDate> strFieldCollectionToLocalDate(Chronology chronology) {
@@ -2455,7 +2455,7 @@ public class FnJodaTimeUtils {
      * </ul> 
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String[], LocalDate> strFieldArrayToLocalDate(Chronology chronology) {
@@ -2489,7 +2489,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link LocalDate} with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalDate> calendarToLocalDate(Chronology chronology) {
@@ -2503,7 +2503,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                 
-     * @param pattern 
+     * @param pattern string with the format of the input String 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern) {
@@ -2516,7 +2516,7 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p> 
      *             
-     * @param pattern
+     * @param pattern string with the format of the input String 
      * @param dateTimeZone
      * @return the {@link LocalTime} created from the input and arguments 
      */
@@ -2530,8 +2530,8 @@ public class FnJodaTimeUtils {
      * accepting a {@link Locale} must be used instead
      * </p>
      *                 
-     * @param pattern
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Chronology chronology) {
@@ -2542,8 +2542,8 @@ public class FnJodaTimeUtils {
      * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Locale locale) {
@@ -2554,8 +2554,8 @@ public class FnJodaTimeUtils {
      * It converts the given {@link String} into a {@link LocalTime} using the given pattern and {@link Locale} parameters
      * </p>
      * 
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, String locale) {
@@ -2567,8 +2567,8 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} is configured with the given {@link DateTimeZone}
      * </p>
      *                
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link LocalTime} created from the input and arguments 
      */
@@ -2581,8 +2581,8 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} is configured with the given {@link DateTimeZone}
      * </p> 
      *                
-     * @param pattern
-     * @param locale
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
      * @param dateTimeZone
      * @return the {@link LocalTime} created from the input and arguments 
      */
@@ -2595,9 +2595,9 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} will be created with the specified {@link Chronology}
      * </p>  
      *              
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Locale locale, Chronology chronology) {
@@ -2609,9 +2609,9 @@ public class FnJodaTimeUtils {
      * The {@link DateTime} will be created with the specified {@link Chronology}
      * </p> 
      *                
-     * @param pattern
-     * @param locale
-     * @param chronology
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, String locale, Chronology chronology) {
@@ -2644,7 +2644,7 @@ public class FnJodaTimeUtils {
      * The given {@link Date} is converted into a {@link LocalTime} with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalTime> dateToLocalTime(Chronology chronology) {
@@ -2677,7 +2677,7 @@ public class FnJodaTimeUtils {
      * The given {@link Timestamp} is converted into a {@link LocalTime} with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalTime> timestampToLocalTime(Chronology chronology) {
@@ -2710,7 +2710,7 @@ public class FnJodaTimeUtils {
      * The given long representing the time in milliseconds is converted into a {@link LocalTime} with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Long, LocalTime> longToLocalTime(Chronology chronology) {
@@ -2753,7 +2753,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>       
      *  
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, LocalTime> integerFieldCollectionToLocalTime(Chronology chronology) {
@@ -2795,7 +2795,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *                 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Integer[], LocalTime> integerFieldArrayToLocalTime(Chronology chronology) {
@@ -2838,7 +2838,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Collection<String>, LocalTime> strFieldCollectionToLocalTime(Chronology chronology) {
@@ -2880,7 +2880,7 @@ public class FnJodaTimeUtils {
      * </ul>
      * </p>
      *                 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String[], LocalTime> strFieldArrayToLocalTime(Chronology chronology) {
@@ -2913,7 +2913,7 @@ public class FnJodaTimeUtils {
      * It converts a {@link Calendar} into a {@link LocalTime} with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalTime> calendarToLocalTime(Chronology chronology) {
@@ -2938,7 +2938,7 @@ public class FnJodaTimeUtils {
      * specified {@link Chronology}
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -2966,7 +2966,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -2993,7 +2993,7 @@ public class FnJodaTimeUtils {
      * specified {@link Chronology}
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3024,7 +3024,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3051,7 +3051,7 @@ public class FnJodaTimeUtils {
      * specified {@link Chronology}
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3082,7 +3082,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3107,7 +3107,7 @@ public class FnJodaTimeUtils {
      * specified {@link Chronology}
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3136,7 +3136,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3161,7 +3161,7 @@ public class FnJodaTimeUtils {
      * received by this function (in milliseconds)
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3188,7 +3188,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3213,7 +3213,7 @@ public class FnJodaTimeUtils {
      * and end instants of the {@link Period} returned 
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3240,7 +3240,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3264,7 +3264,7 @@ public class FnJodaTimeUtils {
      * and end instants of the {@link Period} returned 
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3291,7 +3291,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -3316,7 +3316,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final Chronology chronology) {
@@ -3341,7 +3341,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
@@ -3363,7 +3363,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final Chronology chronology) {
@@ -3388,7 +3388,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
@@ -3411,7 +3411,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final Chronology chronology) {
@@ -3436,7 +3436,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
@@ -3458,7 +3458,7 @@ public class FnJodaTimeUtils {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final Chronology chronology) {
@@ -3483,7 +3483,7 @@ public class FnJodaTimeUtils {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {

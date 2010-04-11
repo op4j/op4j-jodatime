@@ -90,7 +90,7 @@ public final class FnToPeriod {
      * specified {@link Chronology}
      * </p>
      * 
-	 * @param chronology 
+	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -118,7 +118,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -144,7 +144,7 @@ public final class FnToPeriod {
      * specified {@link Chronology}
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -175,7 +175,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -204,7 +204,7 @@ public final class FnToPeriod {
      * specified {@link Chronology}
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -235,7 +235,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -262,7 +262,7 @@ public final class FnToPeriod {
      * specified {@link Chronology}
      * </p>
      * 
-     * @param chronology 
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -293,7 +293,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * 
      * @return the {@link Period} created from the input and arguments 
      */
@@ -320,7 +320,7 @@ public final class FnToPeriod {
 	 * received by this function (in milliseconds)
 	 * </p>
 	 * 
-	 * @param chronology 
+	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -347,7 +347,7 @@ public final class FnToPeriod {
      * </p>
      * 
 	 * @param periodType 
-	 * @param chronology 
+	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -374,7 +374,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -401,7 +401,7 @@ public final class FnToPeriod {
 	 * </p>
 	 * 
 	 * @param periodType
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -425,7 +425,7 @@ public final class FnToPeriod {
 	 * and end instants of the {@link Period} returned 
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -452,7 +452,7 @@ public final class FnToPeriod {
 	 * </p>
 	 * 
 	 * @param periodType 
-	 * @param chronology 
+	 * @param chronology {@link Chronology} to be used 
 	 * 
 	 * @return the {@link Period} created from the input and arguments 
 	 */
@@ -479,7 +479,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final Chronology chronology) {
@@ -505,7 +505,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> fromCalendarFieldCollection(final PeriodType periodType, final Chronology chronology) {
@@ -528,7 +528,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final Chronology chronology) {
@@ -555,7 +555,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> fromCalendarFieldArray(final PeriodType periodType, final Chronology chronology) {
@@ -581,7 +581,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final Chronology chronology) {
@@ -608,7 +608,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> fromBaseDateTimeFieldCollection(final PeriodType periodType, final Chronology chronology) {
@@ -632,7 +632,7 @@ public final class FnToPeriod {
      * must have size 2 and represents the start and end instants of the {@link Period}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final Chronology chronology) {
@@ -659,7 +659,7 @@ public final class FnToPeriod {
      * </p>
      * 
      * @param periodType
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> fromBaseDateTimeFieldArray(final PeriodType periodType, final Chronology chronology) {

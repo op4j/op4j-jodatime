@@ -135,7 +135,7 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(Chronology chronology) {
@@ -149,7 +149,7 @@ public final class FnToInterval {
 	 * accepting a {@link Locale} must be used instead
 	 * </p>
 	 *                 
-	 * @param pattern
+	 * @param pattern string with the format of the input String 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern) {
@@ -162,7 +162,7 @@ public final class FnToInterval {
 	 * day of week, a conversion accepting a {@link Locale} must be used instead
 	 * </p>
 	 *                  
-	 * @param pattern
+	 * @param pattern string with the format of the input String 
 	 * @param dateTimeZone
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
@@ -176,8 +176,8 @@ public final class FnToInterval {
 	 * day of week, a conversion accepting a {@link Locale} must be used instead
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, Chronology chronology) {
@@ -189,8 +189,8 @@ public final class FnToInterval {
 	 * and {@link Locale} parameters
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, Locale locale) {
@@ -202,8 +202,8 @@ public final class FnToInterval {
 	 * and {@link Locale} parameters
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, String locale) {
@@ -215,8 +215,8 @@ public final class FnToInterval {
 	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @param dateTimeZone
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
@@ -229,8 +229,8 @@ public final class FnToInterval {
 	 * and {@link Locale} parameters. The given {@link DateTimeZone} will be used to create the {@link Interval}.
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @param dateTimeZone
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
@@ -243,9 +243,9 @@ public final class FnToInterval {
 	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, Locale locale, Chronology chronology) {
@@ -257,9 +257,9 @@ public final class FnToInterval {
 	 * and {@link Locale} parameters. The given {@link Chronology} will be used to create the {@link Interval}.
 	 * </p>
 	 *
-	 * @param pattern
-	 * @param locale
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, Interval> fromStringFieldCollection(String pattern, String locale, Chronology chronology) {
@@ -325,7 +325,7 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 		
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(Chronology chronology) {
@@ -347,7 +347,7 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 
-	 * @param pattern
+	 * @param pattern string with the format of the input String 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern) {
@@ -369,7 +369,7 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 		
-	 * @param pattern
+	 * @param pattern string with the format of the input String 
 	 * @param dateTimeZone
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
@@ -392,8 +392,8 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 		
-	 * @param pattern
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, Chronology chronology) {
@@ -415,8 +415,8 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 		
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, Locale locale) {
@@ -438,8 +438,8 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 	
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, String locale) {
@@ -461,8 +461,8 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 		
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @param dateTimeZone
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
@@ -485,8 +485,8 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 		
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @param dateTimeZone
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
@@ -509,9 +509,9 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 	
-	 * @param pattern
-	 * @param locale
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, Locale locale, Chronology chronology) {
@@ -533,9 +533,9 @@ public final class FnToInterval {
 	 * </ul>
 	 * </p>
 	 * 		
-	 * @param pattern
-	 * @param locale
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<String[], Interval> fromStringFieldArray(String pattern, String locale, Chronology chronology) {
@@ -572,7 +572,7 @@ public final class FnToInterval {
 	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<? extends Date>, Interval> fromDateFieldCollection(Chronology chronology) {
@@ -607,7 +607,7 @@ public final class FnToInterval {
 	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T[], Interval> fromDateFieldArray(Chronology chronology) {
@@ -645,7 +645,7 @@ public final class FnToInterval {
 	 * of the {@link Interval} returned with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<Timestamp>, Interval> fromTimestampFieldCollection(Chronology chronology) {
@@ -681,7 +681,7 @@ public final class FnToInterval {
 	 * of the {@link Interval} returned with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Timestamp[], Interval> fromTimestampFieldArray(Chronology chronology) {
@@ -721,7 +721,7 @@ public final class FnToInterval {
 	 * {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<Long>, Interval> fromLongFieldCollection(Chronology chronology) {
@@ -759,7 +759,7 @@ public final class FnToInterval {
 	 * {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Long[], Interval> fromLongFieldArray(Chronology chronology) {
@@ -825,7 +825,7 @@ public final class FnToInterval {
      * </ul>
      * </p>
      *       
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Interval> fromIntegerFieldCollection(Chronology chronology) {
@@ -888,7 +888,7 @@ public final class FnToInterval {
      * </ul>
      * </p>
      * 
-     * @param chronology           
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Integer[], Interval> fromIntegerFieldArray(Chronology chronology) {
@@ -926,7 +926,7 @@ public final class FnToInterval {
 	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final Function<Collection<? extends Calendar>, Interval> fromCalendarFieldCollection(Chronology chronology) {
@@ -962,7 +962,7 @@ public final class FnToInterval {
 	 * The {@link Interval} will be created with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link Interval} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T[], Interval> fromCalendarFieldArray(Chronology chronology) {
@@ -1000,7 +1000,7 @@ public final class FnToInterval {
      * {@link Interval} being created with the given {@link Chronology}
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> fromBaseDateTimeFieldCollection(Chronology chronology) {
@@ -1036,7 +1036,7 @@ public final class FnToInterval {
      * as the start and end of the {@link Interval} being created (with the given {@link Chronology})
      * </p>
      * 
-     * @param chronology
+     * @param chronology {@link Chronology} to be used 
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> fromBaseDateTimeFieldArray(Chronology chronology) {

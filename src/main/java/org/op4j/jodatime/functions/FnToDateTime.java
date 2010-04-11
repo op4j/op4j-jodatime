@@ -69,7 +69,7 @@ public final class FnToDateTime {
 	 * be used instead 
 	 * </p>
 	 * 
-	 * @param pattern
+	 * @param pattern string with the format of the input String 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern) {
@@ -82,7 +82,7 @@ public final class FnToDateTime {
 	 * accepting a {@link Locale} must be used instead
 	 * </p>
 	 *                 
-	 * @param pattern
+	 * @param pattern string with the format of the input String 
 	 * @param dateTimeZone
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
@@ -96,8 +96,8 @@ public final class FnToDateTime {
 	 * accepting a {@link Locale} must be used instead
 	 * </p>
 	 * 		                
-	 * @param pattern
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Chronology chronology) {
@@ -109,8 +109,8 @@ public final class FnToDateTime {
 	 * {@link Locale} parameters
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Locale locale) {
@@ -122,8 +122,8 @@ public final class FnToDateTime {
 	 * {@link Locale} parameters
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, String locale) {
@@ -135,8 +135,8 @@ public final class FnToDateTime {
 	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 	 * </p>
 	 *                 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @param dateTimeZone
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
@@ -149,8 +149,8 @@ public final class FnToDateTime {
 	 * The {@link DateTime} is configured with the given {@link DateTimeZone}
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
 	 * @param dateTimeZone
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
@@ -163,9 +163,9 @@ public final class FnToDateTime {
 	 * The {@link DateTime} will be created with the given {@link Chronology}
 	 * </p>
 	 *                 
-	 * @param pattern
-	 * @param locale
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Locale locale, Chronology chronology) {
@@ -177,9 +177,9 @@ public final class FnToDateTime {
 	 * The {@link DateTime} will be created with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param pattern
-	 * @param locale
-	 * @param chronology
+	 * @param pattern string with the format of the input String 
+	 * @param locale {@link Locale} to be used 
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, String locale, Chronology chronology) {
@@ -217,7 +217,7 @@ public final class FnToDateTime {
 	 * {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, DateTime> fromDate(Chronology chronology) {
@@ -255,7 +255,7 @@ public final class FnToDateTime {
 	 * {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, DateTime> fromTimestamp(Chronology chronology) {
@@ -293,7 +293,7 @@ public final class FnToDateTime {
 	 * {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Long, DateTime> fromLong(Chronology chronology) {
@@ -334,7 +334,7 @@ public final class FnToDateTime {
      * <li>year, month, day</li>
      * </p>
      * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Collection<Integer>, DateTime> fromIntegerFieldCollection(Chronology chronology) {
@@ -376,7 +376,7 @@ public final class FnToDateTime {
      * <li>year, month, day</li>
      * </p>
      * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Integer[], DateTime> fromIntegerFieldArray(Chronology chronology) {
@@ -418,7 +418,7 @@ public final class FnToDateTime {
      * <li>year, month, day</li>
      * </p>
      * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, DateTime> fromStringFieldCollection(Chronology chronology) {
@@ -460,7 +460,7 @@ public final class FnToDateTime {
      * <li>year, month, day</li>
      * </p>
      * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String[], DateTime> fromStringFieldArray(Chronology chronology) {
@@ -496,7 +496,7 @@ public final class FnToDateTime {
 	 * It converts a {@link Calendar} into a {@link DateTime} with the given {@link Chronology}
 	 * </p>
 	 * 
-	 * @param chronology
+	 * @param chronology {@link Chronology} to be used 
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, DateTime> fromCalendar(Chronology chronology) {
