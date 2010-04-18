@@ -16,7 +16,6 @@ import org.joda.time.chrono.GregorianChronology;
 import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
-import org.op4j.jodatime.functions.FnJodaToString;
 import org.op4j.jodatime.functions.FnJodaToString.FormatType;
 
 public class JodaToStringTest extends TestCase {
@@ -42,6 +41,11 @@ public class JodaToStringTest extends TestCase {
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS"),
 				result.get(0));
+		
+		result = Op.onList(targets).forEach().exec(FnJodaToString.fromBaseDateTime(FormatType.STYLE, 
+		        "L-")).get();
+		assertEquals(targets.get(0).toString(DateTimeFormat.forStyle("L-")),
+                result.get(0));
 	}
 
 	@Test
@@ -106,7 +110,13 @@ public class JodaToStringTest extends TestCase {
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.fullDateTime()),
-				result.get(0));		
+				result.get(0));	
+		
+		result = Op.onList(targets).forEach().exec(FnJodaToString
+                .fromBaseDateTime(DateTimeFormat.mediumDate())).get();
+		assertEquals(targets.get(0).toString(
+                DateTimeFormat.mediumDate()),
+                result.get(0));     
 	}
 	
 	@Test
