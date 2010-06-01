@@ -24,20 +24,11 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Locale;
 
-import org.apache.commons.lang.LocaleUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.AbstractNullAsNullFunction;
-import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Function;
 
 /**
@@ -46,15 +37,10 @@ import org.op4j.functions.Function;
  * 
  * @author Soraya S&aacute;nchez Labandeira
  *
+ * @deprecated use {@link FnLocalTime} instead
  */
+@Deprecated
 public final class FnToDateTime {
-	
-	private final static TimestampToDateTime TIMESTAMP_TO_DATE_TIME = new TimestampToDateTime();
-	private final static LongToDateTime LONG_TO_DATE_TIME = new LongToDateTime();
-	private final static IntegerFieldCollectionToDateTime INTEGER_FIELD_COLLECTION_TO_DATE_TIME = new IntegerFieldCollectionToDateTime();
-	private final static IntegerFieldArrayToDateTime INTEGER_FIELD_ARRAY_TO_DATE_TIME = new IntegerFieldArrayToDateTime();
-	private final static StringFieldCollectionToDateTime STRING_FIELD_COLLECTION_TO_DATE_TIME = new StringFieldCollectionToDateTime();
-	private final static StringFieldArrayToDateTime STRING_FIELD_ARRAY_TO_DATE_TIME = new StringFieldArrayToDateTime();
 	
 	private FnToDateTime() {
 		super();
@@ -73,7 +59,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern) {
-		return new StringToDateTime(pattern);
+		return FnDateTime.strToDateTime(pattern);
 	}	
 	/**
 	 * <p>
@@ -87,7 +73,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, DateTimeZone dateTimeZone) {
-		return new StringToDateTime(pattern, dateTimeZone);
+		return FnDateTime.strToDateTime(pattern, dateTimeZone);
 	}	
 	/**
 	 * <p>
@@ -101,7 +87,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Chronology chronology) {
-		return new StringToDateTime(pattern, chronology);
+		return FnDateTime.strToDateTime(pattern, chronology);
 	}	
 	/**
 	 * <p>
@@ -114,7 +100,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Locale locale) {
-		return new StringToDateTime(pattern, locale);
+		return FnDateTime.strToDateTime(pattern, locale);
 	}
 	/**
 	 * <p>
@@ -127,7 +113,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, String locale) {
-		return new StringToDateTime(pattern, locale);
+		return FnDateTime.strToDateTime(pattern, locale);
 	}
 	/**
 	 * <p>
@@ -141,7 +127,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return new StringToDateTime(pattern, locale, dateTimeZone);
+		return FnDateTime.strToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -155,7 +141,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return new StringToDateTime(pattern, locale, dateTimeZone);
+		return FnDateTime.strToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -169,7 +155,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, Locale locale, Chronology chronology) {
-		return new StringToDateTime(pattern, locale, chronology);
+		return FnDateTime.strToDateTime(pattern, locale, chronology);
 	}
 	/**
 	 * <p>
@@ -183,7 +169,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String, DateTime> fromString(String pattern, String locale, Chronology chronology) {
-		return new StringToDateTime(pattern, locale, chronology);
+		return FnDateTime.strToDateTime(pattern, locale, chronology);
 	}
 	//
 	
@@ -197,7 +183,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input 
 	 */
 	public static final <T extends Date> Function<T, DateTime> fromDate() {
-		return new DateToDateTime<T>();
+		return FnDateTime.dateToDateTime();
 	}
 	/**
 	 * <p>
@@ -209,7 +195,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, DateTime> fromDate(DateTimeZone dateTimeZone) {
-		return new DateToDateTime<T>(dateTimeZone);
+		return FnDateTime.dateToDateTime(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -221,7 +207,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, DateTime> fromDate(Chronology chronology) {
-		return new DateToDateTime<T>(chronology);
+		return FnDateTime.dateToDateTime(chronology);
 	}
 	//
 	
@@ -235,7 +221,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input 
 	 */
 	public static final Function<Timestamp, DateTime> fromTimestamp() {
-		return TIMESTAMP_TO_DATE_TIME;
+		return FnDateTime.timestampToDateTime();
 	}
 	/**
 	 * <p>
@@ -247,7 +233,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, DateTime> fromTimestamp(DateTimeZone dateTimeZone) {
-		return new TimestampToDateTime(dateTimeZone);
+		return FnDateTime.timestampToDateTime(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -259,7 +245,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, DateTime> fromTimestamp(Chronology chronology) {
-		return new TimestampToDateTime(chronology);
+		return FnDateTime.timestampToDateTime(chronology);
 	}
 	//
 		
@@ -273,7 +259,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input 
 	 */
 	public static final Function<Long, DateTime> fromLong() {
-		return LONG_TO_DATE_TIME;
+		return FnDateTime.longToDateTime();
 	}
 	/**
 	 * <p>
@@ -285,7 +271,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Long, DateTime> fromLong(DateTimeZone dateTimeZone) {
-		return new LongToDateTime(dateTimeZone);
+		return FnDateTime.longToDateTime(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -297,7 +283,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Long, DateTime> fromLong(Chronology chronology) {
-		return new LongToDateTime(chronology);
+		return FnDateTime.longToDateTime(chronology);
 	}
 	//
 	
@@ -319,7 +305,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input 
 	 */
 	public static final Function<Collection<Integer>, DateTime> fromIntegerFieldCollection() {
-		return INTEGER_FIELD_COLLECTION_TO_DATE_TIME;
+		return FnDateTime.integerFieldCollectionToDateTime();
 	}
 	/**
 	 * <p>
@@ -340,7 +326,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Collection<Integer>, DateTime> fromIntegerFieldCollection(Chronology chronology) {
-		return new  IntegerFieldCollectionToDateTime(chronology);
+		return FnDateTime.integerFieldCollectionToDateTime(chronology);
 	}
 	//
 	
@@ -363,7 +349,7 @@ public final class FnToDateTime {
      * @return the {@link DateTime} created from the input 
 	 */
 	public static final Function<Integer[], DateTime> fromIntegerFieldArray() {
-		return INTEGER_FIELD_ARRAY_TO_DATE_TIME;
+		return FnDateTime.integerFieldArrayToDateTime();
 	}
 	/**
 	 * <p>
@@ -384,7 +370,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Integer[], DateTime> fromIntegerFieldArray(Chronology chronology) {
-		return new  IntegerFieldArrayToDateTime(chronology);
+		return FnDateTime.integerFieldArrayToDateTime(chronology);
 	}
 	//
 	
@@ -407,7 +393,7 @@ public final class FnToDateTime {
      * @return the {@link DateTime} created from the input 
 	 */
 	public static final Function<Collection<String>, DateTime> fromStringFieldCollection() {
-		return STRING_FIELD_COLLECTION_TO_DATE_TIME;
+		return FnDateTime.strFieldCollectionToDateTime();
 	}
 	/**
 	 * <p>
@@ -428,7 +414,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, DateTime> fromStringFieldCollection(Chronology chronology) {
-		return new  StringFieldCollectionToDateTime(chronology);
+		return FnDateTime.strFieldCollectionToDateTime(chronology);
 	}
 	//
 	
@@ -451,7 +437,7 @@ public final class FnToDateTime {
      * @return the {@link DateTime} created from the input 
 	 */
 	public static final Function<String[], DateTime> fromStringFieldArray() {
-		return STRING_FIELD_ARRAY_TO_DATE_TIME;
+		return FnDateTime.strFieldArrayToDateTime();
 	}
 	/**
 	 * <p>
@@ -472,7 +458,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final Function<String[], DateTime> fromStringFieldArray(Chronology chronology) {
-		return new  StringFieldArrayToDateTime(chronology);
+		return FnDateTime.strFieldArrayToDateTime(chronology);
 	}
 	//
 	
@@ -486,7 +472,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input 
 	 */
 	public static final <T extends Calendar> Function<T, DateTime> fromCalendar() {
-		return new CalendarToDateTime<T>();
+		return FnDateTime.calendarToDateTime();
 	}
 	/**
 	 * <p>
@@ -497,7 +483,7 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, DateTime> fromCalendar(DateTimeZone dateTimeZone) {
-		return new CalendarToDateTime<T>(dateTimeZone);
+		return FnDateTime.calendarToDateTime(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -508,440 +494,9 @@ public final class FnToDateTime {
 	 * @return the {@link DateTime} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, DateTime> fromCalendar(Chronology chronology) {
-		return new CalendarToDateTime<T>(chronology);
+		return FnDateTime.calendarToDateTime(chronology);
 	}
 	//
 	
-	
-	static abstract class BaseToDateTime<T> extends AbstractNullAsNullFunction<T, DateTime> {
 
-		final DateTimeZone dateTimeZone;
-		final Chronology chronology;
-		
-		public BaseToDateTime() {
-			super();		
-			this.dateTimeZone = null;
-			this.chronology = null;
-		}
-
-		public BaseToDateTime(DateTimeZone dateTimeZone) {
-			super();
-			
-			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
-			
-			this.dateTimeZone = dateTimeZone;
-			this.chronology = null;
-		}
-
-		public BaseToDateTime(Chronology chronology) {
-			super();
-			
-			Validate.notNull(chronology, "chronology can't be null");
-			
-			this.dateTimeZone = null;
-			this.chronology = chronology;
-		}
-	}
-	
-	static final class StringToDateTime extends BaseToDateTime<String> {
-
-		private final String pattern;
-		private final Locale locale;
-		
-		
-		public StringToDateTime(String pattern) {
-			super();
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = null;
-		}
-
-		public StringToDateTime(String pattern, DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = null;
-		}
-
-		public StringToDateTime(String pattern, Chronology chronology) {
-			super(chronology);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = null;
-		}
-
-		public StringToDateTime(String pattern, Locale locale) {
-			super();
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.pattern = pattern;
-			this.locale = locale;
-		}
-		
-		public StringToDateTime(String pattern, String locale) {
-			super();
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = LocaleUtils.toLocale(locale);
-		}
-		
-		public StringToDateTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.pattern = pattern;
-			this.locale = locale;
-		}
-		
-		public StringToDateTime(String pattern, String locale, DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = LocaleUtils.toLocale(locale);
-		}
-		
-		public StringToDateTime(String pattern, Locale locale, Chronology chronology) {
-			super(chronology);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.pattern = pattern;
-			this.locale = locale;
-		}
-		
-		public StringToDateTime(String pattern, String locale, Chronology chronology) {
-			super(chronology);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = LocaleUtils.toLocale(locale);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
-			DateTimeFormatter dateTimeFormatter = null;
-		    if (this.locale == null) {
-		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
-		        	throw new ExecutionException(
-							"The use of MMM, MMMM, EEE or EEEE as part of the date pattern requires a Locale");
-	            }
-		        dateTimeFormatter = DateTimeFormat.forPattern(this.pattern);        
-		    } else {    
-		        dateTimeFormatter = DateTimeFormat.forPattern(this.pattern).withLocale(this.locale);
-		    }
-		    
-		    DateTime result = new DateTime();
-		    if (this.dateTimeZone != null) {	    	
-		    	dateTimeFormatter = dateTimeFormatter.withZone(this.dateTimeZone);
-		    }
-		    if (this.chronology != null) {
-		    	dateTimeFormatter = dateTimeFormatter.withChronology(this.chronology);
-		    }
-			result = dateTimeFormatter.parseDateTime(object).toDateTime();
-			
-			return result;		
-		}
-		
-		
-	}	
-	
-	static final class DateToDateTime<T extends Date> extends BaseToDateTime<T> {
-
-		public DateToDateTime() {
-			super();			
-		}
-
-		public DateToDateTime(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public DateToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new DateTime(object.getTime(), this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new DateTime(object.getTime(), this.chronology);
-			}
-			
-			return new DateTime(object.getTime());
-		}
-		
-		
-	}	
-	
-	static final class TimestampToDateTime extends BaseToDateTime<Timestamp> {
-
-		public TimestampToDateTime() {
-			super();			
-		}
-
-		public TimestampToDateTime(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public TimestampToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new DateTime(object.getTime(), this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new DateTime(object.getTime(), this.chronology);
-			}
-			
-			return new DateTime(object.getTime());
-		}
-	}	
-	
-	static final class LongToDateTime extends BaseToDateTime<Long> {
-
-		public LongToDateTime() {
-			super();			
-		}
-
-		public LongToDateTime(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public LongToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new DateTime(object.longValue(), this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new DateTime(object.longValue(), this.chronology);
-			}
-			
-			return new DateTime(object.longValue());
-		}
-	}	
-	
-	static final class IntegerFieldCollectionToDateTime extends BaseToDateTime<Collection<Integer>> {
-
-		public IntegerFieldCollectionToDateTime() {
-			super();			
-		}
-
-		public IntegerFieldCollectionToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(Collection<Integer> object, ExecCtx ctx) throws Exception {
-			if (object.size() < 4 || object.size() > 7) {
-				throw new ExecutionException(
-						"Integer arguments list for DateTime conversion should of size " +
-						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.size() + " is not valid.");
-			}			
-			
-			Iterator<Integer> iterator = object.iterator();
-			
-			int year = iterator.next().intValue();
-			int month = iterator.next().intValue();
-			int day = iterator.next().intValue();
-			int hour = iterator.next().intValue();
-			int minute = (object.size() >= 5) ? iterator.next().intValue() : 0;
-			int second = (object.size() >= 6) ? iterator.next().intValue() : 0;
-			int milli = (object.size() >= 7) ? iterator.next().intValue() : 0;
-			
-			if (this.chronology != null) {
-	        	return new DateTime(year, month, day, hour, minute, second, milli, this.chronology);
-	        }
-			return new DateTime(year, month, day,  hour, minute, second, milli);
-		}
-	}	
-	
-	static final class IntegerFieldArrayToDateTime extends BaseToDateTime<Integer[]> {
-
-		public IntegerFieldArrayToDateTime() {
-			super();			
-		}
-
-		public IntegerFieldArrayToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
-			if (object.length < 4 || object.length > 7) {
-				throw new ExecutionException(
-						"Integer arguments array for DateTime conversion should of size " +
-						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.length + " is not valid.");
-			}		
-			
-			int year = object[0].intValue();
-			int month = object[1].intValue();
-			int day = object[2].intValue();
-			int hour = object[3].intValue();
-			int minute = (object.length >= 5) ? object[4].intValue() : 0;
-			int second = (object.length >= 6) ? object[5].intValue() : 0;
-			int milli = (object.length >= 7) ? object[6].intValue() : 0;
-			
-			if (this.chronology != null) {
-	        	return new DateTime(year, month, day, hour, minute, second, milli, this.chronology);
-	        }
-			return new DateTime(year, month, day, hour, minute, second, milli);
-		}
-		
-	}	
-	
-	
-	
-	static final class StringFieldCollectionToDateTime extends BaseToDateTime<Collection<String>> {
-
-		public StringFieldCollectionToDateTime() {
-			super();			
-		}
-
-		public StringFieldCollectionToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(Collection<String> object, ExecCtx ctx) throws Exception {
-			if (object.size() < 4 || object.size() > 7) {
-				throw new ExecutionException(
-						"String arguments list for DateTime conversion should of size " +
-						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.size() + " is not valid.");
-			}			
-			
-			Iterator<String> iterator = object.iterator();
-			
-			String year = iterator.next();
-			String month = iterator.next();
-			String day = iterator.next();
-			String hour = iterator.next();
-			String minute = (object.size() >= 5) ? iterator.next() : "0";
-			String second = (object.size() >= 6) ? iterator.next() : "0";
-			String milli = (object.size() >= 7) ? iterator.next() : "0";
-			
-			if (this.chronology != null) {
-	        	return new DateTime(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
-	        			Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli),
-	        			this.chronology);
-	        }
-			return new DateTime(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day),
-					Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli));
-		}
-	}	
-	
-	static final class StringFieldArrayToDateTime extends BaseToDateTime<String[]> {
-
-		public StringFieldArrayToDateTime() {
-			super();			
-		}
-
-		public StringFieldArrayToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
-			if (object.length < 4 || object.length > 7) {
-				throw new ExecutionException(
-						"String arguments array for DateTime conversion should of size " +
-						"between 4 and 7 (year, month, day, hour, minute, second, millisecond). Size " + object.length + " is not valid.");
-			}			
-			
-			String year = object[0];
-			String month = object[1];
-			String day = object[2];
-			String hour = object[3];
-			String minute = (object.length >= 5) ? object[4] : "0";
-			String second = (object.length >= 6) ? object[5] : "0";
-			String milli = (object.length >= 7) ? object[6] : "0";
-			
-			if (this.chronology != null) {
-	        	return new DateTime(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day), 
-	        			Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli),
-	        			this.chronology);
-	        }
-			return new DateTime(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
-					Integer.parseInt(hour), Integer.parseInt(minute), Integer.parseInt(second), Integer.parseInt(milli));
-		}
-	}	
-	
-	static final class CalendarToDateTime<T extends Calendar> extends BaseToDateTime<T> {
-
-		public CalendarToDateTime() {
-			super();			
-		}
-
-		public CalendarToDateTime(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public CalendarToDateTime(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public DateTime nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new DateTime(object, this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new DateTime(object, this.chronology);
-			}
-			return new DateTime(object);
-		}
-	}	
 }
