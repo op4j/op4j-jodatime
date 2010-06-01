@@ -24,21 +24,12 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Locale;
 
-import org.apache.commons.lang.LocaleUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.op4j.exceptions.ExecutionException;
-import org.op4j.functions.AbstractNullAsNullFunction;
-import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Function;
 
 /**
@@ -47,17 +38,11 @@ import org.op4j.functions.Function;
  * 
  * @author Soraya S&aacute;nchez Labandeira
  *
+ * @deprecated use {@link FnLocalTime} instead
  */
+@Deprecated
 public final class FnToLocalDate {
-	
-	private final static TimestampToLocalDate TIMESTAMP_TO_LOCAL_DATE = new TimestampToLocalDate();
-	private final static LongToLocalDate LONG_TO_LOCAL_DATE = new LongToLocalDate();
-	private final static IntegerFieldCollectionToLocalDate INTEGER_FIELD_LIST_TO_LOCAL_DATE = new IntegerFieldCollectionToLocalDate();
-	private final static IntegerFieldArrayToLocalDate INTEGER_FIELD_ARRAY_TO_LOCAL_DATE = new IntegerFieldArrayToLocalDate();
-	private final static StringFieldCollectionToLocalDate STRING_FIELD_COLLECTION_TO_LOCAL_DATE = new StringFieldCollectionToLocalDate();
-	private final static StringFieldArrayToLocalDate STRING_FIELD_ARRAY_TO_LOCAL_DATE = new StringFieldArrayToLocalDate();
-	
-	
+		
 	private FnToLocalDate() {
 		super();
 	}
@@ -74,7 +59,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern) {
-		return new StringToLocalDate(pattern);
+		return FnLocalDate.strToLocalDate(pattern);
 	}	
 	/**
 	 * <p>
@@ -88,7 +73,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, DateTimeZone dateTimeZone) {
-		return new StringToLocalDate(pattern, dateTimeZone);
+		return FnLocalDate.strToLocalDate(pattern, dateTimeZone);
 	}	
 	/**
 	 * <p>
@@ -102,7 +87,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, Chronology chronology) {
-		return new StringToLocalDate(pattern, chronology);
+		return FnLocalDate.strToLocalDate(pattern, chronology);
 	}	
 	/**
 	 * <p>
@@ -115,7 +100,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, Locale locale) {
-		return new StringToLocalDate(pattern, locale);
+		return FnLocalDate.strToLocalDate(pattern, locale);
 	}
 	/**
 	 * <p>
@@ -128,7 +113,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, String locale) {
-		return new StringToLocalDate(pattern, locale);
+		return FnLocalDate.strToLocalDate(pattern, locale);
 	}
 	/**
 	 * <p>
@@ -142,7 +127,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return new StringToLocalDate(pattern, locale, dateTimeZone);
+		return FnLocalDate.strToLocalDate(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -156,7 +141,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return new StringToLocalDate(pattern, locale, dateTimeZone);
+		return FnLocalDate.strToLocalDate(pattern, locale, dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -170,7 +155,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, Locale locale, Chronology chronology) {
-		return new StringToLocalDate(pattern, locale, chronology);
+		return FnLocalDate.strToLocalDate(pattern, locale, chronology);
 	}
 	/**
 	 * <p>
@@ -184,7 +169,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String, LocalDate> fromString(String pattern, String locale, Chronology chronology) {
-		return new StringToLocalDate(pattern, locale, chronology);
+		return FnLocalDate.strToLocalDate(pattern, locale, chronology);
 	}
 	//
 	
@@ -198,7 +183,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input 
 	 */
 	public static final <T extends Date> Function<T, LocalDate> fromDate() {
-		return new DateToLocalDate<T>();
+		return FnLocalDate.dateToLocalDate();
 	}
 	/**
 	 * <p>
@@ -210,7 +195,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, LocalDate> fromDate(DateTimeZone dateTimeZone) {
-		return new DateToLocalDate<T>(dateTimeZone);
+		return FnLocalDate.dateToLocalDate(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -222,7 +207,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final <T extends Date> Function<T, LocalDate> fromDate(Chronology chronology) {
-		return new DateToLocalDate<T>(chronology);
+		return FnLocalDate.dateToLocalDate(chronology);
 	}
 	//
 	
@@ -236,7 +221,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input 
 	 */
 	public static final Function<Timestamp, LocalDate> fromTimestamp() {
-		return TIMESTAMP_TO_LOCAL_DATE;
+		return FnLocalDate.timestampToLocalDate();
 	}
 	/**
 	 * <p>
@@ -248,7 +233,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, LocalDate> fromTimestamp(DateTimeZone dateTimeZone) {
-		return new TimestampToLocalDate(dateTimeZone);
+		return FnLocalDate.timestampToLocalDate(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -260,7 +245,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Timestamp, LocalDate> fromTimestamp(Chronology chronology) {
-		return new TimestampToLocalDate(chronology);
+		return FnLocalDate.timestampToLocalDate(chronology);
 	}
 	//
 		
@@ -274,7 +259,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input 
 	 */
 	public static final Function<Long, LocalDate> fromLong() {
-		return LONG_TO_LOCAL_DATE;
+		return FnLocalDate.longToLocalDate();
 	}
 	/**
 	 * <p>
@@ -286,7 +271,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Long, LocalDate> fromLong(DateTimeZone dateTimeZone) {
-		return new LongToLocalDate(dateTimeZone);
+		return FnLocalDate.longToLocalDate(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -298,7 +283,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Long, LocalDate> fromLong(Chronology chronology) {
-		return new LongToLocalDate(chronology);
+		return FnLocalDate.longToLocalDate(chronology);
 	}
 	//
 	
@@ -319,7 +304,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input
 	 */
 	public static final Function<Collection<Integer>, LocalDate> fromIntegerFieldCollection() {
-		return INTEGER_FIELD_LIST_TO_LOCAL_DATE;
+		return FnLocalDate.integerFieldCollectionToLocalDate();
 	}
 	/**
 	 * <p>
@@ -340,7 +325,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Collection<Integer>, LocalDate> fromIntegerFieldCollection(Chronology chronology) {
-		return new IntegerFieldCollectionToLocalDate(chronology);
+		return FnLocalDate.integerFieldCollectionToLocalDate(chronology);
 	}
 	//
 	
@@ -363,7 +348,7 @@ public final class FnToLocalDate {
      * @return the {@link LocalDate} created from the input
 	 */
 	public static final Function<Integer[], LocalDate> fromIntegerFieldArray() {
-		return INTEGER_FIELD_ARRAY_TO_LOCAL_DATE;
+		return FnLocalDate.integerFieldArrayToLocalDate();
 	}
 	/**
 	 * <p>
@@ -384,7 +369,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Integer[], LocalDate> fromIntegerFieldArray(Chronology chronology) {
-		return new IntegerFieldArrayToLocalDate(chronology);
+		return FnLocalDate.integerFieldArrayToLocalDate(chronology);
 	}
 	//
 	
@@ -407,7 +392,7 @@ public final class FnToLocalDate {
      * @return the {@link LocalDate} created from the input
 	 */
 	public static final Function<Collection<String>, LocalDate> fromStringFieldCollection() {
-		return STRING_FIELD_COLLECTION_TO_LOCAL_DATE;
+		return FnLocalDate.strFieldCollectionToLocalDate();
 	}
 	/**
 	 * <p>
@@ -428,7 +413,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<Collection<String>, LocalDate> fromStringFieldCollection(Chronology chronology) {
-		return new StringFieldCollectionToLocalDate(chronology);
+		return FnLocalDate.strFieldCollectionToLocalDate(chronology);
 	}
 	//
 	
@@ -451,7 +436,7 @@ public final class FnToLocalDate {
      * @return the {@link LocalDate} created from the input
 	 */
 	public static final Function<String[], LocalDate> fromStringFieldArray() {
-		return STRING_FIELD_ARRAY_TO_LOCAL_DATE;
+		return FnLocalDate.strFieldArrayToLocalDate();
 	}
 	/**
 	 * <p>
@@ -472,7 +457,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final Function<String[], LocalDate> fromStringFieldArray(Chronology chronology) {
-		return new  StringFieldArrayToLocalDate(chronology);
+		return FnLocalDate.strFieldArrayToLocalDate(chronology);
 	}
 	//
 	
@@ -486,7 +471,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input
 	 */
 	public static final <T extends Calendar> Function<T, LocalDate> fromCalendar() {
-		return new CalendarToLocalDate<T>();
+		return FnLocalDate.calendarToLocalDate();
 	}
 	/**
 	 * <p>
@@ -497,7 +482,7 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, LocalDate> fromCalendar(DateTimeZone dateTimeZone) {
-		return new CalendarToLocalDate<T>(dateTimeZone);
+		return FnLocalDate.calendarToLocalDate(dateTimeZone);
 	}
 	/**
 	 * <p>
@@ -508,422 +493,8 @@ public final class FnToLocalDate {
 	 * @return the {@link LocalDate} created from the input and arguments 
 	 */
 	public static final <T extends Calendar> Function<T, LocalDate> fromCalendar(Chronology chronology) {
-		return new CalendarToLocalDate<T>(chronology);
+		return FnLocalDate.calendarToLocalDate(chronology);
 	}
 	//
 	
-	
-	static abstract class BaseToLocalDate<T> extends AbstractNullAsNullFunction<T, LocalDate> {
-
-		final DateTimeZone dateTimeZone;
-		final Chronology chronology;
-		
-		public BaseToLocalDate() {
-			super();
-			this.dateTimeZone = null;
-			this.chronology = null;
-		}
-
-		public BaseToLocalDate(DateTimeZone dateTimeZone) {
-			super();
-			
-			Validate.notNull(dateTimeZone, "dateTimeZone can't be null");
-			
-			this.dateTimeZone = dateTimeZone;
-			this.chronology = null;
-		}
-
-		public BaseToLocalDate(Chronology chronology) {
-			super();
-			
-			Validate.notNull(chronology, "chronology can't be null");
-			
-			this.chronology = chronology;
-			this.dateTimeZone = null;			
-		}
-	}
-	
-	static final class StringToLocalDate extends BaseToLocalDate<String> {
-
-		private final String pattern;
-		private final Locale locale;
-		
-		
-		public StringToLocalDate(String pattern) {
-			super();
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = null;
-		}
-
-		public StringToLocalDate(String pattern, DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = null;
-		}
-
-		public StringToLocalDate(String pattern, Chronology chronology) {
-			super(chronology);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = null;
-		}
-
-		public StringToLocalDate(String pattern, Locale locale) {
-			super();
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.pattern = pattern;
-			this.locale = locale;
-		}
-		
-		public StringToLocalDate(String pattern, String locale) {
-			super();
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = LocaleUtils.toLocale(locale);
-		}
-		
-		public StringToLocalDate(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.pattern = pattern;
-			this.locale = locale;
-		}
-		
-		public StringToLocalDate(String pattern, String locale, DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-						
-			this.pattern = pattern;
-			this.locale = LocaleUtils.toLocale(locale);
-		}
-		
-		public StringToLocalDate(String pattern, Locale locale, Chronology chronology) {
-			super(chronology);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-						
-			this.pattern = pattern;
-			this.locale = locale;
-		}
-		
-		public StringToLocalDate(String pattern, String locale, Chronology chronology) {
-			super(chronology);
-			
-			Validate.notEmpty(pattern, "pattern can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.pattern = pattern;
-			this.locale = LocaleUtils.toLocale(locale);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(String object, ExecCtx ctx) throws Exception {
-			DateTimeFormatter dateTimeFormatter = null;
-		    if (this.locale == null) {
-		        if (StringUtils.contains(this.pattern, "MMM") || StringUtils.contains(this.pattern, "EEE")) {
-		        	throw new ExecutionException(
-							"The use of MMM, MMMM, EEE or EEEE as part of the date pattern requires a Locale");
-	            }
-		        dateTimeFormatter = DateTimeFormat.forPattern(this.pattern);        
-		    } else {    
-		        dateTimeFormatter = DateTimeFormat.forPattern(this.pattern).withLocale(this.locale);
-		    }
-		    
-		    LocalDate result = new LocalDate();
-		    if (this.dateTimeZone != null) {	    	
-		    	dateTimeFormatter = dateTimeFormatter.withZone(this.dateTimeZone);
-		    }
-		    if (this.chronology != null) {
-		    	dateTimeFormatter = dateTimeFormatter.withChronology(this.chronology);
-		    }
-			result = dateTimeFormatter.parseDateTime(object).toLocalDate();
-			
-			return result;		
-		}
-		
-		
-	}	
-	
-	static final class DateToLocalDate<T extends Date> extends BaseToLocalDate<T> {
-
-		public DateToLocalDate() {
-			super();			
-		}
-
-		public DateToLocalDate(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public DateToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new LocalDate(object.getTime(), this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new LocalDate(object.getTime(), this.chronology);
-			}
-			
-			return new LocalDate(object.getTime());
-		}
-		
-		
-	}	
-	
-	static final class TimestampToLocalDate extends BaseToLocalDate<Timestamp> {
-
-		public TimestampToLocalDate() {
-			super();			
-		}
-
-		public TimestampToLocalDate(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public TimestampToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(Timestamp object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new LocalDate(object.getTime(), this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new LocalDate(object.getTime(), this.chronology);
-			}
-			
-			return new LocalDate(object.getTime());
-		}
-	}	
-	
-	static final class LongToLocalDate extends BaseToLocalDate<Long> {
-
-		public LongToLocalDate() {
-			super();			
-		}
-
-		public LongToLocalDate(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public LongToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(Long object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new LocalDate(object.longValue(), this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new LocalDate(object.longValue(), this.chronology);
-			}
-			
-			return new LocalDate(object.longValue());
-		}
-	}	
-	
-	static final class IntegerFieldCollectionToLocalDate extends BaseToLocalDate<Collection<Integer>> {
-
-		public IntegerFieldCollectionToLocalDate() {
-			super();			
-		}
-
-		public IntegerFieldCollectionToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(Collection<Integer> object, ExecCtx ctx) throws Exception {
-			if (object.size() < 1 || object.size() > 3) {
-				throw new ExecutionException(
-						"Integer arguments list for LocalDate conversion should hava a size " +
-						"between 1 and 3. Size " + object.size() + " is not valid.");
-			}			
-			
-			Iterator<Integer> iterator = object.iterator();
-			
-			int year = iterator.next().intValue();
-			int month = (object.size() >= 2) ? iterator.next().intValue() : 1;
-			int day = (object.size() >= 3) ? iterator.next().intValue() : 1;
-			
-			if (this.chronology != null) {
-	        	return new LocalDate(year, month, day, this.chronology);
-	        }
-			return new LocalDate(year, month, day);
-		}
-	}	
-	
-	static final class IntegerFieldArrayToLocalDate extends BaseToLocalDate<Integer[]> {
-
-		public IntegerFieldArrayToLocalDate() {
-			super();			
-		}
-
-		public IntegerFieldArrayToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(Integer[] object, ExecCtx ctx) throws Exception {
-			if (object.length < 1 || object.length > 3) {
-				throw new ExecutionException(
-						"Integer arguments array for LocalDate conversion should hava a size " +
-						"between 1 and 3. Size " + object.length + " is not valid.");
-			}			
-			
-			int year = object[0].intValue();
-			int month = (object.length >= 2) ? object[1].intValue() : 1;
-			int day = (object.length >= 3) ? object[2].intValue() : 1;
-			
-			if (this.chronology != null) {
-	        	return new LocalDate(year, month, day, this.chronology);
-	        }
-			return new LocalDate(year, month, day);
-		}
-		
-	}	
-	
-	
-	
-	static final class StringFieldCollectionToLocalDate extends BaseToLocalDate<Collection<String>> {
-
-		public StringFieldCollectionToLocalDate() {
-			super();			
-		}
-
-		public StringFieldCollectionToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(Collection<String> object, ExecCtx ctx) throws Exception {
-			if (object.size() < 1 || object.size() > 3) {
-				throw new ExecutionException(
-						"String arguments list for LocalDate conversion should hava a size " +
-						"between 1 and 3. Size " + object.size() + " is not valid.");
-			}			
-			
-			Iterator<String> iterator = object.iterator();
-			
-			String year = iterator.next();
-			String month = (object.size() >= 2) ? iterator.next() : "1";
-			String day = (object.size() >= 3) ? iterator.next() : "1";
-			
-			if (this.chronology != null) {
-	        	return new LocalDate(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day),
-	        			this.chronology);
-	        }
-			return new LocalDate(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
-		}
-		
-		
-	}	
-	
-	static final class StringFieldArrayToLocalDate extends BaseToLocalDate<String[]> {
-
-		public StringFieldArrayToLocalDate() {
-			super();			
-		}
-
-		public StringFieldArrayToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(String[] object, ExecCtx ctx) throws Exception {
-			if (object.length < 1 || object.length > 3) {
-				throw new ExecutionException(
-						"String arguments array for LocalDate conversion should a size " +
-						"between 1 and 3. Size " + object.length + " is not valid.");
-			}			
-			
-			String year = object[0];
-			String month = (object.length >= 2) ? object[1] : "1";
-			String day = (object.length >= 3) ? object[2] : "1";
-			
-			if (this.chronology != null) {
-	        	return new LocalDate(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day), 
-	        			this.chronology);
-	        }
-			return new LocalDate(Integer.parseInt(year),Integer.parseInt(month), Integer.parseInt(day));
-		}
-	}	
-	
-	static final class CalendarToLocalDate<T extends Calendar> extends BaseToLocalDate<T> {
-
-		public CalendarToLocalDate() {
-			super();			
-		}
-
-		public CalendarToLocalDate(DateTimeZone dateTimeZone) {
-			super(dateTimeZone);
-		}
-
-		public CalendarToLocalDate(Chronology chronology) {
-			super(chronology);
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public LocalDate nullAsNullExecute(T object, ExecCtx ctx) throws Exception {
-			if (this.dateTimeZone != null) {
-				return new LocalDate(object, this.dateTimeZone);
-			}
-			if (this.chronology != null) {
-				return new LocalDate(object, this.chronology);
-			}
-			return new LocalDate(object);
-		}
-	}	
 }
