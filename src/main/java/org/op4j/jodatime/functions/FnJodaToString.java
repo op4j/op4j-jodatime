@@ -22,16 +22,11 @@ package org.op4j.jodatime.functions;
 
 import java.util.Locale;
 
-import org.apache.commons.lang.LocaleUtils;
-import org.apache.commons.lang.Validate;
 import org.joda.time.Chronology;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.joda.time.base.BaseDateTime;
-import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.op4j.functions.AbstractNullAsNullFunction;
-import org.op4j.functions.ExecCtx;
 import org.op4j.functions.Function;
 
 /**
@@ -40,11 +35,12 @@ import org.op4j.functions.Function;
  * 
  * @author Soraya S&aacute;nchez Labandeira
  *
+ * @deprecated use {@link FnLocalTime} instead
  */
+@Deprecated
 public final class FnJodaToString {
 
-	
-	private FnJodaToString() {
+    private FnJodaToString() {
 		super();
 	}
 	
@@ -58,7 +54,7 @@ public final class FnJodaToString {
      * @return the {@link String} created from the input and arguments 
      */
     public static final Function<BaseDateTime, String> fromBaseDateTime() {
-        return new BaseDateTimeToStr();
+        return FnJodaString.baseDateTimeToStr();
     }
     
 	/**
@@ -72,7 +68,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format) {
-		return new BaseDateTimeToStr(formatType, format);
+		return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
 	}
 	
 	/**
@@ -87,7 +83,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final Locale locale) {
-		return new BaseDateTimeToStr(formatType, format, locale);
+		return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
 	}
 	
 	/**
@@ -102,7 +98,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final Chronology chronology) {
-		return new BaseDateTimeToStr(formatType, format, chronology);
+		return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
 	}
 	/**
 	 * <p>
@@ -116,7 +112,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final FormatType formatType, final String format, final String locale) {
-		return new BaseDateTimeToStr(formatType, format, locale);
+		return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
 	}
 	/**
 	 * <p>
@@ -127,7 +123,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<BaseDateTime, String> fromBaseDateTime(final DateTimeFormatter formatter) {
-		return new BaseDateTimeToStr(formatter);
+		return FnJodaString.baseDateTimeToStr(formatter);
 	}
 	
 	
@@ -141,7 +137,7 @@ public final class FnJodaToString {
      * @return the {@link String} created from the input and arguments 
      */
     public static final Function<LocalTime, String> fromLocalTime() {
-        return new LocalTimeToStr();
+        return FnJodaString.localTimeToStr();
     }
     
 	/**
@@ -155,7 +151,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format) {
-		return new LocalTimeToStr(formatType, format);
+		return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
 	}
 	
 	/**
@@ -170,7 +166,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final Locale locale) {
-		return new LocalTimeToStr(formatType, format, locale);
+		return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
 	}
 	
 	/**
@@ -185,7 +181,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final Chronology chronology) {
-		return new LocalTimeToStr(formatType, format, chronology);
+		return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
 	}
 	
 	/**
@@ -200,7 +196,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final FormatType formatType, final String format, final String locale) {
-		return new LocalTimeToStr(formatType, format, locale);
+		return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
 	}
 	/**
 	 * <p>
@@ -211,7 +207,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalTime, String> fromLocalTime(final DateTimeFormatter formatter) {
-		return new LocalTimeToStr(formatter);
+		return FnJodaString.localTimeToStr(formatter);
 	}
 	
 	
@@ -225,7 +221,7 @@ public final class FnJodaToString {
      * @return the {@link String} created from the input and arguments 
      */
     public static final Function<LocalDate, String> fromLocalDate() {
-        return new LocalDateToStr();
+        return FnJodaString.localDateToStr();
     }
 	/**
 	 * <p>
@@ -238,7 +234,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format) {
-		return new LocalDateToStr(formatType, format);
+		return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
 	}
 	/**
 	 * <p>
@@ -252,7 +248,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final Locale locale) {
-		return new LocalDateToStr(formatType, format, locale);
+		return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
 	}
 	/**
 	 * <p>
@@ -266,7 +262,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final Chronology chronology) {
-		return new LocalDateToStr(formatType, format, chronology);
+		return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
 	}
 	/**
 	 * <p>
@@ -280,7 +276,7 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final FormatType formatType, final String format, final String locale) {
-		return new LocalDateToStr(formatType, format, locale);
+		return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
 	}
 	
 	/**
@@ -292,521 +288,12 @@ public final class FnJodaToString {
 	 * @return the {@link String} created from the input and arguments 
 	 */
 	public static final Function<LocalDate, String> fromLocalDate(final DateTimeFormatter formatter) {
-		return new LocalDateToStr(formatter);
+		return FnJodaString.localDateToStr(formatter);
 	}
-	
-	
+
 	public static enum FormatType {
-		PATTERN,
-		STYLE			
-	}
+        PATTERN,
+        STYLE           
+    }
 	
-	static final class BaseDateTimeToStr extends AbstractNullAsNullFunction<BaseDateTime, String> {
-
-		private final ConversionType conversionType;		
-		private final DateTimeFormatter formatter;
-		private final String pattern;
-		private final String style;
-		private final Locale locale;
-		private final Chronology chronology;
-		
-		private static enum ConversionType {
-			FROM_PATTERN,
-			FROM_STYLE,
-			FROM_FORMATTER
-		}
-		
-		public BaseDateTimeToStr() {
-            super();
-            
-            this.conversionType = null;            
-            this.formatter = null;
-            this.pattern = null;
-            this.style = null;
-            this.locale = null;
-            this.chronology = null;
-            
-        }
-		
-		public BaseDateTimeToStr(DateTimeFormatter formatter) {
-			super();
-			
-			Validate.notNull(formatter, "formatter can't be null");
-			
-			this.conversionType = ConversionType.FROM_FORMATTER;			
-			this.formatter = formatter;
-			this.pattern = null;
-			this.style = null;
-			this.locale = null;
-			this.chronology = null;
-			
-		}
-		
-		public BaseDateTimeToStr(FormatType formatType, String format) {
-			super();		
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			
-			this.locale = null;
-			this.formatter = null;
-			this.chronology = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default: // STYLE
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;	
-			}
-		}
-		
-		public BaseDateTimeToStr(FormatType formatType, String format, Chronology chronology) {
-			super();			
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notNull(chronology, "chronology can't be null");
-			
-			this.chronology = chronology;
-			this.locale = null;
-			this.formatter = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default: // STYLE
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;	
-			}
-		}
-		
-		public BaseDateTimeToStr(FormatType formatType, String format, Locale locale) {
-			super();			
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.locale = locale;
-			this.formatter = null;
-			this.chronology = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default: // STYLE
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;	
-			}
-		}
-		
-		public BaseDateTimeToStr(FormatType formatType, String format, String locale) {
-			super();	
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.locale = LocaleUtils.toLocale(locale);
-			this.formatter = null;
-			this.chronology = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default: // STYLE
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;	
-			}
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public String nullAsNullExecute(final BaseDateTime baseDateTime, ExecCtx ctx) throws Exception {
-			if (this.conversionType == null) {
-			    return baseDateTime.toString();
-			}
-		    switch (this.conversionType) {
-				case FROM_FORMATTER:
-					return baseDateTime.toString(this.formatter);					
-				default:
-					// Either pattern or style
-					DateTimeFormatter f = null;
-					if (ConversionType.FROM_PATTERN.equals(this.conversionType)) {
-						f = DateTimeFormat.forPattern(this.pattern);
-					} else {
-						f = DateTimeFormat.forStyle(this.style);
-					}
-					if (this.locale != null) {
-						f = f.withLocale(this.locale);
-					}
-					if (this.chronology != null) {
-						f = f.withChronology(this.chronology);
-					}
-					return baseDateTime.toString(f);					
-			}			
-		}		
-	}
-	
-	static final class LocalTimeToStr extends AbstractNullAsNullFunction<LocalTime, String> {
-
-		private final ConversionType conversionType;		
-		private final DateTimeFormatter formatter;
-		private final String pattern;
-		private final String style;
-		private final Locale locale;
-		private final Chronology chronology;
-		
-		private static enum ConversionType {
-			FROM_PATTERN,
-			FROM_STYLE,
-			FROM_FORMATTER
-		}
-		
-		public LocalTimeToStr() {
-            super();
-            
-            this.conversionType = null;
-            this.formatter = null;
-            this.pattern = null;
-            this.style = null;
-            this.locale = null;
-            this.chronology = null;
-        }
-		
-		public LocalTimeToStr(DateTimeFormatter formatter) {
-			super();
-			
-			Validate.notNull(formatter, "formatter can't be null");
-			
-			this.conversionType = ConversionType.FROM_FORMATTER;
-			this.formatter = formatter;
-			this.pattern = null;
-			this.style = null;
-			this.locale = null;
-			this.chronology = null;
-		}
-		
-		public LocalTimeToStr(FormatType formatType, String format) {
-			super();			
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			
-			this.locale = null;
-			this.formatter = null;
-			this.chronology = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-		}
-		
-		public LocalTimeToStr(FormatType formatType, String format, Chronology chronology) {
-			super();			
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notNull(chronology, "chronology can't be null");
-			
-			this.chronology = chronology;
-			this.locale = null;
-			this.formatter = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-		}
-		
-		public LocalTimeToStr(FormatType formatType, String format, Locale locale) {
-			super();			
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.locale = locale;
-			this.formatter = null;
-			this.chronology = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-		}
-		
-		public LocalTimeToStr(FormatType formatType, String format, String locale) {
-			super();			
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.locale = LocaleUtils.toLocale(locale);
-			this.formatter = null;
-			this.chronology = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public String nullAsNullExecute(final LocalTime localTime, ExecCtx ctx) throws Exception {
-			if (this.conversionType == null) {
-			    return localTime.toString();
-			}
-			
-		    switch (this.conversionType) {
-				case FROM_FORMATTER:
-					return localTime.toString(this.formatter);					
-				default:
-					// Either pattern or style
-					DateTimeFormatter f = null;
-					if (ConversionType.FROM_PATTERN.equals(this.conversionType)) {
-						f = DateTimeFormat.forPattern(this.pattern);
-					} else {
-						f = DateTimeFormat.forStyle(this.style);
-					}
-					if (this.locale != null) {
-						f = f.withLocale(this.locale);
-					}
-					if (this.chronology != null) {
-						f = f.withChronology(this.chronology);
-					}
-					return localTime.toString(f);					
-			}			
-		}
-	}
-	
-	static final class LocalDateToStr extends AbstractNullAsNullFunction<LocalDate, String> {
-
-		private final ConversionType conversionType;		
-		private final DateTimeFormatter formatter;
-		private final String pattern;
-		private final String style;
-		private final Locale locale;
-		private final Chronology chronology;
-		
-		private static enum ConversionType {
-			FROM_PATTERN,
-			FROM_STYLE,
-			FROM_FORMATTER
-		}
-		
-		public LocalDateToStr() {
-            super();
-            
-            this.formatter = null;
-            this.conversionType = null;
-            this.pattern = null;
-            this.style = null;
-            this.locale = null;
-            this.chronology = null;
-        }
-		
-		public LocalDateToStr(DateTimeFormatter formatter) {
-			super();
-			
-			Validate.notNull(formatter, "formatter can't be null");
-			
-			this.formatter = formatter;
-			this.conversionType = ConversionType.FROM_FORMATTER;
-			this.pattern = null;
-			this.style = null;
-			this.locale = null;
-			this.chronology = null;
-		}
-		
-		public LocalDateToStr(FormatType formatType, String format) {
-			super();	
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-						
-			this.locale = null;
-			this.chronology = null;
-			this.formatter = null;
-			
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-		}
-		
-		public LocalDateToStr(FormatType formatType, String format, Chronology chronology) {
-			super();		
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notNull(chronology, "chronology can't be null");
-						
-			this.chronology = chronology;
-			this.locale = null;
-			this.formatter = null;
-						
-			switch (formatType) {
-				case PATTERN:
-					this.style = null;
-					this.pattern = format;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.style = format;
-					this.pattern = null;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-		}		
-		
-		public LocalDateToStr(FormatType formatType, String format, Locale locale) {
-			super();	
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notNull(locale, "locale can't be null");
-			
-			this.locale = locale;
-			this.formatter = null;
-			this.chronology = null;
-						
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-
-		}
-		
-		public LocalDateToStr(FormatType formatType, String format, String locale) {
-			super();	
-			
-			Validate.notNull(formatType, "formatType can't be null");
-			Validate.notEmpty(format, "format can't be neither empty nor null");
-			Validate.notEmpty(locale, "locale can't be neither empty nor null");
-			
-			this.locale = LocaleUtils.toLocale(locale);
-			this.chronology = null;
-			this.formatter = null;
-						
-			switch (formatType) {
-				case PATTERN:
-					this.pattern = format;
-					this.style = null;
-					this.conversionType = ConversionType.FROM_PATTERN;
-					break;
-				default:
-					this.pattern = null;
-					this.style = format;
-					this.conversionType = ConversionType.FROM_STYLE;
-					break;				
-			}
-		}
-		
-		/* (non-Javadoc)
-		 * @see org.op4j.functions.AbstractNullAsNullFunction#nullAsNullExecute(java.lang.Object, org.op4j.functions.ExecCtx)
-		 */
-		@Override
-		public String nullAsNullExecute(final LocalDate localDate, ExecCtx ctx) throws Exception {
-			if (this.conversionType == null) {
-			    return localDate.toString();
-			}
-			
-		    switch (this.conversionType) {
-				case FROM_FORMATTER:
-					return localDate.toString(this.formatter);					
-				default:
-					// Either pattern or style
-					DateTimeFormatter f = null;
-					if (ConversionType.FROM_PATTERN.equals(this.conversionType)) {
-						f = DateTimeFormat.forPattern(this.pattern);
-					} else {
-						f = DateTimeFormat.forStyle(this.style);
-					}
-					if (this.locale != null) {
-						f = f.withLocale(this.locale);
-					}
-					if (this.chronology != null) {
-						f = f.withChronology(this.chronology);
-					}
-					return localDate.toString(f);					
-			}			
-		}
-	}
 }
