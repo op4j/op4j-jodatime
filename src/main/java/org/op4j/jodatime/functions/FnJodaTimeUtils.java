@@ -38,7 +38,7 @@ import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
 import org.joda.time.format.DateTimeFormatter;
 import org.op4j.functions.Function;
-import org.op4j.jodatime.functions.FnJodaToString.FormatType;
+import org.op4j.jodatime.functions.FnJodaString.FormatType;
 
 
 /**
@@ -62,7 +62,7 @@ public class FnJodaTimeUtils {
      * @return the {@link String} created from the input and arguments 
      */
     public static final Function<BaseDateTime, String> baseDateTimeToStr() {
-        return FnJodaToString.fromBaseDateTime();
+        return FnJodaString.baseDateTimeToStr();
     }
 	/**
      * <p>
@@ -72,11 +72,24 @@ public class FnJodaTimeUtils {
      * 
      * @param formatType the format {@link FormatType} 
      * @param format string with the format used for the output 
-     * @return the {@link String} created from the input and arguments 
+     * @return the {@link String} created from the input and arguments
+     * 
+     * @since 1.1
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format) {
-		return FnJodaToString.fromBaseDateTime(formatType, format);
+		return FnJodaString.baseDateTimeToStr(formatType, format);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @return
+	 * @deprecated 
+	 */
+	@Deprecated
+    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
+        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
+    }
 	
 	/**
      * <p>
@@ -88,10 +101,25 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format, final Locale locale) {
-		return FnJodaToString.fromBaseDateTime(formatType, format, locale);
+		return FnJodaString.baseDateTimeToStr(formatType, format, locale);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
+        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
+    }
 	
 	/**
      * <p>
@@ -103,10 +131,26 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format, final Chronology chronology) {
-		return FnJodaToString.fromBaseDateTime(formatType, format, chronology);
+		return FnJodaString.baseDateTimeToStr(formatType, format, chronology);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param chronology
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
+        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
+    }
+	
 	/**
      * <p>
      * It converts the input {@link BaseDateTime} into a {@link String} by means of the given pattern or style
@@ -117,10 +161,26 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final FormatType formatType, final String format, final String locale) {
-		return FnJodaToString.fromBaseDateTime(formatType, format, locale);
+		return FnJodaString.baseDateTimeToStr(formatType, format, locale);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
+        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
+    }
+	
 	/**
      * <p>
      * It converts the input {@link BaseDateTime} into a {@link String} by means of the given {@link DateTimeFormatter}
@@ -130,7 +190,7 @@ public class FnJodaTimeUtils {
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<BaseDateTime, String> baseDateTimeToStr(final DateTimeFormatter formatter) {
-		return FnJodaToString.fromBaseDateTime(formatter);
+		return FnJodaString.baseDateTimeToStr(formatter);
 	}
 	
 	/**
@@ -141,7 +201,7 @@ public class FnJodaTimeUtils {
      * @return the {@link String} created from the input and arguments 
      */
     public static final Function<LocalTime, String> localTimeToStr() {
-        return FnJodaToString.fromLocalTime();
+        return FnJodaString.localTimeToStr();
     }
     
 	/**
@@ -153,10 +213,26 @@ public class FnJodaTimeUtils {
      * @param formatType the format {@link FormatType} 
      * @param format string with the format used for the output 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format) {
-		return FnJodaToString.fromLocalTime(formatType, format);
+		return FnJodaString.localTimeToStr(formatType, format);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
+        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
+    }
+	
+	
 	
 	/**
      * <p>
@@ -168,10 +244,26 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format, final Locale locale) {
-		return FnJodaToString.fromLocalTime(formatType, format, locale);
+		return FnJodaString.localTimeToStr(formatType, format, locale);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
+        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
+    }
+	
 	
 	/**
      * <p>
@@ -183,10 +275,26 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format, final Chronology chronology) {
-		return FnJodaToString.fromLocalTime(formatType, format, chronology);
+		return FnJodaString.localTimeToStr(formatType, format, chronology);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param chronology
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
+        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
+    }
+	
 	
 	/**
      * <p>
@@ -198,10 +306,27 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format, final String locale) {
-		return FnJodaToString.fromLocalTime(formatType, format, locale);
+		return FnJodaString.localTimeToStr(formatType, format, locale);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
+        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
+    }
+	
+	
 	/**
      * <p>
      * It converts the input {@link LocalTime} into a {@link String} by means of the given {@link DateTimeFormatter}
@@ -211,7 +336,7 @@ public class FnJodaTimeUtils {
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalTime, String> localTimeToStr(final DateTimeFormatter formatter) {
-		return FnJodaToString.fromLocalTime(formatter);
+		return FnJodaString.localTimeToStr(formatter);
 	}
 	
 	/**
@@ -222,7 +347,7 @@ public class FnJodaTimeUtils {
      * @return the {@link String} created from the input and arguments 
      */
     public static final Function<LocalDate, String> localDateToStr() {
-        return FnJodaToString.fromLocalDate();
+        return FnJodaString.localDateToStr();
     }
 	/**
      * <p>
@@ -233,10 +358,26 @@ public class FnJodaTimeUtils {
      * @param formatType the format {@link FormatType} 
      * @param format string with the format used for the output 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format) {
-		return FnJodaToString.fromLocalDate(formatType, format);
+		return FnJodaString.localDateToStr(formatType, format);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
+        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
+    }
+	
+	
 	/**
      * <p>
      * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
@@ -247,10 +388,27 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param locale {@link Locale} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format, final Locale locale) {
-		return FnJodaToString.fromLocalDate(formatType, format, locale);
+		return FnJodaString.localDateToStr(formatType, format, locale);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
+        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
+    }
+	
+	
 	/**
      * <p>
      * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
@@ -261,10 +419,28 @@ public class FnJodaTimeUtils {
      * @param format string with the format used for the output 
      * @param chronology {@link Chronology} to be used 
      * @return the {@link String} created from the input and arguments 
+     * 
+     * @since 1.1
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format, final Chronology chronology) {
-		return FnJodaToString.fromLocalDate(formatType, format, chronology);
+		return FnJodaString.localDateToStr(formatType, format, chronology);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param chronology
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
+        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
+    }
+	
+	
+	
 	/**
      * <p>
      * It converts the input {@link LocalDate} into a {@link String} by means of the given pattern
@@ -274,11 +450,27 @@ public class FnJodaTimeUtils {
      * @param formatType the format {@link FormatType} 
      * @param format string with the format used for the output 
      * @param locale {@link Locale} to be used 
-     * @return the {@link String} created from the input and arguments 
+     * @return the {@link String} created from the input and arguments
+     * 
+     *  @since 1.1
      */
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format, final String locale) {
-		return FnJodaToString.fromLocalDate(formatType, format, locale);
+		return FnJodaString.localDateToStr(formatType, format, locale);
 	}
+	
+	/**
+	 * @param formatType
+	 * @param format
+	 * @param locale
+	 * @return
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
+        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
+    }
+	
 	
 	/**
      * <p>
@@ -289,7 +481,7 @@ public class FnJodaTimeUtils {
      * @return the {@link String} created from the input and arguments 
      */
 	public static final Function<LocalDate, String> localDateToStr(final DateTimeFormatter formatter) {
-		return FnJodaToString.fromLocalDate(formatter);
+		return FnJodaString.localDateToStr(formatter);
 	}
 	
 	/**
@@ -303,7 +495,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern) {
-		return FnToDateMidnight.fromString(pattern);
+		return FnDateMidnight.strToDateMidnight(pattern);
 	}	
 	/**
      * <p>
@@ -317,7 +509,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, DateTimeZone dateTimeZone) {
-		return FnToDateMidnight.fromString(pattern, dateTimeZone);
+		return FnDateMidnight.strToDateMidnight(pattern, dateTimeZone);
 	}	
 	/**
      * <p>
@@ -331,7 +523,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Chronology chronology) {
-		return FnToDateMidnight.fromString(pattern, chronology);
+		return FnDateMidnight.strToDateMidnight(pattern, chronology);
 	}	
 	/**
      * <p>
@@ -344,7 +536,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Locale locale) {
-		return FnToDateMidnight.fromString(pattern, locale);
+		return FnDateMidnight.strToDateMidnight(pattern, locale);
 	}
 	/**
      * <p>
@@ -357,7 +549,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, String locale) {
-		return FnToDateMidnight.fromString(pattern, locale);
+		return FnDateMidnight.strToDateMidnight(pattern, locale);
 	}
 	/**
      * <p>
@@ -371,7 +563,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return FnToDateMidnight.fromString(pattern, locale, dateTimeZone);
+		return FnDateMidnight.strToDateMidnight(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -385,7 +577,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return FnToDateMidnight.fromString(pattern, locale, dateTimeZone);
+		return FnDateMidnight.strToDateMidnight(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -399,7 +591,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, Locale locale, Chronology chronology) {
-		return FnToDateMidnight.fromString(pattern, locale, chronology);
+		return FnDateMidnight.strToDateMidnight(pattern, locale, chronology);
 	}
 	/**
      * <p>
@@ -413,7 +605,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String, DateMidnight> strToDateMidnight(String pattern, String locale, Chronology chronology) {
-		return FnToDateMidnight.fromString(pattern, locale, chronology);
+		return FnDateMidnight.strToDateMidnight(pattern, locale, chronology);
 	}
 	
 	/**
@@ -424,7 +616,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input  
      */
 	public static final <T extends Date> Function<T, DateMidnight> dateToDateMidnight() {
-		return FnToDateMidnight.fromDate();
+		return FnDateMidnight.dateToDateMidnight();
 	}
 	/**
      * <p>
@@ -436,7 +628,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateMidnight> dateToDateMidnight(DateTimeZone dateTimeZone) {
-		return FnToDateMidnight.fromDate(dateTimeZone);
+		return FnDateMidnight.dateToDateMidnight(dateTimeZone);
 	}
 	/**
      * <p>
@@ -448,7 +640,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateMidnight> dateToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromDate(chronology);
+		return FnDateMidnight.dateToDateMidnight(chronology);
 	}
 	
 	/**
@@ -459,7 +651,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input  
      */
 	public static final Function<Timestamp, DateMidnight>  timestampToDateMidnight() {
-		return FnToDateMidnight.fromTimestamp();
+		return FnDateMidnight.timestampToDateMidnight();
 	}
 	/**
      * <p>
@@ -471,7 +663,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateMidnight>  timestampToDateMidnight(DateTimeZone dateTimeZone) {
-		return FnToDateMidnight.fromTimestamp(dateTimeZone);
+		return FnDateMidnight.timestampToDateMidnight(dateTimeZone);
 	}
 	/**
      * <p>
@@ -483,7 +675,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateMidnight>  timestampToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromTimestamp(chronology);
+		return FnDateMidnight.timestampToDateMidnight(chronology);
 	}
 	
 	/**
@@ -494,7 +686,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input 
      */
 	public static final Function<Long, DateMidnight>  longToDateMidnight() {
-		return FnToDateMidnight.fromLong();
+		return FnDateMidnight.longToDateMidnight();
 	}
 	/**
      * <p>
@@ -506,7 +698,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Long, DateMidnight>  longToDateMidnight(DateTimeZone dateTimeZone) {
-		return FnToDateMidnight.fromLong(dateTimeZone);
+		return FnDateMidnight.longToDateMidnight(dateTimeZone);
 	}
 	/**
      * <p>
@@ -518,7 +710,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Long, DateMidnight>  longToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromLong(chronology);
+		return FnDateMidnight.longToDateMidnight(chronology);
 	}
 	
 	/**
@@ -538,7 +730,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input 
      */
 	public static final Function<Collection<Integer>, DateMidnight>  integerFieldCollectionToDateMidnight() {
-		return FnToDateMidnight.fromIntegerFieldCollection();
+		return FnDateMidnight.integerFieldCollectionToDateMidnight();
 	}
 	/**
      * <p>
@@ -559,7 +751,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, DateMidnight>  integerFieldCollectionToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromIntegerFieldCollection(chronology);
+		return FnDateMidnight.integerFieldCollectionToDateMidnight(chronology);
 	}
 	
 	/**
@@ -579,7 +771,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input 
      */
 	public static final Function<Integer[], DateMidnight>  integerFieldArrayToDateMidnight() {
-		return FnToDateMidnight.fromIntegerFieldArray();
+		return FnDateMidnight.integerFieldArrayToDateMidnight();
 	}
 	/**
      * <p>
@@ -600,7 +792,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Integer[], DateMidnight>  integerFieldArrayToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromIntegerFieldArray(chronology);
+		return FnDateMidnight.integerFieldArrayToDateMidnight(chronology);
 	}
 	
 	/**
@@ -620,7 +812,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input  
      */
 	public static final Function<Collection<String>, DateMidnight>  strFieldCollectionToDateMidnight() {
-		return FnToDateMidnight.fromStringFieldCollection();
+		return FnDateMidnight.strFieldCollectionToDateMidnight();
 	}
 	/**
      * <p>
@@ -641,7 +833,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<Collection<String>, DateMidnight>  strFieldCollectionToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromStringFieldCollection(chronology);
+		return FnDateMidnight.strFieldCollectionToDateMidnight(chronology);
 	}
 	
 	/**
@@ -661,7 +853,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input 
      */
 	public static final Function<String[], DateMidnight>  strFieldArrayToDateMidnight() {
-		return FnToDateMidnight.fromStringFieldArray();
+		return FnDateMidnight.strFieldArrayToDateMidnight();
 	}
 	/**
      * <p>
@@ -682,7 +874,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final Function<String[], DateMidnight>  strFieldArrayToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromStringFieldArray(chronology);
+		return FnDateMidnight.strFieldArrayToDateMidnight(chronology);
 	}
 	
 	/**
@@ -693,7 +885,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input 
      */
 	public static final <T extends Calendar> Function<T, DateMidnight> calendarToDateMidnight() {
-		return FnToDateMidnight.fromCalendar();
+		return FnDateMidnight.calendarToDateMidnight();
 	}
 	/**
      * <p>
@@ -704,7 +896,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateMidnight> calendarToDateMidnight(DateTimeZone dateTimeZone) {
-		return FnToDateMidnight.fromCalendar(dateTimeZone);
+		return FnDateMidnight.calendarToDateMidnight(dateTimeZone);
 	}
 	/**
      * <p>
@@ -715,7 +907,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateMidnight} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateMidnight> calendarToDateMidnight(Chronology chronology) {
-		return FnToDateMidnight.fromCalendar(chronology);
+		return FnDateMidnight.calendarToDateMidnight(chronology);
 	}
 	
 	/**
@@ -730,7 +922,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern) {
-		return FnToDateTime.fromString(pattern);
+		return FnDateTime.strToDateTime(pattern);
 	}	
 	/**
      * <p>
@@ -744,7 +936,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, DateTimeZone dateTimeZone) {
-		return FnToDateTime.fromString(pattern, dateTimeZone);
+		return FnDateTime.strToDateTime(pattern, dateTimeZone);
 	}	
 	/**
      * <p>
@@ -758,7 +950,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Chronology chronology) {
-		return FnToDateTime.fromString(pattern, chronology);
+		return FnDateTime.strToDateTime(pattern, chronology);
 	}	
 	/**
      * <p>
@@ -771,7 +963,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Locale locale) {
-		return FnToDateTime.fromString(pattern, locale);
+		return FnDateTime.strToDateTime(pattern, locale);
 	}
 	/**
      * <p>
@@ -784,7 +976,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, String locale) {
-		return FnToDateTime.fromString(pattern, locale);
+		return FnDateTime.strToDateTime(pattern, locale);
 	}
 	/**
      * <p>
@@ -798,7 +990,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return FnToDateTime.fromString(pattern, locale, dateTimeZone);
+		return FnDateTime.strToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -812,7 +1004,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return FnToDateTime.fromString(pattern, locale, dateTimeZone);
+		return FnDateTime.strToDateTime(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -826,7 +1018,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, Locale locale, Chronology chronology) {
-		return FnToDateTime.fromString(pattern, locale, chronology);
+		return FnDateTime.strToDateTime(pattern, locale, chronology);
 	}
 	/**
      * <p>
@@ -840,7 +1032,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String, DateTime> strToDateTime(String pattern, String locale, Chronology chronology) {
-		return FnToDateTime.fromString(pattern, locale, chronology);
+		return FnDateTime.strToDateTime(pattern, locale, chronology);
 	}
 	
 	/**
@@ -851,7 +1043,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input  
      */
 	public static final <T extends Date> Function<T, DateTime> dateToDateTime() {
-		return FnToDateTime.fromDate();
+		return FnDateTime.dateToDateTime();
 	}
 	/**
      * <p>
@@ -863,7 +1055,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateTime> dateToDateTime(DateTimeZone dateTimeZone) {
-		return FnToDateTime.fromDate(dateTimeZone);
+		return FnDateTime.dateToDateTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -875,7 +1067,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, DateTime> dateToDateTime(Chronology chronology) {
-		return FnToDateTime.fromDate(chronology);
+		return FnDateTime.dateToDateTime(chronology);
 	}
 	
 	/**
@@ -886,7 +1078,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input
      */
 	public static final Function<Timestamp, DateTime> timestampToDateTime() {
-		return FnToDateTime.fromTimestamp();
+		return FnDateTime.timestampToDateTime();
 	}
 	/**
      * <p>
@@ -898,7 +1090,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateTime> timestampToDateTime(DateTimeZone dateTimeZone) {
-		return FnToDateTime.fromTimestamp(dateTimeZone);
+		return FnDateTime.timestampToDateTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -910,7 +1102,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, DateTime> timestampToDateTime(Chronology chronology) {
-		return FnToDateTime.fromTimestamp(chronology);
+		return FnDateTime.timestampToDateTime(chronology);
 	}
 	
 	/**
@@ -921,7 +1113,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input
      */
 	public static final Function<Long, DateTime> longToDateTime() {
-		return FnToDateTime.fromLong();
+		return FnDateTime.longToDateTime();
 	}
 	/**
      * <p>
@@ -933,7 +1125,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Long, DateTime> longToDateTime(DateTimeZone dateTimeZone) {
-		return FnToDateTime.fromLong(dateTimeZone);
+		return FnDateTime.longToDateTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -945,7 +1137,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Long, DateTime> longToDateTime(Chronology chronology) {
-		return FnToDateTime.fromLong(chronology);
+		return FnDateTime.longToDateTime(chronology);
 	}
 	
 	/**
@@ -965,7 +1157,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input 
      */
 	public static final Function<Collection<Integer>, DateTime> integerFieldCollectionToDateTime() {
-		return FnToDateTime.fromIntegerFieldCollection();
+		return FnDateTime.integerFieldCollectionToDateTime();
 	}
 	/**
      * <p>
@@ -986,7 +1178,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, DateTime> integerFieldCollectionToDateTime(Chronology chronology) {
-		return FnToDateTime.fromIntegerFieldCollection(chronology);
+		return FnDateTime.integerFieldCollectionToDateTime(chronology);
 	}
 	
 	/**
@@ -1006,7 +1198,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input 
      */
 	public static final Function<Integer[], DateTime> integerFieldArrayToDateTime() {
-		return FnToDateTime.fromIntegerFieldArray();
+		return FnDateTime.integerFieldArrayToDateTime();
 	}
 	/**
      * <p>
@@ -1027,7 +1219,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Integer[], DateTime> integerFieldArrayToDateTime(Chronology chronology) {
-		return FnToDateTime.fromIntegerFieldArray(chronology);
+		return FnDateTime.integerFieldArrayToDateTime(chronology);
 	}
 	
 	/**
@@ -1047,7 +1239,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input
      */
 	public static final Function<Collection<String>, DateTime> strFieldCollectionToDateTime() {
-		return FnToDateTime.fromStringFieldCollection();
+		return FnDateTime.strFieldCollectionToDateTime();
 	}
 	/**
      * <p>
@@ -1068,7 +1260,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<Collection<String>, DateTime> strFieldCollectionToDateTime(Chronology chronology) {
-		return FnToDateTime.fromStringFieldCollection(chronology);
+		return FnDateTime.strFieldCollectionToDateTime(chronology);
 	}
 	
 	/**
@@ -1088,7 +1280,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input
      */
 	public static final Function<String[], DateTime> strFieldArrayToDateTime() {
-		return FnToDateTime.fromStringFieldArray();
+		return FnDateTime.strFieldArrayToDateTime();
 	}
 	/**
      * <p>
@@ -1109,7 +1301,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final Function<String[], DateTime> strFieldArrayToDateTime(Chronology chronology) {
-		return FnToDateTime.fromStringFieldArray(chronology);
+		return FnDateTime.strFieldArrayToDateTime(chronology);
 	}
 	
 	/**
@@ -1120,7 +1312,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input
      */
 	public static final <T extends Calendar> Function<T, DateTime> calendarToDateTime() {
-		return FnToDateTime.fromCalendar();
+		return FnDateTime.calendarToDateTime();
 	}
 	/**
      * <p>
@@ -1131,7 +1323,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateTime> calendarToDateTime(DateTimeZone dateTimeZone) {
-		return FnToDateTime.fromCalendar(dateTimeZone);
+		return FnDateTime.calendarToDateTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1142,7 +1334,7 @@ public class FnJodaTimeUtils {
      * @return the {@link DateTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, DateTime> calendarToDateTime(Chronology chronology) {
-		return FnToDateTime.fromCalendar(chronology);
+		return FnDateTime.calendarToDateTime(chronology);
 	}
 	
 	/**
@@ -1164,7 +1356,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval() {
-		return FnToInterval.fromStringFieldCollection();
+		return FnInterval.strFieldCollectionToInterval();
 	}
 
 	/**
@@ -1187,7 +1379,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldCollection(dateTimeZone);
+		return FnInterval.strFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1209,7 +1401,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(Chronology chronology) {
-		return FnToInterval.fromStringFieldCollection(chronology);
+		return FnInterval.strFieldCollectionToInterval(chronology);
 	}
 	/**
      * <p>
@@ -1223,7 +1415,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern) {
-		return FnToInterval.fromStringFieldCollection(pattern);
+		return FnInterval.strFieldCollectionToInterval(pattern);
 	}
 	/**
      * <p>
@@ -1237,7 +1429,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldCollection(pattern, dateTimeZone);
+		return FnInterval.strFieldCollectionToInterval(pattern, dateTimeZone);
 	}
 	/**
      * <p>
@@ -1251,7 +1443,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Chronology chronology) {
-		return FnToInterval.fromStringFieldCollection(pattern, chronology);
+		return FnInterval.strFieldCollectionToInterval(pattern, chronology);
 	}
 	/**
      * <p>
@@ -1264,7 +1456,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale) {
-		return FnToInterval.fromStringFieldCollection(pattern, locale);
+		return FnInterval.strFieldCollectionToInterval(pattern, locale);
 	}
 	/**
      * <p>
@@ -1277,7 +1469,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale) {
-		return FnToInterval.fromStringFieldCollection(pattern, locale);
+		return FnInterval.strFieldCollectionToInterval(pattern, locale);
 	}	
 	/**
      * <p>
@@ -1291,7 +1483,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldCollection(pattern, locale, dateTimeZone);
+		return FnInterval.strFieldCollectionToInterval(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -1305,7 +1497,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldCollection(pattern, locale, dateTimeZone);
+		return FnInterval.strFieldCollectionToInterval(pattern, locale, dateTimeZone);
 	}	
 	/**
      * <p>
@@ -1319,7 +1511,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, Locale locale, Chronology chronology) {
-		return FnToInterval.fromStringFieldCollection(pattern, locale, chronology);
+		return FnInterval.strFieldCollectionToInterval(pattern, locale, chronology);
 	}
 	/**
      * <p>
@@ -1333,7 +1525,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Interval> strFieldCollectionToInterval(String pattern, String locale, Chronology chronology) {
-		return FnToInterval.fromStringFieldCollection(pattern, locale, chronology);
+		return FnInterval.strFieldCollectionToInterval(pattern, locale, chronology);
 	}	
 	
 	/**
@@ -1355,7 +1547,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval() {
-		return FnToInterval.fromStringFieldArray();
+		return FnInterval.strFieldArrayToInterval();
 	}
 	/**
      * <p>
@@ -1377,7 +1569,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldArray(dateTimeZone);
+		return FnInterval.strFieldArrayToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1399,7 +1591,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(Chronology chronology) {
-		return FnToInterval.fromStringFieldArray(chronology);
+		return FnInterval.strFieldArrayToInterval(chronology);
 	}
 	/**
      * <p>
@@ -1421,7 +1613,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern) {
-		return FnToInterval.fromStringFieldArray(pattern);
+		return FnInterval.strFieldArrayToInterval(pattern);
 	}
 	/**
      * <p>
@@ -1444,7 +1636,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldArray(pattern, dateTimeZone);
+		return FnInterval.strFieldArrayToInterval(pattern, dateTimeZone);
 	}
 	/**
      * <p>
@@ -1467,7 +1659,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Chronology chronology) {
-		return FnToInterval.fromStringFieldArray(pattern, chronology);
+		return FnInterval.strFieldArrayToInterval(pattern, chronology);
 	}
 	/**
      * <p>
@@ -1490,7 +1682,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Locale locale) {
-		return FnToInterval.fromStringFieldArray(pattern, locale);
+		return FnInterval.strFieldArrayToInterval(pattern, locale);
 	}
 	/**
      * <p>
@@ -1513,7 +1705,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, String locale) {
-		return FnToInterval.fromStringFieldArray(pattern, locale);
+		return FnInterval.strFieldArrayToInterval(pattern, locale);
 	}	
 	/**
      * <p>
@@ -1537,7 +1729,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldArray(pattern, locale, dateTimeZone);
+		return FnInterval.strFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -1561,7 +1753,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return FnToInterval.fromStringFieldArray(pattern, locale, dateTimeZone);
+		return FnInterval.strFieldArrayToInterval(pattern, locale, dateTimeZone);
 	}	
 	/**
      * <p>
@@ -1585,7 +1777,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, Locale locale, Chronology chronology) {
-		return FnToInterval.fromStringFieldArray(pattern, locale, chronology);
+		return FnInterval.strFieldArrayToInterval(pattern, locale, chronology);
 	}
 	/**
      * <p>
@@ -1609,7 +1801,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<String[], Interval> strFieldArrayToInterval(String pattern, String locale, Chronology chronology) {
-		return FnToInterval.fromStringFieldArray(pattern, locale, chronology);
+		return FnInterval.strFieldArrayToInterval(pattern, locale, chronology);
 	}	
 	
 	/**
@@ -1620,7 +1812,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval() {
-		return FnToInterval.fromDateFieldCollection();
+		return FnInterval.dateFieldCollectionToInterval();
 	}
 	/**
      * <p>
@@ -1632,7 +1824,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromDateFieldCollection(dateTimeZone);
+		return FnInterval.dateFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1644,7 +1836,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Interval> dateFieldCollectionToInterval(Chronology chronology) {
-		return FnToInterval.fromDateFieldCollection(chronology);
+		return FnInterval.dateFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -1655,7 +1847,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final <T extends Date> Function<T[], Interval> dateFieldArrayToInterval() {
-		return FnToInterval.fromDateFieldArray();
+		return FnInterval.dateFieldArrayToInterval();
 	}
 	/**
      * <p>
@@ -1667,7 +1859,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Interval> dateFieldArrayToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromDateFieldArray(dateTimeZone);
+		return FnInterval.dateFieldArrayToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1679,7 +1871,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Interval> dateFieldArrayToInterval(Chronology chronology) {
-		return FnToInterval.fromDateFieldArray(chronology);
+		return FnInterval.dateFieldArrayToInterval(chronology);
 	}
 	
 	/**
@@ -1691,7 +1883,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval() {
-		return FnToInterval.fromTimestampFieldCollection();
+		return FnInterval.timestampFieldCollectionToInterval();
 	}
 	/**
      * <p>
@@ -1703,7 +1895,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromTimestampFieldCollection(dateTimeZone);
+		return FnInterval.timestampFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1715,7 +1907,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Interval> timestampFieldCollectionToInterval(Chronology chronology) {
-		return FnToInterval.fromTimestampFieldCollection(chronology);
+		return FnInterval.timestampFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -1727,7 +1919,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final Function<Timestamp[], Interval> timestampFieldArrayToInterval() {
-		return FnToInterval.fromTimestampFieldArray();
+		return FnInterval.timestampFieldArrayToInterval();
 	}
 	/**
      * <p>
@@ -1739,7 +1931,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */ 
 	public static final Function<Timestamp[], Interval> timestampFieldArrayToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromTimestampFieldArray(dateTimeZone);
+		return FnInterval.timestampFieldArrayToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1751,7 +1943,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Interval> timestampFieldArrayToInterval(Chronology chronology) {
-		return FnToInterval.fromTimestampFieldArray(chronology);
+		return FnInterval.timestampFieldArrayToInterval(chronology);
 	}
 	
 	/**
@@ -1763,7 +1955,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input
      */
 	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval() {
-		return FnToInterval.fromLongFieldCollection();
+		return FnInterval.longFieldCollectionToInterval();
 	}
 	/**
      * <p>
@@ -1776,7 +1968,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromLongFieldCollection(dateTimeZone);
+		return FnInterval.longFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1789,7 +1981,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Long>, Interval> longFieldCollectionToInterval(Chronology chronology) {
-		return FnToInterval.fromLongFieldCollection(chronology);
+		return FnInterval.longFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -1801,7 +1993,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input
      */
 	public static final Function<Long[], Interval> longFieldArrayToInterval() {
-		return FnToInterval.fromLongFieldArray();
+		return FnInterval.longFieldArrayToInterval();
 	}
 	/**
      * <p>
@@ -1814,7 +2006,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Long[], Interval> longFieldArrayToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromLongFieldArray(dateTimeZone);
+		return FnInterval.longFieldArrayToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1827,7 +2019,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Long[], Interval> longFieldArrayToInterval(Chronology chronology) {
-		return FnToInterval.fromLongFieldArray(chronology);
+		return FnInterval.longFieldArrayToInterval(chronology);
 	}
 	
 	/**
@@ -1847,7 +2039,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input  
      */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval() {
-		return FnToInterval.fromIntegerFieldCollection();
+		return FnInterval.integerFieldCollectionToInterval();
 	}
 	
 	/**
@@ -1868,7 +2060,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromIntegerFieldCollection(dateTimeZone);
+		return FnInterval.integerFieldCollectionToInterval(dateTimeZone);
 	}
 	
 	/**
@@ -1889,7 +2081,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Interval> integerFieldCollectionToInterval(Chronology chronology) {
-		return FnToInterval.fromIntegerFieldCollection(chronology);
+		return FnInterval.integerFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -1909,7 +2101,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval() {
-		return FnToInterval.fromIntegerFieldArray();
+		return FnInterval.integerFieldArrayToInterval();
 	}
 	
 	/**
@@ -1930,7 +2122,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromIntegerFieldArray(dateTimeZone);
+		return FnInterval.integerFieldArrayToInterval(dateTimeZone);
 	}
 	
 	/**
@@ -1951,7 +2143,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Integer[], Interval> integerFieldArrayToInterval(Chronology chronology) {
-		return FnToInterval.fromIntegerFieldArray(chronology);
+		return FnInterval.integerFieldArrayToInterval(chronology);
 	}
 	
 	/**
@@ -1963,7 +2155,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval() {
-		return FnToInterval.fromCalendarFieldCollection();
+		return FnInterval.calendarFieldCollectionToInterval();
 	}
 	/**
      * <p>
@@ -1975,7 +2167,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromCalendarFieldCollection(dateTimeZone);
+		return FnInterval.calendarFieldCollectionToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -1987,7 +2179,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Interval> calendarFieldCollectionToInterval(Chronology chronology) {
-		return FnToInterval.fromCalendarFieldCollection(chronology);
+		return FnInterval.calendarFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -1999,7 +2191,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input 
      */
 	public static final <T extends Calendar> Function<T[], Interval> calendarFieldArrayToInterval() {
-		return FnToInterval.fromCalendarFieldArray();
+		return FnInterval.calendarFieldArrayToInterval();
 	}
 	/**
      * <p>
@@ -2011,7 +2203,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Interval> calendarFieldArrayToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromCalendarFieldArray(dateTimeZone);
+		return FnInterval.calendarFieldArrayToInterval(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2023,7 +2215,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Interval> calendarFieldArrayToInterval(Chronology chronology) {
-		return FnToInterval.fromCalendarFieldArray(chronology);
+		return FnInterval.calendarFieldArrayToInterval(chronology);
 	}
 
 	/**
@@ -2035,7 +2227,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval() {
-		return FnToInterval.fromBaseDateTimeFieldCollection();
+		return FnInterval.baseDateTimeFieldCollectionToInterval();
 	}
 	
 	/**
@@ -2048,7 +2240,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromBaseDateTimeFieldCollection(dateTimeZone);
+		return FnInterval.baseDateTimeFieldCollectionToInterval(dateTimeZone);
 	}
 	
 	/**
@@ -2061,7 +2253,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Interval> baseDateTimeFieldCollectionToInterval(Chronology chronology) {
-		return FnToInterval.fromBaseDateTimeFieldCollection(chronology);
+		return FnInterval.baseDateTimeFieldCollectionToInterval(chronology);
 	}
 	
 	/**
@@ -2073,7 +2265,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input  
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval() {
-		return FnToInterval.fromBaseDateTimeFieldArray();
+		return FnInterval.baseDateTimeFieldArrayToInterval();
 	}
 	
 	/**
@@ -2086,7 +2278,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval(DateTimeZone dateTimeZone) {
-		return FnToInterval.fromBaseDateTimeFieldArray(dateTimeZone);
+		return FnInterval.baseDateTimeFieldArrayToInterval(dateTimeZone);
 	}
 	
 	/**
@@ -2099,7 +2291,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Interval} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Interval> baseDateTimeFieldArrayToInterval(Chronology chronology) {
-		return FnToInterval.fromBaseDateTimeFieldArray(chronology);
+		return FnInterval.baseDateTimeFieldArrayToInterval(chronology);
 	}
 	
 	/**
@@ -2113,7 +2305,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern) {
-		return FnToLocalDate.fromString(pattern);
+		return FnLocalDate.strToLocalDate(pattern);
 	}	
 	/**
      * <p>
@@ -2127,7 +2319,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, DateTimeZone dateTimeZone) {
-		return FnToLocalDate.fromString(pattern, dateTimeZone);
+		return FnLocalDate.strToLocalDate(pattern, dateTimeZone);
 	}	
 	/**
      * <p>
@@ -2141,7 +2333,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Chronology chronology) {
-		return FnToLocalDate.fromString(pattern, chronology);
+		return FnLocalDate.strToLocalDate(pattern, chronology);
 	}	
 	/**
      * <p>
@@ -2154,7 +2346,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Locale locale) {
-		return FnToLocalDate.fromString(pattern, locale);
+		return FnLocalDate.strToLocalDate(pattern, locale);
 	}
 	/**
      * <p>
@@ -2167,7 +2359,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, String locale) {
-		return FnToLocalDate.fromString(pattern, locale);
+		return FnLocalDate.strToLocalDate(pattern, locale);
 	}
 	/**
      * <p>
@@ -2181,7 +2373,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return FnToLocalDate.fromString(pattern, locale, dateTimeZone);
+		return FnLocalDate.strToLocalDate(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -2195,7 +2387,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return FnToLocalDate.fromString(pattern, locale, dateTimeZone);
+		return FnLocalDate.strToLocalDate(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -2209,7 +2401,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, Locale locale, Chronology chronology) {
-		return FnToLocalDate.fromString(pattern, locale, chronology);
+		return FnLocalDate.strToLocalDate(pattern, locale, chronology);
 	}
 	/**
      * <p>
@@ -2223,7 +2415,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String, LocalDate> strToLocalDate(String pattern, String locale, Chronology chronology) {
-		return FnToLocalDate.fromString(pattern, locale, chronology);
+		return FnLocalDate.strToLocalDate(pattern, locale, chronology);
 	}
 	
 	/**
@@ -2234,7 +2426,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input
      */
 	public static final <T extends Date> Function<T, LocalDate> dateToLocalDate() {
-		return FnToLocalDate.fromDate();
+		return FnLocalDate.dateToLocalDate();
 	}
 	/**
      * <p>
@@ -2246,7 +2438,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalDate> dateToLocalDate(DateTimeZone dateTimeZone) {
-		return FnToLocalDate.fromDate(dateTimeZone);
+		return FnLocalDate.dateToLocalDate(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2258,7 +2450,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalDate> dateToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromDate(chronology);
+		return FnLocalDate.dateToLocalDate(chronology);
 	}
 	
 	/**
@@ -2269,7 +2461,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input 
      */
 	public static final Function<Timestamp, LocalDate> timestampToLocalDate() {
-		return FnToLocalDate.fromTimestamp();
+		return FnLocalDate.timestampToLocalDate();
 	}
 	/**
      * <p>
@@ -2281,7 +2473,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalDate> timestampToLocalDate(DateTimeZone dateTimeZone) {
-		return FnToLocalDate.fromTimestamp(dateTimeZone);
+		return FnLocalDate.timestampToLocalDate(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2293,7 +2485,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalDate> timestampToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromTimestamp(chronology);
+		return FnLocalDate.timestampToLocalDate(chronology);
 	}
 	
 	
@@ -2305,7 +2497,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input
      */
 	public static final Function<Long, LocalDate> longToLocalDate() {
-		return FnToLocalDate.fromLong();
+		return FnLocalDate.longToLocalDate();
 	}
 	/**
      * <p>
@@ -2317,7 +2509,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Long, LocalDate> longToLocalDate(DateTimeZone dateTimeZone) {
-		return FnToLocalDate.fromLong(dateTimeZone);
+		return FnLocalDate.longToLocalDate(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2329,7 +2521,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Long, LocalDate> longToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromLong(chronology);
+		return FnLocalDate.longToLocalDate(chronology);
 	}
 	
 	/**
@@ -2348,7 +2540,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input
      */
 	public static final Function<Collection<Integer>, LocalDate> integerFieldCollectionToLocalDate() {
-		return FnToLocalDate.fromIntegerFieldCollection();
+		return FnLocalDate.integerFieldCollectionToLocalDate();
 	}
 	/**
      * <p>
@@ -2369,7 +2561,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, LocalDate> integerFieldCollectionToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromIntegerFieldCollection(chronology);
+		return FnLocalDate.integerFieldCollectionToLocalDate(chronology);
 	}
 	
 	/**
@@ -2389,7 +2581,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input
      */
 	public static final Function<Integer[], LocalDate> integerFieldArrayToLocalDate() {
-		return FnToLocalDate.fromIntegerFieldArray();
+		return FnLocalDate.integerFieldArrayToLocalDate();
 	}
 	/**
      * <p>
@@ -2410,7 +2602,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Integer[], LocalDate> integerFieldArrayToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromIntegerFieldArray(chronology);
+		return FnLocalDate.integerFieldArrayToLocalDate(chronology);
 	}
 	
 	/**
@@ -2430,7 +2622,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input
      */
 	public static final Function<Collection<String>, LocalDate> strFieldCollectionToLocalDate() {
-		return FnToLocalDate.fromStringFieldCollection();
+		return FnLocalDate.strFieldCollectionToLocalDate();
 	}
 	/**
      * <p>
@@ -2451,7 +2643,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<Collection<String>, LocalDate> strFieldCollectionToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromStringFieldCollection(chronology);
+		return FnLocalDate.strFieldCollectionToLocalDate(chronology);
 	}
 	
 	/**
@@ -2471,7 +2663,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input
      */
 	public static final Function<String[], LocalDate> strFieldArrayToLocalDate() {
-		return FnToLocalDate.fromStringFieldArray();
+		return FnLocalDate.strFieldArrayToLocalDate();
 	}
 	/**
      * <p>
@@ -2492,7 +2684,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final Function<String[], LocalDate> strFieldArrayToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromStringFieldArray(chronology);
+		return FnLocalDate.strFieldArrayToLocalDate(chronology);
 	}
 	
 	
@@ -2504,7 +2696,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input
      */
 	public static final <T extends Calendar> Function<T, LocalDate> calendarToLocalDate() {
-		return FnToLocalDate.fromCalendar();
+		return FnLocalDate.calendarToLocalDate();
 	}
 	/**
      * <p>
@@ -2515,7 +2707,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalDate> calendarToLocalDate(DateTimeZone dateTimeZone) {
-		return FnToLocalDate.fromCalendar(dateTimeZone);
+		return FnLocalDate.calendarToLocalDate(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2526,7 +2718,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalDate} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalDate> calendarToLocalDate(Chronology chronology) {
-		return FnToLocalDate.fromCalendar(chronology);
+		return FnLocalDate.calendarToLocalDate(chronology);
 	}
 
 	/**
@@ -2540,7 +2732,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern) {
-		return FnToLocalTime.fromString(pattern);
+		return FnLocalTime.strToLocalTime(pattern);
 	}	
 	/**
      * <p>
@@ -2554,7 +2746,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, DateTimeZone dateTimeZone) {
-		return FnToLocalTime.fromString(pattern, dateTimeZone);
+		return FnLocalTime.strToLocalTime(pattern, dateTimeZone);
 	}	
 	/**
      * <p>
@@ -2568,7 +2760,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Chronology chronology) {
-		return FnToLocalTime.fromString(pattern, chronology);
+		return FnLocalTime.strToLocalTime(pattern, chronology);
 	}	
 	/**
      * <p>
@@ -2580,7 +2772,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Locale locale) {
-		return FnToLocalTime.fromString(pattern, locale);
+		return FnLocalTime.strToLocalTime(pattern, locale);
 	}
 	/**
      * <p>
@@ -2592,7 +2784,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, String locale) {
-		return FnToLocalTime.fromString(pattern, locale);
+		return FnLocalTime.strToLocalTime(pattern, locale);
 	}
 	/**
      * <p>
@@ -2606,7 +2798,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
-		return FnToLocalTime.fromString(pattern, locale, dateTimeZone);
+		return FnLocalTime.strToLocalTime(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -2620,7 +2812,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, String locale, DateTimeZone dateTimeZone) {
-		return FnToLocalTime.fromString(pattern, locale, dateTimeZone);
+		return FnLocalTime.strToLocalTime(pattern, locale, dateTimeZone);
 	}
 	/**
      * <p>
@@ -2634,7 +2826,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, Locale locale, Chronology chronology) {
-		return FnToLocalTime.fromString(pattern, locale, chronology);
+		return FnLocalTime.strToLocalTime(pattern, locale, chronology);
 	}
 	/**
      * <p>
@@ -2648,7 +2840,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String, LocalTime> strToLocalTime(String pattern, String locale, Chronology chronology) {
-		return FnToLocalTime.fromString(pattern, locale, chronology);
+		return FnLocalTime.strToLocalTime(pattern, locale, chronology);
 	}
 
 	/**
@@ -2659,7 +2851,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input 
      */
 	public static final <T extends Date> Function<T, LocalTime> dateToLocalTime() {
-		return FnToLocalTime.fromDate();
+		return FnLocalTime.dateToLocalTime();
 	}
 	/**
      * <p>
@@ -2670,7 +2862,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalTime> dateToLocalTime(DateTimeZone dateTimeZone) {
-		return FnToLocalTime.fromDate(dateTimeZone);
+		return FnLocalTime.dateToLocalTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2681,7 +2873,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T, LocalTime> dateToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromDate(chronology);
+		return FnLocalTime.dateToLocalTime(chronology);
 	}
 
 	/**
@@ -2692,7 +2884,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input
      */
 	public static final Function<Timestamp, LocalTime> timestampToLocalTime() {
-		return FnToLocalTime.fromTimestamp();
+		return FnLocalTime.timestampToLocalTime();
 	}
 	/**
      * <p>
@@ -2703,7 +2895,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalTime> timestampToLocalTime(DateTimeZone dateTimeZone) {
-		return FnToLocalTime.fromTimestamp(dateTimeZone);
+		return FnLocalTime.timestampToLocalTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2714,7 +2906,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Timestamp, LocalTime> timestampToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromTimestamp(chronology);
+		return FnLocalTime.timestampToLocalTime(chronology);
 	}
 
 	/**
@@ -2725,7 +2917,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input 
      */
 	public static final Function<Long, LocalTime> longToLocalTime() {
-		return FnToLocalTime.fromLong();
+		return FnLocalTime.longToLocalTime();
 	}
 	/**
      * <p>
@@ -2736,7 +2928,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Long, LocalTime> longToLocalTime(DateTimeZone dateTimeZone) {
-		return FnToLocalTime.fromLong(dateTimeZone);
+		return FnLocalTime.longToLocalTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2747,7 +2939,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Long, LocalTime> longToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromLong(chronology);
+		return FnLocalTime.longToLocalTime(chronology);
 	}
 
 	/**
@@ -2768,7 +2960,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input
      */
 	public static final Function<Collection<Integer>, LocalTime> integerFieldCollectionToLocalTime() {
-		return FnToLocalTime.fromIntegerFieldCollection();
+		return FnLocalTime.integerFieldCollectionToLocalTime();
 	}
 	/**
      * <p>
@@ -2790,7 +2982,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, LocalTime> integerFieldCollectionToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromIntegerFieldCollection(chronology);
+		return FnLocalTime.integerFieldCollectionToLocalTime(chronology);
 	}
 
 	/**
@@ -2811,7 +3003,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input
      */
 	public static final Function<Integer[], LocalTime> integerFieldArrayToLocalTime() {
-		return FnToLocalTime.fromIntegerFieldArray();
+		return FnLocalTime.integerFieldArrayToLocalTime();
 	}
 	/**
      * <p>
@@ -2832,7 +3024,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Integer[], LocalTime> integerFieldArrayToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromIntegerFieldArray(chronology);
+		return FnLocalTime.integerFieldArrayToLocalTime(chronology);
 	}
 
 	/**
@@ -2853,7 +3045,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input
      */
 	public static final Function<Collection<String>, LocalTime> strFieldCollectionToLocalTime() {
-		return FnToLocalTime.fromStringFieldCollection();
+		return FnLocalTime.strFieldCollectionToLocalTime();
 	}
 	/**
      * <p>
@@ -2875,7 +3067,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<Collection<String>, LocalTime> strFieldCollectionToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromStringFieldCollection(chronology);
+		return FnLocalTime.strFieldCollectionToLocalTime(chronology);
 	}
 
 	/**
@@ -2896,7 +3088,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input
      */
 	public static final Function<String[], LocalTime> strFieldArrayToLocalTime() {
-		return FnToLocalTime.fromStringFieldArray();
+		return FnLocalTime.strFieldArrayToLocalTime();
 	}
 	/**
      * <p>
@@ -2917,7 +3109,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final Function<String[], LocalTime> strFieldArrayToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromStringFieldArray(chronology);
+		return FnLocalTime.strFieldArrayToLocalTime(chronology);
 	}
 
 	/**
@@ -2928,7 +3120,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input 
      */
 	public static final <T extends Calendar> Function<T, LocalTime> calendarToLocalTime() {
-		return FnToLocalTime.fromCalendar();
+		return FnLocalTime.calendarToLocalTime();
 	}
 	/**
      * <p>
@@ -2939,7 +3131,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalTime> calendarToLocalTime(DateTimeZone dateTimeZone) {
-		return FnToLocalTime.fromCalendar(dateTimeZone);
+		return FnLocalTime.calendarToLocalTime(dateTimeZone);
 	}
 	/**
      * <p>
@@ -2950,7 +3142,7 @@ public class FnJodaTimeUtils {
      * @return the {@link LocalTime} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T, LocalTime> calendarToLocalTime(Chronology chronology) {
-		return FnToLocalTime.fromCalendar(chronology);
+		return FnLocalTime.calendarToLocalTime(chronology);
 	}
 
 	/**
@@ -2962,7 +3154,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod() {
-		return FnToPeriod.fromDateFieldCollection();
+		return FnPeriod.dateFieldCollectionToPeriod();
 	}	
 	/**
      * <p>
@@ -2976,7 +3168,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromDateFieldCollection(chronology);
+		return FnPeriod.dateFieldCollectionToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -2989,7 +3181,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromDateFieldCollection(periodType);
+		return FnPeriod.dateFieldCollectionToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3004,7 +3196,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Date>, Period> dateFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromDateFieldCollection(periodType, chronology);
+		return FnPeriod.dateFieldCollectionToPeriod(periodType, chronology);
 	}
 	
 	/**
@@ -3016,7 +3208,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod() {
-		return FnToPeriod.fromDateFieldArray();
+		return FnPeriod.dateFieldArrayToPeriod();
 	}	
 	
 	/**
@@ -3031,7 +3223,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromDateFieldArray(chronology);
+		return FnPeriod.dateFieldArrayToPeriod(chronology);
 	}	
 	
 	/**
@@ -3046,7 +3238,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromDateFieldArray(periodType);
+		return FnPeriod.dateFieldArrayToPeriod(periodType);
 	}
 	
 	/**
@@ -3062,7 +3254,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Date> Function<T[], Period> dateFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromDateFieldArray(periodType, chronology);
+		return FnPeriod.dateFieldArrayToPeriod(periodType, chronology);
 	}
 
 	/**
@@ -3074,7 +3266,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod() {
-		return FnToPeriod.fromTimestampFieldCollection();
+		return FnPeriod.timestampFieldCollectionToPeriod();
 	}	
 	
 	/**
@@ -3089,7 +3281,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromTimestampFieldCollection(chronology);
+		return FnPeriod.timestampFieldCollectionToPeriod(chronology);
 	}	
 	
 	/**
@@ -3104,7 +3296,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromTimestampFieldCollection(periodType);
+		return FnPeriod.timestampFieldCollectionToPeriod(periodType);
 	}
 	
 	/**
@@ -3120,7 +3312,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Timestamp>, Period> timestampFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromTimestampFieldCollection(periodType, chronology);
+		return FnPeriod.timestampFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
      * <p>
@@ -3131,7 +3323,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod() {
-		return FnToPeriod.fromTimestampFieldArray();
+		return FnPeriod.timestampFieldArrayToPeriod();
 	}	
 	/**
      * <p>
@@ -3145,7 +3337,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromTimestampFieldArray(chronology);
+		return FnPeriod.timestampFieldArrayToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -3159,7 +3351,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromTimestampFieldArray(periodType);
+		return FnPeriod.timestampFieldArrayToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3174,7 +3366,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Timestamp[], Period> timestampFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromTimestampFieldArray(periodType, chronology);
+		return FnPeriod.timestampFieldArrayToPeriod(periodType, chronology);
 	}
 
 	/**
@@ -3186,7 +3378,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Long, Period> longToPeriod() {
-		return FnToPeriod.fromLong();
+		return FnPeriod.longToPeriod();
 	}
 	/**
      * <p>
@@ -3199,7 +3391,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Long, Period> longToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromLong(chronology);
+		return FnPeriod.longToPeriod(chronology);
 	}
 	/**
      * <p>
@@ -3212,7 +3404,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Long, Period> longToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromLong(periodType);
+		return FnPeriod.longToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3226,7 +3418,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Long, Period> longToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromLong(periodType, chronology);
+		return FnPeriod.longToPeriod(periodType, chronology);
 	}
 
 	/**
@@ -3238,7 +3430,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod() {
-		return FnToPeriod.fromLongFieldCollection();
+		return FnPeriod.longFieldCollectionToPeriod();
 	}	
 	/**
      * <p>
@@ -3251,7 +3443,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromLongFieldCollection(chronology);
+		return FnPeriod.longFieldCollectionToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -3264,7 +3456,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromLongFieldCollection(periodType);
+		return FnPeriod.longFieldCollectionToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3278,7 +3470,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Long>, Period> longFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromLongFieldCollection(periodType, chronology);
+		return FnPeriod.longFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
      * <p>
@@ -3289,7 +3481,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Long[], Period> longFieldArrayToPeriod() {
-		return FnToPeriod.fromLongFieldArray();
+		return FnPeriod.longFieldArrayToPeriod();
 	}	
 	/**
      * <p>
@@ -3302,7 +3494,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Long[], Period> longFieldArrayToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromLongFieldArray(chronology);
+		return FnPeriod.longFieldArrayToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -3315,7 +3507,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Long[], Period> longFieldArrayToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromLongFieldArray(periodType);
+		return FnPeriod.longFieldArrayToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3329,7 +3521,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Long[], Period> longFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromLongFieldArray(periodType, chronology);
+		return FnPeriod.longFieldArrayToPeriod(periodType, chronology);
 	}
 
 	/**
@@ -3341,7 +3533,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod() {
-		return FnToPeriod.fromCalendarFieldCollection();
+		return FnPeriod.calendarFieldCollectionToPeriod();
 	}	
 	/**
      * <p>
@@ -3353,7 +3545,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromCalendarFieldCollection(chronology);
+		return FnPeriod.calendarFieldCollectionToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -3365,7 +3557,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromCalendarFieldCollection(periodType);
+		return FnPeriod.calendarFieldCollectionToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3378,7 +3570,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends Calendar>, Period> calendarFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromCalendarFieldCollection(periodType, chronology);
+		return FnPeriod.calendarFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
      * <p>
@@ -3388,7 +3580,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod() {
-		return FnToPeriod.fromCalendarFieldArray();
+		return FnPeriod.calendarFieldArrayToPeriod();
 	}	
 	/**
      * <p>
@@ -3400,7 +3592,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromCalendarFieldArray(chronology);
+		return FnPeriod.calendarFieldArrayToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -3412,7 +3604,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromCalendarFieldArray(periodType);
+		return FnPeriod.calendarFieldArrayToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3425,7 +3617,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends Calendar> Function<T[], Period> calendarFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromCalendarFieldArray(periodType, chronology);
+		return FnPeriod.calendarFieldArrayToPeriod(periodType, chronology);
 	}
 
 	/**
@@ -3436,7 +3628,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod() {
-		return FnToPeriod.fromBaseDateTimeFieldCollection();
+		return FnPeriod.baseDateTimeFieldCollectionToPeriod();
 	}	
 	/**
      * <p>
@@ -3448,7 +3640,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromBaseDateTimeFieldCollection(chronology);
+		return FnPeriod.baseDateTimeFieldCollectionToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -3460,7 +3652,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromBaseDateTimeFieldCollection(periodType);
+		return FnPeriod.baseDateTimeFieldCollectionToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3473,7 +3665,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<? extends BaseDateTime>, Period> baseDateTimeFieldCollectionToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromBaseDateTimeFieldCollection(periodType, chronology);
+		return FnPeriod.baseDateTimeFieldCollectionToPeriod(periodType, chronology);
 	}
 	/**
      * <p>
@@ -3483,7 +3675,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod() {
-		return FnToPeriod.fromBaseDateTimeFieldArray();
+		return FnPeriod.baseDateTimeFieldArrayToPeriod();
 	}	
 	/**
      * <p>
@@ -3495,7 +3687,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final Chronology chronology) {
-		return FnToPeriod.fromBaseDateTimeFieldArray(chronology);
+		return FnPeriod.baseDateTimeFieldArrayToPeriod(chronology);
 	}	
 	/**
      * <p>
@@ -3507,7 +3699,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final PeriodType periodType) {
-		return FnToPeriod.fromBaseDateTimeFieldArray(periodType);
+		return FnPeriod.baseDateTimeFieldArrayToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3520,7 +3712,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final <T extends BaseDateTime> Function<T[], Period> baseDateTimeFieldArrayToPeriod(final PeriodType periodType, final Chronology chronology) {
-		return FnToPeriod.fromBaseDateTimeFieldArray(periodType, chronology);
+		return FnPeriod.baseDateTimeFieldArrayToPeriod(periodType, chronology);
 	}
 	
 	/**
@@ -3535,7 +3727,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input 
      */
 	public static final Function<Collection<Integer>, Period> integerFieldCollectionToPeriod() {
-		return FnToPeriod.fromIntegerFieldCollection();
+		return FnPeriod.integerFieldCollectionToPeriod();
 	}
 	/**
      * <p>
@@ -3550,7 +3742,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<Integer>, Period> integerFieldCollectionToPeriod(PeriodType periodType) {
-		return FnToPeriod.fromIntegerFieldCollection(periodType);
+		return FnPeriod.integerFieldCollectionToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3564,7 +3756,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Integer[], Period> integerFieldArrayToPeriod() {
-		return FnToPeriod.fromIntegerFieldArray();
+		return FnPeriod.integerFieldArrayToPeriod();
 	}
 	/**
      * <p>
@@ -3579,7 +3771,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Integer[], Period> integerFieldArrayToPeriod(PeriodType periodType) {
-		return FnToPeriod.fromIntegerFieldArray(periodType);
+		return FnPeriod.integerFieldArrayToPeriod(periodType);
 	}
 	
 	/**
@@ -3594,7 +3786,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input
      */
 	public static final Function<Collection<String>, Period> strFieldCollectionToPeriod() {
-		return FnToPeriod.fromStringFieldCollection();
+		return FnPeriod.strFieldCollectionToPeriod();
 	}
 	/**
      * <p>
@@ -3609,7 +3801,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<Collection<String>, Period> strFieldCollectionToPeriod(PeriodType periodType) {
-		return FnToPeriod.fromStringFieldCollection(periodType);
+		return FnPeriod.strFieldCollectionToPeriod(periodType);
 	}
 	/**
      * <p>
@@ -3623,7 +3815,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input 
      */
 	public static final Function<String[], Period> strFieldArrayToPeriod() {
-		return FnToPeriod.fromStringFieldArray();
+		return FnPeriod.strFieldArrayToPeriod();
 	}
 	/**
      * <p>
@@ -3638,7 +3830,7 @@ public class FnJodaTimeUtils {
      * @return the {@link Period} created from the input and arguments 
      */
 	public static final Function<String[], Period> strFieldArrayToPeriod(PeriodType periodType) {
-		return FnToPeriod.fromStringFieldArray(periodType);
+		return FnPeriod.strFieldArrayToPeriod(periodType);
 	}
 	
 }
