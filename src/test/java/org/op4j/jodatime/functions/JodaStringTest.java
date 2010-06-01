@@ -16,57 +16,58 @@ import org.joda.time.chrono.GregorianChronology;
 import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
-import org.op4j.jodatime.functions.FnJodaToString.FormatType;
+import org.op4j.jodatime.functions.FnJodaString.FormatType;
 
-public class JodaToStringTest extends TestCase {
+
+public class JodaStringTest extends TestCase {
 
     @Test
     public void testFromBaseDateTime() {
         // Convert DateTime
         List<DateTime> targets = new ArrayList<DateTime>();
         targets.add(new DateTime());
-        List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromBaseDateTime()).get();
+        List<String> result = Op.onList(targets).forEach().exec(FnJodaString.baseDateTimeToStr()).get();
         
         assertEquals(targets.get(0).toString(),
                 result.get(0));
     }
     
 	@Test
-	public void testFromBaseDateTimeFormatTypeString() {
+	public void testbaseDateTimeToStrFormatTypeString() {
 		// Convert DateTime
 		List<DateTime> targets = new ArrayList<DateTime>();
 		targets.add(new DateTime());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromBaseDateTime(FormatType.PATTERN, 
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString.baseDateTimeToStr(FormatType.PATTERN, 
 				"yyyy-MM-DD_HH:mm:ss:SS")).get();
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS"),
 				result.get(0));
 		
-		result = Op.onList(targets).forEach().exec(FnJodaToString.fromBaseDateTime(FormatType.STYLE, 
+		result = Op.onList(targets).forEach().exec(FnJodaString.baseDateTimeToStr(FormatType.STYLE, 
 		        "L-")).get();
 		assertEquals(targets.get(0).toString(DateTimeFormat.forStyle("L-")),
                 result.get(0));
 	}
 
 	@Test
-	public void testFromBaseDateTimeFormatTypeStringLocale() {
+	public void testbaseDateTimeToStrFormatTypeStringLocale() {
 		// Convert DateMidnight
 		List<DateMidnight> targets = new ArrayList<DateMidnight>();
 		targets.add(new DateMidnight());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromBaseDateTime(FormatType.PATTERN, "yyyy-MM-DD_HH:mm:ss:SS", Locale.UK)).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.baseDateTimeToStr(FormatType.PATTERN, "yyyy-MM-DD_HH:mm:ss:SS", Locale.UK)).get();	
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS", Locale.UK),
 				result.get(0));
 	}
 
 	@Test
-	public void testFromBaseDateTimeFormatTypeStringChronology() {
+	public void testbaseDateTimeToStrFormatTypeStringChronology() {
 		// Convert DateMidnight 
 		List<DateMidnight> targets = new ArrayList<DateMidnight>();
 		targets.add(new DateMidnight());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromBaseDateTime(FormatType.STYLE, "MM", BuddhistChronology.getInstance())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.baseDateTimeToStr(FormatType.STYLE, "MM", BuddhistChronology.getInstance())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.forStyle("MM").withChronology(BuddhistChronology.getInstance())),
@@ -76,8 +77,8 @@ public class JodaToStringTest extends TestCase {
 				result.get(0)));
 		
 		try {
-			Op.onList(targets).forEach().exec(FnJodaToString
-				.fromBaseDateTime(null, "MM", BuddhistChronology.getInstance()));
+			Op.onList(targets).forEach().exec(FnJodaString
+				.baseDateTimeToStr(null, "MM", BuddhistChronology.getInstance()));
 			fail("conversion can't be done if formatType is null");
 		} catch (IllegalArgumentException e) {
 			// Do nothing
@@ -85,12 +86,12 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromBaseDateTimeFormatTypeStringString() {
+	public void testbaseDateTimeToStrFormatTypeStringString() {
 		// Convert DateMidnight 
 		List<DateMidnight> targets = new ArrayList<DateMidnight>();
 		targets.add(new DateMidnight());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromBaseDateTime(FormatType.STYLE, "MM", Locale.UK.toString())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.baseDateTimeToStr(FormatType.STYLE, "MM", Locale.UK.toString())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.forStyle("MM").withLocale(Locale.UK)),
@@ -101,19 +102,19 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromBaseDateTimeDateTimeFormatter() {
+	public void testbaseDateTimeToStrDateTimeFormatter() {
 		// Convert DateMidnight 
 		List<DateMidnight> targets = new ArrayList<DateMidnight>();
 		targets.add(new DateMidnight());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromBaseDateTime(DateTimeFormat.fullDateTime())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.baseDateTimeToStr(DateTimeFormat.fullDateTime())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.fullDateTime()),
 				result.get(0));	
 		
-		result = Op.onList(targets).forEach().exec(FnJodaToString
-                .fromBaseDateTime(DateTimeFormat.mediumDate())).get();
+		result = Op.onList(targets).forEach().exec(FnJodaString
+                .baseDateTimeToStr(DateTimeFormat.mediumDate())).get();
 		assertEquals(targets.get(0).toString(
                 DateTimeFormat.mediumDate()),
                 result.get(0));     
@@ -123,17 +124,17 @@ public class JodaToStringTest extends TestCase {
     public void testFromLocalTime() {
         List<LocalTime> targets = new ArrayList<LocalTime>();
         targets.add(new LocalTime());
-        List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromLocalTime()).get();
+        List<String> result = Op.onList(targets).forEach().exec(FnJodaString.localTimeToStr()).get();
         
         assertEquals(targets.get(0).toString(),
                 result.get(0));
     }
 	
 	@Test
-	public void testFromLocalTimeFormatTypeString() {
+	public void testlocalTimeToStrFormatTypeString() {
 		List<LocalTime> targets = new ArrayList<LocalTime>();
 		targets.add(new LocalTime());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromLocalTime(FormatType.PATTERN, 
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString.localTimeToStr(FormatType.PATTERN, 
 				"yyyy-MM-DD_HH:mm:ss:SS")).get();
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS"),
@@ -141,18 +142,18 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLocalTimeFormatTypeStringLocale() {
+	public void testlocalTimeToStrFormatTypeStringLocale() {
 		List<LocalTime> targets = new ArrayList<LocalTime>();
 		targets.add(new LocalTime());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalTime(FormatType.PATTERN, "yyyy-MM-DD_HH:mm:ss:SS", Locale.UK)).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localTimeToStr(FormatType.PATTERN, "yyyy-MM-DD_HH:mm:ss:SS", Locale.UK)).get();	
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS", Locale.UK),
 				result.get(0));
 		
 		try {
-			Op.onList(targets).forEach().exec(FnJodaToString
-					.fromLocalTime(FormatType.PATTERN, null, Locale.UK));
+			Op.onList(targets).forEach().exec(FnJodaString
+					.localTimeToStr(FormatType.PATTERN, null, Locale.UK));
 			fail("conversion can't be done if pattern is null");
 		} catch (IllegalArgumentException e) {
 			// Do nothing
@@ -160,11 +161,11 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLocalTimeFormatTypeStringChronology() {
+	public void testlocalTimeToStrFormatTypeStringChronology() {
 		List<LocalTime> targets = new ArrayList<LocalTime>();
 		targets.add(new LocalTime());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalTime(FormatType.STYLE, "MM", BuddhistChronology.getInstance())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localTimeToStr(FormatType.STYLE, "MM", BuddhistChronology.getInstance())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.forStyle("MM").withChronology(BuddhistChronology.getInstance())),
@@ -172,11 +173,11 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLocalTimeFormatTypeStringString() {
+	public void testlocalTimeToStrFormatTypeStringString() {
 		List<LocalTime> targets = new ArrayList<LocalTime>();
 		targets.add(new LocalTime());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalTime(FormatType.STYLE, "MM", Locale.UK.toString())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localTimeToStr(FormatType.STYLE, "MM", Locale.UK.toString())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.forStyle("MM").withLocale(Locale.UK)),
@@ -186,8 +187,8 @@ public class JodaToStringTest extends TestCase {
 				result.get(0)));
 		
 		try {
-			Op.onList(targets).forEach().exec(FnJodaToString
-					.fromLocalTime(FormatType.STYLE, "MM", ""));
+			Op.onList(targets).forEach().exec(FnJodaString
+					.localTimeToStr(FormatType.STYLE, "MM", ""));
 			fail("conversion can't be done if locale is empty");
 		} catch (IllegalArgumentException e) {
 			// Do nothing
@@ -195,11 +196,11 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLocalTimeDateTimeFormatter() {
+	public void testlocalTimeToStrDateTimeFormatter() {
 		List<LocalTime> targets = new ArrayList<LocalTime>();
 		targets.add(new LocalTime());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalTime(DateTimeFormat.fullDateTime())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localTimeToStr(DateTimeFormat.fullDateTime())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.fullDateTime()),
@@ -207,20 +208,20 @@ public class JodaToStringTest extends TestCase {
 	}
 	
 	@Test
-    public void testFromLocalDate() {
+    public void testlocalDateToStr() {
         List<LocalDate> targets = new ArrayList<LocalDate>();
         targets.add(new LocalDate());
-        List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromLocalDate()).get();
+        List<String> result = Op.onList(targets).forEach().exec(FnJodaString.localDateToStr()).get();
         
         assertEquals(targets.get(0).toString(),
                 result.get(0));
     }
 	
 	@Test
-	public void testFromLocalDateFormatTypeString() {
+	public void testlocalDateToStrFormatTypeString() {
 		List<LocalDate> targets = new ArrayList<LocalDate>();
 		targets.add(new LocalDate());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString.fromLocalDate(FormatType.PATTERN, 
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString.localDateToStr(FormatType.PATTERN, 
 				"yyyy-MM-DD_HH:mm:ss:SS")).get();
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS"),
@@ -228,22 +229,22 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLocalDateFormatTypeStringLocale() {
+	public void testlocalDateToStrFormatTypeStringLocale() {
 		List<LocalDate> targets = new ArrayList<LocalDate>();
 		targets.add(new LocalDate());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalDate(FormatType.PATTERN, "yyyy-MM-DD_HH:mm:ss:SS", Locale.UK)).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localDateToStr(FormatType.PATTERN, "yyyy-MM-DD_HH:mm:ss:SS", Locale.UK)).get();	
 		
 		assertEquals(targets.get(0).toString("yyyy-MM-DD_HH:mm:ss:SS", Locale.UK),
 				result.get(0));
 	}
 
 	@Test
-	public void testFromLocalDateFormatTypeStringChronology() {
+	public void testlocalDateToStrFormatTypeStringChronology() {
 		List<LocalDate> targets = new ArrayList<LocalDate>();
 		targets.add(new LocalDate());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalDate(FormatType.STYLE, "MM", BuddhistChronology.getInstance())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localDateToStr(FormatType.STYLE, "MM", BuddhistChronology.getInstance())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.forStyle("MM").withChronology(BuddhistChronology.getInstance())),
@@ -251,11 +252,11 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLocalDateFormatTypeStringString() {
+	public void testlocalDateToStrFormatTypeStringString() {
 		List<LocalDate> targets = new ArrayList<LocalDate>();
 		targets.add(new LocalDate());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalDate(FormatType.STYLE, "MM", Locale.UK.toString())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localDateToStr(FormatType.STYLE, "MM", Locale.UK.toString())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.forStyle("MM").withLocale(Locale.UK)),
@@ -266,11 +267,11 @@ public class JodaToStringTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLocalDateDateTimeFormatter() {
+	public void testlocalDateToStrDateTimeFormatter() {
 		List<LocalDate> targets = new ArrayList<LocalDate>();
 		targets.add(new LocalDate());
-		List<String> result = Op.onList(targets).forEach().exec(FnJodaToString
-				.fromLocalDate(DateTimeFormat.fullDateTime())).get();	
+		List<String> result = Op.onList(targets).forEach().exec(FnJodaString
+				.localDateToStr(DateTimeFormat.fullDateTime())).get();	
 		
 		assertEquals(targets.get(0).toString(
 				DateTimeFormat.fullDateTime()),

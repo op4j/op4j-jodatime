@@ -21,15 +21,15 @@ import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.exceptions.ExecutionException;
 import org.op4j.jodatime.functions.FnJodaTimeUtils;
-import org.op4j.jodatime.functions.FnToInterval;
+import org.op4j.jodatime.functions.FnInterval;
 
-public class ToIntervalTest extends TestCase {
+public class IntervalTest extends TestCase {
 
 	@Test
 	public void testFromStringFieldList() {
 		Interval result = Op.on(Arrays.asList("1977", "5", "2", "23", "12", "2", "34",
 				"1980", "8", "5", "12", "12", "12", "4"))
-			.exec(FnToInterval.fromStringFieldCollection())
+			.exec(FnInterval.strFieldCollectionToInterval())
 			.get();
 	
 		assertEquals(result,
@@ -41,7 +41,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromStringFieldListDateTimeZone() {
 		Interval result = Op.on(Arrays.asList("1977", "5", "2", "23", "12", "2", "34",
 				"1980", "8", "5", "12", "12", "12", "4"))
-			.exec(FnToInterval.fromStringFieldCollection(DateTimeZone.getDefault()))
+			.exec(FnInterval.strFieldCollectionToInterval(DateTimeZone.getDefault()))
 			.get();
 	
 		assertEquals(result,
@@ -54,7 +54,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromStringFieldListChronology() {
 		Interval result = Op.on(Arrays.asList("1977", "5", "2", "23", "12", "2", "34",
 				"1980", "8", "5", "12", "12", "12", "4"))
-			.exec(FnToInterval.fromStringFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnInterval.strFieldCollectionToInterval(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -65,7 +65,7 @@ public class ToIntervalTest extends TestCase {
 		try {
 			Op.on(Arrays.asList("1977", "5", "2", "23", "12", "2", "34",
 					"1980", "8", "5", "12", "12", "12"))
-				.exec(FnToInterval.fromStringFieldCollection(BuddhistChronology.getInstance())).get();
+				.exec(FnInterval.strFieldCollectionToInterval(BuddhistChronology.getInstance())).get();
 			fail("fromStringFieldList should not accept list of size 13");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -75,14 +75,14 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListString() {
 		Interval result = Op.on(Arrays.asList("09/02/2000", "05/09/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/mm/yyyy")).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/mm/yyyy")).get();
 		
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy");
 		assertEquals(result, new Interval(f.parseDateTime("09/02/2000"), f.parseDateTime("05/09/2001")));
 		
 		try {
 			Op.on(Arrays.asList("09/02/2000", "05/09/2001", "05/09/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/mm/yyyy")).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/mm/yyyy")).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -92,7 +92,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringDateTimeZone() {
 		Interval result = Op.on(Arrays.asList("09/02/2000", "05/09/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/mm/yyyy", DateTimeZone.getDefault())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/mm/yyyy", DateTimeZone.getDefault())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
 			.withZone(DateTimeZone.getDefault());
@@ -101,7 +101,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/02/2000", "05/09/2001", "05/09/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/mm/yyyy", DateTimeZone.getDefault())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/mm/yyyy", DateTimeZone.getDefault())).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -111,7 +111,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringChronology() {
 		Interval result = Op.on(Arrays.asList("09/02/2000", "05/09/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
 			.withChronology(BuddhistChronology.getInstance());
@@ -120,7 +120,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/02/2000", "05/09/2001", "05/09/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -130,7 +130,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringLocale() {
 		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK)).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK)).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK);
@@ -139,7 +139,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK)).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK)).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -149,7 +149,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringString() {
 		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK.toString())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK.toString())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK);
@@ -158,7 +158,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK.toString())).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK.toString())).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -168,7 +168,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringLocaleDateTimeZone() {
 		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
@@ -177,7 +177,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -187,7 +187,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringStringDateTimeZone() {
 		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
@@ -196,7 +196,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -206,7 +206,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringLocaleChronology() {
 		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
@@ -215,7 +215,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -225,7 +225,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldListStringStringChronology() {
 		Interval result = Op.on(Arrays.asList("09/February/2000", "05/March/2001"))
-			.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
+			.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
@@ -234,7 +234,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(Arrays.asList("09/February/2000", "05/March/2001", "05/December/2001"))
-				.exec(FnToInterval.fromStringFieldCollection("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
+				.exec(FnInterval.strFieldCollectionToInterval("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
 			fail("fromStringFieldList should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -245,7 +245,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromStringFieldArray() {
 		Interval result = Op.on(new String[] {"1977", "5", "2", "23", "12", "2", "34",
 				"1980", "8", "5", "12", "12", "12", "4"})
-			.exec(FnToInterval.fromStringFieldArray())
+			.exec(FnInterval.strFieldArrayToInterval())
 			.get();
 	
 		assertEquals(result,
@@ -257,7 +257,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromStringFieldArrayDateTimeZone() {
 		Interval result = Op.on(new String[] {"1977", "5", "2", "23", "12", "2", "34",
 				"1980", "8", "5", "12", "12", "12", "4"})
-			.exec(FnToInterval.fromStringFieldArray(DateTimeZone.getDefault()))
+			.exec(FnInterval.strFieldArrayToInterval(DateTimeZone.getDefault()))
 			.get();
 	
 		assertEquals(result,
@@ -270,7 +270,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromStringFieldArrayChronology() {
 		Interval result = Op.on(new String[] {"1977", "5", "2", "23", "12", "2", "34",
 				"1980", "8", "5", "12", "12", "12", "4"})
-			.exec(FnToInterval.fromStringFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnInterval.strFieldArrayToInterval(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -281,7 +281,7 @@ public class ToIntervalTest extends TestCase {
 		try {
 			Op.on(new String[] {"1977", "5", "2", "23", "12", "2", "34",
 					"1980", "8", "5", "12", "12", "12"})
-				.exec(FnToInterval.fromStringFieldArray(BuddhistChronology.getInstance())).get();
+				.exec(FnInterval.strFieldArrayToInterval(BuddhistChronology.getInstance())).get();
 			fail("fromStringFieldArray should not accept list of size 13");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -291,14 +291,14 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayString() {
 		Interval result = Op.on(new String[] {"09/02/2000", "05/09/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/mm/yyyy")).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/mm/yyyy")).get();
 	
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy");
 		assertEquals(result, new Interval(f.parseDateTime("09/02/2000"), f.parseDateTime("05/09/2001")));
 
 		try {
 			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/mm/yyyy")).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/mm/yyyy")).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -308,7 +308,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringDateTimeZone() {
 		Interval result = Op.on(new String[] {"09/02/2000", "05/09/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/mm/yyyy", DateTimeZone.getDefault())).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/mm/yyyy", DateTimeZone.getDefault())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
 			.withZone(DateTimeZone.getDefault());
@@ -317,7 +317,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/mm/yyyy", DateTimeZone.getDefault())).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/mm/yyyy", DateTimeZone.getDefault())).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -327,7 +327,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringChronology() {
 		Interval result = Op.on(new String[] {"09/02/2000", "05/09/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/mm/yyyy")
 			.withChronology(BuddhistChronology.getInstance());
@@ -336,7 +336,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/02/2000", "05/09/2001", "05/09/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/mm/yyyy", BuddhistChronology.getInstance())).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -346,7 +346,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringLocale() {
 		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK)).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK)).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK);
@@ -355,7 +355,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK)).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK)).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -365,7 +365,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringString() {
 		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString())).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK.toString())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK);
@@ -374,7 +374,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString())).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK.toString())).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -384,7 +384,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringLocaleDateTimeZone() {
 		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
@@ -393,7 +393,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK, DateTimeZone.getDefault())).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -403,7 +403,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringStringDateTimeZone() {
 		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withZone(DateTimeZone.getDefault());
@@ -412,7 +412,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK.toString(), DateTimeZone.getDefault())).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -422,7 +422,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringLocaleChronology() {
 		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
@@ -431,7 +431,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK, JulianChronology.getInstance())).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -441,7 +441,7 @@ public class ToIntervalTest extends TestCase {
 	@Test
 	public void testFromStringFieldArrayStringStringChronology() {
 		Interval result = Op.on(new String[] {"09/February/2000", "05/March/2001"})
-			.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
+			.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
 
 		DateTimeFormatter f = DateTimeFormat.forPattern("dd/MMMM/yyyy")
 			.withLocale(Locale.UK).withChronology(JulianChronology.getInstance());
@@ -450,7 +450,7 @@ public class ToIntervalTest extends TestCase {
 
 		try {
 			Op.on(new String[] {"09/February/2000", "05/March/2001", "05/December/2001"})
-				.exec(FnToInterval.fromStringFieldArray("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
+				.exec(FnInterval.strFieldArrayToInterval("dd/MMMM/yyyy", Locale.UK.toString(), JulianChronology.getInstance())).get();
 			fail("fromStringFieldArray should not accept a pattern and list of size 3");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -463,7 +463,7 @@ public class ToIntervalTest extends TestCase {
 		Date end = new Date();
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromDateFieldCollection())
+			.exec(FnInterval.dateFieldCollectionToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -476,7 +476,7 @@ public class ToIntervalTest extends TestCase {
 		Date end = new Date();
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromDateFieldCollection(
+			.exec(FnInterval.dateFieldCollectionToInterval(
 					DateTimeZone.getDefault()))
 			.get();
 		
@@ -491,7 +491,7 @@ public class ToIntervalTest extends TestCase {
 		java.sql.Date end = new java.sql.Date(new Date(99233).getTime());
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromDateFieldCollection(
+			.exec(FnInterval.dateFieldCollectionToInterval(
 					BuddhistChronology.getInstance()))
 			.get();
 		
@@ -506,7 +506,7 @@ public class ToIntervalTest extends TestCase {
 		Date end = new Date();
 		
 		Interval result = Op.on(new Date[] {start, end})
-			.exec(FnToInterval.fromDateFieldArray())
+			.exec(FnInterval.dateFieldArrayToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -519,7 +519,7 @@ public class ToIntervalTest extends TestCase {
 		Date end = new Date();
 		
 		Interval result = Op.on(new Date[] {start, end})
-			.exec(FnToInterval.fromDateFieldArray(
+			.exec(FnInterval.dateFieldArrayToInterval(
 					DateTimeZone.getDefault()))
 			.get();
 		
@@ -534,7 +534,7 @@ public class ToIntervalTest extends TestCase {
 		java.sql.Date end = new java.sql.Date(new Date(99233).getTime());
 		
 		Interval result = Op.on(new java.sql.Date[] {start, end})
-			.exec(FnToInterval.fromDateFieldArray(
+			.exec(FnInterval.dateFieldArrayToInterval(
 					BuddhistChronology.getInstance()))
 			.get();
 		
@@ -549,7 +549,7 @@ public class ToIntervalTest extends TestCase {
 		Timestamp end = new Timestamp(1000000);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromTimestampFieldCollection())
+			.exec(FnInterval.timestampFieldCollectionToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -562,7 +562,7 @@ public class ToIntervalTest extends TestCase {
 		Timestamp end = new Timestamp(1000000);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromTimestampFieldCollection(DateTimeZone.getDefault()))
+			.exec(FnInterval.timestampFieldCollectionToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -576,7 +576,7 @@ public class ToIntervalTest extends TestCase {
 		Timestamp end = new Timestamp(1000000);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromTimestampFieldCollection(GJChronology.getInstance()))
+			.exec(FnInterval.timestampFieldCollectionToInterval(GJChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,
@@ -584,12 +584,12 @@ public class ToIntervalTest extends TestCase {
 	}
 
 	@Test
-	public void testFromTimestampFieldArray() {
+	public void testtimestampFieldArrayToInterval() {
 		Timestamp start = new Timestamp(1000);
 		Timestamp end = new Timestamp(1000000);
 		
 		Interval result = Op.on(new Timestamp[] {start, end})
-			.exec(FnToInterval.fromTimestampFieldArray())
+			.exec(FnInterval.timestampFieldArrayToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -602,7 +602,7 @@ public class ToIntervalTest extends TestCase {
 		Timestamp end = new Timestamp(1000000);
 		
 		Interval result = Op.on(new Timestamp[] {start, end})
-			.exec(FnToInterval.fromTimestampFieldArray(DateTimeZone.getDefault()))
+			.exec(FnInterval.timestampFieldArrayToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -616,7 +616,7 @@ public class ToIntervalTest extends TestCase {
 		Timestamp end = new Timestamp(1000000);
 		
 		Interval result = Op.on(new Timestamp[] {start, end})
-			.exec(FnToInterval.fromTimestampFieldArray(GJChronology.getInstance()))
+			.exec(FnInterval.timestampFieldArrayToInterval(GJChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,
@@ -629,7 +629,7 @@ public class ToIntervalTest extends TestCase {
 		Long end = Long.valueOf(1000000);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromLongFieldCollection())
+			.exec(FnInterval.longFieldCollectionToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -642,7 +642,7 @@ public class ToIntervalTest extends TestCase {
 		Long end = Long.valueOf(1000000);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromLongFieldCollection(DateTimeZone.getDefault()))
+			.exec(FnInterval.longFieldCollectionToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -656,7 +656,7 @@ public class ToIntervalTest extends TestCase {
 		Long end = Long.valueOf(1000000);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromLongFieldCollection(GJChronology.getInstance()))
+			.exec(FnInterval.longFieldCollectionToInterval(GJChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,
@@ -665,12 +665,12 @@ public class ToIntervalTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLongFieldArray() {
+	public void testlongFieldArrayToInterval() {
 		Long start = Long.valueOf(1000);
 		Long end = Long.valueOf(1000000);
 		
 		Interval result = Op.on(new Long[] {start, end})
-			.exec(FnToInterval.fromLongFieldArray())
+			.exec(FnInterval.longFieldArrayToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -683,7 +683,7 @@ public class ToIntervalTest extends TestCase {
 		Long end = Long.valueOf(1000000);
 		
 		Interval result = Op.on(new Long[] {start, end})
-			.exec(FnToInterval.fromLongFieldArray(DateTimeZone.getDefault()))
+			.exec(FnInterval.longFieldArrayToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -697,7 +697,7 @@ public class ToIntervalTest extends TestCase {
 		Long end = Long.valueOf(1000000);
 		
 		Interval result = Op.on(new Long[] {start, end})
-			.exec(FnToInterval.fromLongFieldArray(GJChronology.getInstance()))
+			.exec(FnInterval.longFieldArrayToInterval(GJChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,
@@ -709,7 +709,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromIntegerFieldList() {
 		Interval result = Op.on(Arrays.asList(Integer.valueOf(1977), Integer.valueOf(5), Integer.valueOf(2), 
 				Integer.valueOf(1980), Integer.valueOf(8), Integer.valueOf(5)))
-			.exec(FnToInterval.fromIntegerFieldCollection())
+			.exec(FnInterval.integerFieldCollectionToInterval())
 			.get();
 	
 		assertEquals(result,
@@ -721,7 +721,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromIntegerFieldListDateTimeZone() {
 		Interval result = Op.on(Arrays.asList(Integer.valueOf(1977), Integer.valueOf(5), Integer.valueOf(2), 
 				Integer.valueOf(1980), Integer.valueOf(8), Integer.valueOf(5)))
-			.exec(FnToInterval.fromIntegerFieldCollection(DateTimeZone.getDefault()))
+			.exec(FnInterval.integerFieldCollectionToInterval(DateTimeZone.getDefault()))
 			.get();
 	
 		assertEquals(result,
@@ -733,7 +733,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromIntegerFieldListChronology() {
 		Interval result = Op.on(Arrays.asList(Integer.valueOf(1977), Integer.valueOf(5), Integer.valueOf(2), 
 				Integer.valueOf(1980), Integer.valueOf(8), Integer.valueOf(5)))
-			.exec(FnToInterval.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnInterval.integerFieldCollectionToInterval(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -744,7 +744,7 @@ public class ToIntervalTest extends TestCase {
 		try {
 			Op.on(Arrays.asList(Integer.valueOf(1977), Integer.valueOf(5), Integer.valueOf(2), 
 					Integer.valueOf(1980), Integer.valueOf(8)))
-				.exec(FnToInterval.fromIntegerFieldCollection(BuddhistChronology.getInstance())).get();
+				.exec(FnInterval.integerFieldCollectionToInterval(BuddhistChronology.getInstance())).get();
 			fail("fromIntegerFieldList should not work with a list of 5 elements");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -752,10 +752,10 @@ public class ToIntervalTest extends TestCase {
 	}
 
 	@Test
-	public void testFromIntegerFieldArray() {
+	public void testintegerFieldArrayToInterval() {
 		Interval result = Op.on(new Integer[] {Integer.valueOf(1977), Integer.valueOf(5), Integer.valueOf(2), 
 				Integer.valueOf(1980), Integer.valueOf(8), Integer.valueOf(5)})
-			.exec(FnToInterval.fromIntegerFieldArray())
+			.exec(FnInterval.integerFieldArrayToInterval())
 			.get();
 	
 		assertEquals(result,
@@ -767,7 +767,7 @@ public class ToIntervalTest extends TestCase {
 	public void testFromIntegerFieldArrayDateTimeZone() {
 		Interval result = Op.on(new Integer[] {Integer.valueOf(1977), Integer.valueOf(5), Integer.valueOf(2), 
 				Integer.valueOf(1980), Integer.valueOf(8), Integer.valueOf(5)})
-			.exec(FnToInterval.fromIntegerFieldArray(DateTimeZone.getDefault()))
+			.exec(FnInterval.integerFieldArrayToInterval(DateTimeZone.getDefault()))
 			.get();
 	
 		assertEquals(result,
@@ -781,7 +781,7 @@ public class ToIntervalTest extends TestCase {
 				Integer.valueOf(17), Integer.valueOf(35),
 				Integer.valueOf(1980), Integer.valueOf(8), Integer.valueOf(5),
 				Integer.valueOf(18), Integer.valueOf(20)})
-			.exec(FnToInterval.fromIntegerFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnInterval.integerFieldArrayToInterval(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -792,7 +792,7 @@ public class ToIntervalTest extends TestCase {
 		try {
 			Op.on(new Integer[] {Integer.valueOf(1977), Integer.valueOf(5), Integer.valueOf(2), 
 					Integer.valueOf(1980), Integer.valueOf(8)})
-				.exec(FnToInterval.fromIntegerFieldArray(BuddhistChronology.getInstance())).get();
+				.exec(FnInterval.integerFieldArrayToInterval(BuddhistChronology.getInstance())).get();
 			fail("fromIntegerFieldList should not work with a list of 5 elements");
 		} catch (ExecutionException e) {
 			// Do nothing
@@ -806,7 +806,7 @@ public class ToIntervalTest extends TestCase {
 		end.add(Calendar.MONTH, 63);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromCalendarFieldCollection())
+			.exec(FnInterval.calendarFieldCollectionToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -820,7 +820,7 @@ public class ToIntervalTest extends TestCase {
 		end.add(Calendar.MONTH, 63);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromCalendarFieldCollection(DateTimeZone.getDefault()))
+			.exec(FnInterval.calendarFieldCollectionToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -835,7 +835,7 @@ public class ToIntervalTest extends TestCase {
 		end.add(Calendar.MONTH, 63);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromCalendarFieldCollection(GJChronology.getInstance()))
+			.exec(FnInterval.calendarFieldCollectionToInterval(GJChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,
@@ -850,7 +850,7 @@ public class ToIntervalTest extends TestCase {
 		end.add(Calendar.MONTH, 63);
 		
 		Interval result = Op.on(new Calendar[] {start, end})
-			.exec(FnToInterval.fromCalendarFieldArray())
+			.exec(FnInterval.calendarFieldArrayToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -864,7 +864,7 @@ public class ToIntervalTest extends TestCase {
 		end.add(Calendar.MONTH, 3);
 		
 		Interval result = Op.on(new Calendar[] {start, end})
-			.exec(FnToInterval.fromCalendarFieldArray(DateTimeZone.getDefault()))
+			.exec(FnInterval.calendarFieldArrayToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -879,7 +879,7 @@ public class ToIntervalTest extends TestCase {
 		end.add(Calendar.MONTH, 3);
 		
 		Interval result = Op.on(new Calendar[] {start, end})
-			.exec(FnToInterval.fromCalendarFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnInterval.calendarFieldArrayToInterval(BuddhistChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,
@@ -894,7 +894,7 @@ public class ToIntervalTest extends TestCase {
 		end.plusDays(3);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromBaseDateTimeFieldCollection())
+			.exec(FnInterval.baseDateTimeFieldCollectionToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -908,7 +908,7 @@ public class ToIntervalTest extends TestCase {
 		end.plusHours(3);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromBaseDateTimeFieldCollection(DateTimeZone.getDefault()))
+			.exec(FnInterval.baseDateTimeFieldCollectionToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -923,7 +923,7 @@ public class ToIntervalTest extends TestCase {
 		end.plusHours(3);
 		
 		Interval result = Op.on(Arrays.asList(start, end))
-			.exec(FnToInterval.fromBaseDateTimeFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnInterval.baseDateTimeFieldCollectionToInterval(BuddhistChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,
@@ -938,7 +938,7 @@ public class ToIntervalTest extends TestCase {
 		end.plusDays(3);
 		
 		Interval result = Op.on(new DateMidnight[] {start, end})
-			.exec(FnToInterval.fromBaseDateTimeFieldArray())
+			.exec(FnInterval.baseDateTimeFieldArrayToInterval())
 			.get();
 		
 		assertEquals(result,
@@ -957,7 +957,7 @@ public class ToIntervalTest extends TestCase {
 		end.plusHours(3);
 		
 		Interval result = Op.on(new DateTime[] {start, end})
-			.exec(FnToInterval.fromBaseDateTimeFieldArray(DateTimeZone.getDefault()))
+			.exec(FnInterval.baseDateTimeFieldArrayToInterval(DateTimeZone.getDefault()))
 			.get();
 		
 		assertEquals(result,
@@ -972,7 +972,7 @@ public class ToIntervalTest extends TestCase {
 		end.plusHours(3);
 		
 		Interval result = Op.on(new DateTime[] {start, end})
-			.exec(FnToInterval.fromBaseDateTimeFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnInterval.baseDateTimeFieldArrayToInterval(BuddhistChronology.getInstance()))
 			.get();
 		
 		assertEquals(result,

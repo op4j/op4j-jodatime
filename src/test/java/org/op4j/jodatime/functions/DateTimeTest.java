@@ -17,15 +17,15 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.jodatime.functions.FnJodaTimeUtils;
-import org.op4j.jodatime.functions.FnToDateTime;
+import org.op4j.jodatime.functions.FnDateTime;
 
-public class ToDateTimeTest extends TestCase {
+public class DateTimeTest extends TestCase {
 
 	@Test
 	public void testFromStringString() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern)).get();
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).parseDateTime(asStr));
 	}
@@ -34,7 +34,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				DateTimeZone.UTC)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withZone(DateTimeZone.UTC)
@@ -45,7 +45,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withChronology(BuddhistChronology.getInstance())
@@ -59,7 +59,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringLocale() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				Locale.CANADA)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -70,7 +70,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringString() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				Locale.CANADA.toString())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -81,7 +81,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringLocaleDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				Locale.CANADA, DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -93,7 +93,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringStringDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-23:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				Locale.CANADA.toString(), DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -105,7 +105,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringLocaleChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				Locale.CANADA, BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -116,7 +116,7 @@ public class ToDateTimeTest extends TestCase {
 				Locale.CANADA, BuddhistChronology.getInstance())).get());
 		
 		try {
-			Op.on(asStr).exec(FnToDateTime.fromString("",
+			Op.on(asStr).exec(FnDateTime.strToDateTime("",
 					Locale.CANADA, BuddhistChronology.getInstance()));
 			fail("conversion can't be done if pattern is empty");
 		} catch (IllegalArgumentException e) {
@@ -128,7 +128,7 @@ public class ToDateTimeTest extends TestCase {
 	public void testFromStringStringStringChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm:ss";
 		String asStr = "24/12/2000-00:03:33";
-		DateTime result = Op.on(asStr).exec(FnToDateTime.fromString(pattern,
+		DateTime result = Op.on(asStr).exec(FnDateTime.strToDateTime(pattern,
 				Locale.CANADA.toString(), BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -137,9 +137,9 @@ public class ToDateTimeTest extends TestCase {
 	}
 
 	@Test
-	public void testFromDate() {
+	public void testdateToDateTime() {
 		Date date = new Date();
-		DateTime result = Op.on(date).exec(FnToDateTime.fromDate()).get();
+		DateTime result = Op.on(date).exec(FnDateTime.dateToDateTime()).get();
 		
 		assertEquals(result, new DateTime(date));
 	}
@@ -147,7 +147,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromDateDateTimeZone() {
 		java.sql.Date date = new java.sql.Date(new Date().getTime());
-		DateTime result = Op.on(date).exec(FnToDateTime.fromDate(DateTimeZone.getDefault())).get();
+		DateTime result = Op.on(date).exec(FnDateTime.dateToDateTime(DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateTime(date, DateTimeZone.getDefault()));
 	}
@@ -155,15 +155,15 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromDateChronology() {
 		java.sql.Date date = new java.sql.Date(new Date().getTime());
-		DateTime result = Op.on(date).exec(FnToDateTime.fromDate(BuddhistChronology.getInstance())).get();
+		DateTime result = Op.on(date).exec(FnDateTime.dateToDateTime(BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, new DateTime(date, BuddhistChronology.getInstance()));
 	}
 
 	@Test
-	public void testFromTimestamp() {
+	public void testtimestampToDateTime() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		DateTime result = Op.on(timestamp).exec(FnToDateTime.fromTimestamp()).get();
+		DateTime result = Op.on(timestamp).exec(FnDateTime.timestampToDateTime()).get();
 		
 		assertEquals(result, new DateTime(timestamp));	
 	}
@@ -171,7 +171,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromTimestampDateTimeZone() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		DateTime result = Op.on(timestamp).exec(FnToDateTime.fromTimestamp(
+		DateTime result = Op.on(timestamp).exec(FnDateTime.timestampToDateTime(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateTime(timestamp, DateTimeZone.getDefault()));	
@@ -180,7 +180,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromTimestampChronology() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		DateTime result = Op.on(timestamp).exec(FnToDateTime.fromTimestamp(CopticChronology.getInstance())).get();
+		DateTime result = Op.on(timestamp).exec(FnDateTime.timestampToDateTime(CopticChronology.getInstance())).get();
 		
 		assertEquals(result, new DateTime(timestamp, CopticChronology.getInstance()));	
 	}
@@ -188,7 +188,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromLong() {
 		long dateAsLong = new Date().getTime();
-		DateTime result = Op.on(Long.valueOf(dateAsLong)).exec(FnToDateTime.fromLong()).get();
+		DateTime result = Op.on(Long.valueOf(dateAsLong)).exec(FnDateTime.longToDateTime()).get();
 		
 		assertEquals(result, new DateTime(dateAsLong));
 	}
@@ -196,7 +196,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromLongDateTimeZone() {
 		long dateAsLong = new Date().getTime();
-		DateTime result = Op.on(Long.valueOf(dateAsLong)).exec(FnToDateTime.fromLong(
+		DateTime result = Op.on(Long.valueOf(dateAsLong)).exec(FnDateTime.longToDateTime(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateTime(dateAsLong, DateTimeZone.getDefault()));
@@ -205,7 +205,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromLongChronology() {
 		long dateAsLong = new Date().getTime();
-		DateTime result = Op.on(Long.valueOf(dateAsLong)).exec(FnToDateTime.fromLong(
+		DateTime result = Op.on(Long.valueOf(dateAsLong)).exec(FnDateTime.longToDateTime(
 				CopticChronology.getInstance())).get();
 		
 		assertEquals(result, new DateTime(dateAsLong, CopticChronology.getInstance()));
@@ -220,7 +220,7 @@ public class ToDateTimeTest extends TestCase {
 		Integer minute = Integer.valueOf(23);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute))
-			.exec(FnToDateTime.fromIntegerFieldCollection())
+			.exec(FnDateTime.integerFieldCollectionToDateTime())
 			.get();
 	
 		assertEquals(result,
@@ -237,7 +237,7 @@ public class ToDateTimeTest extends TestCase {
 		Integer minute = Integer.valueOf(23);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute))
-			.exec(FnToDateTime.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnDateTime.integerFieldCollectionToDateTime(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -247,7 +247,7 @@ public class ToDateTimeTest extends TestCase {
 	}
 
 	@Test
-	public void testFromIntegerFieldArray() {
+	public void testintegerFieldArrayToDateTime() {
 		Integer year = Integer.valueOf(16);
 		Integer month = Integer.valueOf(3);
 		Integer day = Integer.valueOf(16);
@@ -256,7 +256,7 @@ public class ToDateTimeTest extends TestCase {
 		Integer second = Integer.valueOf(53);
 		
 		DateTime result = Op.on(new Integer[] {year, month, day, hour, minute, second})
-			.exec(FnToDateTime.fromIntegerFieldArray())
+			.exec(FnDateTime.integerFieldArrayToDateTime())
 			.get();
 	
 		assertEquals(result,
@@ -274,7 +274,7 @@ public class ToDateTimeTest extends TestCase {
 		Integer second = Integer.valueOf(53);
 		
 		DateTime result = Op.on(new Integer[] {year, month, day, hour, minute, second})
-			.exec(FnToDateTime.fromIntegerFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnDateTime.integerFieldArrayToDateTime(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -292,7 +292,7 @@ public class ToDateTimeTest extends TestCase {
 		String second = String.valueOf(53);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute, second))
-			.exec(FnToDateTime.fromStringFieldCollection())
+			.exec(FnDateTime.strFieldCollectionToDateTime())
 			.get();
 	
 		assertEquals(result,
@@ -310,7 +310,7 @@ public class ToDateTimeTest extends TestCase {
 		String second = String.valueOf(53);
 		
 		DateTime result = Op.on(Arrays.asList(year, month, day, hour, minute, second))
-			.exec(FnToDateTime.fromStringFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnDateTime.strFieldCollectionToDateTime(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -330,7 +330,7 @@ public class ToDateTimeTest extends TestCase {
 		String milli = String.valueOf(33);
 		
 		DateTime result = Op.on(new String[] {year, month, day, hour, minute, second, milli})
-			.exec(FnToDateTime.fromStringFieldArray())
+			.exec(FnDateTime.strFieldArrayToDateTime())
 			.get();
 	
 		assertEquals(result,
@@ -350,7 +350,7 @@ public class ToDateTimeTest extends TestCase {
 		String milli = String.valueOf(33);
 		
 		DateTime result = Op.on(new String[] {year, month, day, hour, minute, second, milli})
-			.exec(FnToDateTime.fromStringFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnDateTime.strFieldArrayToDateTime(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -361,9 +361,9 @@ public class ToDateTimeTest extends TestCase {
 	}
 
 	@Test
-	public void testFromCalendar() {
+	public void testcalendarToDateTime() {
 		Calendar calendar = Calendar.getInstance();
-		DateTime result = Op.on(calendar).exec(FnToDateTime.fromCalendar()).get();
+		DateTime result = Op.on(calendar).exec(FnDateTime.calendarToDateTime()).get();
 		
 		assertEquals(result, new DateTime(calendar));
 	}
@@ -371,7 +371,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromCalendarDateTimeZone() {
 		Calendar calendar = Calendar.getInstance();
-		DateTime result = Op.on(calendar).exec(FnToDateTime.fromCalendar(
+		DateTime result = Op.on(calendar).exec(FnDateTime.calendarToDateTime(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new DateTime(calendar, DateTimeZone.getDefault()));
@@ -380,7 +380,7 @@ public class ToDateTimeTest extends TestCase {
 	@Test
 	public void testFromCalendarChronology() {
 		Calendar calendar = Calendar.getInstance();
-		DateTime result = Op.on(calendar).exec(FnToDateTime.fromCalendar(
+		DateTime result = Op.on(calendar).exec(FnDateTime.calendarToDateTime(
 				GJChronology.getInstance())).get();
 		
 		assertEquals(result, new DateTime(calendar, GJChronology.getInstance()));

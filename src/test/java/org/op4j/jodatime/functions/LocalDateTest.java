@@ -17,15 +17,15 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 import org.op4j.Op;
 import org.op4j.jodatime.functions.FnJodaTimeUtils;
-import org.op4j.jodatime.functions.FnToLocalDate;
+import org.op4j.jodatime.functions.FnLocalDate;
 
-public class ToLocalDateTest extends TestCase {
+public class LocalDateTest extends TestCase {
 
 	@Test
 	public void testFromStringString() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern)).get();
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).parseDateTime(asStr).toLocalDate());
 	}
@@ -34,7 +34,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				DateTimeZone.UTC)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withZone(DateTimeZone.UTC)
@@ -45,7 +45,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withChronology(BuddhistChronology.getInstance())
@@ -60,7 +60,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringLocale() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				Locale.CANADA)).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -71,7 +71,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringString() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				Locale.CANADA.toString())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -82,7 +82,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringLocaleDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				Locale.CANADA, DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -94,7 +94,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringStringDateTimeZone() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-23:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				Locale.CANADA.toString(), DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -106,7 +106,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringLocaleChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm";
 		String asStr = "24/12/2000-15:03";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				Locale.CANADA, BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -118,7 +118,7 @@ public class ToLocalDateTest extends TestCase {
 	public void testFromStringStringStringChronology() {
 		String pattern = "dd/mm/yyyy-HH:mm:ss";
 		String asStr = "24/12/2000-00:03:33";
-		LocalDate result = Op.on(asStr).exec(FnToLocalDate.fromString(pattern,
+		LocalDate result = Op.on(asStr).exec(FnLocalDate.strToLocalDate(pattern,
 				Locale.CANADA.toString(), BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
@@ -127,9 +127,9 @@ public class ToLocalDateTest extends TestCase {
 	}
 
 	@Test
-	public void testFromDate() {
+	public void testdateToLocalDate() {
 		Date date = new Date();
-		LocalDate result = Op.on(date).exec(FnToLocalDate.fromDate()).get();
+		LocalDate result = Op.on(date).exec(FnLocalDate.dateToLocalDate()).get();
 		
 		assertEquals(result, new LocalDate(date));
 	}
@@ -137,7 +137,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromDateDateTimeZone() {
 		java.sql.Date date = new java.sql.Date(new Date().getTime());
-		LocalDate result = Op.on(date).exec(FnToLocalDate.fromDate(DateTimeZone.getDefault())).get();
+		LocalDate result = Op.on(date).exec(FnLocalDate.dateToLocalDate(DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new LocalDate(date, DateTimeZone.getDefault()));
 	}
@@ -145,15 +145,15 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromDateChronology() {
 		java.sql.Date date = new java.sql.Date(new Date().getTime());
-		LocalDate result = Op.on(date).exec(FnToLocalDate.fromDate(BuddhistChronology.getInstance())).get();
+		LocalDate result = Op.on(date).exec(FnLocalDate.dateToLocalDate(BuddhistChronology.getInstance())).get();
 		
 		assertEquals(result, new LocalDate(date, BuddhistChronology.getInstance()));
 	}
 
 	@Test
-	public void testFromTimestamp() {
+	public void testtimestampToLocalDate() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		LocalDate result = Op.on(timestamp).exec(FnToLocalDate.fromTimestamp()).get();
+		LocalDate result = Op.on(timestamp).exec(FnLocalDate.timestampToLocalDate()).get();
 		
 		assertEquals(result, new LocalDate(timestamp));	
 	}
@@ -161,7 +161,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromTimestampDateTimeZone() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		LocalDate result = Op.on(timestamp).exec(FnToLocalDate.fromTimestamp(
+		LocalDate result = Op.on(timestamp).exec(FnLocalDate.timestampToLocalDate(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new LocalDate(timestamp, DateTimeZone.getDefault()));	
@@ -170,7 +170,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromTimestampChronology() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		LocalDate result = Op.on(timestamp).exec(FnToLocalDate.fromTimestamp(CopticChronology.getInstance())).get();
+		LocalDate result = Op.on(timestamp).exec(FnLocalDate.timestampToLocalDate(CopticChronology.getInstance())).get();
 		
 		assertEquals(result, new LocalDate(timestamp, CopticChronology.getInstance()));	
 	}
@@ -178,7 +178,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromLong() {
 		long dateAsLong = new Date().getTime();
-		LocalDate result = Op.on(Long.valueOf(dateAsLong)).exec(FnToLocalDate.fromLong()).get();
+		LocalDate result = Op.on(Long.valueOf(dateAsLong)).exec(FnLocalDate.longToLocalDate()).get();
 		
 		assertEquals(result, new LocalDate(dateAsLong));
 	}
@@ -186,7 +186,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromLongDateTimeZone() {
 		long dateAsLong = new Date().getTime();
-		LocalDate result = Op.on(Long.valueOf(dateAsLong)).exec(FnToLocalDate.fromLong(
+		LocalDate result = Op.on(Long.valueOf(dateAsLong)).exec(FnLocalDate.longToLocalDate(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new LocalDate(dateAsLong, DateTimeZone.getDefault()));
@@ -195,7 +195,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromLongChronology() {
 		long dateAsLong = new Date().getTime();
-		LocalDate result = Op.on(Long.valueOf(dateAsLong)).exec(FnToLocalDate.fromLong(
+		LocalDate result = Op.on(Long.valueOf(dateAsLong)).exec(FnLocalDate.longToLocalDate(
 				CopticChronology.getInstance())).get();
 		
 		assertEquals(result, new LocalDate(dateAsLong, CopticChronology.getInstance()));
@@ -207,7 +207,7 @@ public class ToLocalDateTest extends TestCase {
 		Integer month = Integer.valueOf(12);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month))
-			.exec(FnToLocalDate.fromIntegerFieldCollection())
+			.exec(FnLocalDate.integerFieldCollectionToLocalDate())
 			.get();
 	
 		assertEquals(result,
@@ -221,7 +221,7 @@ public class ToLocalDateTest extends TestCase {
 		Integer day = Integer.valueOf(25);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month, day))
-			.exec(FnToLocalDate.fromIntegerFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnLocalDate.integerFieldCollectionToLocalDate(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -236,7 +236,7 @@ public class ToLocalDateTest extends TestCase {
 		Integer day = Integer.valueOf(16);
 		
 		LocalDate result = Op.on(new Integer[] {year, month, day})
-			.exec(FnToLocalDate.fromIntegerFieldArray())
+			.exec(FnLocalDate.integerFieldArrayToLocalDate())
 			.get();
 	
 		assertEquals(result,
@@ -248,7 +248,7 @@ public class ToLocalDateTest extends TestCase {
 		Integer year = Integer.valueOf(16);
 		
 		LocalDate result = Op.on(new Integer[] {year})
-			.exec(FnToLocalDate.fromIntegerFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnLocalDate.integerFieldArrayToLocalDate(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -261,7 +261,7 @@ public class ToLocalDateTest extends TestCase {
 		String month = String.valueOf(3);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month))
-			.exec(FnToLocalDate.fromStringFieldCollection())
+			.exec(FnLocalDate.strFieldCollectionToLocalDate())
 			.get();
 	
 		assertEquals(result,
@@ -274,7 +274,7 @@ public class ToLocalDateTest extends TestCase {
 		String month = String.valueOf(8);
 		
 		LocalDate result = Op.on(Arrays.asList(year, month))
-			.exec(FnToLocalDate.fromStringFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnLocalDate.strFieldCollectionToLocalDate(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -289,7 +289,7 @@ public class ToLocalDateTest extends TestCase {
 		String day = String.valueOf(30);
 		
 		LocalDate result = Op.on(new String[] {year, month, day})
-			.exec(FnToLocalDate.fromStringFieldArray())
+			.exec(FnLocalDate.strFieldArrayToLocalDate())
 			.get();
 	
 		assertEquals(result,
@@ -304,7 +304,7 @@ public class ToLocalDateTest extends TestCase {
 		String day = String.valueOf(16);
 		
 		LocalDate result = Op.on(new String[] {year, month, day})
-			.exec(FnToLocalDate.fromStringFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnLocalDate.strFieldArrayToLocalDate(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(result,
@@ -315,7 +315,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromCalendar() {
 		Calendar calendar = Calendar.getInstance();
-		LocalDate result = Op.on(calendar).exec(FnToLocalDate.fromCalendar()).get();
+		LocalDate result = Op.on(calendar).exec(FnLocalDate.calendarToLocalDate()).get();
 		
 		assertEquals(result, new LocalDate(calendar));
 	}
@@ -323,7 +323,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromCalendarDateTimeZone() {
 		Calendar calendar = Calendar.getInstance();
-		LocalDate result = Op.on(calendar).exec(FnToLocalDate.fromCalendar(
+		LocalDate result = Op.on(calendar).exec(FnLocalDate.calendarToLocalDate(
 				DateTimeZone.getDefault())).get();
 		
 		assertEquals(result, new LocalDate(calendar, DateTimeZone.getDefault()));
@@ -332,7 +332,7 @@ public class ToLocalDateTest extends TestCase {
 	@Test
 	public void testFromCalendarChronology() {
 		Calendar calendar = Calendar.getInstance();
-		LocalDate result = Op.on(calendar).exec(FnToLocalDate.fromCalendar(
+		LocalDate result = Op.on(calendar).exec(FnLocalDate.calendarToLocalDate(
 				GJChronology.getInstance())).get();
 		
 		assertEquals(result, new LocalDate(calendar, GJChronology.getInstance()));

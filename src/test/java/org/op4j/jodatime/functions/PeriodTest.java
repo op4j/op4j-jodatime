@@ -19,9 +19,8 @@ import org.joda.time.chrono.CopticChronology;
 import org.joda.time.chrono.GregorianChronology;
 import org.junit.Test;
 import org.op4j.Op;
-import org.op4j.jodatime.functions.FnToPeriod;
 
-public class ToPeriodTest extends TestCase {
+public class PeriodTest extends TestCase {
 
 	@Test
 	public void testFromDateFieldList() {
@@ -29,7 +28,7 @@ public class ToPeriodTest extends TestCase {
 		Date to = new Date();
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromDateFieldCollection())
+			.exec(FnPeriod.dateFieldCollectionToPeriod())
 			.get();
 		
 		assertEquals(period,
@@ -41,7 +40,7 @@ public class ToPeriodTest extends TestCase {
 		java.sql.Date from = new java.sql.Date(1000);
 		java.sql.Date to = new java.sql.Date(100000);	
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromDateFieldCollection(
+			.exec(FnPeriod.dateFieldCollectionToPeriod(
 					BuddhistChronology.getInstance()))
 			.get();
 		
@@ -54,7 +53,7 @@ public class ToPeriodTest extends TestCase {
 		Date from = new Date(1000);
 		Date to = new Date(100000);	
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromDateFieldCollection(
+			.exec(FnPeriod.dateFieldCollectionToPeriod(
 					PeriodType.millis()))
 			.get();
 		
@@ -69,7 +68,7 @@ public class ToPeriodTest extends TestCase {
 		java.sql.Date from = new java.sql.Date(1000);
 		java.sql.Date to = new java.sql.Date(100000);	
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromDateFieldCollection(PeriodType.weeks(),
+			.exec(FnPeriod.dateFieldCollectionToPeriod(PeriodType.weeks(),
 					BuddhistChronology.getInstance()))
 			.get();
 		
@@ -83,7 +82,7 @@ public class ToPeriodTest extends TestCase {
 		Date to = new Date();
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(new Date[] {from, to})
-			.exec(FnToPeriod.fromDateFieldArray())
+			.exec(FnPeriod.dateFieldArrayToPeriod())
 			.get();
 		
 		assertEquals(period,
@@ -95,7 +94,7 @@ public class ToPeriodTest extends TestCase {
 		java.sql.Date from = new java.sql.Date(1000);
 		java.sql.Date to = new java.sql.Date(100000);	
 		Period period = Op.on(new java.sql.Date[] {from, to})
-			.exec(FnToPeriod.fromDateFieldArray(
+			.exec(FnPeriod.dateFieldArrayToPeriod(
 					GregorianChronology.getInstance()))
 			.get();
 		
@@ -108,7 +107,7 @@ public class ToPeriodTest extends TestCase {
 		Date from = new Date(1000);
 		Date to = new Date(100000);	
 		Period period = Op.on(new Date[] {from, to})
-			.exec(FnToPeriod.fromDateFieldArray(
+			.exec(FnPeriod.dateFieldArrayToPeriod(
 					PeriodType.millis()))
 			.get();
 		
@@ -123,7 +122,7 @@ public class ToPeriodTest extends TestCase {
 		java.sql.Date from = new java.sql.Date(1000);
 		java.sql.Date to = new java.sql.Date(100000);	
 		Period period = Op.on(new java.sql.Date[] {from, to})
-			.exec(FnToPeriod.fromDateFieldArray(PeriodType.weeks(),
+			.exec(FnPeriod.dateFieldArrayToPeriod(PeriodType.weeks(),
 					BuddhistChronology.getInstance()))
 			.get();
 		
@@ -137,7 +136,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromTimestampFieldCollection())
+			.exec(FnPeriod.timestampFieldCollectionToPeriod())
 			.get();
 		
 		assertEquals(period,
@@ -150,7 +149,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromTimestampFieldCollection(CopticChronology.getInstance()))
+			.exec(FnPeriod.timestampFieldCollectionToPeriod(CopticChronology.getInstance()))
 			.get();
 		
 		assertEquals(period,
@@ -163,7 +162,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromTimestampFieldCollection(PeriodType.time()))
+			.exec(FnPeriod.timestampFieldCollectionToPeriod(PeriodType.time()))
 			.get();
 		
 		assertEquals(period,
@@ -176,7 +175,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(Arrays.asList(from, to))
-			.exec(FnToPeriod.fromTimestampFieldCollection(PeriodType.time(), CopticChronology.getInstance()))
+			.exec(FnPeriod.timestampFieldCollectionToPeriod(PeriodType.time(), CopticChronology.getInstance()))
 			.get();
 		
 		assertEquals(period,
@@ -189,7 +188,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(new Timestamp[] {from, to})
-			.exec(FnToPeriod.fromTimestampFieldArray())
+			.exec(FnPeriod.timestampFieldArrayToPeriod())
 			.get();
 		
 		assertEquals(period,
@@ -202,7 +201,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(new Timestamp[] {from, to})
-			.exec(FnToPeriod.fromTimestampFieldArray(CopticChronology.getInstance()))
+			.exec(FnPeriod.timestampFieldArrayToPeriod(CopticChronology.getInstance()))
 			.get();
 		
 		assertEquals(period,
@@ -215,7 +214,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(new Timestamp[] {from, to})
-			.exec(FnToPeriod.fromTimestampFieldArray(PeriodType.time()))
+			.exec(FnPeriod.timestampFieldArrayToPeriod(PeriodType.time()))
 			.get();
 		
 		assertEquals(period,
@@ -228,7 +227,7 @@ public class ToPeriodTest extends TestCase {
 		Timestamp to = new Timestamp(new Date().getTime());
 		to.setTime(from.getTime() + 10000);
 		Period period = Op.on(new Timestamp[] {from, to})
-			.exec(FnToPeriod.fromTimestampFieldArray(PeriodType.time(), CopticChronology.getInstance()))
+			.exec(FnPeriod.timestampFieldArrayToPeriod(PeriodType.time(), CopticChronology.getInstance()))
 			.get();
 		
 		assertEquals(period,
@@ -236,10 +235,10 @@ public class ToPeriodTest extends TestCase {
 	}
 	
 	@Test
-	public void testFromLong() {
+	public void testlongToPeriod() {
 		Long theLong = Long.valueOf(100000);
 		Period period = Op.on(theLong)
-			.exec(FnToPeriod.fromLong())
+			.exec(FnPeriod.longToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -250,7 +249,7 @@ public class ToPeriodTest extends TestCase {
 	public void testFromLongChronology() {
 		Long theLong = Long.valueOf(100000);
 		Period period = Op.on(theLong)
-			.exec(FnToPeriod.fromLong(CopticChronology.getInstance()))
+			.exec(FnPeriod.longToPeriod(CopticChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -261,7 +260,7 @@ public class ToPeriodTest extends TestCase {
 	public void testFromLongPeriodType() {
 		Long theLong = Long.valueOf(100000);
 		Period period = Op.on(theLong)
-			.exec(FnToPeriod.fromLong(PeriodType.days()))
+			.exec(FnPeriod.longToPeriod(PeriodType.days()))
 			.get();
 	
 		assertEquals(period,
@@ -272,7 +271,7 @@ public class ToPeriodTest extends TestCase {
 	public void testFromLongPeriodTypeChronology() {
 		Long theLong = Long.valueOf(100000);
 		Period period = Op.on(theLong)
-			.exec(FnToPeriod.fromLong(PeriodType.days(), CopticChronology.getInstance()))
+			.exec(FnPeriod.longToPeriod(PeriodType.days(), CopticChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -280,11 +279,11 @@ public class ToPeriodTest extends TestCase {
 	}
 
 	@Test
-	public void testFromLongFieldCollection() {
+	public void testlongFieldCollectionToPeriod() {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(Arrays.asList(theLong1, theLong2))
-			.exec(FnToPeriod.fromLongFieldCollection())
+			.exec(FnPeriod.longFieldCollectionToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -296,7 +295,7 @@ public class ToPeriodTest extends TestCase {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(Arrays.asList(theLong1, theLong2))
-			.exec(FnToPeriod.fromLongFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnPeriod.longFieldCollectionToPeriod(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -308,7 +307,7 @@ public class ToPeriodTest extends TestCase {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(Arrays.asList(theLong1, theLong2))
-			.exec(FnToPeriod.fromLongFieldCollection(PeriodType.minutes()))
+			.exec(FnPeriod.longFieldCollectionToPeriod(PeriodType.minutes()))
 			.get();
 	
 		assertEquals(period,
@@ -320,7 +319,7 @@ public class ToPeriodTest extends TestCase {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(Arrays.asList(theLong1, theLong2))
-			.exec(FnToPeriod.fromLongFieldCollection(PeriodType.minutes(), BuddhistChronology.getInstance()))
+			.exec(FnPeriod.longFieldCollectionToPeriod(PeriodType.minutes(), BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -332,7 +331,7 @@ public class ToPeriodTest extends TestCase {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(new Long[] {theLong1, theLong2})
-			.exec(FnToPeriod.fromLongFieldArray())
+			.exec(FnPeriod.longFieldArrayToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -344,7 +343,7 @@ public class ToPeriodTest extends TestCase {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(new Long[] {theLong1, theLong2})
-			.exec(FnToPeriod.fromLongFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnPeriod.longFieldArrayToPeriod(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -356,7 +355,7 @@ public class ToPeriodTest extends TestCase {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(new Long[] {theLong1, theLong2})
-			.exec(FnToPeriod.fromLongFieldArray(PeriodType.minutes()))
+			.exec(FnPeriod.longFieldArrayToPeriod(PeriodType.minutes()))
 			.get();
 	
 		assertEquals(period,
@@ -368,7 +367,7 @@ public class ToPeriodTest extends TestCase {
 		Long theLong1 = Long.valueOf(100000);
 		Long theLong2 = Long.valueOf(300000);
 		Period period = Op.on(new Long[] {theLong1, theLong2})
-			.exec(FnToPeriod.fromLongFieldArray(PeriodType.minutes(), BuddhistChronology.getInstance()))
+			.exec(FnPeriod.longFieldArrayToPeriod(PeriodType.minutes(), BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -376,12 +375,12 @@ public class ToPeriodTest extends TestCase {
 	}
 
 	@Test
-	public void testFromCalendarFieldCollection() {
+	public void testcalendarFieldCollectionToPeriod() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(Arrays.asList(cal1, cal2))
-			.exec(FnToPeriod.fromCalendarFieldCollection())
+			.exec(FnPeriod.calendarFieldCollectionToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -394,7 +393,7 @@ public class ToPeriodTest extends TestCase {
 		GregorianCalendar cal2 = (GregorianCalendar)Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(Arrays.asList(cal1, cal2))
-			.exec(FnToPeriod.fromCalendarFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnPeriod.calendarFieldCollectionToPeriod(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -407,7 +406,7 @@ public class ToPeriodTest extends TestCase {
 		GregorianCalendar cal2 = (GregorianCalendar)Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(Arrays.asList(cal1, cal2))
-			.exec(FnToPeriod.fromCalendarFieldCollection(PeriodType.dayTime()))
+			.exec(FnPeriod.calendarFieldCollectionToPeriod(PeriodType.dayTime()))
 			.get();
 	
 		assertEquals(period,
@@ -420,7 +419,7 @@ public class ToPeriodTest extends TestCase {
 		GregorianCalendar cal2 = (GregorianCalendar)Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(Arrays.asList(cal1, cal2))
-			.exec(FnToPeriod.fromCalendarFieldCollection(PeriodType.dayTime(), BuddhistChronology.getInstance()))
+			.exec(FnPeriod.calendarFieldCollectionToPeriod(PeriodType.dayTime(), BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -433,7 +432,7 @@ public class ToPeriodTest extends TestCase {
 		Calendar cal2 = Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(new Calendar[] {cal1, cal2})
-			.exec(FnToPeriod.fromCalendarFieldArray())
+			.exec(FnPeriod.calendarFieldArrayToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -446,7 +445,7 @@ public class ToPeriodTest extends TestCase {
 		GregorianCalendar cal2 = (GregorianCalendar)Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(new GregorianCalendar[] {cal1, cal2})
-			.exec(FnToPeriod.fromCalendarFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnPeriod.calendarFieldArrayToPeriod(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -459,7 +458,7 @@ public class ToPeriodTest extends TestCase {
 		GregorianCalendar cal2 = (GregorianCalendar)Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(new GregorianCalendar[] {cal1, cal2})
-			.exec(FnToPeriod.fromCalendarFieldArray(PeriodType.dayTime()))
+			.exec(FnPeriod.calendarFieldArrayToPeriod(PeriodType.dayTime()))
 			.get();
 	
 		assertEquals(period,
@@ -472,7 +471,7 @@ public class ToPeriodTest extends TestCase {
 		GregorianCalendar cal2 = (GregorianCalendar)Calendar.getInstance();
 		cal2.add(Calendar.DAY_OF_YEAR, 20);
 		Period period = Op.on(new Calendar[] {cal1, cal2})
-			.exec(FnToPeriod.fromCalendarFieldArray(PeriodType.dayTime(), BuddhistChronology.getInstance()))
+			.exec(FnPeriod.calendarFieldArrayToPeriod(PeriodType.dayTime(), BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -485,7 +484,7 @@ public class ToPeriodTest extends TestCase {
 		DateTime second = new DateTime();
 		second.plusWeeks(10);
 		Period period = Op.on(Arrays.asList(first, second))
-			.exec(FnToPeriod.fromBaseDateTimeFieldCollection())
+			.exec(FnPeriod.baseDateTimeFieldCollectionToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -498,7 +497,7 @@ public class ToPeriodTest extends TestCase {
 		DateMidnight second = new DateMidnight();
 		second.plusWeeks(10);
 		Period period = Op.on(Arrays.asList(first, second))
-			.exec(FnToPeriod.fromBaseDateTimeFieldCollection(BuddhistChronology.getInstance()))
+			.exec(FnPeriod.baseDateTimeFieldCollectionToPeriod(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -511,7 +510,7 @@ public class ToPeriodTest extends TestCase {
 		DateMidnight second = new DateMidnight();
 		second.plusWeeks(10);
 		Period period = Op.on(Arrays.asList(first, second))
-			.exec(FnToPeriod.fromBaseDateTimeFieldCollection(PeriodType.minutes()))
+			.exec(FnPeriod.baseDateTimeFieldCollectionToPeriod(PeriodType.minutes()))
 			.get();
 	
 		assertEquals(period,
@@ -524,7 +523,7 @@ public class ToPeriodTest extends TestCase {
 		MutableDateTime second = new MutableDateTime();
 		second.addWeeks(10);
 		Period period = Op.on(Arrays.asList(first, second))
-			.exec(FnToPeriod.fromBaseDateTimeFieldCollection(PeriodType.minutes(), BuddhistChronology.getInstance()))
+			.exec(FnPeriod.baseDateTimeFieldCollectionToPeriod(PeriodType.minutes(), BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -532,12 +531,12 @@ public class ToPeriodTest extends TestCase {
 	}
 
 	@Test
-	public void testFromBaseDateTimeFieldArray() {
+	public void testbaseDateTimeFieldArrayToPeriod() {
 		DateTime first = new DateTime();
 		DateTime second = new DateTime();
 		second.plusWeeks(10);
 		Period period = Op.on(new DateTime[] {first, second})
-			.exec(FnToPeriod.fromBaseDateTimeFieldArray())
+			.exec(FnPeriod.baseDateTimeFieldArrayToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -550,7 +549,7 @@ public class ToPeriodTest extends TestCase {
 		DateMidnight second = new DateMidnight();
 		second.plusWeeks(10);
 		Period period = Op.on(new DateMidnight[] {first, second})
-			.exec(FnToPeriod.fromBaseDateTimeFieldArray(BuddhistChronology.getInstance()))
+			.exec(FnPeriod.baseDateTimeFieldArrayToPeriod(BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -563,7 +562,7 @@ public class ToPeriodTest extends TestCase {
 		DateMidnight second = new DateMidnight();
 		second.plusWeeks(10);
 		Period period = Op.on(new DateMidnight[] {first, second})
-			.exec(FnToPeriod.fromBaseDateTimeFieldArray(PeriodType.minutes()))
+			.exec(FnPeriod.baseDateTimeFieldArrayToPeriod(PeriodType.minutes()))
 			.get();
 	
 		assertEquals(period,
@@ -576,7 +575,7 @@ public class ToPeriodTest extends TestCase {
 		MutableDateTime second = new MutableDateTime();
 		second.addWeeks(10);
 		Period period = Op.on(new MutableDateTime[] {first, second})
-			.exec(FnToPeriod.fromBaseDateTimeFieldArray(PeriodType.minutes(), BuddhistChronology.getInstance()))
+			.exec(FnPeriod.baseDateTimeFieldArrayToPeriod(PeriodType.minutes(), BuddhistChronology.getInstance()))
 			.get();
 	
 		assertEquals(period,
@@ -591,7 +590,7 @@ public class ToPeriodTest extends TestCase {
 		Integer millis = Integer.valueOf(22);
 		
 		Period period = Op.on(Arrays.asList(hours, minutes, secs, millis))
-			.exec(FnToPeriod.fromIntegerFieldCollection())
+			.exec(FnPeriod.integerFieldCollectionToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -604,7 +603,7 @@ public class ToPeriodTest extends TestCase {
 		Integer minutes = Integer.valueOf(30);
 		
 		Period period = Op.on(Arrays.asList(hours, minutes))
-			.exec(FnToPeriod.fromIntegerFieldCollection(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+			.exec(FnPeriod.integerFieldCollectionToPeriod(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
 	
@@ -622,7 +621,7 @@ public class ToPeriodTest extends TestCase {
 		Integer millis = Integer.valueOf(22);
 		
 		Period period = Op.on(new Integer[] {hours, minutes, secs, millis})
-			.exec(FnToPeriod.fromIntegerFieldArray())
+			.exec(FnPeriod.integerFieldArrayToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -635,7 +634,7 @@ public class ToPeriodTest extends TestCase {
 		Integer minutes = Integer.valueOf(30);
 		
 		Period period = Op.on(new Integer[] {hours, minutes})
-			.exec(FnToPeriod.fromIntegerFieldArray(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+			.exec(FnPeriod.integerFieldArrayToPeriod(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
 	
@@ -646,14 +645,14 @@ public class ToPeriodTest extends TestCase {
 	}
 
 	@Test
-	public void testFromStringFieldCollection() {
+	public void teststrFieldCollectionToPeriod() {
 		String hours = "3";
 		String minutes = "30";
 		String secs = "13";
 		String millis = "22";
 		
 		Period period = Op.on(Arrays.asList(hours, minutes, secs, millis))
-			.exec(FnToPeriod.fromStringFieldCollection())
+			.exec(FnPeriod.strFieldCollectionToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -666,7 +665,7 @@ public class ToPeriodTest extends TestCase {
 		String minutes = "30";
 		
 		Period period = Op.on(Arrays.asList(hours, minutes))
-			.exec(FnToPeriod.fromStringFieldCollection(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+			.exec(FnPeriod.strFieldCollectionToPeriod(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
 	
@@ -684,7 +683,7 @@ public class ToPeriodTest extends TestCase {
 		String millis = "22";
 		
 		Period period = Op.on(new String[] {hours, minutes, secs, millis})
-			.exec(FnToPeriod.fromStringFieldArray())
+			.exec(FnPeriod.strFieldArrayToPeriod())
 			.get();
 	
 		assertEquals(period,
@@ -698,7 +697,7 @@ public class ToPeriodTest extends TestCase {
 		String minutes = "30";
 		
 		Period period = Op.on(new String[] {hours, minutes})
-			.exec(FnToPeriod.fromStringFieldArray(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
+			.exec(FnPeriod.strFieldArrayToPeriod(PeriodType.forFields(new DurationFieldType[] {DurationFieldType.hours(),
 					DurationFieldType.minutes()})))
 			.get();
 	
