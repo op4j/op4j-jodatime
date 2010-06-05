@@ -15,7 +15,8 @@ public class AllTests {
 		suite.addTestSuite(IntervalTest.class);
 		suite.addTestSuite(LocalDateTest.class);
 		suite.addTestSuite(LocalTimeTest.class);
-		suite.addTestSuite(PeriodTest.class);		
+		suite.addTestSuite(PeriodTest.class);	
+		suite.addTestSuite(MutableDateTimeTest.class);
 		//$JUnit-END$
 		return suite;
 	}

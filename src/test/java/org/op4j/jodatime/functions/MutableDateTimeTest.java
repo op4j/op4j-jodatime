@@ -49,9 +49,8 @@ public class MutableDateTimeTest extends TestCase {
 		
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withChronology(BuddhistChronology.getInstance())
 				.parseMutableDateTime(asStr));
-		//TODO Enable
-//		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils.strToMutableDateTime(pattern,
-//				BuddhistChronology.getInstance())).get());
+		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils.strToMutableDateTime(pattern,
+				BuddhistChronology.getInstance())).get());
 	}
 
 	@Test
@@ -111,9 +110,8 @@ public class MutableDateTimeTest extends TestCase {
 		assertEquals(result, DateTimeFormat.forPattern(pattern).withLocale(Locale.CANADA)
 				.withChronology(BuddhistChronology.getInstance())
 				.parseMutableDateTime(asStr));
-		//TODO Enable
-//		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils.strToMutableDateTime(pattern,
-//				Locale.CANADA, BuddhistChronology.getInstance())).get());
+		assertEquals(result, Op.on(asStr).exec(FnJodaTimeUtils.strToMutableDateTime(pattern,
+				Locale.CANADA, BuddhistChronology.getInstance())).get());
 		
 		try {
 			Op.on(asStr).exec(FnMutableDateTime.strToMutableDateTime("",

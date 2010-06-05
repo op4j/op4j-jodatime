@@ -33,6 +33,7 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.Interval;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+import org.joda.time.MutableDateTime;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.base.BaseDateTime;
@@ -3832,5 +3833,515 @@ public class FnJodaTimeUtils {
 	public static final Function<String[], Period> strFieldArrayToPeriod(PeriodType periodType) {
 		return FnPeriod.strFieldArrayToPeriod(periodType);
 	}
+	
+	// From String
+    /**
+     * <p>
+     * It converts the input {@link String} into a {@link MutableDateTime} using the 
+     * given pattern parameter. If the pattern includes either, the name of 
+     * the month or day of week, a conversion accepting a {@link Locale} must 
+     * be used instead 
+     * </p>
+     * 
+     * @param pattern string with the format of the input String 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern) {
+        return FnMutableDateTime.strToMutableDateTime(pattern);
+    }   
+    /**
+     * <p>
+     * It converts the input {@link String} into a {@link MutableDateTime} using the given pattern parameter and with the given
+     * {@link MutableDateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
+     * accepting a {@link Locale} must be used instead
+     * </p>
+     *                 
+     * @param pattern string with the format of the input String 
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, DateTimeZone dateTimeZone) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, dateTimeZone);
+    }   
+    /**
+     * <p>
+     * It converts the input {@link String} into a {@link MutableDateTime} using the given pattern parameter and with the given
+     * {@link Chronology}. If the pattern includes either, the name of the month or day of week, a conversion
+     * accepting a {@link Locale} must be used instead
+     * </p>
+     *                      
+     * @param pattern string with the format of the input String 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, Chronology chronology) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, chronology);
+    }   
+    /**
+     * <p>
+     * It converts the input {@link String} into a {@link MutableDateTime} using the given pattern and
+     * {@link Locale} parameters
+     * </p>
+     * 
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, Locale locale) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, locale);
+    }
+    /**
+     * <p>
+     * It converts the given {@link String} into a {@link MutableDateTime} using the given pattern and
+     * {@link Locale} parameters
+     * </p>
+     * 
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, String locale) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, locale);
+    }
+    /**
+     * <p>
+     * It converts the given String into a {@link MutableDateTime} using the given pattern and {@link Locale} parameters.
+     * The {@link MutableDateTime} is configured with the given {@link DateTimeZone}
+     * </p>
+     *                 
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, Locale locale, DateTimeZone dateTimeZone) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, locale, dateTimeZone);
+    }
+    /**
+     * <p>
+     * It converts the given {@link String} into a {@link MutableDateTime} using the given pattern and {@link Locale} parameters.
+     * The {@link MutableDateTime} is configured with the given {@link DateTimeZone}
+     * </p>
+     * 
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, String locale, DateTimeZone dateTimeZone) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, locale, dateTimeZone);
+    }
+    /**
+     * <p>
+     * It converts the input {@link String} into a {@link MutableDateTime} using the given pattern and {@link Locale} parameters.
+     * The {@link MutableDateTime} will be created with the given {@link Chronology}
+     * </p>
+     *                 
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, Locale locale, Chronology chronology) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, locale, chronology);
+    }
+    /**
+     * <p>
+     * It converts the input {@link String} into a {@link MutableDateTime} using the given pattern and {@link Locale} parameters.
+     * The {@link MutableDateTime} will be created with the given {@link Chronology}
+     * </p>
+     * 
+     * @param pattern string with the format of the input String 
+     * @param locale {@link Locale} to be used 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String, MutableDateTime> strToMutableDateTime(String pattern, String locale, Chronology chronology) {
+        return FnMutableDateTime.strToMutableDateTime(pattern, locale, chronology);
+    }
+    //
+    
+    
+    // From Date
+    /**
+     * <p>
+     * The input {@link Date} is converted into a {@link MutableDateTime}
+     * </p>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final <T extends Date> Function<T, MutableDateTime> dateToMutableDateTime() {
+        return FnMutableDateTime.dateToMutableDateTime();
+    }
+    /**
+     * <p>
+     * The input {@link Date} is converted into a {@link MutableDateTime} configured with the given
+     * {@link DateTimeZone}
+     * </p>
+     * 
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final <T extends Date> Function<T, MutableDateTime> dateToMutableDateTime(DateTimeZone dateTimeZone) {
+        return FnMutableDateTime.dateToMutableDateTime(dateTimeZone);
+    }
+    /**
+     * <p>
+     * The input {@link Date} is converted into a {@link MutableDateTime} with the given
+     * {@link Chronology}
+     * </p>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final <T extends Date> Function<T, MutableDateTime> dateToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.dateToMutableDateTime(chronology);
+    }
+    //
+    
+    
+    // From Date
+    /**
+     * <p>
+     * The input {@link Timestamp} is converted into a {@link MutableDateTime}
+     * </p>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Timestamp, MutableDateTime> timestampToMutableDateTime() {
+        return FnMutableDateTime.timestampToMutableDateTime();
+    }
+    /**
+     * <p>
+     * The input {@link Timestamp} is converted into a {@link MutableDateTime} in the given
+     * {@link DateTimeZone}
+     * </p>
+     * 
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Timestamp, MutableDateTime> timestampToMutableDateTime(DateTimeZone dateTimeZone) {
+        return FnMutableDateTime.timestampToMutableDateTime(dateTimeZone);
+    }
+    /**
+     * <p>
+     * The input {@link Timestamp} is converted into a {@link MutableDateTime} with the given
+     * {@link Chronology}
+     * </p>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Timestamp, MutableDateTime> timestampToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.timestampToMutableDateTime(chronology);
+    }
+    //
+        
+    
+    // Conversion from Long
+    /**
+     * <p>
+     * The input {@link Long} representing the time in milliseconds is converted into a {@link MutableDateTime}
+     * </p>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Long, MutableDateTime> longToMutableDateTime() {
+        return FnMutableDateTime.longToMutableDateTime();
+    }
+    /**
+     * <p>
+     * The input {@link Long} representing the time in milliseconds is converted into a {@link MutableDateTime} in the given
+     * {@link MutableDateTimeZone}
+     * </p>
+     * 
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Long, MutableDateTime> longToMutableDateTime(DateTimeZone dateTimeZone) {
+        return FnMutableDateTime.longToMutableDateTime(dateTimeZone);
+    }
+    /**
+     * <p>
+     * The input {@link Long} representing the time in milliseconds is converted into a {@link MutableDateTime} with the given
+     * {@link Chronology}
+     * </p>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Long, MutableDateTime> longToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.longToMutableDateTime(chronology);
+    }
+    //
+    
+    // Conversion from Integer list
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the input {@link Integer} {@link Collection}.
+     * </p>
+     * 
+     * <p>
+     * The valid input Collection&lt;Integer&gt; are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Collection<Integer>, MutableDateTime> integerFieldCollectionToMutableDateTime() {
+        return FnMutableDateTime.integerFieldCollectionToMutableDateTime();
+    }
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the input {@link Integer} {@link Collection}.
+     * The result will be created with the given {@link Chronology}
+     * </p>
+     * 
+     * <p>
+     * The valid input Collection&lt;Integer&gt; are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Collection<Integer>, MutableDateTime> integerFieldCollectionToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.integerFieldCollectionToMutableDateTime(chronology);
+    }
+    //
+    
+    
+    // Conversion from Integer array
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the given {@link Integer} array.
+     * </p>
+     * 
+     * <p>
+     * The valid input Integer[] are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Integer[], MutableDateTime> integerFieldArrayToMutableDateTime() {
+        return FnMutableDateTime.integerFieldArrayToMutableDateTime();
+    }
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the given {@link Integer} array.
+     * The result will be created with the given {@link Chronology}
+     * </p>
+     * 
+     * <p>
+     * The valid input Integer[] are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments
+     * 
+     * @since 1.1
+     */
+    public static final Function<Integer[], MutableDateTime> integerFieldArrayToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.integerFieldArrayToMutableDateTime(chronology);
+    }
+    //
+    
+    
+    // Conversion from String list
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the given {@link String} {@link Collection}.
+     * </p>
+     * 
+     * <p>
+     * The valid input Collection&lt;String&gt; are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Collection<String>, MutableDateTime> strFieldCollectionToMutableDateTime() {
+        return FnMutableDateTime.strFieldCollectionToMutableDateTime();
+    }
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the given {@link String} {@link Collection}.
+     * The result will be created with the given {@link Chronology}
+     * </p>
+     * 
+     * <p>
+     * The valid input Collection&lt;String&gt; are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<Collection<String>, MutableDateTime> strFieldCollectionToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.strFieldCollectionToMutableDateTime(chronology);
+    }
+    //
+    
+    
+    // Conversion from String array
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the given {@link String} array.
+     * </p>
+     * 
+     * <p>
+     * The valid input String[] are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String[], MutableDateTime> strFieldArrayToMutableDateTime() {
+        return FnMutableDateTime.strFieldArrayToMutableDateTime();
+    }
+    /**
+     * <p>
+     * A {@link MutableDateTime} is created from the given {@link String} array.
+     * The result will be created with the given {@link Chronology}
+     * </p>
+     * 
+     * <p>
+     * The valid input String[] are:
+     * </p>
+     * <ul>
+     * <li>year (month and day will be set to 1)</li>
+     * <li>year, month (day will be set to 1)</li>
+     * <li>year, month, day</li>
+     * </ul>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final Function<String[], MutableDateTime> strFieldArrayToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.strFieldArrayToMutableDateTime(chronology);
+    }
+    //
+    
+    
+    // Conversion from Calendar
+    /**
+     * <p>
+     * It converts a {@link Calendar} into a {@link MutableDateTime}
+     * </p>
+     * 
+     * @return the {@link MutableDateTime} created from the input 
+     * 
+     * @since 1.1
+     */
+    public static final <T extends Calendar> Function<T, MutableDateTime> calendarToMutableDateTime() {
+        return FnMutableDateTime.calendarToMutableDateTime();
+    }
+    /**
+     * <p>
+     * It converts a {@link Calendar} into a {@link MutableDateTime} in the given {@link DateTimeZone}
+     * </p>
+     * 
+     * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final <T extends Calendar> Function<T, MutableDateTime> calendarToMutableDateTime(DateTimeZone dateTimeZone) {
+        return FnMutableDateTime.calendarToMutableDateTime(dateTimeZone);
+    }
+    /**
+     * <p>
+     * It converts a {@link Calendar} into a {@link MutableDateTime} with the given {@link Chronology}
+     * </p>
+     * 
+     * @param chronology {@link Chronology} to be used 
+     * @return the {@link MutableDateTime} created from the input and arguments 
+     * 
+     * @since 1.1
+     */
+    public static final <T extends Calendar> Function<T, MutableDateTime> calendarToMutableDateTime(Chronology chronology) {
+        return FnMutableDateTime.calendarToMutableDateTime(chronology);
+    }
+    //
 	
 }
