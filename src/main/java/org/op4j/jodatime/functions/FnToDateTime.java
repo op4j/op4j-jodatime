@@ -37,7 +37,7 @@ import org.op4j.functions.Function;
  * 
  * @author Soraya S&aacute;nchez Labandeira
  *
- * @deprecated use {@link FnLocalTime} instead
+ * @deprecated use {@link FnDateTime} instead
  */
 @Deprecated
 public final class FnToDateTime {
