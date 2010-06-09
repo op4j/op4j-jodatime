@@ -78,7 +78,7 @@ public final class FnMutableDateTime {
 	/**
 	 * <p>
 	 * It converts the input {@link String} into a {@link MutableDateTime} using the given pattern parameter and with the given
-	 * {@link MutableDateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
+	 * {@link DateTimeZone}. If the pattern includes either, the name of the month or day of week, a conversion
 	 * accepting a {@link Locale} must be used instead
 	 * </p>
 	 *                 
@@ -278,7 +278,7 @@ public final class FnMutableDateTime {
 	/**
 	 * <p>
 	 * The input {@link Long} representing the time in milliseconds is converted into a {@link MutableDateTime} in the given
-	 * {@link MutableDateTimeZone}
+	 * {@link DateTimeZone}
 	 * </p>
 	 * 
 	 * @param dateTimeZone the the time zone ({@link DateTimeZone}) to be used 
