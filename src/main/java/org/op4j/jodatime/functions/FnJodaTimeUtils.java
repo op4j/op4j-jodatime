@@ -85,7 +85,7 @@ public class FnJodaTimeUtils {
 	 * @param formatType
 	 * @param format
 	 * @return
-	 * @deprecated 
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
@@ -115,7 +115,7 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
@@ -145,7 +145,7 @@ public class FnJodaTimeUtils {
 	 * @param chronology
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
@@ -175,7 +175,7 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
@@ -226,7 +226,7 @@ public class FnJodaTimeUtils {
 	 * @param format
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
@@ -258,7 +258,7 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
@@ -289,7 +289,7 @@ public class FnJodaTimeUtils {
 	 * @param chronology
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
@@ -320,7 +320,7 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
@@ -371,7 +371,7 @@ public class FnJodaTimeUtils {
 	 * @param format
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
@@ -402,7 +402,7 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
@@ -433,7 +433,7 @@ public class FnJodaTimeUtils {
 	 * @param chronology
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
@@ -465,7 +465,7 @@ public class FnJodaTimeUtils {
 	 * @param locale
 	 * @return
 	 * 
-	 * @deprecated
+	 * @deprecated This method will be removed in version 1.2 
 	 */
 	@Deprecated
     public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {

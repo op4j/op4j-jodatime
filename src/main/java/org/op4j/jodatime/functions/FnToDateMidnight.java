@@ -37,7 +37,7 @@ import org.op4j.functions.Function;
  * 
  * @author Soraya S&aacute;nchez Labandeira
  *
- * @deprecated use {@link FnDateMidnight} instead
+ * @deprecated use {@link FnDateMidnight} instead. This class will be removed in version 1.2
  */
 @Deprecated
 public final class FnToDateMidnight {
