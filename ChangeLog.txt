@@ -1,0 +1,5 @@
+1.1
+===
+
+- Create FnX classes like FnToX ones
+- Add FnMutableDateTime class
