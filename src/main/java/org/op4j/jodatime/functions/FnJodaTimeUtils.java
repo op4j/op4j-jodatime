@@ -81,16 +81,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.baseDateTimeToStr(formatType, format);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @return
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
-        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
-    }
 	
 	/**
      * <p>
@@ -109,18 +99,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.baseDateTimeToStr(formatType, format, locale);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param locale
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
-        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
-    }
 	
 	/**
      * <p>
@@ -139,18 +117,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.baseDateTimeToStr(formatType, format, chronology);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param chronology
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
-        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
-    }
 	
 	/**
      * <p>
@@ -169,18 +135,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.baseDateTimeToStr(formatType, format, locale);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param locale
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<BaseDateTime, String> baseDateTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
-        return FnJodaString.baseDateTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
-    }
 	
 	/**
      * <p>
@@ -221,18 +175,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.localTimeToStr(formatType, format);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
-        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
-    }
-	
 	
 	
 	/**
@@ -252,19 +194,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.localTimeToStr(formatType, format, locale);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param locale
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
-        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
-    }
-	
 	
 	/**
      * <p>
@@ -283,19 +212,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.localTimeToStr(formatType, format, chronology);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param chronology
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
-        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
-    }
-	
 	
 	/**
      * <p>
@@ -313,19 +229,6 @@ public class FnJodaTimeUtils {
 	public static final Function<LocalTime, String> localTimeToStr(final FormatType formatType, final String format, final String locale) {
 		return FnJodaString.localTimeToStr(formatType, format, locale);
 	}
-	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param locale
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalTime, String> localTimeToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
-        return FnJodaString.localTimeToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
-    }
 	
 	
 	/**
@@ -366,17 +269,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.localDateToStr(formatType, format);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format) {
-        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format);
-    }
 	
 	
 	/**
@@ -396,18 +288,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.localDateToStr(formatType, format, locale);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param locale
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Locale locale) {
-        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
-    }
 	
 	
 	/**
@@ -427,20 +307,6 @@ public class FnJodaTimeUtils {
 		return FnJodaString.localDateToStr(formatType, format, chronology);
 	}
 	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param chronology
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final Chronology chronology) {
-        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, chronology);
-    }
-	
-	
 	
 	/**
      * <p>
@@ -458,19 +324,6 @@ public class FnJodaTimeUtils {
 	public static final Function<LocalDate, String> localDateToStr(final FormatType formatType, final String format, final String locale) {
 		return FnJodaString.localDateToStr(formatType, format, locale);
 	}
-	
-	/**
-	 * @param formatType
-	 * @param format
-	 * @param locale
-	 * @return
-	 * 
-	 * @deprecated This method will be removed in version 1.2 
-	 */
-	@Deprecated
-    public static final Function<LocalDate, String> localDateToStr(final org.op4j.jodatime.functions.FnJodaToString.FormatType formatType, final String format, final String locale) {
-        return FnJodaString.localDateToStr(FnJodaString.FormatType.valueOf(formatType.name()), format, locale);
-    }
 	
 	
 	/**
